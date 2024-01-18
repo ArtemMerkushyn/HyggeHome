@@ -1,0 +1,26 @@
+.orange {
+    color: #FCB654;
+}
+
+.logo {
+    font-family: DM Mono ;;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -0.72px;
+    color: #6883A0;
+}
+
+.logo svg {
+    width: 88.001px;
+    height: 60px;
+}
+
+.wrapper svg {
+    cursor: pointer;
+    fill: #252525;
+    transition: all;
+}
+
+.wrapper svg:hover {
+    fill: #FCB654;
+}

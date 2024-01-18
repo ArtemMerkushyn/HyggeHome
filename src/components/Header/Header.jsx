@@ -4,11 +4,15 @@ import  Icons  from '../Icons/Icons.jsx';
 import { Link } from 'react-router-dom';
 
 export const Header = () => {
+    const logoStyles = {
+        fontFamily: 'DM Mono',
+    }
+
     return (
         <header className='flex justify-between items-center'>
-            <Link className='logo flex gap-2.5' to='/'>
-                <Icons icon={'logo'}/>
-                <div>
+            <Link className='flex gap-2.5' to='/'>
+                <Icons icon={'logo'} style={{ width: '88px', height: '60px' }}/>
+                <div className='text-2xl' style={logoStyles}>
                     <div>
                         <span className='orange'>H</span><span>y</span><span className='orange'>gg</span><span>e</span>
                     </div>

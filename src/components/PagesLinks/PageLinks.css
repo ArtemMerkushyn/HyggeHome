@@ -1,0 +1,9 @@
+.links a {
+    border-bottom: 2px solid transparent;
+    transition: all .2s linear;
+}
+
+.links a:hover,
+.links a.active {
+    border-bottom: 2px solid #FCB654;  
+}

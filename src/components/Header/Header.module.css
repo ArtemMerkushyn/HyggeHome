@@ -1,0 +1,14 @@
+.wrapper {
+    display: flex;
+    gap: 30px;
+}
+
+.wrapper svg {
+    cursor: pointer;
+    fill: #252525;
+    transition: all .1s linear;
+}
+
+.wrapper svg:hover {
+    fill: #FCB654;
+}

@@ -1,18 +1,23 @@
 .footer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     height: 273px;
     background: #252525;
     padding-left: 72px;
     padding-right: 72px;
-    padding-top: 60px;
+    padding-top: 60px;    
 }
 
 .wrapper {
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
+    justify-content: center;
     align-items: center;
-    
+    gap: 75px;
+    max-width: 1440px;
+    width: 100%;    
 }
-
 
 .textLogo {
     color: #FCB654;
@@ -67,7 +72,7 @@
 }
 
 .input {
-    width: 206px;
+    width: 118px;
     height: 48px;
     padding-left: 20px;
     border-radius: 24px 0px 0px 24px;
@@ -75,6 +80,11 @@
     outline: none;
     background-color: transparent; 
     color: #FFFFFF;
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .button {
@@ -83,7 +93,7 @@
     border-radius: 0px 24px 24px 0px;
     background: #FCB654;
     border: 1px solid #FCB654;
-     color: #FFF;
+    color: #FFF;
     font-size: 30px;
     font-weight: 8px;
 }

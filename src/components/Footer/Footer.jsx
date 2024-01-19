@@ -9,10 +9,12 @@ export default function Footer() {
     return (
         <footer className={styles.footer}>
             <div className={styles.wrapper}>
-            <div className={styles.wrapperLogo}>
-                <Icons icon={'logo'} />
+                <NavLink  to='/'>
+                <div className={styles.wrapperLogo}>
+                <Icons icon={'logo'} />               
             <p className={styles.textLogo}><span>H</span><span className={styles.span}>y</span><span>gg</span><span className={styles.span}>e</span></p>
-            </div>
+                    </div>
+                    </NavLink>
             <div className={styles.nav}>
                 <NavLink  to='/candles'>Candles</NavLink>
                 <NavLink to='/lighting-decor'>Lighting Decor</NavLink>
@@ -22,9 +24,12 @@ export default function Footer() {
                 <NavLink to='/books-journals'>Books & Journals</NavLink>
             </div>
                 <div className={styles.iconsWrapper }>
-                <FaFacebook className={styles.icons} />
-                <FaXTwitter className={styles.icons} />
-                <FaInstagram className={styles.icons} />
+                <a href="https://www.facebook.com" aria-label="Read more about Hygge Home" target="_blank"
+                        rel="noopener noreferrer nofollow" ><FaFacebook className={styles.icons} /></a>
+                <a href="https://twitter.com/" aria-label="Read more about Hygge Home" target="_blank"
+                        rel="noopener noreferrer nofollow"><FaXTwitter className={styles.icons} /></a>
+                <a href="https://www.instagram.com/" aria-label="Read more about Hygge Home" target="_blank"
+                        rel="noopener noreferrer nofollow"><FaInstagram className={styles.icons} /></a>
             </div>
             </div>
             <div className={styles.wrapperInput }>

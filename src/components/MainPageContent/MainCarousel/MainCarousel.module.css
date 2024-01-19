@@ -1,0 +1,28 @@
+.carousel_div{
+    display: flex;
+    gap: 30px;
+}
+.carousel_item{
+    width: 412px;
+height: 459px;
+flex-shrink: 0;
+border-radius: 24px;
+border: 1px solid #FCB654;
+background: url(/src//img/header/carousel/картка\ товару.png), lightgray 50% / cover no-repeat;
+}
+.carousel_item_2{
+    width: 412px;
+height: 459px;
+flex-shrink: 0;
+border-radius: 24px;
+border: 1px solid #FCB654;
+background: url(/src//img/header/carousel/картка\ товару\ \(2\).png), lightgray 50% / cover no-repeat;
+}
+.carousel_item_1{
+    width: 412px;
+height: 459px;
+flex-shrink: 0;
+border-radius: 24px;
+border: 1px solid #FCB654;
+background: url(/src//img/header/carousel/картка\ товару\ \(1\).png), lightgray 50% / cover no-repeat;
+}

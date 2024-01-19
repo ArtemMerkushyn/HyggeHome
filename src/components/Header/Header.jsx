@@ -1,7 +1,7 @@
-import { PagesLinks } from '../PagesLinks/PagesLinks';
-import styles from './Header.module.css';
-import  Icons  from '../Icons/Icons.jsx';
 import { Link } from 'react-router-dom';
+import { PagesLinks } from '../PagesLinks/PagesLinks';
+import  Icons  from '../Icons/Icons.jsx';
+import styles from './Header.module.css';
 
 export const Header = () => {
     const logoStyles = {
@@ -9,22 +9,22 @@ export const Header = () => {
     }
 
     return (
-        <header className='flex justify-between items-center'>
-            <Link className='flex gap-2.5' to='/'>
+        <header className={styles.header}>
+            <Link className={styles.logo} to='/'>
                 <Icons icon={'logo'} style={{ width: '88px', height: '60px' }}/>
                 <div className='text-2xl' style={logoStyles}>
                     <div className='text-my-red'>
-                        <span className='text-color-my-yellow'>H</span><span>y</span><span className='text-color-my-yellow'>gg</span><span>e</span>
+                        <span className={styles.yellow}>H</span><span>y</span><span className={styles.yellow}>gg</span><span>e</span>
                     </div>
                     <div>
-                        <span className='text-color-my-yellow'>H</span><span>o</span><span className='text-color-my-yellow'>m</span><span>e</span>
+                        <span className={styles.yellow}>H</span><span>o</span><span className={styles.yellow}>m</span><span>e</span>
                     </div>
                 </div>
             </Link>
             <div className={styles.wrapper}>
                 <PagesLinks/>
-                <div className='flex gap-7 items-center'>
-                    <Icons style={{fill: '#FCB654'}} icon={'search'}/>
+                <div className={styles.wrapper}>
+                    <Icons icon={'search'}/>
                     <Icons icon={'basket'}/>
                     <Icons icon={'user'}/>
                 </div>

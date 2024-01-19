@@ -10,7 +10,7 @@ function App() {
   return (
    
     <div className="App">
-      <div className='max-w-container w-full mx-auto pt-7'>
+      <div className='container'>
         <Header/>
         <Outlet />
         <ToastContainer />

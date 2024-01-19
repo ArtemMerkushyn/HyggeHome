@@ -1,12 +1,39 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.logo {
+    font-family: "DM Mono";
+    font-size: 24px;
+    line-height: normal;
+    letter-spacing: -0.72px;
+    color: #6883A0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.logo svg {
+    width: 88px;
+    height: 60px;
+}
+
+.yellow {
+    color: #FCB654;
+}
+
 .wrapper {
     display: flex;
+    align-items: center;
     gap: 30px;
 }
 
 .wrapper svg {
-    cursor: pointer;
     fill: #252525;
-    transition: all .1s linear;
+    cursor: pointer;
+    transition: all .2s linear;
 }
 
 .wrapper svg:hover {

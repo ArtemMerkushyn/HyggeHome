@@ -1,0 +1,19 @@
+.wrapper {
+    display: flex;
+    gap: 30px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+.item {
+    border-bottom: 2px solid transparent;
+    transition: all .1s linear;
+}
+
+.item:hover,
+.item:focus,
+.item.active {
+    border-bottom: 2px solid #FCB654;
+}

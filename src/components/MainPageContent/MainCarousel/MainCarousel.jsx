@@ -17,7 +17,18 @@ const responsive = {
 };
     return(
         <>
-        <Carousel responsive={responsive}>
+       <Carousel
+      responsive={responsive}
+      
+      containerClass={css.carousel_container}
+      dotListClass={css.carousel_dot_list}
+      autoPlay
+      autoPlaySpeed={5000}
+      showDots
+      swipeable
+      draggable
+      rewind
+    >
            
   <div className={css.carousel_item_1}>
  

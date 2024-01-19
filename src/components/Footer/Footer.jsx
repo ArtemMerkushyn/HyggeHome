@@ -4,6 +4,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 import styles from "./Footer.module.css";
 import Icons from '../Icons/Icons.jsx';
+import SubscribeForm from "../SubscribeForm/SubscribeForm.jsx";
 
 export default function Footer() {
     return (
@@ -33,9 +34,8 @@ export default function Footer() {
             </div>
             </div>
             <div className={styles.wrapperInput }>
-                <p className={ styles.text}> Subscribe now</p>
-                <input className={styles.input} placeholder="Your email"></input>
-                <button className={styles.button }> {'>'} </button>
+                <p className={styles.text}> Subscribe now</p>
+                <SubscribeForm/>
             </div>
         </footer>
     );

@@ -40,7 +40,7 @@ export default function SubscribeForm() {
                 value={email}
                 onChange={handleEmailChange}
             />
-            <button type="submit" className={styles.button}>{'>'}</button>
+            <button type="submit" className={styles.button}></button>
         </form>
     );
 }

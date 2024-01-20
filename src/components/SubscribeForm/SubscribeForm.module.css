@@ -25,11 +25,14 @@
     height: 48px;
     border-radius: 0px 24px 24px 0px;
     background: #FCB654;
-    border: 1px solid #FCB654;
-    color: #FFF;
-    font-size: 30px;
-    font-weight: 8px;
+    border: 1px solid #FCB654;   
     cursor: pointer;
+}
+
+.button::after {
+    content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14" fill="none"%3E%3Cpath d="M0 0.777778L0.8 0L8 7L0.8 14L0 13.2222L6.4 7L0 0.777778Z" fill="white"%3E%3C/path%3E%3C/svg%3E');
+    display: block;    
+    height: 14px;   
 }
 
 .wrapperInput {
@@ -37,6 +40,5 @@
     justify-content: center;
     align-items: center;
     margin-top: 60px;
-    margin-bottom: 60px;
-    
+    margin-bottom: 60px;    
 }

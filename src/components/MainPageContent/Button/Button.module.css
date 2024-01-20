@@ -1,0 +1,15 @@
+.special_button{
+    width: 206px;
+height: 48px;
+flex-shrink: 0;
+border-radius: 24px;
+background: #FCB654;
+}
+.button_text{
+    color: #FFF;
+font-family: Poppins;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}

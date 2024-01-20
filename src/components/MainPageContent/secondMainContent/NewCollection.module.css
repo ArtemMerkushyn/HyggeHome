@@ -1,0 +1,26 @@
+.newCollection{
+    color: #FCB654;
+font-family: "DM Mono";
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 0.96px;
+text-transform: uppercase;
+}
+.newCollectionParagraph{
+    max-width: 552px;
+    color: #252525;
+font-family: "DM Mono";
+font-size: 36px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: -2.16px;
+}
+.new_collection_div{
+    margin-top: 120px;
+}
+.new_collection_text_div{
+    margin-bottom: 30px;
+}

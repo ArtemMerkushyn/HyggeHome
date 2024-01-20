@@ -1,0 +1,50 @@
+.heroTexDiv{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 60px;
+}
+.heroSloganText{
+
+   max-width: 552px;
+   max-height: 124px;
+    color: #252525;
+font-family: "DM Mono";
+font-size: 48px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: -2.88px;
+gap: 332px;
+
+}
+.heroSpanText{
+    color: #FCB654;
+font-family: "DM Mono";
+font-size: 48px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: -2.88px;
+}
+.heroParagraphText{
+    max-width: 412px;
+    max-height: 108px;
+    color: #252525;
+font-family: Poppins;
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.heroImage{
+    margin-top: 60px;
+width: 1296px;
+height: 470px;
+flex-shrink: 0;
+border-radius: 24px;
+background: url(/src//img//header//hero//Hero-people.png), lightgray 50% / cover no-repeat;
+
+
+}

@@ -4,11 +4,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import './App.css';
 import { Header } from './components/Header/Header';
-import Footer from './components/Footer/Footer'
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
-   
     <div className="App">
       <div className='container'>
         <Header/>
@@ -16,9 +15,7 @@ function App() {
         <ToastContainer />
       </div>
       <Footer/>
-    </div>
-      
-      
+    </div>    
   );
 }
 

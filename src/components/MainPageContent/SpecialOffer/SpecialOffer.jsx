@@ -13,7 +13,7 @@ export const SpecialOffer = () => {
             <Button text="Create account" />
             </li>
             <li>
-                <img src="/src/img/header/specialOffer/фотографія.png" className={css.special_offer_image}/>
+                <img src="images/hero/specialOffer/фотографія.png" className={css.special_offer_image}/>
             </li>
             </ul>
          </div>

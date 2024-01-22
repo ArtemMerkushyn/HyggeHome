@@ -1,12 +1,12 @@
 .special_offer_paragraph{
     color: #FCB654;
-font-family: "DM Mono";
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-letter-spacing: 0.96px;
-text-transform: uppercase;
+    font-family: "DM Mono";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.96px;
+    text-transform: uppercase;
 }
 .special_offer_conatiner{
     margin: 120px 0;
@@ -14,25 +14,25 @@ text-transform: uppercase;
 .special_offer_text{
     max-width: 552px;
     color: #252525;
-font-family: "DM Mono";
-font-size: 36px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-letter-spacing: -2.16px;
+    font-family: "DM Mono";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -2.16px;
 }
 .special_offer_text_conatiner{
     margin-bottom: 60px;
 }
 .special_offer_image{
     width: 633px;
-height: 274px;
-flex-shrink: 0;
-border-radius: 24px;
-background: url(/src//img//header//specialOffer//фотографія.png), lightgray 50% / cover no-repeat;
+    height: 274px;
+    flex-shrink: 0;
+    border-radius: 24px;
 }
 .special_offer_list{
     display: flex;
     flex-direction: row;
     gap: 111px;
+    list-style: none;
 }

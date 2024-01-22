@@ -1,16 +1,26 @@
-.special_button{
+.special_button {
     width: 206px;
-height: 48px;
-flex-shrink: 0;
-border: 1px solid #FCB654;
-border-radius: 24px;
-background: #FCB654;
-}
-.button_text{
+    height: 48px;
+    flex-shrink: 0;
+    border: 1px solid #FCB654;
+    border-radius: 24px;
+    background: #FCB654;
+    transition: opacity 0.3s, box-shadow 0.3s; /* Додали плавні переходи для opacity та box-shadow */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Додали тінь */
+  }
+  
+  .button_text {
     color: #FFF;
-font-family: Poppins;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-}
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+  .special_button:hover,
+  .special_button:focus {
+    opacity: 0.85; 
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  

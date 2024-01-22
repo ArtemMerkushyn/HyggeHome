@@ -18,7 +18,7 @@
   background-size: cover;
   background-position: center;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 1s ease,transform 1s ease;
 }
 
 .cardItem:hover::before {
@@ -34,7 +34,7 @@
   height: 100%;
   border-radius: 24px;
   background-color: rgba(211, 211, 211, 0.2);
-  transition: opacity 0.3s ease;
+  transition: opacity 1s ease,transform 1s ease;
   opacity: 0;
 }
 

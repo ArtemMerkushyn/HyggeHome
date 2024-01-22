@@ -7,6 +7,13 @@ import Icons from '../Icons/Icons.jsx';
 import SubscribeForm from "../SubscribeForm/SubscribeForm.jsx";
 
 export default function Footer() {
+
+const active = ({ isActive }) => {
+        return {
+            borderBottom: isActive ? '2px solid #FCB654' : ''            
+        }
+    }
+
     return (
         <footer className={styles.footer}>
             <div className={styles.wrapper}>
@@ -17,12 +24,12 @@ export default function Footer() {
                     </div>
                     </NavLink>
             <div className={styles.nav}>
-                <NavLink  to='/candles'>Candles</NavLink>
-                <NavLink to='/lighting-decor'>Lighting Decor</NavLink>
-                <NavLink to='/gift-sets'>Gift sets</NavLink>
-                <NavLink to='/get-warm'>Get warm</NavLink>
-                <NavLink to='/table-games'>Table games</NavLink>
-                <NavLink to='/books-journals'>Books & Journals</NavLink>
+                <NavLink style={active} to='/candles'>Candles</NavLink>
+                <NavLink style={active} to='/lighting-decor'>Lighting Decor</NavLink>
+                <NavLink style={active} to='/gift-sets'>Gift sets</NavLink>
+                <NavLink style={active} to='/get-warm'>Get warm</NavLink>
+                <NavLink style={active} to='/table-games'>Table games</NavLink>
+                <NavLink style={active} to='/books-journals'>Books & Journals</NavLink>
             </div>
                 <div className={styles.iconsWrapper }>
                 <a href="https://www.facebook.com" aria-label="Read more about Hygge Home" target="_blank"

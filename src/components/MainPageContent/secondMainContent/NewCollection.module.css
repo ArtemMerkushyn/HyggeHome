@@ -1,26 +1,106 @@
-.newCollection{
-    color: #FCB654;
-font-family: "DM Mono";
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-letter-spacing: 0.96px;
-text-transform: uppercase;
-}
-.newCollectionParagraph{
-    max-width: 552px;
-    color: #252525;
-font-family: "DM Mono";
-font-size: 36px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-letter-spacing: -2.16px;
-}
-.new_collection_div{
+.wrapper {
+    position: relative;
+    height: 596px;
+    overflow: hidden;
     margin-top: 120px;
 }
-.new_collection_text_div{
-    margin-bottom: 30px;
+.new_collection_text{
+    color: #FCB654;
+    font-family: "DM Mono";
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.96px;
+    text-transform: uppercase;
 }
+.new_collection_goods_text{
+    max-width: 552px;
+    color: #252525;
+    font-family: "DM Mono";
+    font-size: 36px;
+    font-weight: 400;
+    letter-spacing: -2.16px;
+}
+.list {
+    position: absolute;
+    bottom: 35px;
+    display: flex;
+    gap: 30px;
+    width: auto;
+    transition: all .3s linear;
+}
+
+.slide {
+    width: 412px;
+    height: 459px;
+    border-radius: 24px;
+    border: 1px solid #FCB654;
+    overflow: hidden;
+    position: relative;
+}
+
+.slide img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.arrows {
+    width: 116px;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 22px;
+    right: 0;
+}
+
+.prev,
+.next {
+    width: 48px;
+    height: 48px;
+    border-radius: 50px;
+    border: 1px solid #FCB654;
+    background: transparent;
+    font-size: 40px;
+    color: #FCB654;
+    cursor: pointer;
+    
+}
+.right_arrow{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: 2px;
+}
+.left_arrow{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: -1px;
+    transform: rotate(180deg);
+}
+  
+.scroll {
+    width: 634px;
+    height: 5px;
+    background: rgba(252, 182, 84, .3);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50px;
+}
+
+.scrollnav {
+    height: 5px;
+    width: 126.8px;
+    background: #FCB654;
+    transition: all .3s linear;
+    border-radius: 50px;
+}
+  

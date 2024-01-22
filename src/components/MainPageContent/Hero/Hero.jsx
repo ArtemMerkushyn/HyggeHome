@@ -10,7 +10,7 @@ export const Hero = () => {
 
             <p className={css.heroParagraphText}>Create coziness in every home with our unique products that reflect the aesthetics of Hygge. Find the perfect things that bring joy and comfort to your everyday life</p>
          </div>
-            <img src="/src/img/hero/Hero-people.png" alt="group-of-people" className={css.heroImage}></img>
+            <img src="images/hero/Hero-people.png" alt="group-of-people" className={css.heroImage}></img>
         
         </>
     )

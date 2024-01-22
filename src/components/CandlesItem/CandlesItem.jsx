@@ -4,13 +4,12 @@ export default function CandlesItem({ candle }) {
     
      const backgroundImageStyle = {
         background: `url(${candle.image})`,
-        backgroundSize: 'cover',
-        position: 'relative',
+        backgroundSize: 'cover',        
     };
 
         return (
-        <li className={styles.cardItem} style={backgroundImageStyle}>
-            <div className={styles.overlay}></div>           
-        </li>
+            <li className={styles.cardItem} style={backgroundImageStyle}>  
+            <div className={styles.overlay}></div>        
+            </li>
     );
 }

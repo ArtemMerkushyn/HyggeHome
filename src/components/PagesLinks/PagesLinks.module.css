@@ -12,8 +12,6 @@
     transition: all .1s linear;
 }
 
-.item:hover,
-.item:focus,
-.item.active {
+.item:hover {
     border-bottom: 2px solid #FCB654;
 }

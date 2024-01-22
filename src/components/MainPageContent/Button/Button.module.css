@@ -1,16 +1,25 @@
-.special_button{
+.special_button {
     width: 206px;
-height: 48px;
-flex-shrink: 0;
-border: 1px solid #FCB654;
-border-radius: 24px;
-background: #FCB654;
-}
-.button_text{
+    height: 48px;
+    flex-shrink: 0;
+    border: 1px solid #FCB654;
+    border-radius: 24px;
+    background: #FCB654;
+    transition: opacity 0.3s; /* Додали плавний перехід для opacity */
+  }
+  
+  .button_text {
     color: #FFF;
-font-family: Poppins;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-}
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+  /* Анімація на hover і фокус */
+  .special_button:hover,
+  .special_button:focus {
+    opacity: 0.8; /* Змінюємо прозорість на hover та фокусі */
+  }
+  

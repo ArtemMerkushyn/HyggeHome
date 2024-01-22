@@ -1,18 +1,43 @@
 .cardItem {
-width: 412px;
-height: 459px;
-border-radius: 24px;
-border: 1px solid #FCB654;
-position: relative;
-cursor: pointer;
+  width: 412px;
+  height: 459px;
+  border-radius: 24px;
+  border: 1px solid #FCB654;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.cardItem::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cardItem:hover::before {
+  background-image: url('https://images.squarespace-cdn.com/content/v1/60411a8c24cd730f88e69740/1704994227135-ZWWLT2QUOM4K3CK3ABVK/HONEY-BOURBON.jpg');
+  opacity: 1;
 }
 
 .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 24px;
-    background-color: rgba(211, 211, 211, 0.2);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  background-color: rgba(211, 211, 211, 0.2);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.cardItem:hover .overlay {
+  opacity: 1;
 }

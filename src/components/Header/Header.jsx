@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { PagesLinks } from '../PagesLinks/PagesLinks';
 import  Icons  from '../Icons/Icons.jsx';
 import styles from './Header.module.css';
+import { Search } from '../Search/Search.jsx';
 
 export const Header = () => {
     const logoStyles = {
@@ -24,7 +25,7 @@ export const Header = () => {
             <div className={styles.wrapper}>
                 <PagesLinks/>
                 <div className={styles.wrapper}>
-                    <Icons icon={'search'}/>
+                    <Search funcClick={() => console.log('ok')}/>
                     <Icons icon={'basket'}/>
                     <Icons icon={'user'}/>
                 </div>

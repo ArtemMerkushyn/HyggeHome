@@ -16,7 +16,7 @@ export const NewCollection = () => {
     const widthScroll = 634; //.scroll {width: 634px;}
     const widthScrollNav = 634 / (images.length - 2); //.scroll {width: 634px;}
     const widthSlide = 412 + 30; //.slide {width: 412px; gap: 30px;}
-    const widthList = (images.length * (widthSlide) -30);
+    //const widthList = (images.length * (widthSlide) -30);
     const listPositionEndPointNext = -(widthSlide * (images.length - 4));
     const listPositionEndPointPrev = -(widthSlide * (images.length - 2));
 

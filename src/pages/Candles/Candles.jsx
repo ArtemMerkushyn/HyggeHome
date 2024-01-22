@@ -1,3 +1,4 @@
+import CandlesList from '../../components/CandlesList/CandlesList';
 import styles from './Candles.module.css'
 
 export const Candles = () => {
@@ -15,6 +16,7 @@ export const Candles = () => {
   <path d="M13.2222 0.5L14 1.3L7 8.5L9.53674e-07 1.3L0.777779 0.5L7 6.9L13.2222 0.5Z" fill="#252525"/>
 </svg></button></div>
             </div>
+            <CandlesList />            
             </div>
     );
 }

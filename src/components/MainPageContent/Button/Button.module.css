@@ -5,7 +5,7 @@
     border: 1px solid #FCB654;
     border-radius: 24px;
     background: #FCB654;
-    transition: opacity 0.3s; /* Додали плавний перехід для opacity */
+    transition: opacity 0.3s; 
   }
   
   .button_text {
@@ -17,9 +17,9 @@
     line-height: normal;
   }
   
-  /* Анімація на hover і фокус */
+
   .special_button:hover,
   .special_button:focus {
-    opacity: 0.8; /* Змінюємо прозорість на hover та фокусі */
+    opacity: 0.85; 
   }
   

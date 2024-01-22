@@ -34,6 +34,8 @@
     fill: #252525;
     cursor: pointer;
     transition: all .2s linear;
+    width: 24px;
+    height: 24px;
 }
 
 .wrapper svg:hover {

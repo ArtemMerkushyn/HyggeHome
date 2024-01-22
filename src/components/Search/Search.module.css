@@ -1,0 +1,84 @@
+.wrapper {
+    position: relative;
+}
+
+.closeBtn {
+    background: transparent;
+    outline: none;
+    border: none;
+    font-size: 24px;
+    transition: all .1s linear;
+    width: 24px;
+    height: 24px;
+}
+
+.closeBtn:hover {
+    color: #FCB654;
+}
+
+.search {
+    height: 48px;
+    width: 48px;
+    border-radius: 24px;
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: absolute;
+    top: -12px;
+    left: -10px;
+    background: #fff;
+    transition: all .2s linear;
+    cursor: pointer;
+}
+
+.search:hover {
+    border: 1px solid #FCB654;
+}
+
+.search:hover svg {
+    fill:  #FCB654;
+}
+
+.search.active {
+    width: 240px;
+    top: 40px;
+    left: -207px;
+    border: 1px solid #FCB654;
+}
+
+.search.active:hover svg {
+    fill: #252525;
+}
+
+.input {
+    border: none;
+    outline: none;
+    width: 0%;
+    height: 100%;
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    padding-left: 11px;
+}
+
+.input.active {
+    width: 84%;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 38px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 8px;
+}
+
+.btn:hover svg {
+    fill: #FCB654 !important;
+}

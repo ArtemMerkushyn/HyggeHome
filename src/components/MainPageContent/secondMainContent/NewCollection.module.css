@@ -98,7 +98,7 @@
 
 .scrollnav {
     height: 5px;
-    width: 126.8px;
+    /*width: 126.8px;*/
     background: #FCB654;
     transition: all .3s linear;
     border-radius: 50px;

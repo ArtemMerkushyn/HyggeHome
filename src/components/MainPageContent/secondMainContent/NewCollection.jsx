@@ -13,24 +13,33 @@ export const NewCollection = () => {
         'https://content2.rozetka.com.ua/goods/images/big/371973810.jpg',
     ];
 
+    const widthScroll = 634; //.scroll {width: 634px;}
+    const widthScrollNav = 634 / (images.length - 2); //.scroll {width: 634px;}
+    const widthSlide = 412 + 30; //.slide {width: 412px; gap: 30px;}
+    const widthList = (images.length * (widthSlide) -30);
+    const listPositionEndPointNext = -(widthSlide * (images.length - 4));
+    const listPositionEndPointPrev = -(widthSlide * (images.length - 2));
+
     const [listPosition, setListPosition] = useState(0);
     const [scrollBarPosition, setScrollBarPosition] = useState(0);
 
     const handleNext = () => {
-        if(listPosition < -1326) {
-            setListPosition(442);
-            setScrollBarPosition(-126.8);
+        if(listPosition < listPositionEndPointNext) {
+            setListPosition(widthSlide);
+            setScrollBarPosition(-`${widthScrollNav}`);
         };
-        setListPosition((prevPosition) => prevPosition - (412 + 30));
-        setScrollBarPosition((prevPosition) => prevPosition + (126.8));
+        setListPosition((prevPosition) => prevPosition - (widthSlide));
+        setScrollBarPosition((prevPosition) => prevPosition + (widthScrollNav));
+        console.log(listPositionEndPointNext)
     }
     const handlePrev = () => {
-        if(listPosition > -442) {
-            setListPosition(-2210);
-            setScrollBarPosition(634);
+        if(listPosition > (-`${widthSlide}`)) {
+            setListPosition(listPositionEndPointPrev);
+            setScrollBarPosition(widthScroll);
         }
-        setListPosition((prevPosition) => prevPosition + (412 + 30));
-        setScrollBarPosition((prevPosition) => prevPosition - (126.8));
+        setListPosition((prevPosition) => prevPosition + (widthSlide));
+        setScrollBarPosition((prevPosition) => prevPosition - (widthScrollNav));
+        console.log(listPosition)
     }
 
     return (
@@ -66,7 +75,7 @@ export const NewCollection = () => {
 
 
             <div className={styles.scroll}>
-                <div className={styles.scrollnav} style={{ transform: `translateX(${scrollBarPosition}px)` }}></div>
+                <div className={styles.scrollnav} style={{ transform: `translateX(${scrollBarPosition}px)`, width: `${widthScrollNav}px` }}></div>
             </div>
         </div>
     );

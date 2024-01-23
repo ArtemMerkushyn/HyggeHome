@@ -33,25 +33,6 @@ font-weight: 400;
 line-height: normal;
 }
 
-.pageNumber {
-    border-radius: 24px;
-background: #FCB654;
-border: 1px solid #FCB654;
-display: inline-flex;
-padding: 10px 15px;
-justify-content: center;
-align-items: center;
-gap: 10px;
-
-color: #FFF;
-font-family: "DM Mono";
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-letter-spacing: -0.84px;
-}
-
 .pagination {
     margin-top: 30px;
     margin-bottom: 60px;
@@ -62,7 +43,39 @@ align-items: center;
 gap: 12px;
 }
 
+.pageNumber {
+    border-radius: 24px;
+background: transparent;
+border: 1px solid #FCB654;
+display: inline-flex;
+padding: 10px 15px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+
+color: rgba(37, 37, 37, 0.8);
+font-family: "DM Mono";
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: -0.84px;
+
+    transition: transform 0.5s ease;
+    transform: scale(1);
+}
+
+.pageNumber:hover {
+    color: #FFF;
+    background: #FCB654;
+    border: 1px solid #FCB654;
+    transition: transform 0.5s ease;
+    transform: scale(1.2);
+}
+
 .activePage {
-    background: #77511cd0;
-    border: 1px solid #77511cd0;
+    color: #FFF;
+    background: #FCB654;
+    border: 1px solid #FCB654;
+    
 }

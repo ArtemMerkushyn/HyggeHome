@@ -46,6 +46,10 @@
     line-height: 30px; /* 166.667% */    
 }
 
+.nav a {
+    border-bottom: 2px solid transparent;
+}
+
 .nav a:hover {
     border-bottom: 2px solid #FCB654;
 }

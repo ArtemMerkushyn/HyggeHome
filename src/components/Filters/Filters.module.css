@@ -1,0 +1,197 @@
+/* Убираем стрелки для WebKit браузеров */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+.wrapper {
+    position: relative;
+}
+  
+.filterWrapper {
+    border-radius: 24px;
+    border: 1px solid #FCB654;
+    padding: 30px;
+    width: 300px;
+    background: #fff;
+    position: absolute;
+    top: 54px;
+    z-index: 10;
+    transform-origin: top center;
+    transform-style: preserve-3d; /* Добавляем это свойство для корректного 3D-отображения */
+    transform: rotateX(90deg);
+    transition: transform 1s ease;
+}
+
+.filterWrapper h5 {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: normal;
+}
+  
+.horizontal-slider {
+    width: 236px;
+    padding-top: 30px;
+    margin-bottom: 10px;
+}
+  
+.example-thumb {
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50px;
+    border: 1px solid #FCB654;
+    cursor: grab;
+    bottom: -20%;
+    outline: none;
+}
+  
+.example-track {
+    background-color: rgba(252, 182, 84, .2);
+    height: 1px;
+    border-radius: 4px;
+}
+
+.example-track:nth-child(2) {
+    background-color: rgba(252, 182, 84, 1);
+}
+
+
+  .thumbValue {
+    font-size: 14px;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: #252525;
+}
+
+.priceInputs {
+    display: flex;
+    gap: 20px;
+    position: relative;
+    padding-top: 22px;
+}
+
+.priceInputs::before {
+    content: 'From';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #CACCCE;
+    font-family: "DM Mono";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.84px;
+}
+
+.priceInputs::before {
+    content: 'From';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #CACCCE;
+    font-family: "DM Mono";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.84px;
+}
+
+.priceInputs::after {
+    content: 'To';
+    position: absolute;
+    left: 120px;
+    top: 0;
+    color: #CACCCE;
+    font-family: "DM Mono";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.84px;
+}
+
+.priceInputs input {
+    width: 100px;
+    height: 30px;
+    border-radius: 24px;
+    border: 1px solid #FCB654;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: -0.84px;
+    outline: none;
+}
+
+.wrapperLabels {
+    display: flex;
+    gap: 64px;
+    color: #252525;
+    font-family: "DM Mono";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.84px;
+}
+
+.wrapperLabels label {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    cursor: pointer;
+}
+
+.wrapperLabels label:hover .check::before,
+.wrapperLabels label:hover .check::after {
+    display: block;
+}
+
+.checkBox {
+    appearance: none;
+}
+
+.check {
+    width: 10px;
+    height: 10px;
+    display: block;
+    border: 1px solid #FCB654;
+    border-radius: 50%;
+    position: relative;
+}
+
+.check::before {
+    content: '';
+    height: 1px;
+    width: 80%;
+    background: #FCB654;
+    position: absolute;
+    top: 46%;
+    left: 2px;
+    transform: rotate(-46deg);
+    display: none;
+    transition: all .1s linear
+}
+
+.check::after {
+    content: '';
+    height: 1px;
+    width: 40%;
+    background: #FCB654;
+    position: absolute;
+    top: 60%;
+    left: 1px;
+    transform: rotate(-136deg);
+    display: none;
+    transition: all .1s linear
+}
+
+
+.check.active::after, 
+.check.active::before {
+    display: block;
+}
+

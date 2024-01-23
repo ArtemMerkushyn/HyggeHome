@@ -1,4 +1,5 @@
 import CandlesList from '../../components/CandlesList/CandlesList';
+import Filters from '../../components/Filters/Filters';
 import styles from './Candles.module.css'
 
 export const Candles = () => {
@@ -11,7 +12,7 @@ export const Candles = () => {
             </div>
             <h2 className={styles.title}>Choose the <span className={styles.spanTitle}>perfect candles</span> for atmosphere</h2>
             <div className={styles.wrapperButtons }>
-                <button className={styles.button }>Open filters</button>
+                <Filters/>
                 <div className={styles.dropdownList}>Sort by<button className={ styles.dropdown }>Popular <svg xmlns="http://www.w3.org/2000/svg" width="14" height="9" viewBox="0 0 14 9" fill="none">
   <path d="M13.2222 0.5L14 1.3L7 8.5L9.53674e-07 1.3L0.777779 0.5L7 6.9L13.2222 0.5Z" fill="#252525"/>
 </svg></button></div>

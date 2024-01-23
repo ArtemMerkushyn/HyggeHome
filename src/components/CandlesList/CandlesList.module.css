@@ -1,12 +1,13 @@
 .wrapper {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .cardList {
     margin-top: 30px;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;    
     gap: 30px;
 }
 
@@ -21,7 +22,7 @@ align-items: center;
 gap: 10px;
 border-radius: 24px;
 background: #FCB654;
- border: 1px solid #FCB654;
+border: 1px solid #FCB654;
 
 color: #FFF;
 
@@ -30,4 +31,38 @@ font-size: 18px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
+}
+
+.pageNumber {
+    border-radius: 24px;
+background: #FCB654;
+border: 1px solid #FCB654;
+display: inline-flex;
+padding: 10px 15px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+
+color: #FFF;
+font-family: "DM Mono";
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: -0.84px;
+}
+
+.pagination {
+    margin-top: 30px;
+    margin-bottom: 60px;
+    display: flex;
+width: 188px;
+justify-content: center;
+align-items: center;
+gap: 12px;
+}
+
+.activePage {
+    background: #77511cd0;
+    border: 1px solid #77511cd0;
 }

@@ -31,7 +31,7 @@ export default function CandlesList() {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = card.slice(indexOfFirstItem, indexOfLastItem);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = pageNumber => setCurrentPage(pageNumber);
 
   return (
     <div className={styles.wrapper}>
@@ -47,14 +47,14 @@ export default function CandlesList() {
               key={index + 1}
               onClick={() => paginate(index + 1)}
               className={
-          index + 1 === currentPage
-            ? `${styles.pageNumber} ${styles.activePage}`
-            : styles.pageNumber
-        }
+                index + 1 === currentPage
+                  ? `${styles.pageNumber} ${styles.activePage}`
+                  : styles.pageNumber
+              }
             >
               {index + 1}
             </button>
-          )
+          ),
         )}
       </div>
     </div>

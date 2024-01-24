@@ -1,87 +1,87 @@
 .wrapperFilters {
-    margin-top: 60px;
+  margin-top: 60px;
 }
 
 .wrapper {
-    color: #CACCCE;
-    font-family: "DM Mono";
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -1.44px;
+  color: #caccce;
+  font-family: 'DM Mono';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -1.44px;
 }
 
 .wrapperSpan {
-    color: #252525;
+  color: #252525;
 }
 
 .title {
-    margin-top: 20px;
-    width: 523px;
-    color: #252525;
-    font-family: "DM Mono";
-    font-size: 36px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -2.16px;
+  margin-top: 20px;
+  width: 523px;
+  color: #252525;
+  font-family: 'DM Mono';
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -2.16px;
 }
 
 .spanTitle {
-    color: #FCB654;
+  color: #fcb654;
 }
 
-.wrapperButtons{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-top: 8px;
+.wrapperButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 8px;
 }
 
 .button {
-    color: #FFF;
-font-family: 'Poppins';
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+  color: #fff;
+  font-family: 'Poppins';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 
-padding: 10px 32px;
-border-radius: 24px;
-background: #FCB654;
-    border: 1px solid #FCB654;
-    cursor: pointer;
+  padding: 10px 32px;
+  border-radius: 24px;
+  background: #fcb654;
+  border: 1px solid #fcb654;
+  cursor: pointer;
 }
 
 .dropdownList {
-display: flex;
-flex-direction: column;
-gap: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 
-color: #CACCCE;
-font-family: "DM Mono";
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-letter-spacing: -0.84px;
+  color: #caccce;
+  font-family: 'DM Mono';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.84px;
 }
 
-.dropdown {    
-padding: 10px 32px;
-justify-content: center;
-align-items: center;
-gap: 10px;
-border-radius: 24px;
-border: 1px solid #FCB654;
-background: transparent;
-cursor: pointer;
+.dropdown {
+  padding: 10px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 24px;
+  border: 1px solid #fcb654;
+  background: transparent;
+  cursor: pointer;
 
-color: #252525;
-font-family: 'Poppins';
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+  color: #252525;
+  font-family: 'Poppins';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }

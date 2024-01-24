@@ -1,89 +1,89 @@
-.footer{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: 273px;
-    background: #252525;  
-    padding-top: 60px;    
+.footer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 273px;
+  background: #252525;
+  padding-top: 60px;
 }
 
 .wrapper {
-    display: flex;    
-    justify-content: center;
-    align-items: center;
-    gap: 75px;
-    max-width: 1296px;
-    width: 100%;    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 75px;
+  max-width: 1296px;
+  width: 100%;
 }
 
 .textLogo {
-    color: #FCB654;
-    font-family: "DM Mono";
-    font-size: 45px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 60px; /* 133.333% */
-    letter-spacing: -1.35px;
+  color: #fcb654;
+  font-family: 'DM Mono';
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 60px; /* 133.333% */
+  letter-spacing: -1.35px;
 }
 
-.span{
-    color: #6883A0;
+.span {
+  color: #6883a0;
 }
 
 .wrapperLogo {
-    display: flex;
-    gap: 10px;   
+  display: flex;
+  gap: 10px;
 }
 
 .nav {
-    display: flex;
-    gap: 30px;
-    color: #FFF;
-    font-family: 'Poppins';
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 30px; /* 166.667% */    
+  display: flex;
+  gap: 30px;
+  color: #fff;
+  font-family: 'Poppins';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px; /* 166.667% */
 }
 
 .nav a {
-    border-bottom: 2px solid transparent;
+  border-bottom: 2px solid transparent;
 }
 
 .nav a:hover {
-    border-bottom: 2px solid #FCB654;
+  border-bottom: 2px solid #fcb654;
 }
 
 .icons {
-    width: 24px;
-    height: 24px;
-    fill: #FFFFFF;
-    transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    &:hover {
-    fill:  #FCB654;    
-    }
+  width: 24px;
+  height: 24px;
+  fill: #ffffff;
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    fill: #fcb654;
+  }
 }
 
 .iconsWrapper {
-    display: flex;
-    gap: 30px;
+  display: flex;
+  gap: 30px;
 }
 
 .text {
-    color: #FFF;
-    font-family: "DM Mono";
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -1.68px;
-    margin-right: 30px;
+  color: #fff;
+  font-family: 'DM Mono';
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -1.68px;
+  margin-right: 30px;
 }
 
 .wrapperInput {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 60px;
-    margin-bottom: 60px;   
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+  margin-bottom: 60px;
 }

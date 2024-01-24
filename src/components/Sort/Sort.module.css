@@ -1,0 +1,53 @@
+.dropdown {
+  position: relative;
+  padding: 10px 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 24px;
+  border: 1px solid #fcb654;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+
+  color: #252525;
+  font-family: 'Poppins';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.dporList {
+  position: absolute;
+  display: flex;
+  width: 157px;
+  padding: 10px 32px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 10px;
+
+  color: #252525;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  border-radius: 24px;
+  border: 1px solid #fcb654;
+  background: #fff;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.dropItem {
+  border-bottom: 2px solid transparent;
+}
+
+.dropItem:hover {
+  border-bottom: 2px solid #fcb654;
+}

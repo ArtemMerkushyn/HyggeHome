@@ -59,7 +59,7 @@ export default function Filters() {
                 className={styles.filterWrapper} 
                 style={{ 
                     transform: openFilter ? 'scale(1)' : 'scale(0)',
-                    top:  openFilter ? '54px' : '-116px',
+                    top:  openFilter ? '54px' : '-90px',
                     left: openFilter ? '0px' : '-70px',
                 }}
                 >

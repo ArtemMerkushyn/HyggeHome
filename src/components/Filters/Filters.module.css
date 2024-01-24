@@ -17,18 +17,9 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 300px;
     background: #fff;
     position: absolute;
-    /*top: 54px;
-    top: -90px;
-    left: -140px;*/
     z-index: 10;
     transform: scale(.03);
     transition: all .3s linear;
-    /*
-    transform-origin: top center;
-    transform-style: preserve-3d;
-    transform: rotateX(90deg);
-    transition: transform 1s linear;
-    */
 }
 
 .filterWrapper h5 {

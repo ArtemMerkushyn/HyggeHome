@@ -1,44 +1,44 @@
 .form {
-     display: flex;
-     justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .input {
-    width: 118px;
-    height: 48px;
-    padding-left: 20px;
-    border-radius: 24px 0px 0px 24px;
-    border: 1px solid #FCB654;
-    outline: none;
-    background-color: transparent; 
-    color: #FFFFFF;
-    font-family: 'Poppins';
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+  width: 118px;
+  height: 48px;
+  padding-left: 20px;
+  border-radius: 24px 0px 0px 24px;
+  border: 1px solid #fcb654;
+  outline: none;
+  background-color: transparent;
+  color: #ffffff;
+  font-family: 'Poppins';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .button {
-    width: 88px;
-    height: 48px;
-    border-radius: 0px 24px 24px 0px;
-    background: #FCB654;
-    border: 1px solid #FCB654;   
-    cursor: pointer;
+  width: 88px;
+  height: 48px;
+  border-radius: 0px 24px 24px 0px;
+  background: #fcb654;
+  border: 1px solid #fcb654;
+  cursor: pointer;
 }
 
 .button::after {
-    content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14" fill="none"%3E%3Cpath d="M0 0.777778L0.8 0L8 7L0.8 14L0 13.2222L6.4 7L0 0.777778Z" fill="white"%3E%3C/path%3E%3C/svg%3E');
-    display: block;    
-    height: 14px;   
+  content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14" fill="none"%3E%3Cpath d="M0 0.777778L0.8 0L8 7L0.8 14L0 13.2222L6.4 7L0 0.777778Z" fill="white"%3E%3C/path%3E%3C/svg%3E');
+  display: block;
+  height: 14px;
 }
 
 .wrapperInput {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 60px;
-    margin-bottom: 60px;    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+  margin-bottom: 60px;
 }

@@ -58,7 +58,7 @@ export default function Filters() {
             <div 
                 className={styles.filterWrapper} 
                 style={{ 
-                    transform: openFilter ? 'scale(1) rotate(0deg)' : 'scale(0) rotate(180deg)',
+                    transform: openFilter ? 'scale(1)' : 'scale(0)',
                     top:  openFilter ? '54px' : '-116px',
                     left: openFilter ? '0px' : '-70px',
                 }}

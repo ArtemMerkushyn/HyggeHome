@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '../MainPageContent/Button/Button';
 import styles from './Filters.module.css';
 import ReactSlider from 'react-slider';
@@ -7,7 +7,7 @@ const colors = ['blue', 'green', 'grey', 'red', 'black', 'purple', 'yellow', 'pi
 
 export default function Filters() {
     const [ openFilter, setOpenFilter ] = useState(false);
-    const [priceRange, setPriceRange] = useState([0, 200]);
+    const [priceRange, setPriceRange] = useState([20, 50]);
     const [selectedColors, setSelectedColors] = useState({
         'blue': true,
         'green': false,
@@ -28,7 +28,12 @@ export default function Filters() {
         const value = parseInt(e.target.value);
         const newRange = [...priceRange];
         newRange[index] = value;
-        setPriceRange(newRange);
+
+        //if (index === 0 && value >= newRange[1]) {}
+        
+        //if (index === 1 && value <= newRange[0]) {}
+
+        setPriceRange(newRange); 
     };
 
     const handleItemChange = (color) => {
@@ -61,14 +66,24 @@ export default function Filters() {
                     ariaValuetext={(state) => `Thumb value ${state.valueNow}`}
                     renderThumb={renderThumb}
                     pearling
-                    minDistance={200}
-                    min={0}
-                    max={1000}
+                    minDistance={7}
+                    min={20}
+                    max={100}
                     onChange={handlePriceChange}
                 />
                 <div className={styles.priceInputs}>
-                    <input type="number" value={priceRange[0]} onChange={(e) => handleInputChange(e, 0)} />
-                    <input type="number" value={priceRange[1]} onChange={(e) => handleInputChange(e, 1)} />
+                    <input 
+                        type="number" 
+                        value={priceRange[0]} 
+                        onChange={(e) => handleInputChange(e, 0)} 
+                        className={priceRange[0] >= priceRange[1] ? styles.invalidInput : ''}
+                    />
+                    <input 
+                        type="number" 
+                        value={priceRange[1]} 
+                        onChange={(e) => handleInputChange(e, 1)} 
+                        className={priceRange[1] <= priceRange[0] ? styles.invalidInput : ''}
+                    />
                 </div>
                 <div className={styles.colorFilters}>
                     <h5>Color:</h5>

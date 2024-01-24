@@ -59,7 +59,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 
-  .thumbValue {
+.thumbValue {
     font-size: 14px;
     position: absolute;
     top: -20px;
@@ -125,6 +125,11 @@ input[type="number"]::-webkit-outer-spin-button {
     font-weight: 400;
     letter-spacing: -0.84px;
     outline: none;
+}
+
+.priceInputs input.invalidInput {
+    border: 1px solid red;
+    background: rgba(255, 0, 0, .2);
 }
 
 .wrapperLabels {

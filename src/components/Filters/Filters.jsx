@@ -55,7 +55,14 @@ export default function Filters() {
     return (
         <div className={styles.wrapper}>
             {openFilter ? (<Button text={'Close filters'} funcClick={() => setOpenFilter(false)}/>) : (<Button text={'Open filters'} funcClick={() => setOpenFilter(true)}/>)}
-            <div className={styles.filterWrapper} style={{ transform: openFilter ? 'rotateX(0deg)' : 'rotateX(90deg)' }}>
+            <div 
+                className={styles.filterWrapper} 
+                style={{ 
+                    transform: openFilter ? 'scale(1) rotate(0deg)' : 'scale(0) rotate(180deg)',
+                    top:  openFilter ? '54px' : '-116px',
+                    left: openFilter ? '0px' : '-70px',
+                }}
+                >
                 <h5>Price range:</h5>
                 <ReactSlider
                     className={styles['horizontal-slider']}

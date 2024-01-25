@@ -8,7 +8,7 @@
     right: 0;
     bottom: 0;
     opacity: 1;
-    transition: opacity 1s ease, transform 1s ease; /* Додано transform до transition */
+    transition: opacity 1s ease, transform 1s ease;
 }
 
 .new_c_picture {
@@ -21,20 +21,19 @@
     right: 0;
     bottom: 0;
     opacity: 0;
-    transition: opacity 1s ease, transform 1s ease; /* Додано transform до transition */
-    transform: scale(1); /* Початкове значення масштабу */
+    transition: opacity 1s ease, transform 1s ease;
+    transform: scale(1);
 }
 
 .new_c_picture:hover {
     opacity: 1;
     transition: opacity 1s ease, transform 1s ease;
-    transform: scale(1.1); /* Збільшення масштабу при наведенні */
+    transform: scale(1.1);
 }
 
 .new_c_image:hover {
     opacity: 0;
-    transition: opacity 1s ease, transform 1s ease;
-    transform: scale(0.9); /* Зменшення масштабу при наведенні */
+  transition: opacity 1s ease, transform 1s ease;
 }
 
 .slide {

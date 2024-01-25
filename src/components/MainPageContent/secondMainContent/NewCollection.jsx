@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import styles from './NewCollection.module.css'
 import Icons from '../../Icons/Icons';
+import card from './db.json'
+import { NewCollectionItem } from '../NewCollectionItem.jsx/NewCollectionItem';
 
 export const NewCollection = () => {
     const images = [
@@ -14,11 +16,11 @@ export const NewCollection = () => {
     ];
 
     const widthScroll = 634; //.scroll {width: 634px;}
-    const widthScrollNav = 634 / (images.length - 2); //.scroll {width: 634px;}
+    const widthScrollNav = 634 / (card.length - 2); //.scroll {width: 634px;}
     const widthSlide = 412 + 30; //.slide {width: 412px; gap: 30px;}
     //const widthList = (images.length * (widthSlide) -30);
-    const listPositionEndPointNext = -(widthSlide * (images.length - 4));
-    const listPositionEndPointPrev = -(widthSlide * (images.length - 2));
+    const listPositionEndPointNext = -(widthSlide * (card.length - 4));
+    const listPositionEndPointPrev = -(widthSlide * (card.length - 2));
 
     const [listPosition, setListPosition] = useState(0);
     const [scrollBarPosition, setScrollBarPosition] = useState(0);
@@ -50,13 +52,8 @@ export const NewCollection = () => {
                 className={styles.list}
                 style={{ left: `${listPosition}px` }}
             >
-                {images.map((image, index) => (
-                    <div
-                        key={index}
-                        className={styles.slide}
-                    >
-                        <img src={image} alt={`Slide ${index + 1}`} />
-                    </div>
+                {card.map((image, index) => (
+                    <NewCollectionItem image={image} index={index}/>
                 ))}
             </div>
 

@@ -18,7 +18,7 @@
   right: 0;
   bottom: 0;
   opacity: 1;
-  transition: opacity 1s ease, transform 1s ease;
+  /* transition: opacity 0.1s ease, transform 0.1s ease; */
 }
 
 .cardPicture {
@@ -31,17 +31,17 @@
   right: 0;
   bottom: 0;
   opacity: 0;
-  transition: opacity 1s ease, transform 1s ease;
+  transition: opacity 0.1s ease, transform 0.1s ease;
   transform: scale(1);
 }
 
 .cardPicture:hover {
   opacity: 1;
-  transition: opacity 1s ease, transform 1s ease;
-  transform: scale(1.1);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: scale(1.01);
 }
 
 .cardImage:hover {
   opacity: 0;
-  transition: opacity 1s ease, transform 1s ease;
+  /* transition: opacity 0.1s ease, transform 0.1s ease; */
 }

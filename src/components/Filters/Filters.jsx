@@ -7,7 +7,6 @@ const colors = ['blue', 'green', 'grey', 'red', 'black', 'purple', 'yellow', 'pi
 
 export default function Filters() {
     const [ openFilter, setOpenFilter ] = useState(false);
-    const [priceRange, setPriceRange] = useState([20, 50]);
     const [selectedColors, setSelectedColors] = useState({
         'blue': true,
         'green': false,
@@ -18,27 +17,12 @@ export default function Filters() {
         'yellow': false,
         'pink': true,
     });
-    const [activeCheckBox, setActiveCheckBox] = useState(false);
-
-    const handleInputChange = (e, index) => {
-        const value = e.target.value.trim();
-        const newRange = [...priceRange];
-    
-        if (value === '') {
-            newRange[index] = null;
-        } else {
-            newRange[index] = parseInt(value, 10) || 0;
-        }
-    
-        setPriceRange(newRange);
-    };
 
     const handleItemChange = (color) => {
         setSelectedColors((prevColors) => ({
             ...prevColors,
             [color]: !prevColors[color],
         }));
-        setActiveCheckBox(!selectedColors[color]);
     };
 
     return (

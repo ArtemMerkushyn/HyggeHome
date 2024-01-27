@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import styles from './InputRange.module.css';
 
 export const InputRange = ({ maxValue }) => {
@@ -16,7 +17,7 @@ export const InputRange = ({ maxValue }) => {
     setIsDragging(true);
   }
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = useCallback((e) => {
     if (!isDragging1 && !isDragging2) return;
 
     const sliderRect = sliderRef.current.getBoundingClientRect();
@@ -30,7 +31,7 @@ export const InputRange = ({ maxValue }) => {
     } else if (isDragging2 && newPosition >= parseInt(value1, 10)) {
       setValue2(Math.round(newPosition).toString());
     }
-  }
+  }, [isDragging1, isDragging2, maxValue, value1, value2]);
 
   const handleMouseUp = () => {
     setIsDragging1(false);
@@ -74,7 +75,7 @@ export const InputRange = ({ maxValue }) => {
       document.removeEventListener('mousemove', handleGlobalMouseMove);
       document.removeEventListener('mouseup', handleGlobalMouseUp);
     };
-  }, [isDragging1, isDragging2]);
+  }, [isDragging1, isDragging2, handleMouseMove]);
 
   return (
     <>
@@ -122,4 +123,8 @@ export const InputRange = ({ maxValue }) => {
       </div>
     </>
   );
+}
+
+InputRange.propTypes = {
+  maxValue: PropTypes.number
 }

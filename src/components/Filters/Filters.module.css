@@ -38,6 +38,12 @@
     letter-spacing: -0.84px;
 }
 
+.wrapperLabels div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
 .wrapperLabels label {
     display: flex;
     align-items: center;

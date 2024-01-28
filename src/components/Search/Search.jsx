@@ -8,9 +8,13 @@ export const Search = ({ funcClick }) => {
 
   return (
     <div className={styles.wrapper}>
-      <button onClick={() => setActive(false)} className={styles.closeBtn}>
-        X
+      {active ? (
+        <button onClick={() => setActive(false)} className={styles.closeBtn}>
+          
       </button>
+      ) : (
+      <button onClick={() => setActive(true)} className={active ? `${styles.openBtn} ${styles.open}` : `${styles.openBtn}`}><Icons icon={'search'} /></button>
+      )}
       <div
         className={active ? `${styles.search} ${styles.active}` : styles.search}
         onClick={() => setActive(true)}
@@ -20,13 +24,9 @@ export const Search = ({ funcClick }) => {
           placeholder="Search"
           type="text"
         />
-        {active ? (
-          <button className={styles.btn} onClick={funcClick}>
-            <Icons icon={'search'} />
-          </button>
-        ) : (
+        <button className={styles.searchBtn} onClick={funcClick}>
           <Icons icon={'search'} />
-        )}
+        </button>
       </div>
     </div>
   );

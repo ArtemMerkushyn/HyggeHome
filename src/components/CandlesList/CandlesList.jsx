@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { useGetCandlesQuery } from '../../redux/services';
+// import { useGetCandlesQuery } from '../../redux/services';
 import CandlesItem from '../CandlesItem/CandlesItem';
 
 import styles from './CandlesList.module.css';
 
-// import card from './db.json';
+import card from './db.json';
 
 export default function CandlesList() {
-  const { data, error, isLoading } = useGetCandlesQuery();
+  // const { data, error, isLoading } = useGetCandlesQuery();
   const [catalog, setCatalog] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    if (data) {
-      setCatalog(data);
+    if (card) {
+      setCatalog(card);
     }
-  }, [data]);
+  }, []);
 
   const itemsPerPage = 9;
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -24,13 +24,13 @@ export default function CandlesList() {
 
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  // if (isLoading) {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (error) {
-    return <div>Error loading data: {error.message}</div>;
-  }
+  // if (error) {
+  //   return <div>Error loading data: {error.message}</div>;
+  // }
 
   return (
     <div className={styles.wrapper}>

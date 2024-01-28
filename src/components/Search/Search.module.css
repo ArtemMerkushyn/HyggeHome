@@ -1,8 +1,11 @@
 .wrapper {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.closeBtn {
+.closeBtn, 
+.openBtn {
   background: transparent;
   outline: none;
   border: none;
@@ -10,30 +13,51 @@
   transition: all 0.1s linear;
   width: 24px;
   height: 24px;
+  position: relative;
 }
 
-.closeBtn:hover {
-  color: #fcb654;
+.closeBtn::before,
+.closeBtn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #252525;
+  border-radius: 50px;
+  transition: all .2s linear;
+}
+
+.closeBtn::after {
+  transform: rotate(45deg);
+}
+
+.closeBtn::before {
+  transform: rotate(-45deg);
+}
+
+.closeBtn:hover::before,
+.closeBtn:hover::after {
+  background: #fcb654;
 }
 
 .search {
   height: 48px;
-  width: 48px;
+  width: 240px;
   border-radius: 24px;
-  border: 1px solid transparent;
+  border: 1px solid #fcb654;
   display: flex;
   align-items: center;
   overflow: hidden;
   position: absolute;
-  top: -12px;
-  left: -10px;
+  top: 40px;
+  left: -207px;
   background: #fff;
   transition: all 0.2s linear;
   cursor: pointer;
-}
-
-.search:hover {
-  border: 1px solid #fcb654;
+  z-index: -1;
+  opacity: 0;
 }
 
 .search:hover svg {
@@ -41,20 +65,14 @@
 }
 
 .search.active {
-  width: 240px;
-  top: 40px;
-  left: -207px;
-  border: 1px solid #fcb654;
-}
-
-.search.active:hover svg {
-  fill: #252525;
+  z-index: 5;
+  opacity: 1;
 }
 
 .input {
   border: none;
   outline: none;
-  width: 0%;
+  width: 84%;
   height: 100%;
   font-family: Poppins;
   font-size: 18px;
@@ -63,11 +81,7 @@
   padding-left: 11px;
 }
 
-.input.active {
-  width: 84%;
-}
-
-.btn {
+.searchBtn {
   border: none;
   outline: none;
   background: transparent;
@@ -79,6 +93,6 @@
   padding-right: 8px;
 }
 
-.btn:hover svg {
-  fill: #fcb654 !important;
+.searchBtn:hover svg {
+  fill: #fcb654;
 }

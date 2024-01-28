@@ -1,8 +1,15 @@
-//import { configureStore } from '@reduxjs/toolkit';
-//import { curtSlice } from './features/cart/cartSlice.js';
+import { configureStore } from '@reduxjs/toolkit';
 
-//export const store = configureStore({
-//    reducer: {
-//        curt: curtSlice,
-//    },
-//});
+import { setupListeners } from '@reduxjs/toolkit/query';
+import { candlesApi } from './services';
+
+export const store = configureStore({
+  reducer: {
+    [candlesApi.reducerPath]: candlesApi.reducer,
+  },
+
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(candlesApi.middleware),
+});
+
+setupListeners(store.dispatch);

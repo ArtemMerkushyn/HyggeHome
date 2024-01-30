@@ -52,7 +52,6 @@
 }
 
 .wrapperLabels label:hover .check {
-    /*box-shadow: 0px 0px 10px #ff9500;*/
     background: #FCB654;
 }
 
@@ -67,7 +66,6 @@
     border: 1px solid #FCB654;
     border-radius: 50%;
     position: relative;
-    /*background: #FCB654;*/
     box-shadow: 0px 0px 10px transparent;
     transition: all .2s linear;
 }
@@ -76,12 +74,11 @@
     content: '';
     height: 2px;
     width: 80%;
-    background: #fff;
+    background: transparent;
     position: absolute;
     top: 43%;
     left: 2px;
     transform: rotate(-46deg);
-    /*display: none;*/
     transition: all .1s linear
 }
 
@@ -89,21 +86,20 @@
     content: '';
     height: 2px;
     width: 35%;
-    background: #fff;
+    background: transparent;
     position: absolute;
     top: 60%;
     left: 1px;
     transform: rotate(-136deg);
-    /*display: none;*/
     transition: all .1s linear
 }
-/*
-.check.active::after, 
-.check.active::before {
-    display: block;
-}
-*/
 
 .check.active {
     background: #FCB654;
+}
+
+
+.check.active::before,
+.check.active::after {
+    background: #fff;
 }

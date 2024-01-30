@@ -71,7 +71,7 @@ export default function Filters() {
                         </div>
                     </div>
                 </div>
-                <Button text={'Apply filters'}/>
+                <Button text={'Apply'}/>
             </div>
         </div>
     );

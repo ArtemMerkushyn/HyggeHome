@@ -1,6 +1,6 @@
 .cardItem {
   width: 412px;
-  height: 459px;
+  height: 497px;
   border-radius: 24px;
   border: 1px solid #fcb654;
   position: relative;
@@ -9,14 +9,9 @@
 }
 
 .cardImage {
-  position: absolute;
   object-fit: cover;
-  width: 412px;
-  height: 459px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  width: 372px;
+  height: 377px;
   opacity: 1;
   transition: opacity 1s ease, transform 1s ease;
 }
@@ -25,7 +20,7 @@
   position: absolute;
   object-fit: cover;
   width: 412px;
-  height: 459px;
+  height: 497px;
   top: 0;
   left: 0;
   right: 0;
@@ -54,4 +49,24 @@
   font-weight: 400;
   line-height: normal;
   letter-spacing: -1.44px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.priceItem {
+  color: #252525;
+  font-family: 'DM Mono';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -1.44px;
+  opacity: 0.8;
+}
+
+.iconsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }

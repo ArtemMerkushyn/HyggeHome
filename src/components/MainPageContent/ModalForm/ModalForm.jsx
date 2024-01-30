@@ -10,26 +10,36 @@ export const ModalForm = ({toggleModal}) => {
     }
 
     return (
-        <div>
+        <div className={css.modal_container}>
+            <button type='button' onClick={toggleModal}>close</button>
             <form action="/submit" method="post" onSubmit={handleSubmit} className={css.modal_form}>
-                <label htmlFor="name">Ім'я:</label>
-                <input type="text" id="name" name="name" required />
+                <h2 className={css.modal_register_text}>Register Individual Account!</h2>
 
-                <label htmlFor="phone">Телефон:</label>
-                <input type="tel" id="phone" name="phone" required />
+                <label htmlFor="first-name">Your first name*</label>
+                <input type="text" id="first-name" name="first-name" className={css.modal_input} required />
 
-                <label htmlFor="email">Електронна пошта:</label>
-                <input type="email" id="email" name="email" required />
+                <label htmlFor="last-name">Your last name*</label>
+                <input type="text" id="last-name" name="last-name" className={css.modal_input} required />
 
-                <label htmlFor="password">Пароль:</label>
-                <input type="password" id="password" name="password" required />
+                <label htmlFor="email">Your Email*</label>
+                <input type="email" id="email" name="email" className={css.modal_input} required />
 
-                <div className="checkbox-container">
-                    <input type="checkbox" id="agreement" name="agreement" required />
-                    <label htmlFor="agreement">Я погоджуюсь з умовами використання</label>
+                <label htmlFor="password">Create password*</label>
+                <input type="password" id="password" name="password" className={css.modal_input} required />
+
+                <label htmlFor="confirm-password">Confirm the password*</label>
+                <input type="password" id="confirm-password" name="confirm-password" className={css.modal_input} required />
+
+                <div className={css.modal_checkbox}>
+                    <input type="checkbox" id="agreement" name="agreement" required ></input>
+                    <label htmlFor="agreement" >I accept the Purchase Rules, User Agreemens and Privacy Policy conditions</label>
+                </div>
+                <div className={css.modal_checkbox}>
+                    <input type="checkbox" id="agreement" name="agreement" required ></input>
+                    <label htmlFor="agreement" >I agree to receive emails about the new offers from HyggeHome</label>
                 </div>
 
-                <input type="submit" value="Погодитись і відправити" />
+                <input type="submit" value="Create account" className={css.modal_create_button}/>
             </form>
         </div>
     );

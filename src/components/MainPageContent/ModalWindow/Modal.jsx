@@ -10,7 +10,6 @@ export const Modal = ({funcClick}) => {
         
         <div className={css.overlay} onClick={funcClick}>
             <div className={css.modal} onClick={handleModalClick}>
-                <button onClick={funcClick}>close</button>
             <ModalForm toggleModal={funcClick}/>
             </div>
         </div>

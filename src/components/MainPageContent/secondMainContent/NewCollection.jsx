@@ -5,15 +5,6 @@ import card from './db.json'
 import { NewCollectionItem } from '../NewCollectionItem.jsx/NewCollectionItem';
 
 export const NewCollection = () => {
-    const images = [
-        'https://content.rozetka.com.ua/goods/images/big/371973845.jpg',
-        'https://content2.rozetka.com.ua/goods/images/big/371973810.jpg',
-        'https://content.rozetka.com.ua/goods/images/big/313435771.jpg',
-        'https://content.rozetka.com.ua/goods/images/big/371973845.jpg',
-        'https://content2.rozetka.com.ua/goods/images/big/371973810.jpg',
-        'https://content.rozetka.com.ua/goods/images/big/313435771.jpg',
-        'https://content2.rozetka.com.ua/goods/images/big/371973810.jpg',
-    ];
 
     const widthScroll = 634; //.scroll {width: 634px;}
     const widthScrollNav = 634 / (card.length - 2); //.scroll {width: 634px;}
@@ -53,7 +44,7 @@ export const NewCollection = () => {
                 style={{ left: `${listPosition}px` }}
             >
                 {card.map((image, index) => (
-                    <NewCollectionItem image={image} index={index}/>
+                    <NewCollectionItem image={image} key={index} index={index}/>
                 ))}
             </div>
 

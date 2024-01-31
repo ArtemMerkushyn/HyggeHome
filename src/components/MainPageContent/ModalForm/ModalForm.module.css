@@ -1,4 +1,109 @@
+.modal_container{
+    padding: 20px 80px 20px ;
+    position: relative;
+}
+
 .modal_form{
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+.modal_form .modal_input_label,
+.modal_form  .modal_register_text{
+align-self: flex-start;
+
+}
+.modal_register_text{
+    color: #FCB654;
+    font-family: "DM Mono";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 25px;
+}
+.modal_input{
+    border-radius: 24px;
+    border: 1px solid #252525;
+    display: flex;
+    width: 426px;
+    height: 50px;
+    padding: 23px 30px;
+    align-items: center;
+    gap: 10px;
+    color: #252525;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    opacity: 0.6;
+    margin-bottom: 20px;
+    
+}
+.modal_input:focus{
+    outline: none;
+    border-color: #FCB654;
+
+}
+.modal_create_button{
+    width: 426px;
+height: 48px;
+flex-shrink: 0;
+border-radius: 24px;
+border: 1px solid #FCB654;
+background: #FCB654;
+color: #FFF;
+font-family: Poppins;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+cursor: pointer;
+}
+.modal_checkbox_container{
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    width: 426px;
+}
+.modal_checkbox{
+    margin-right: 9.26px;
+    background-color: transparent;
+    border: 1px solid #FCB654;
+    padding: 10px;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    position: relative;
+    }
+.modal_checkbox.checked {
+    background-color: #FCB654;
+    border-color: #FCB654;
+    color: #FFF;
+  }
+
+.close_modal_button{
+    border: none;
+  background-color: transparent; 
+  padding: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+.svg_div{
+    position: absolute;
+    top: -0.5px;
+    left: -0.5px;
+}
+.agreement_text{
+    color: #252525;
+font-family: Poppins;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
 }

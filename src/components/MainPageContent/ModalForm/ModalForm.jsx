@@ -1,46 +1,169 @@
-import React from 'react';
-import css from './ModalForm.module.css'
+import React, { useState } from 'react';
+import css from './ModalForm.module.css';
+import Icons from '../../Icons/Icons';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-export const ModalForm = ({toggleModal}) => {
+export const ModalForm = ({ toggleModal }) => {
+  const [firstCheckbox, setFirstCheckbox] = useState(false);
+  const [secondCheckbox, setSecondCheckbox] = useState(false);
+  const [checkboxes, setCheckboxes] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        toggleModal()
-        //Future code for sending data to backend
+  const [userData, setUserData] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
+
+  const handleCheckboxes = () => {
+    if (firstCheckbox || secondCheckbox) {
+      setCheckboxes(true);
+    } else {
+      setCheckboxes(false);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Перевірка, чи всі поля заповнені
+    if (
+      name.trim() === '' ||
+      email.trim() === '' ||
+      password.trim() === '' ||
+      confirmPassword.trim() === ''
+    ) {
+      toast.error('Please fill all fields');
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    toast.error('Invalid email address');
+    return;
+  }
+
+    if (checkboxes === false) {
+      toast.error('Accept all the policies');
+      return;
     }
 
-    return (
-        <div className={css.modal_container}>
-            <button type='button' onClick={toggleModal}>close</button>
-            <form action="/submit" method="post" onSubmit={handleSubmit} className={css.modal_form}>
-                <h2 className={css.modal_register_text}>Register Individual Account!</h2>
+    if (password.trim() !== confirmPassword.trim()) {
+      toast.error('Passwords do not match');
+      return;
+    }
 
-                <label htmlFor="first-name">Your first name*</label>
-                <input type="text" id="first-name" name="first-name" className={css.modal_input} required />
+    setUserData({
+      name,
+      email,
+      password,
+    });
+    // Future code for sending data to backend
+    toggleModal();
+    
+  };
 
-                <label htmlFor="last-name">Your last name*</label>
-                <input type="text" id="last-name" name="last-name" className={css.modal_input} required />
+  return (
+    <div className={css.modal_container}>
+      <button type="button" onClick={toggleModal} className={css.close_modal_button}>
+        <Icons icon={'cross'} />
+      </button>
+      <form action="/submit" method="post" onSubmit={handleSubmit} className={css.modal_form}>
+        <h2 className={css.modal_register_text}>Register Individual Account!</h2>
 
-                <label htmlFor="email">Your Email*</label>
-                <input type="email" id="email" name="email" className={css.modal_input} required />
+        <label htmlFor="name" className={css.modal_input_label}>
+          Your name*
+        </label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Your name"
+          className={css.modal_input}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
 
-                <label htmlFor="password">Create password*</label>
-                <input type="password" id="password" name="password" className={css.modal_input} required />
+        <label htmlFor="email" className={css.modal_input_label}>
+          Your Email*
+        </label>
+        <input
+          type="text"
+          id="email"
+          name="email"
+          placeholder="Your email"
+          className={css.modal_input}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-                <label htmlFor="confirm-password">Confirm the password*</label>
-                <input type="password" id="confirm-password" name="confirm-password" className={css.modal_input} required />
+        <label htmlFor="password" className={css.modal_input_label}>
+          Create password*
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          className={css.modal_input}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-                <div className={css.modal_checkbox}>
-                    <input type="checkbox" id="agreement" name="agreement" required ></input>
-                    <label htmlFor="agreement" >I accept the Purchase Rules, User Agreemens and Privacy Policy conditions</label>
-                </div>
-                <div className={css.modal_checkbox}>
-                    <input type="checkbox" id="agreement" name="agreement" required ></input>
-                    <label htmlFor="agreement" >I agree to receive emails about the new offers from HyggeHome</label>
-                </div>
+        <label htmlFor="confirm-password" className={css.modal_input_label}>
+          Confirm the password*
+        </label>
+        <input
+          type="password"
+          id="confirm-password"
+          name="confirm-password"
+          placeholder="Password"
+          className={css.modal_input}
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
 
-                <input type="submit" value="Create account" className={css.modal_create_button}/>
-            </form>
+        <div className={css.modal_checkbox_container}>
+          <button
+            type="button"
+            className={`${css.modal_checkbox} ${firstCheckbox ? css.checked : ''}`}
+            onClick={() => {
+              setFirstCheckbox(!firstCheckbox);
+              handleCheckboxes();
+            }}
+          >
+            <div className={css.svg_div}>
+              <Icons icon={'check'} />
+            </div>
+          </button>
+          <label htmlFor="agreement">
+            I accept the Purchase Rules, User Agreements, and Privacy Policy conditions
+          </label>
         </div>
-    );
-}
+
+        <div className={css.modal_checkbox_container}>
+          <button
+            type="button"
+            className={`${css.modal_checkbox} ${secondCheckbox ? css.checked : ''}`}
+            onClick={() => {
+              setSecondCheckbox(!secondCheckbox);
+              handleCheckboxes();
+            }}
+          >
+            <div className={css.svg_div}>
+              <Icons icon={'check'} />
+            </div>
+          </button>
+          <label htmlFor="agreement" className={css.text}>
+            I agree to receive emails about the new offers from HyggeHome
+          </label>
+        </div>
+
+        <input type="submit" value="Create account" className={css.modal_create_button} />
+      </form>
+    </div>
+  );
+};

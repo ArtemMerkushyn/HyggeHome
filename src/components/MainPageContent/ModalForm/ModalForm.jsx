@@ -8,13 +8,15 @@ export const ModalForm = ({ toggleModal }) => {
   const [firstCheckbox, setFirstCheckbox] = useState(false);
   const [secondCheckbox, setSecondCheckbox] = useState(false);
   const [checkboxes, setCheckboxes] = useState(false);
-  const [name, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const [userData, setUserData] = useState({
-    name: '',
+    firstName: '',
+    lastName:'',
     email: '',
     password: '',
   });
@@ -32,7 +34,8 @@ export const ModalForm = ({ toggleModal }) => {
 
     // Перевірка, чи всі поля заповнені
     if (
-      name.trim() === '' ||
+      firstName.trim() === '' ||
+      lastName.trim() === '' ||
       email.trim() === '' ||
       password.trim() === '' ||
       confirmPassword.trim() === ''
@@ -57,7 +60,8 @@ export const ModalForm = ({ toggleModal }) => {
     }
 
     setUserData({
-      name,
+      firstName,
+      lastName,
       email,
       password,
     });
@@ -74,18 +78,32 @@ export const ModalForm = ({ toggleModal }) => {
       <form action="/submit" method="post" onSubmit={handleSubmit} className={css.modal_form}>
         <h2 className={css.modal_register_text}>Register Individual Account!</h2>
 
-        <label htmlFor="name" className={css.modal_input_label}>
-          Your name*
+        <label htmlFor="first-name" className={css.modal_input_label}>
+          Your first name*
         </label>
         <input
           type="text"
-          id="name"
-          name="name"
-          placeholder="Your name"
+          id="first-name"
+          name="first-name"
+          placeholder="Your first name"
           className={css.modal_input}
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
         />
+
+        <label htmlFor="last-name" className={css.modal_input_label}>
+          Your last name*
+        </label>
+        <input
+          type="text"
+          id="last-name"
+          name="last-name"
+          placeholder="Your last name"
+          className={css.modal_input}
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+
 
         <label htmlFor="email" className={css.modal_input_label}>
           Your Email*
@@ -139,7 +157,7 @@ export const ModalForm = ({ toggleModal }) => {
               <Icons icon={'check'} />
             </div>
           </button>
-          <label htmlFor="agreement">
+          <label htmlFor="agreement" className={css.agreement_text}>
             I accept the Purchase Rules, User Agreements, and Privacy Policy conditions
           </label>
         </div>
@@ -157,7 +175,7 @@ export const ModalForm = ({ toggleModal }) => {
               <Icons icon={'check'} />
             </div>
           </button>
-          <label htmlFor="agreement" className={css.text}>
+          <label htmlFor="agreement" className={css.agreement_text}>
             I agree to receive emails about the new offers from HyggeHome
           </label>
         </div>

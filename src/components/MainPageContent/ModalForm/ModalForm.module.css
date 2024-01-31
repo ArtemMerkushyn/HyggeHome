@@ -1,5 +1,5 @@
 .modal_container{
-    padding: 40px 80px 29px ;
+    padding: 20px 80px 20px ;
     position: relative;
 }
 
@@ -38,7 +38,7 @@ align-self: flex-start;
     font-weight: 500;
     line-height: normal;
     opacity: 0.6;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     
 }
 .modal_create_button{
@@ -60,6 +60,7 @@ cursor: pointer;
     margin-bottom: 25px;
     display: flex;
     flex-direction: row;
+    width: 426px;
 }
 .modal_checkbox{
     margin-right: 9.26px;
@@ -92,4 +93,12 @@ cursor: pointer;
     position: absolute;
     top: -0.5px;
     left: -0.5px;
+}
+.agreement_text{
+    color: #252525;
+font-family: Poppins;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
 }

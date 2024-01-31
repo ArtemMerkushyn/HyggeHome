@@ -57,7 +57,7 @@ line-height: normal;
 cursor: pointer;
 }
 .modal_checkbox_container{
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     display: flex;
     flex-direction: row;
     width: 426px;
@@ -86,8 +86,8 @@ cursor: pointer;
   padding: 0;
   cursor: pointer;
   position: absolute;
-  top: 30px;
-  right: 30px;
+  top: 24px;
+  right: 24px;
 }
 .svg_div{
     position: absolute;

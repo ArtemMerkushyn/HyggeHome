@@ -3,6 +3,7 @@ import { useGetCandlesQuery } from '../../redux/services';
 import CandlesItem from '../CandlesItem/CandlesItem';
 
 import styles from './CandlesList.module.css';
+import SkeletonProductLib from '../skeleton/SkeletonProductLib';
 
 export default function CandlesList() {
   const { data, error, isLoading } = useGetCandlesQuery();
@@ -23,7 +24,15 @@ export default function CandlesList() {
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className={styles.skeleton}>
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(loading => (
+          <div className="col-3" key={loading}>
+            <SkeletonProductLib />
+          </div>
+        ))}
+      </div>
+    );
   }
 
   if (error) {

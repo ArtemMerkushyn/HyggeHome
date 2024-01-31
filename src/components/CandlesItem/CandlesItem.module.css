@@ -4,8 +4,11 @@
   border-radius: 24px;
   border: 1px solid #fcb654;
   position: relative;
-  cursor: pointer;
   overflow: hidden;
+}
+
+.itemWrapper {
+  margin: 20px;
 }
 
 .cardImage {
@@ -14,44 +17,52 @@
   height: 377px;
   opacity: 1;
   transition: opacity 1s ease, transform 1s ease;
+  cursor: pointer;
 }
 
 .cardPicture {
   position: absolute;
   object-fit: cover;
-  width: 412px;
-  height: 497px;
-  top: 0;
-  left: 0;
+  width: 372px;
+  height: 377px;
+  top: 20px;
+  left: 20px;
   right: 0;
   bottom: 0;
   opacity: 0;
-  transition: opacity 1s ease, transform 1s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   transform: scale(1);
 }
 
 .cardPicture:hover {
+  top: 0;
+  left: 0;
   opacity: 1;
-  transition: opacity 1s ease, transform 1s ease;
+  width: 412px;
+  height: 497px;
+  transition: opacity 0.5s ease, transform 0.5s ease;
   transform: scale(1.05);
+  cursor: pointer;
 }
 
-.cardImage:hover {
-  opacity: 0;
-  /* transition: opacity 0.1s ease, transform 0.1s ease; */
+.cardPicture:hover .itemWrapper {
+  display: none;
 }
+
+/* .cardImage:hover {
+  opacity: 0;
+  
+  cursor: pointer;
+} */
 
 .titleItem {
   color: #252525;
   font-family: 'DM Mono';
-  font-size: 24px;
+  font-size: 21px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: -1.44px;
-
-  display: flex;
-  justify-content: space-between;
 }
 
 .priceItem {
@@ -69,4 +80,9 @@
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+.icons:hover {
+  fill: #fcb654;
+  cursor: pointer;
 }

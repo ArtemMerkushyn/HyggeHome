@@ -4,14 +4,10 @@ import CandlesItem from '../CandlesItem/CandlesItem';
 
 import styles from './CandlesList.module.css';
 
-// import card from './db.json';
-
 export default function CandlesList() {
   const { data, error, isLoading } = useGetCandlesQuery();
   const [catalog, setCatalog] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-
-  console.log(data);
 
   useEffect(() => {
     if (data) {

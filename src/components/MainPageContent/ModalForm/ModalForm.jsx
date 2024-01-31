@@ -3,6 +3,7 @@ import css from './ModalForm.module.css';
 import Icons from '../../Icons/Icons';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Button from '../Button/Button';
 
 export const ModalForm = ({ toggleModal }) => {
   const [firstCheckbox, setFirstCheckbox] = useState(false);
@@ -159,7 +160,8 @@ export const ModalForm = ({ toggleModal }) => {
   </label>
 </div>
 
-<input type="submit" value="Create account" className={css.modal_create_button} />
+<Button text="Create account" style={{ width: "426px",  heigth : "48px"}} type="submit" />
+
       </form>
     </div>
   );

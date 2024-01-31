@@ -25,7 +25,7 @@ export const SpecialOffer = () => {
                 </li>
                 {modal && (<Modal funcClick={toggleModal}/>)}
                 <li>
-                    <img src="images/hero/specialOffer/фотографія.png" className={css.special_offer_image}/>
+                    <img src="images/hero/specialOffer/фотографія.png" alt="cup of coffee" className={css.special_offer_image}/>
                 </li>
             </ul>
          </div>

@@ -11,7 +11,6 @@ export const SpecialOffer = () => {
 
     const toggleModal = () => {
         setModal(!modal)
-        console.log(modal)
     }
 
     return(

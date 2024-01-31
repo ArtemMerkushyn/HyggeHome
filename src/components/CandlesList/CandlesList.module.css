@@ -78,3 +78,11 @@
   background: #fcb654;
   border: 1px solid #fcb654;
 }
+
+.skeleton {
+  margin-top: 30px;
+  margin-bottom: 129px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}

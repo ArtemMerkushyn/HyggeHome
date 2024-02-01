@@ -27,8 +27,7 @@ export const Search = () => {
         <span className={styles.wrapperSpan}> Search</span>
       </div>
       <h2 className={styles.title}>
-        Choose the <span className={styles.spanTitle}>perfect candles</span> for
-        atmosphere
+        
       </h2>
       <div className={styles.wrapperButtons}>
         <Filters />

@@ -5,6 +5,7 @@ import { useGetCandlesByNameQuery } from '../../redux/services.js';
 import { useDispatch } from 'react-redux';
 import { setCandles } from '../../redux/candlesSlice.js';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export const Search = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ export const Search = () => {
 
   const searchName = () => {
     if (inputValue.trim() === '') {
-      return alert('The field cannot be empty.');
+      return toast.error('The field cannot be empty.');
     }
     dispatch(setCandles(data));
     navigate('search');

@@ -5,7 +5,7 @@ import { useGetCandlesQuery } from '../../redux/services';
 import CandlesItem from '../CandlesItem/CandlesItem';
 import styles from './CandlesList.module.css';
 import SkeletonProductLib from '../skeleton/SkeletonProductLib';
-import { selectCandles } from '../../redux/selectors';
+import { isActiveSearch, selectCandles } from '../../redux/selectors';
 
 export default function CandlesList() {
   const { data, error, isLoading } = useGetCandlesQuery();
@@ -13,18 +13,13 @@ export default function CandlesList() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const resultSearch = useSelector(selectCandles);
+  const isActive = useSelector(isActiveSearch);
+  console.log(isActive)
+  console.log(data);
 
   useEffect(() => {
-    if (data) {
-      setCatalog(data);
-    }
-  }, [data]);
-
-  useEffect(() => {
-    if (resultSearch) {
-      setCatalog(resultSearch);
-    }
-  }, [resultSearch]);
+    if(data) isActive === true ? setCatalog(resultSearch) : setCatalog(data);
+  }, [isActive, resultSearch, data]);
 
   const itemsPerPage = 9;
   const indexOfLastItem = currentPage * itemsPerPage;

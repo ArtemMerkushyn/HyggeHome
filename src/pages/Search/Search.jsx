@@ -1,22 +1,17 @@
-import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import CandlesList from '../../components/CandlesList/CandlesList';
 import Filters from '../../components/Filters/Filters';
 import Sort from '../../components/Sort/Sort';
-import styles from './Candles.module.css';
-import { useEffect } from 'react';
-import { setIsActive } from '../../redux/candlesSlice';
+import styles from './Search.module.css';
 
 
-export const Candles = () => {
-  const dispatch = useDispatch();
- useEffect(() => {
-   dispatch(setIsActive());
- }, [dispatch]);
-
+export const Search = () => {
   return (
     <div className={styles.wrapperFilters}>
       <div className={styles.wrapper}>
-        <span>Home </span>
+        <Link to={'/'}>
+            <span>Home </span>
+        </Link>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="8"
@@ -29,7 +24,7 @@ export const Candles = () => {
             fill="#CACCCE"
           />
         </svg>
-        <span className={styles.wrapperSpan}> Candles</span>
+        <span className={styles.wrapperSpan}> Search</span>
       </div>
       <h2 className={styles.title}>
         Choose the <span className={styles.spanTitle}>perfect candles</span> for

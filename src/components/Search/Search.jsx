@@ -1,13 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Icons from '../Icons/Icons.jsx';
 import styles from './Search.module.css';
-import PropTypes from 'prop-types';
 import { useGetCandlesByNameQuery } from '../../redux/services.js';
+import { useDispatch } from 'react-redux';
+import { setCandles } from '../../redux/candlesSlice.js';
 
 export const Search = () => {
+  const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
   const [active, setActive] = useState(false);
   const { data } = useGetCandlesByNameQuery(inputValue);
+
+  useEffect(() => {
+    if (data) {
+      dispatch(setCandles(data));
+    }
+  }, [data, dispatch]);
 
   const handleInputChange = e => {
     setInputValue(e.target.value);
@@ -17,8 +25,6 @@ export const Search = () => {
     if (inputValue.trim() === '') {
       return alert('The field cannot be empty.');
     }
-
-    console.log(data);
     setInputValue('');
   };
 
@@ -56,8 +62,4 @@ export const Search = () => {
       </div>
     </div>
   );
-};
-
-Search.propTypes = {
-  funcClick: PropTypes.func,
 };

@@ -71,7 +71,7 @@ export default function Filters() {
                         </div>
                     </div>
                 </div>
-                <Button text={'Apply'}/>
+                <Button text={'Apply'} funcClick={() => setOpenFilter(false)}/>
             </div>
         </div>
     );

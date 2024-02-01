@@ -5,13 +5,15 @@ export const candlesApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://tc299.onrender.com/',
   }),
-  tagTypes: ['Candles'],
   endpoints: builder => ({
     getCandles: builder.query({
       query: () => 'products',
       providesTags: ['Candles'],
     }),
+    getCandlesByName: builder.query({
+      query: name => `search?query=${name}`,
+    }),
   }),
 });
 
-export const { useGetCandlesQuery } = candlesApi;
+export const { useGetCandlesQuery, useGetCandlesByNameQuery } = candlesApi;

@@ -41,28 +41,33 @@ export default function CandlesList() {
 
   return (
     <div className={styles.wrapper}>
-      <ul className={styles.cardList}>
+      <ul
+        className={styles.cardList}
+        style={{ marginBottom: catalog.length > itemsPerPage ? '' : '129px' }}
+      >
         {currentItems.map((candle, index) => (
           <CandlesItem key={index} candle={candle} />
         ))}
       </ul>
-      <div className={styles.pagination}>
-        {Array.from({
-          length: Math.ceil(catalog.length / itemsPerPage),
-        }).map((_, index) => (
-          <button
-            key={index + 1}
-            onClick={() => paginate(index + 1)}
-            className={
-              index + 1 === currentPage
-                ? `${styles.pageNumber} ${styles.activePage}`
-                : styles.pageNumber
-            }
-          >
-            {index + 1}
-          </button>
-        ))}
-      </div>
+      {catalog.length > itemsPerPage && (
+        <div className={styles.pagination}>
+          {Array.from({
+            length: Math.ceil(catalog.length / itemsPerPage),
+          }).map((_, index) => (
+            <button
+              key={index + 1}
+              onClick={() => paginate(index + 1)}
+              className={
+                index + 1 === currentPage
+                  ? `${styles.pageNumber} ${styles.activePage}`
+                  : styles.pageNumber
+              }
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

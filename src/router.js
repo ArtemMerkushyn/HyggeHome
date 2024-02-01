@@ -8,6 +8,7 @@ import { LightingDecor } from './pages/LightingDecor/LightingDecor';
 import { GetWarm } from './pages/GetWarm/GetWarm';
 import { TableGames } from './pages/TableGames/TableGames';
 import { BooksJournals } from './pages/BooksJournals/BooksJournals';
+import { Search } from './pages/Search/Search';
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
         path: 'books-journals',
         element: <BooksJournals />,
       },
+      {
+        path: 'search',
+        element: <Search/>,
+      }
     ],
   },
 ]);

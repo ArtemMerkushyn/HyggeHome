@@ -4,6 +4,7 @@ import styles from './Search.module.css';
 import { useGetCandlesByNameQuery } from '../../redux/services.js';
 import { useDispatch } from 'react-redux';
 import { setCandles } from '../../redux/candlesSlice.js';
+import { useNavigate } from 'react-router-dom';
 
 export const Search = () => {
   const dispatch = useDispatch();
@@ -11,14 +12,9 @@ export const Search = () => {
   const [active, setActive] = useState(false);
   const { data } = useGetCandlesByNameQuery(inputValue);
 
-  useEffect(() => {
-    if (data) {
-      dispatch(setCandles(data));
-    }
-  }, [data, dispatch]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Автоматически активировать инпут при изменении значения active
     if (active) {
       document.getElementById('searchInput').focus();
     }
@@ -32,7 +28,9 @@ export const Search = () => {
     if (inputValue.trim() === '') {
       return alert('The field cannot be empty.');
     }
-    setInputValue('');
+    dispatch(setCandles(data));
+    navigate('search');
+    //setInputValue('');
   };
 
   return (

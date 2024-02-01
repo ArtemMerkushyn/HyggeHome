@@ -17,6 +17,13 @@ export const Search = () => {
     }
   }, [data, dispatch]);
 
+  useEffect(() => {
+    // Автоматически активировать инпут при изменении значения active
+    if (active) {
+      document.getElementById('searchInput').focus();
+    }
+  }, [active]);
+
   const handleInputChange = e => {
     setInputValue(e.target.value);
   };
@@ -50,6 +57,7 @@ export const Search = () => {
         onClick={() => setActive(true)}
       >
         <input
+          id="searchInput"
           type="text"
           value={inputValue}
           onChange={handleInputChange}

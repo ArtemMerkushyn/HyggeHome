@@ -1,6 +1,6 @@
-import styles from './CandlesItem.module.css';
+import styles from './CardItem.module.css';
 
-export default function CandlesItem({ candle }) {
+export default function CardItem({ candle }) {
   return (
     <li className={styles.cardItem}>
       <div className={styles.itemWrapper}>

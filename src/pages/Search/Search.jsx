@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom';
-import CandlesList from '../../components/CandlesList/CandlesList';
+
+import CandlesList from '../../components/CardList/CardList';
 import Filters from '../../components/Filters/Filters';
 import Sort from '../../components/Sort/Sort';
 import styles from './Search.module.css';
-
 
 export const Search = () => {
   return (
     <div className={styles.wrapperFilters}>
       <div className={styles.wrapper}>
         <Link to={'/'}>
-            <span>Home </span>
+          <span>Home </span>
         </Link>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -26,9 +26,7 @@ export const Search = () => {
         </svg>
         <span className={styles.wrapperSpan}> Search</span>
       </div>
-      <h2 className={styles.title}>
-        
-      </h2>
+      <h2 className={styles.title}> </h2>
       <div className={styles.wrapperButtons}>
         <Filters />
         <div className={styles.dropdownList}>

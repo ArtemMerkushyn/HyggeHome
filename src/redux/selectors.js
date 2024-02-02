@@ -1,2 +1,2 @@
-export const selectCandles = state => state.candles.data;
-export const isActiveSearch = state => state.candles.isActive;
+export const selectSearch = state => state.search.data;
+export const selectIsActive = state => state.search.isActive;

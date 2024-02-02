@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+
 import Icons from '../Icons/Icons.jsx';
 import styles from './Search.module.css';
-import { useGetCandlesByNameQuery } from '../../redux/services.js';
-import { useDispatch } from 'react-redux';
-import { setCandles } from '../../redux/candlesSlice.js';
+import { useGetSearchByNameQuery } from '../../redux/services.js';
+import { setSearch } from '../../redux/searchSlice.js';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 export const Search = () => {
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
   const [active, setActive] = useState(false);
-  const { data } = useGetCandlesByNameQuery(inputValue);
+  const { data } = useGetSearchByNameQuery(inputValue);
 
   const navigate = useNavigate();
 
@@ -29,9 +30,8 @@ export const Search = () => {
     if (inputValue.trim() === '') {
       return toast.error('The field cannot be empty.');
     }
-    dispatch(setCandles(data));
+    dispatch(setSearch(data));
     navigate('search');
-    //setInputValue('');
   };
 
   return (

@@ -1,17 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
-
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { candlesApi } from './services';
-import candlesReducer from './candlesSlice';
+
+import { servicesApi } from './services';
+import searchReducer from './searchSlice';
 
 export const store = configureStore({
   reducer: {
-    [candlesApi.reducerPath]: candlesApi.reducer,
-    candles: candlesReducer,
+    [servicesApi.reducerPath]: servicesApi.reducer,
+    search: searchReducer,
   },
 
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware().concat(candlesApi.middleware),
+    getDefaultMiddleware().concat(servicesApi.middleware),
 });
 
 setupListeners(store.dispatch);

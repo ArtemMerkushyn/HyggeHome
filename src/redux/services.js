@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const candlesApi = createApi({
-  reducerPath: 'candlesApi',
+export const servicesApi = createApi({
+  reducerPath: 'servicesApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://tc299.onrender.com/',
   }),
@@ -10,10 +10,10 @@ export const candlesApi = createApi({
       query: () => 'products',
       providesTags: ['Candles'],
     }),
-    getCandlesByName: builder.query({
+    getSearchByName: builder.query({
       query: name => `search?query=${name}`,
     }),
   }),
 });
 
-export const { useGetCandlesQuery, useGetCandlesByNameQuery } = candlesApi;
+export const { useGetCandlesQuery, useGetSearchByNameQuery } = servicesApi;

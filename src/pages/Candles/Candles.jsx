@@ -1,17 +1,17 @@
 import { useDispatch } from 'react-redux';
-import CandlesList from '../../components/CandlesList/CandlesList';
+
+import CardList from '../../components/CardList/CardList';
 import Filters from '../../components/Filters/Filters';
 import Sort from '../../components/Sort/Sort';
 import styles from './Candles.module.css';
 import { useEffect } from 'react';
-import { setIsActive } from '../../redux/candlesSlice';
-
+import { setIsActive } from '../../redux/searchSlice';
 
 export const Candles = () => {
   const dispatch = useDispatch();
- useEffect(() => {
-   dispatch(setIsActive());
- }, [dispatch]);
+  useEffect(() => {
+    dispatch(setIsActive());
+  }, [dispatch]);
 
   return (
     <div className={styles.wrapperFilters}>
@@ -42,7 +42,7 @@ export const Candles = () => {
           <Sort />
         </div>
       </div>
-      <CandlesList />
+      <CardList />
     </div>
   );
 };

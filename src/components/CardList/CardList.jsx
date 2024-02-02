@@ -2,23 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useGetCandlesQuery } from '../../redux/services';
-import CandlesItem from '../CandlesItem/CandlesItem';
-import styles from './CandlesList.module.css';
+import CandlesItem from '../CardItem/CardItem';
+import styles from './CardList.module.css';
 import SkeletonProductLib from '../skeleton/SkeletonProductLib';
-import { isActiveSearch, selectCandles } from '../../redux/selectors';
+import { selectIsActive, selectSearch } from '../../redux/selectors';
 
-export default function CandlesList() {
+export default function CardList() {
   const { data, error, isLoading } = useGetCandlesQuery();
   const [catalog, setCatalog] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const resultSearch = useSelector(selectCandles);
-  const isActive = useSelector(isActiveSearch);
-  console.log(isActive)
-  console.log(data);
+  const resultSearch = useSelector(selectSearch);
+  const isActive = useSelector(selectIsActive);
 
   useEffect(() => {
-    if(data) isActive === true ? setCatalog(resultSearch) : setCatalog(data);
+    if (data) isActive === true ? setCatalog(resultSearch) : setCatalog(data);
   }, [isActive, resultSearch, data]);
 
   const itemsPerPage = 9;

@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import CardList from '../../components/CardList/CardList';
 import Filters from '../../components/Filters/Filters';
@@ -16,7 +17,9 @@ export const Candles = () => {
   return (
     <div className={styles.wrapperFilters}>
       <div className={styles.wrapper}>
-        <span>Home </span>
+        <Link to={'/'}>
+          <span>Home </span>
+        </Link>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="8"

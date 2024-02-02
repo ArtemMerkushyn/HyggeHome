@@ -65,7 +65,7 @@
   opacity: 0;
 }
 
-.search.active {
+.search.activeSearch {
   z-index: 5;
   opacity: 1;
 }

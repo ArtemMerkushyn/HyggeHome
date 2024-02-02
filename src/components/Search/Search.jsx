@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
 import Icons from '../Icons/Icons.jsx';
@@ -7,22 +7,14 @@ import styles from './Search.module.css';
 import { useGetSearchByNameQuery } from '../../redux/services.js';
 import { setSearch } from '../../redux/searchSlice.js';
 import { useNavigate } from 'react-router-dom';
-import { selectIsActive } from '../../redux/selectors.js';
-import { setIsActive } from '../../redux/searchSlice.js';
 
 export const Search = () => {
-  const isActive = useSelector(selectIsActive);
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
   const [active, setActive] = useState(false);
   const { data } = useGetSearchByNameQuery(inputValue);
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log('Изменено состояние setIsActive:', active);
-    dispatch(setIsActive(active));
-  }, [active, dispatch]);
 
   useEffect(() => {
     if (active) {

@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
 import Icons from '../Icons/Icons.jsx';
 import styles from './Search.module.css';
 import { useGetSearchByNameQuery } from '../../redux/services.js';
 import { setSearch } from '../../redux/searchSlice.js';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { selectIsActive } from '../../redux/selectors.js';
+import { setIsActive } from '../../redux/searchSlice.js';
 
 export const Search = () => {
+  const isActive = useSelector(selectIsActive);
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
   const [active, setActive] = useState(false);
@@ -17,10 +20,19 @@ export const Search = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log('Изменено состояние setIsActive:', active);
+    dispatch(setIsActive(active));
+  }, [active, dispatch]);
+
+  useEffect(() => {
     if (active) {
       document.getElementById('searchInput').focus();
     }
   }, [active]);
+
+  const handleInputOpen = () => {
+    setActive(true);
+  }
 
   const handleInputChange = e => {
     setInputValue(e.target.value);
@@ -32,19 +44,11 @@ export const Search = () => {
     }
     try {
       await dispatch(setSearch(data));
-      setInputValue('');
-      setActive(false);
       navigate('/search');
     } catch (error) {
       console.log(error);
     }
   };
-
-  const activeStyle = ({ isActive }) => {
-    return {
-        borderBottom: isActive ? '2px solid #FCB654' : ''
-    }
-  }
 
   return (
     <div className={styles.wrapper}>
@@ -55,24 +59,23 @@ export const Search = () => {
         ></button>
       ) : (
         <button
-          onClick={() => setActive(true)}
+          onClick={handleInputOpen}
           className={
             active ? `${styles.openBtn} ${styles.open}` : `${styles.openBtn}`
           }
         >
-          <NavLink style={activeStyle} to={'/search'}><Icons icon={'search'} /></NavLink>
+          <Icons icon={'search'} />
         </button>
       )}
       <div
-        className={active ? `${styles.search} ${styles.active}` : styles.search}
-        onClick={() => setActive(true)}
+        className={active  ? `${styles.search} ${styles.activeSearch}` : styles.search}
       >
         <input
           id="searchInput"
           type="text"
           value={inputValue}
           onChange={handleInputChange}
-          className={active ? `${styles.input} ${styles.active}` : styles.input}
+          className={styles.input}
           placeholder="Search"
         />
         <button className={styles.searchBtn} onClick={searchName}>

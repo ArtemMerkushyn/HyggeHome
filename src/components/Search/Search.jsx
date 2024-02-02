@@ -6,7 +6,7 @@ import Icons from '../Icons/Icons.jsx';
 import styles from './Search.module.css';
 import { useGetSearchByNameQuery } from '../../redux/services.js';
 import { setSearch } from '../../redux/searchSlice.js';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 export const Search = () => {
   const dispatch = useDispatch();
@@ -26,13 +26,25 @@ export const Search = () => {
     setInputValue(e.target.value);
   };
 
-  const searchName = () => {
+  const searchName = async () => {
     if (inputValue.trim() === '') {
-      return toast.error('The field cannot be empty.');
+      return toast.error('Поле не может быть пустым.');
     }
-    dispatch(setSearch(data));
-    navigate('search');
+    try {
+      await dispatch(setSearch(data));
+      setInputValue('');
+      setActive(false);
+      navigate('/search');
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  const activeStyle = ({ isActive }) => {
+    return {
+        borderBottom: isActive ? '2px solid #FCB654' : ''
+    }
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -48,7 +60,7 @@ export const Search = () => {
             active ? `${styles.openBtn} ${styles.open}` : `${styles.openBtn}`
           }
         >
-          <Icons icon={'search'} />
+          <NavLink style={activeStyle} to={'/search'}><Icons icon={'search'} /></NavLink>
         </button>
       )}
       <div

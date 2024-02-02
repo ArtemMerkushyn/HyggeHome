@@ -12,8 +12,13 @@
   font-size: 24px;
   transition: all 0.1s linear;
   width: 24px;
-  height: 24px;
+  height: 31px;
   position: relative;
+  border-bottom: 1px solid transparent;
+}
+
+.openBtn:hover {
+  border-bottom: 1px solid #fcb654;
 }
 
 .closeBtn::before,
@@ -58,10 +63,6 @@
   cursor: pointer;
   z-index: -1;
   opacity: 0;
-}
-
-.search:hover svg {
-  fill: #fcb654;
 }
 
 .search.active {

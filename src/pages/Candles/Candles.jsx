@@ -39,7 +39,7 @@ export const Candles = () => {
         atmosphere
       </h2>
       <div className={styles.wrapperButtons}>
-        <Filters />
+        <Filters colorsView={true}/>
         <div className={styles.dropdownList}>
           Sort by
           <Sort />

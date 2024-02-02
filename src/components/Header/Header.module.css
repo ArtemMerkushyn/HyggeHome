@@ -39,6 +39,8 @@
     height: 24px;
 }
 
-.wrapper svg:hover {
-    fill: #FCB654;
+.wrapper a {
+    display: flex;
+    align-items: center;
+    height: 31px;
 }

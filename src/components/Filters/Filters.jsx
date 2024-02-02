@@ -2,10 +2,11 @@ import { useState } from 'react';
 import Button from '../MainPageContent/Button/Button';
 import styles from './Filters.module.css';
 import { InputRange }from '../InputRange/InputRange.jsx';
+import PropTypes from 'prop-types';
 
 const colors = ['blue', 'green', 'grey', 'red', 'black', 'purple', 'yellow', 'pink'];
 
-export default function Filters() {
+export default function Filters({ colorsView }) {
     const [ openFilter, setOpenFilter ] = useState(false);
     const [selectedColors, setSelectedColors] = useState({
         'blue': true,
@@ -38,41 +39,47 @@ export default function Filters() {
                 >
                 <h5>Price range:</h5>
                 <InputRange maxValue={200}/>
-                <div className={styles.colorFilters}>
-                    <h5>Color:</h5>
-                    <div className={styles.wrapperLabels}>
-                        <div>
-                            {colors.slice(0, 4).map((color) => (
-                                <label key={color}>
-                                    <span className={selectedColors[color] ? `${styles.check} ${styles.active}` : styles.check}></span>
-                                    <input
-                                        className={styles.checkBox}
-                                        type="checkbox"
-                                        onChange={() => handleItemChange(color)}
-                                        checked={selectedColors[color]}
-                                    />
-                                    {color.charAt(0).toUpperCase() + color.slice(1)}
-                                </label>
-                            ))}
-                        </div>
-                        <div>
-                            {colors.slice(4, 8).map((color) => (
-                                <label key={color}>
-                                    <span className={selectedColors[color] ? `${styles.check} ${styles.active}` : styles.check}></span>
-                                    <input
-                                        className={styles.checkBox}
-                                        type="checkbox"
-                                        onChange={() => handleItemChange(color)}
-                                        checked={selectedColors[color]}
-                                    />
-                                    {color.charAt(0).toUpperCase() + color.slice(1)}
-                                </label>
-                            ))}
+                {colorsView ? (
+                    <div className={styles.colorFilters}>
+                        <h5>Color:</h5>
+                        <div className={styles.wrapperLabels}>
+                            <div>
+                                {colors.slice(0, 4).map((color) => (
+                                    <label key={color}>
+                                        <span className={selectedColors[color] ? `${styles.check} ${styles.active}` : styles.check}></span>
+                                        <input
+                                            className={styles.checkBox}
+                                            type="checkbox"
+                                            onChange={() => handleItemChange(color)}
+                                            checked={selectedColors[color]}
+                                        />
+                                        {color.charAt(0).toUpperCase() + color.slice(1)}
+                                    </label>
+                                ))}
+                            </div>
+                            <div>
+                                {colors.slice(4, 8).map((color) => (
+                                    <label key={color}>
+                                        <span className={selectedColors[color] ? `${styles.check} ${styles.active}` : styles.check}></span>
+                                        <input
+                                            className={styles.checkBox}
+                                            type="checkbox"
+                                            onChange={() => handleItemChange(color)}
+                                            checked={selectedColors[color]}
+                                        />
+                                        {color.charAt(0).toUpperCase() + color.slice(1)}
+                                    </label>
+                                ))}
+                            </div>
                         </div>
                     </div>
-                </div>
+                ) : (<></>)}
                 <Button text={'Apply'} funcClick={() => setOpenFilter(false)}/>
             </div>
         </div>
     );
 }
+
+Filters.propTypes = {
+    colorsView: PropTypes.bool,
+};

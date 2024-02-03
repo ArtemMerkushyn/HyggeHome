@@ -33,8 +33,8 @@ export const ModalForm = ({ toggleModal }) => {
       return false;
     }
 
-    if (!firstCheckbox || !secondCheckbox) {
-      toast.error('Accept all the policies');
+    if (!firstCheckbox) {
+      toast.error('Accept the policy');
       return false;
     }
 
@@ -50,6 +50,13 @@ export const ModalForm = ({ toggleModal }) => {
     e.preventDefault();
     if (handleButton()) {
       toggleModal();
+      const newUser = {
+        firstName,
+        lastName,
+        email,
+        password,
+      }
+      console.log(newUser)
     }
   };
 

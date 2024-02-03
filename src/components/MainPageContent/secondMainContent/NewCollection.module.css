@@ -21,11 +21,11 @@
     letter-spacing: -2.16px;
 }
 .list {
-    position: absolute;
-    bottom: 35px;
+    
     display: flex;
     gap: 30px;
     width: auto;
+    height: auto;
     transition: all .3s linear;
 }
 
@@ -65,15 +65,20 @@
     left: -1px;
     transform: rotate(180deg);
 }
+.itemsList{
+  margin-top: 30px;
+  display: flex;
+    gap: 30px;
+    transition: all .3s linear;
+    width: max-content;
+    position: relative;
+}
   
 .scroll {
     width: 634px;
     height: 5px;
     background: rgba(252, 182, 84, .3);
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    margin: 20px auto;
     border-radius: 50px;
     cursor: pointer;
     overflow: hidden;
@@ -86,4 +91,3 @@
     transition: all .3s linear;
     border-radius: 50px;
 }
-

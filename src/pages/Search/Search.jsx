@@ -29,7 +29,7 @@ export const Search = () => {
         </svg>
         <span className={styles.wrapperSpan}> Search</span>
       </div>
-      <h2 className={styles.title}>Here's what we found</h2>
+      <h2 className={styles.title}>{data.length === 0 ? 'Sorry, your request did not yield any results' : "Here's what we found"}</h2>
       <div className={styles.wrapperButtons}>
         <Filters colorsView={false}/>
         <div className={styles.dropdownList}>
@@ -37,7 +37,7 @@ export const Search = () => {
           <Sort />
         </div>
       </div>
-      <CandlesList data={data} error={error} isLoading={isLoading} />
+      {data.length === 0 ? (<div className={styles.notFound}><img src="/images/notFound/notFound.jpg" alt="not-found" /></div>) : (<CandlesList data={data} error={error} isLoading={isLoading} />)}
     </div>
   );
-};
+}

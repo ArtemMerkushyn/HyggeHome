@@ -1,18 +1,22 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
 import Icons from '../Icons/Icons.jsx';
 import styles from './Search.module.css';
 import { useGetSearchByNameQuery } from '../../redux/services.js';
-import { setError, setIsLoading, setSearch } from '../../redux/searchSlice.js';
-import { useNavigate } from 'react-router-dom';
+import { setError, setIsActive, setIsLoading, setSearch } from '../../redux/searchSlice.js';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { selectIsActive } from '../../redux/selectors.js';
 
 export const Search = () => {
   const dispatch = useDispatch();
-  const [inputValue, setInputValue] = useState('');
-  const [active, setActive] = useState(false);
+  const [ inputValue, setInputValue ] = useState('');
+  const active = useSelector(selectIsActive);
   const { data, error, isLoading } = useGetSearchByNameQuery(inputValue);
+
+  const location = useLocation();
+  const pathName = location.pathname;
 
   const navigate = useNavigate();
 
@@ -23,7 +27,11 @@ export const Search = () => {
   }, [active]);
 
   const handleInputOpen = () => {
-    setActive(true);
+    dispatch(setIsActive(true));
+  }
+
+  const handleInputClose = () => {
+    dispatch(setIsActive(false));
   }
 
   const handleInputChange = e => {
@@ -52,7 +60,7 @@ export const Search = () => {
     <div className={styles.wrapper}>
       {active ? (
         <button
-          onClick={() => setActive(false)}
+          onClick={handleInputClose}
           className={styles.closeBtn}
         ></button>
       ) : (
@@ -61,6 +69,7 @@ export const Search = () => {
           className={
             active ? `${styles.openBtn} ${styles.open}` : `${styles.openBtn}`
           }
+          style={{borderBottom: pathName === '/search' ? `2px solid #fcb654` : '2px solid transparent'}}
         >
           <Icons icon={'search'} />
         </button>

@@ -5,9 +5,17 @@ import Filters from '../../components/Filters/Filters';
 import Sort from '../../components/Sort/Sort';
 import styles from './Candles.module.css';
 import { useGetCandlesQuery } from '../../redux/services';
+import { useEffect } from 'react';
+import { setIsActive } from '../../redux/searchSlice';
+import { useDispatch } from 'react-redux';
 
 export const Candles = () => {
   const { data, error, isLoading } = useGetCandlesQuery();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setIsActive(false));
+  }, [dispatch]);
 
   return (
     <div className={styles.wrapperFilters}>

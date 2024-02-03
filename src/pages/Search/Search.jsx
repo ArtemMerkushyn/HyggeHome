@@ -4,8 +4,11 @@ import CandlesList from '../../components/CardList/CardList';
 import Filters from '../../components/Filters/Filters';
 import Sort from '../../components/Sort/Sort';
 import styles from './Search.module.css';
+import { useSelector } from 'react-redux';
 
 export const Search = () => {
+  const { data, error, isLoading } = useSelector(state => state.search);
+
   return (
     <div className={styles.wrapperFilters}>
       <div className={styles.wrapper}>
@@ -34,7 +37,7 @@ export const Search = () => {
           <Sort />
         </div>
       </div>
-      <CandlesList />
+      <CandlesList data={data} error={error} isLoading={isLoading} />
     </div>
   );
 };

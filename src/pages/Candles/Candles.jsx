@@ -1,18 +1,13 @@
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import CardList from '../../components/CardList/CardList';
 import Filters from '../../components/Filters/Filters';
 import Sort from '../../components/Sort/Sort';
 import styles from './Candles.module.css';
-import { useEffect } from 'react';
-import { setIsActive } from '../../redux/searchSlice';
+import { useGetCandlesQuery } from '../../redux/services';
 
 export const Candles = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(setIsActive());
-  }, [dispatch]);
+  const { data, error, isLoading } = useGetCandlesQuery();
 
   return (
     <div className={styles.wrapperFilters}>
@@ -45,7 +40,7 @@ export const Candles = () => {
           <Sort />
         </div>
       </div>
-      <CardList />
+      <CardList data={data} error={error} isLoading={isLoading} />
     </div>
   );
 };

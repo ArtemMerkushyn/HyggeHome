@@ -5,14 +5,14 @@ import { toast } from 'react-toastify';
 import Icons from '../Icons/Icons.jsx';
 import styles from './Search.module.css';
 import { useGetSearchByNameQuery } from '../../redux/services.js';
-import { setSearch } from '../../redux/searchSlice.js';
+import { setError, setIsLoading, setSearch } from '../../redux/searchSlice.js';
 import { useNavigate } from 'react-router-dom';
 
 export const Search = () => {
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
   const [active, setActive] = useState(false);
-  const { data } = useGetSearchByNameQuery(inputValue);
+  const { data, error, isLoading } = useGetSearchByNameQuery(inputValue);
 
   const navigate = useNavigate();
 
@@ -30,7 +30,16 @@ export const Search = () => {
     if (inputValue.trim() === '') {
       return toast.error('The field cannot be empty.');
     }
-    dispatch(setSearch(data));
+    if (data) {
+      dispatch(setSearch(data));
+    }
+
+    if (error) {
+      dispatch(setError(error));
+    }
+
+    dispatch(setIsLoading(isLoading));
+
     navigate('search');
   };
 

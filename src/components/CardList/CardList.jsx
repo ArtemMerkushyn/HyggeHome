@@ -1,23 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 
-import { useGetCandlesQuery } from '../../redux/services';
 import CandlesItem from '../CardItem/CardItem';
 import styles from './CardList.module.css';
 import SkeletonProductLib from '../skeleton/SkeletonProductLib';
-import { selectIsActive, selectSearch } from '../../redux/selectors';
 
-export default function CardList() {
-  const { data, error, isLoading } = useGetCandlesQuery();
+export default function CardList({ data, error, isLoading }) {
   const [catalog, setCatalog] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const resultSearch = useSelector(selectSearch);
-  const isActive = useSelector(selectIsActive);
-
   useEffect(() => {
-    if (data) isActive === true ? setCatalog(resultSearch) : setCatalog(data);
-  }, [isActive, resultSearch, data]);
+    if (data) setCatalog(data);
+  }, [data]);
 
   const itemsPerPage = 9;
   const indexOfLastItem = currentPage * itemsPerPage;

@@ -22,14 +22,19 @@ export const Search = () => {
     }
   }, [active]);
 
+  const handleInputOpen = () => {
+    setActive(true);
+  }
+
   const handleInputChange = e => {
     setInputValue(e.target.value);
   };
 
-  const searchName = () => {
+    const searchName = () => {
     if (inputValue.trim() === '') {
       return toast.error('The field cannot be empty.');
     }
+
     if (data) {
       dispatch(setSearch(data));
     }
@@ -52,7 +57,7 @@ export const Search = () => {
         ></button>
       ) : (
         <button
-          onClick={() => setActive(true)}
+          onClick={handleInputOpen}
           className={
             active ? `${styles.openBtn} ${styles.open}` : `${styles.openBtn}`
           }
@@ -61,15 +66,14 @@ export const Search = () => {
         </button>
       )}
       <div
-        className={active ? `${styles.search} ${styles.active}` : styles.search}
-        onClick={() => setActive(true)}
+        className={active  ? `${styles.search} ${styles.activeSearch}` : styles.search}
       >
         <input
           id="searchInput"
           type="text"
           value={inputValue}
           onChange={handleInputChange}
-          className={active ? `${styles.input} ${styles.active}` : styles.input}
+          className={styles.input}
           placeholder="Search"
         />
         <button className={styles.searchBtn} onClick={searchName}>

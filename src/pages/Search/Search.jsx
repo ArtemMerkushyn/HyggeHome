@@ -29,9 +29,9 @@ export const Search = () => {
         </svg>
         <span className={styles.wrapperSpan}> Search</span>
       </div>
-      <h2 className={styles.title}> </h2>
+      <h2 className={styles.title}>Here's what we found</h2>
       <div className={styles.wrapperButtons}>
-        <Filters />
+        <Filters colorsView={false}/>
         <div className={styles.dropdownList}>
           Sort by
           <Sort />

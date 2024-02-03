@@ -15,8 +15,8 @@ export const searchSlice = createSlice({
       state.isLoading = false;
       state.error = null;
     },
-    setIsActive: state => {
-      state.isActive = false;
+    setIsActive: (state, action) => {
+      state.isActive = action.payload;
     },
     setError: (state, action) => {
       state.error = action.payload;

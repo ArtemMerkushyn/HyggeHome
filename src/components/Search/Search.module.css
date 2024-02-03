@@ -94,6 +94,10 @@
   padding-right: 8px;
 }
 
+.searchBtn svg:hover {
+  border-bottom: 2px solid transparent;
+}
+
 .searchBtn:hover svg {
   fill: #fcb654;
 }

@@ -79,10 +79,15 @@
 .iconsWrapper {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
+}
+
+.icons {
+  fill: none;
+  stroke: #fcb654;
+  cursor: pointer;
 }
 
 .icons:hover {
   fill: #fcb654;
-  cursor: pointer;
 }

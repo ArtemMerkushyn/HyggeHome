@@ -3,16 +3,11 @@ import imageNotFound from '../../image/broken-images.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFavorites } from '../../redux/selectors';
 import { addFavorite, removeFavorite } from '../../redux/favoriteSlice';
-import { useEffect } from 'react';
 
 export default function CardItem({ candle }) {
   const dispatch = useDispatch();
 
   const itemFavorites = useSelector(selectFavorites);
-
-  useEffect(() => {
-    localStorage.setItem('myFavorite', JSON.stringify(itemFavorites));
-  }, [itemFavorites]);
 
   const isChecked = itemFavorites.some(({ _id }) => _id === candle._id);
 

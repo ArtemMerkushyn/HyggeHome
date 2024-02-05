@@ -37,7 +37,7 @@ export const Search = () => {
           <Sort />
         </div>
       </div>
-      {data.length === 0 ? (<div className={styles.notFound}><img src="/images/notFound/notFound.jpg" alt="not-found" /></div>) : (<CandlesList data={data} error={error} isLoading={isLoading} />)}
+      {data.length === 0 ? (<div className={styles.notFound}><img style={{borderRadius: '24px'}} src="/images/notFound/notFound.jpg" alt="not-found" /></div>) : (<CandlesList data={data} error={error} isLoading={isLoading} />)}
     </div>
   );
 }

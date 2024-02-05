@@ -1,10 +1,15 @@
 import styles from './CardItem.module.css';
+import imageNotFound from '../../image/broken-images.png';
 
 export default function CardItem({ candle }) {
   return (
     <li className={styles.cardItem}>
       <div className={styles.itemWrapper}>
-        <img className={styles.cardImage} src={candle.image} alt="Candles" />
+        <img
+          className={styles.cardImage}
+          src={candle.image ? candle.image : imageNotFound}
+          alt="Candles"
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="374"
@@ -47,7 +52,11 @@ export default function CardItem({ candle }) {
         </div>
         <p className={styles.priceItem}>${candle.price}</p>
       </div>
-      <img className={styles.cardPicture} src={candle.picture} alt="Candles" />
+      <img
+        className={styles.cardPicture}
+        src={candle.picture ? candle.picture : imageNotFound}
+        alt="Candles"
+      />
     </li>
   );
 }

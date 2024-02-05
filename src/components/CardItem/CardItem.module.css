@@ -91,3 +91,10 @@
 .icons:hover {
   fill: #fcb654;
 }
+
+.favButton {
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: none;
+}

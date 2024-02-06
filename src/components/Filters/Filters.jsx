@@ -3,27 +3,47 @@ import Button from '../MainPageContent/Button/Button';
 import styles from './Filters.module.css';
 import { InputRange }from '../InputRange/InputRange.jsx';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { addColor } from '../../redux/filterSlice.js';
 
 const colors = ['blue', 'green', 'grey', 'red', 'black', 'purple', 'yellow', 'pink'];
 
-export default function Filters({ colorsView }) {
+export default function Filters({ colorsView, data, onUpdateFilteredData }) {
     const [ openFilter, setOpenFilter ] = useState(false);
     const [selectedColors, setSelectedColors] = useState({
-        'blue': true,
+        'blue': false,
         'green': false,
         'grey': false,
         'red': false,
         'black': false,
         'purple': false,
         'yellow': false,
-        'pink': true,
+        'pink': false,
     });
+    const minPrice = useSelector(state => state.filter.filter.minPrice);
+    const maxPrice = useSelector(state => state.filter.filter.maxPrice);
+
+    const dispatch = useDispatch();
 
     const handleItemChange = (color) => {
         setSelectedColors((prevColors) => ({
             ...prevColors,
             [color]: !prevColors[color],
         }));
+    };
+
+    const handleApply = () => {
+        const colors = Object.keys(selectedColors).filter(color => selectedColors[color]);
+        const min = minPrice;
+        const max = maxPrice;
+      
+        dispatch(addColor(colors));
+      
+        if (!data) return []; // если данных нет, возвращаем пустой массив
+        const filteredData = data.filter(item => item.price >= min && item.price <= max);
+
+        // Вызываем функцию onUpdateFilteredData для передачи отфильтрованных данных обратно в Candles
+        onUpdateFilteredData(filteredData);
     };
 
     return (
@@ -38,7 +58,7 @@ export default function Filters({ colorsView }) {
                 }}
                 >
                 <h5>Price range:</h5>
-                <InputRange maxValue={200}/>
+                <InputRange maxValue={100}/>
                 {colorsView ? (
                     <div className={styles.colorFilters}>
                         <h5>Color:</h5>
@@ -74,7 +94,7 @@ export default function Filters({ colorsView }) {
                         </div>
                     </div>
                 ) : (<></>)}
-                <Button text={'Apply'} funcClick={() => setOpenFilter(false)}/>
+                <Button text={'Apply'} funcClick={handleApply}/>
             </div>
         </div>
     );

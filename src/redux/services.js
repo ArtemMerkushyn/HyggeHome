@@ -13,7 +13,10 @@ export const servicesApi = createApi({
     getSearchByName: builder.query({
       query: name => `search?query=${name}`,
     }),
+    getFilterPrice: builder.query({
+      query: ({ min, max }) => `search?min=${min}&max=${max}`,
+    }),
   }),
 });
 
-export const { useGetCandlesQuery, useGetSearchByNameQuery } = servicesApi;
+export const { useGetCandlesQuery, useGetSearchByNameQuery, useGetFilterPriceQuery } = servicesApi;

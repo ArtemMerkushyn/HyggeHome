@@ -15,6 +15,7 @@ import {
 import { servicesApi } from './services';
 import searchReducer from './searchSlice';
 import favoritesReducer from './favoriteSlice';
+import filterReducer from './filterSlice';
 
 const persistConfig = {
   key: 'favorite',
@@ -27,6 +28,7 @@ const reducers = combineReducers({
   [servicesApi.reducerPath]: servicesApi.reducer,
   search: searchReducer,
   favorite: favoritesReducer,
+  filter: filterReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

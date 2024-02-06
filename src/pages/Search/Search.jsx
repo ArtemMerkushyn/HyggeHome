@@ -5,9 +5,17 @@ import Filters from '../../components/Filters/Filters';
 import Sort from '../../components/Sort/Sort';
 import styles from './Search.module.css';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 export const Search = () => {
   const { data, error, isLoading } = useSelector(state => state.search);
+
+  const [newData, setNewData] = useState([]);
+
+  // Функция для обновления отфильтрованных данных
+  const updateFilteredData = (filteredData) => {
+    setNewData(filteredData);
+  };
 
   return (
     <div className={styles.wrapperFilters}>
@@ -31,13 +39,13 @@ export const Search = () => {
       </div>
       <h2 className={styles.title}>{data.length === 0 ? 'Sorry, your request did not yield any results' : "Here's what we found"}</h2>
       <div className={styles.wrapperButtons}>
-        <Filters colorsView={false}/>
+        <Filters colorsView={false} data={data} onUpdateFilteredData={updateFilteredData}/>
         <div className={styles.dropdownList}>
           Sort by
           <Sort />
         </div>
       </div>
-      {data.length === 0 ? (<div className={styles.notFound}><img style={{borderRadius: '24px'}} src="/images/notFound/notFound.jpg" alt="not-found" /></div>) : (<CandlesList data={data} error={error} isLoading={isLoading} />)}
+      {data.length === 0 ? (<div className={styles.notFound}><img style={{borderRadius: '24px'}} src="/images/notFound/notFound.jpg" alt="not-found" /></div>) : (<CandlesList data={newData.length === 0 ? data : newData} error={error} isLoading={isLoading} />)}
     </div>
   );
 }

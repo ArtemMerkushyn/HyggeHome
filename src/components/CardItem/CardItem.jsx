@@ -37,7 +37,7 @@ export default function CardItem({ candle }) {
           <path d="M1 1L373 2" stroke="#FCB654" strokeLinecap="round" />
         </svg>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <p className={styles.titleItem}>{candle.name}name</p>
+          <p className={styles.titleItem}>{candle.name}</p>
           <div className={styles.iconsWrapper}>
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -4,16 +4,24 @@ import { toast } from 'react-toastify';
 
 import Icons from '../Icons/Icons.jsx';
 import styles from './Search.module.css';
-import { useGetSearchByNameQuery } from '../../redux/services.js';
-import { setError, setIsActive, setIsLoading, setSearch } from '../../redux/searchSlice.js';
+import { useSearchByNameQuery } from '../../redux/services.js';
+import {
+  setError,
+  setIsActive,
+  setIsLoading,
+  setSearch,
+} from '../../redux/searchSlice.js';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { selectIsActive } from '../../redux/selectors.js';
 
 export const Search = () => {
   const dispatch = useDispatch();
-  const [ inputValue, setInputValue ] = useState('');
+  const [inputValue, setInputValue] = useState('');
+  const [searchValue, setSearchValue] = useState(null);
   const active = useSelector(selectIsActive);
-  const { data, error, isLoading } = useGetSearchByNameQuery(inputValue);
+  const { data, error, isLoading } = useSearchByNameQuery(searchValue, {
+    skip: !searchValue,
+  });
 
   const location = useLocation();
   const pathName = location.pathname;
@@ -28,20 +36,22 @@ export const Search = () => {
 
   const handleInputOpen = () => {
     dispatch(setIsActive(true));
-  }
+  };
 
   const handleInputClose = () => {
     dispatch(setIsActive(false));
-  }
+  };
 
   const handleInputChange = e => {
     setInputValue(e.target.value);
   };
 
-    const searchName = () => {
+  const searchName = () => {
     if (inputValue.trim() === '') {
       return toast.error('The field cannot be empty.');
     }
+
+    setSearchValue(inputValue);
 
     if (data) {
       dispatch(setSearch(data));
@@ -59,23 +69,27 @@ export const Search = () => {
   return (
     <div className={styles.wrapper}>
       {active ? (
-        <button
-          onClick={handleInputClose}
-          className={styles.closeBtn}
-        ></button>
+        <button onClick={handleInputClose} className={styles.closeBtn}></button>
       ) : (
         <button
           onClick={handleInputOpen}
           className={
             active ? `${styles.openBtn} ${styles.open}` : `${styles.openBtn}`
           }
-          style={{borderBottom: pathName === '/search' ? `2px solid #fcb654` : '2px solid transparent'}}
+          style={{
+            borderBottom:
+              pathName === '/search'
+                ? `2px solid #fcb654`
+                : '2px solid transparent',
+          }}
         >
           <Icons icon={'search'} />
         </button>
       )}
       <div
-        className={active  ? `${styles.search} ${styles.activeSearch}` : styles.search}
+        className={
+          active ? `${styles.search} ${styles.activeSearch}` : styles.search
+        }
       >
         <input
           id="searchInput"

@@ -10,7 +10,7 @@ export const servicesApi = createApi({
       query: () => 'products',
       providesTags: ['Candles'],
     }),
-    getSearchByName: builder.query({
+    searchByName: builder.query({
       query: name => `search?query=${name}`,
     }),
     getFilterPrice: builder.query({
@@ -19,4 +19,8 @@ export const servicesApi = createApi({
   }),
 });
 
-export const { useGetCandlesQuery, useGetSearchByNameQuery, useGetFilterPriceQuery } = servicesApi;
+export const {
+  useGetCandlesQuery,
+  useSearchByNameQuery,
+  useGetFilterPriceQuery,
+} = servicesApi;

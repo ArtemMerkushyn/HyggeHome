@@ -13,9 +13,9 @@ import {
 } from 'redux-persist';
 
 import { servicesApi } from './services';
-import searchReducer from './searchSlice';
-import favoritesReducer from './favoriteSlice';
-import filterReducer from './filterSlice';
+import searchReducer from './slices/searchSlice';
+import favoritesReducer from './slices/favoriteSlice';
+import filterReducer from './slices/filterSlice';
 
 const persistConfig = {
   key: 'root',

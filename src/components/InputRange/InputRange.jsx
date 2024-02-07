@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { addPrice } from '../../redux/filterSlice.js';
+import { addPrice } from '../../redux/slices/filterSlice.js';
 import PropTypes from 'prop-types';
 import styles from './InputRange.module.css';
 import { useDispatch } from 'react-redux';
@@ -18,28 +18,32 @@ export const InputRange = ({ maxValue }) => {
   const handleMouseDown = (e, setIsDragging) => {
     e.preventDefault();
     setIsDragging(true);
-  }
+  };
 
-  const handleMouseMove = useCallback((e) => {
-    if (!isDragging1 && !isDragging2) return;
+  const handleMouseMove = useCallback(
+    e => {
+      if (!isDragging1 && !isDragging2) return;
 
-    const sliderRect = sliderRef.current.getBoundingClientRect();
-    let newPosition = (e.clientX - sliderRect.left) / sliderRect.width * maxValue;
+      const sliderRect = sliderRef.current.getBoundingClientRect();
+      let newPosition =
+        ((e.clientX - sliderRect.left) / sliderRect.width) * maxValue;
 
-    // Проверка для предотвращения выхода за границы слайдера
-    newPosition = Math.max(0, Math.min(newPosition, maxValue));
+      // Проверка для предотвращения выхода за границы слайдера
+      newPosition = Math.max(0, Math.min(newPosition, maxValue));
 
-    if (isDragging1 && newPosition <= parseInt(max, 10)) {
-      setMin(Math.round(newPosition).toString());
-    } else if (isDragging2 && newPosition >= parseInt(min, 10)) {
-      setMax(Math.round(newPosition).toString());
-    }
-  }, [isDragging1, isDragging2, maxValue, min, max]);
+      if (isDragging1 && newPosition <= parseInt(max, 10)) {
+        setMin(Math.round(newPosition).toString());
+      } else if (isDragging2 && newPosition >= parseInt(min, 10)) {
+        setMax(Math.round(newPosition).toString());
+      }
+    },
+    [isDragging1, isDragging2, maxValue, min, max],
+  );
 
   const handleMouseUp = () => {
     setIsDragging1(false);
     setIsDragging2(false);
-  }
+  };
 
   const handleInputChange = (e, setValue) => {
     const inputValue = e.target.value;
@@ -52,7 +56,7 @@ export const InputRange = ({ maxValue }) => {
     } else {
       setValue(inputValue);
     }
-  }
+  };
 
   useEffect(() => {
     setInputError1(min === '' || parseInt(min, 10) > parseInt(max, 10));
@@ -61,13 +65,13 @@ export const InputRange = ({ maxValue }) => {
   }, [min, max]);
 
   useEffect(() => {
-    const handleGlobalMouseMove = (e) => {
+    const handleGlobalMouseMove = e => {
       handleMouseMove(e);
-    }
+    };
 
     const handleGlobalMouseUp = () => {
       handleMouseUp();
-    }
+    };
 
     if (isDragging1 || isDragging2) {
       document.addEventListener('mousemove', handleGlobalMouseMove);
@@ -92,47 +96,55 @@ export const InputRange = ({ maxValue }) => {
           className={styles.slider__thumb1}
           style={{
             left: `calc(${(parseInt(min, 10) / maxValue) * 100}% - 10px)`,
-            zIndex: closeDistancePoints ? 7 : 5
+            zIndex: closeDistancePoints ? 7 : 5,
           }}
-          onMouseDown={(e) => handleMouseDown(e, setIsDragging1)}
+          onMouseDown={e => handleMouseDown(e, setIsDragging1)}
         >
-          <span className={styles.value}>${min === '' ? '' : Math.round(parseInt(min, 10))}</span>
+          <span className={styles.value}>
+            ${min === '' ? '' : Math.round(parseInt(min, 10))}
+          </span>
         </div>
-        <div 
-          className={styles.line} 
-          style={{ 
-            left: `calc(${(parseInt(min, 10) / maxValue) * 100}% - 10px)`, 
-            width: `calc(${((parseInt(max, 10) - parseInt(min, 10)) / maxValue) * 100}%)`, 
-          }} 
+        <div
+          className={styles.line}
+          style={{
+            left: `calc(${(parseInt(min, 10) / maxValue) * 100}% - 10px)`,
+            width: `calc(${
+              ((parseInt(max, 10) - parseInt(min, 10)) / maxValue) * 100
+            }%)`,
+          }}
         />
         <div
           className={styles.slider__thumb2}
-          style={{ left: `calc(${(parseInt(max, 10) / maxValue) * 100}% - 10px)` }}
-          onMouseDown={(e) => handleMouseDown(e, setIsDragging2)}
+          style={{
+            left: `calc(${(parseInt(max, 10) / maxValue) * 100}% - 10px)`,
+          }}
+          onMouseDown={e => handleMouseDown(e, setIsDragging2)}
         >
-          <span className={styles.value}>${max === '' ? '' : Math.round(parseInt(max, 10))}</span>
+          <span className={styles.value}>
+            ${max === '' ? '' : Math.round(parseInt(max, 10))}
+          </span>
         </div>
       </div>
       <div className={styles.priceInputs}>
         <input
           type="number"
           value={min}
-          onChange={(e) => handleInputChange(e, setMin)}
+          onChange={e => handleInputChange(e, setMin)}
           className={styles.priceInput}
-          style={{background: inputError1 ? '#f4adad' : '#fff'}}
+          style={{ background: inputError1 ? '#f4adad' : '#fff' }}
         />
         <input
           type="number"
           value={max}
-          onChange={(e) => handleInputChange(e, setMax)}
+          onChange={e => handleInputChange(e, setMax)}
           className={styles.priceInput}
-          style={{ background: inputError2 ? '#f4adad' : '#fff'}}
+          style={{ background: inputError2 ? '#f4adad' : '#fff' }}
         />
       </div>
     </>
   );
-}
+};
 
 InputRange.propTypes = {
-  maxValue: PropTypes.number
-}
+  maxValue: PropTypes.number,
+};

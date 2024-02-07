@@ -2,7 +2,7 @@ import styles from './CardItem.module.css';
 import imageNotFound from '../../image/broken-images.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFavorites } from '../../redux/selectors';
-import { addFavorite, removeFavorite } from '../../redux/favoriteSlice';
+import { addFavorite, removeFavorite } from '../../redux/slices/favoriteSlice';
 
 export default function CardItem({ candle }) {
   const dispatch = useDispatch();

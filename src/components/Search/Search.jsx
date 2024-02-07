@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
@@ -10,8 +11,7 @@ import {
   setIsActive,
   setIsLoading,
   setSearch,
-} from '../../redux/searchSlice.js';
-import { useLocation, useNavigate } from 'react-router-dom';
+} from '../../redux/slices/searchSlice.js';
 import { selectIsActive } from '../../redux/selectors.js';
 
 export const Search = () => {
@@ -105,4 +105,3 @@ export const Search = () => {
     </div>
   );
 };
-

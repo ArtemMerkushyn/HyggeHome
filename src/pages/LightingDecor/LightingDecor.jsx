@@ -1,14 +1,12 @@
-import { useEffect } from "react";
-import { setIsActive } from "../../redux/searchSlice";
-import { useDispatch } from "react-redux";
+import { useEffect } from 'react';
+import { setIsActive } from '../../redux/slices/searchSlice';
+import { useDispatch } from 'react-redux';
 
 export const LightingDecor = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(setIsActive(false));
-    }, [dispatch]);
-    return (
-        <div>LightingDecor</div>
-    );
-}
+  useEffect(() => {
+    dispatch(setIsActive(false));
+  }, [dispatch]);
+  return <div>LightingDecor</div>;
+};

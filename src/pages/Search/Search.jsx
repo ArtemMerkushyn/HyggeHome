@@ -9,6 +9,7 @@ import { useState } from 'react';
 
 export const Search = () => {
   const { data, error, isLoading } = useSelector(state => state.search);
+  console.log(data)
 
   const [newData, setNewData] = useState([]);
 

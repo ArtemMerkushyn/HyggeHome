@@ -29,6 +29,16 @@ export const Search = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (data) {
+      dispatch(setSearch(data));
+    }
+    if (error) {
+      dispatch(setError(error));
+    }
+    dispatch(setIsLoading(isLoading));
+  }, [data, error, isLoading, dispatch]);
+
+  useEffect(() => {
     if (active) {
       document.getElementById('searchInput').focus();
     }
@@ -52,17 +62,6 @@ export const Search = () => {
     }
 
     setSearchValue(inputValue);
-
-    if (data) {
-      dispatch(setSearch(data));
-    }
-
-    if (error) {
-      dispatch(setError(error));
-    }
-
-    dispatch(setIsLoading(isLoading));
-
     navigate('search');
   };
 
@@ -106,3 +105,4 @@ export const Search = () => {
     </div>
   );
 };
+

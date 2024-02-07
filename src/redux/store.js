@@ -18,10 +18,10 @@ import favoritesReducer from './favoriteSlice';
 import filterReducer from './filterSlice';
 
 const persistConfig = {
-  key: 'favorite',
+  key: 'root',
   version: 1,
   storage,
-  whitelist: ['favorite'],
+  whitelist: ['favorite', 'search'],
 };
 
 const reducers = combineReducers({

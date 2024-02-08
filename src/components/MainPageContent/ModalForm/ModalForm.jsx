@@ -4,6 +4,7 @@ import Icons from '../../Icons/Icons';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Button from '../Button/Button';
+import MyInput from '../../UI/MyInput';
 
 export const ModalForm = ({ toggleModal }) => {
   const [firstCheckbox, setFirstCheckbox] = useState(false);
@@ -68,69 +69,54 @@ export const ModalForm = ({ toggleModal }) => {
       <form action="/submit" method="post" onSubmit={handleSubmit} className={css.modal_form}>
       <h2 className={css.modal_register_text}>Register Individual Account!</h2>
 
-<label htmlFor="first-name" className={css.modal_input_label}>
-  Your first name*
-</label>
-<input
-  type="text"
-  id="first-name"
-  name="first-name"
-  placeholder="Your first name"
-  className={css.modal_input}
-  value={firstName}
-  onChange={(e) => setFirstName(e.target.value)}
+<MyInput
+    type="text"
+    id="first-name"
+    name="first-name"
+    placeholder="Your first name"
+    value={firstName}
+    onChange={(e) => setFirstName(e.target.value)}
+    labelFor='Your first name*'
 />
 
-<label htmlFor="last-name" className={css.modal_input_label}>
-  Your last name*
-</label>
-<input
+<MyInput
   type="text"
   id="last-name"
   name="last-name"
   placeholder="Your last name"
-  className={css.modal_input}
   value={lastName}
   onChange={(e) => setLastName(e.target.value)}
+  labelFor='Your last name*'
 />
 
-<label htmlFor="email" className={css.modal_input_label}>
-  Your Email*
-</label>
-<input
+<MyInput
   type="text"
   id="email"
   name="email"
   placeholder="Your email"
-  className={css.modal_input}
   value={email}
   onChange={(e) => setEmail(e.target.value)}
+  labelFor='Your Email*'
 />
 
-<label htmlFor="password" className={css.modal_input_label}>
-  Create password*
-</label>
-<input
+<MyInput
   type="password"
   id="password"
   name="password"
   placeholder="Password"
-  className={css.modal_input}
   value={password}
   onChange={(e) => setPassword(e.target.value)}
+  labelFor='Create password*'
 />
 
-<label htmlFor="confirm-password" className={css.modal_input_label}>
-  Confirm the password*
-</label>
-<input
+<MyInput
   type="password"
   id="confirm-password"
   name="confirm-password"
   placeholder="Password"
-  className={css.modal_input}
   value={confirmPassword}
   onChange={(e) => setConfirmPassword(e.target.value)}
+  labelFor='Confirm the password*'
 />
 
 <div className={css.modal_checkbox_container}>

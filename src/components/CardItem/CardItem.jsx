@@ -3,6 +3,7 @@ import imageNotFound from '../../image/broken-images.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFavorites } from '../../redux/selectors';
 import { addFavorite, removeFavorite } from '../../redux/slices/favoriteSlice';
+import { toast } from 'react-toastify';
 
 export default function CardItem({ candle }) {
   const dispatch = useDispatch();
@@ -14,8 +15,14 @@ export default function CardItem({ candle }) {
   const handleToggleFavorite = () => {
     if (isChecked) {
       dispatch(removeFavorite(candle));
+      toast.info(`${candle.name} remove from favorite`, {
+        theme: 'colored',
+      });
     } else {
       dispatch(addFavorite(candle));
+      toast.success(`${candle.name} add to favorite`, {
+        theme: 'colored',
+      });
     }
   };
 

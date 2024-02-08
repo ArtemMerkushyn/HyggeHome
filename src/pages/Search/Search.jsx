@@ -2,14 +2,13 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import CandlesList from '../../components/CardList/CardList';
+import CardList from '../../components/CardList/CardList';
 import Filters from '../../components/Filters/Filters';
 import Sort from '../../components/Sort/Sort';
 import styles from './Search.module.css';
 
 export const Search = () => {
   const { data, error, isLoading } = useSelector(state => state.search);
-  console.log(data);
 
   const [newData, setNewData] = useState([]);
 
@@ -62,7 +61,7 @@ export const Search = () => {
           />
         </div>
       ) : (
-        <CandlesList
+        <CardList
           data={newData.length === 0 ? data : newData}
           error={error}
           isLoading={isLoading}

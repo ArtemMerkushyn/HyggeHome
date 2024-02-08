@@ -23,6 +23,12 @@ export const Candles = () => {
     setNewData(filteredData);
   };
 
+  useEffect(() => {
+    if (data) {
+      setNewData(data);
+    }
+  }, [data]);
+
   return (
     <div className={styles.wrapperFilters}>
       <div className={styles.wrapper}>
@@ -55,14 +61,24 @@ export const Candles = () => {
         />
         <div className={styles.dropdownList}>
           Sort by
-          <Sort data={data} onUpdateFilteredData={updateFilteredData} />
+          <Sort data={newData} onUpdateFilteredData={updateFilteredData} />
         </div>
       </div>
-      <CardList
-        data={newData?.length === 0 ? data : newData}
-        error={error}
-        isLoading={isLoading}
-      />
+      {newData.length === 0 ? (
+        <div className={styles.notFound}>
+          <img
+            style={{ borderRadius: '24px' }}
+            src="/images/notFound/notFound.jpg"
+            alt="not-found"
+          />
+        </div>
+      ) : (
+        <CardList
+          data={newData}
+          error={error}
+          isLoading={isLoading}
+        />
+      )}
     </div>
   );
 };

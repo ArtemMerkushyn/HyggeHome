@@ -55,11 +55,11 @@ export const Candles = () => {
         />
         <div className={styles.dropdownList}>
           Sort by
-          <Sort />
+          <Sort data={data} onUpdateFilteredData={updateFilteredData} />
         </div>
       </div>
       <CardList
-        data={newData.length === 0 ? data : newData}
+        data={newData?.length === 0 ? data : newData}
         error={error}
         isLoading={isLoading}
       />

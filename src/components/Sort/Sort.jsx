@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 
 import styles from './Sort.module.css';
 
-export default function Sort() {
+export default function Sort({ data, onUpdateFilteredData }) {
   const [isOpen, setOpen] = useState(false);
   const [value, setValue] = useState('Popular');
   const dropdownRef = useRef(null);
@@ -15,6 +15,14 @@ export default function Sort() {
   const handleOptionClick = option => {
     setValue(option);
     setOpen(false);
+
+    if (option === 'Expensive') {
+      const sortedData = [...data].sort((a, b) => b.price - a.price);
+      onUpdateFilteredData(sortedData);
+    } else if (option === 'Cheapest') {
+      const sortedData = [...data].sort((a, b) => a.price - b.price);
+      onUpdateFilteredData(sortedData);
+    }
   };
 
   useEffect(() => {

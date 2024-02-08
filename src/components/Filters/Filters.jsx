@@ -50,7 +50,7 @@ export default function Filters({ colorsView, data, onUpdateFilteredData }) {
 
     dispatch(addColor(colors));
 
-    if (!data) return []; // если данных нет, возвращаем пустой массив
+    if (!data) return [];
     const filteredData = data.filter(
       item => item.price >= min && item.price <= max,
     );

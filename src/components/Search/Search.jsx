@@ -65,6 +65,12 @@ export const Search = () => {
     navigate('search');
   };
 
+  const handleKeyDown = e => {
+    if (e.key === 'Enter') {
+      searchName();
+    }
+  };
+
   return (
     <div className={styles.wrapper}>
       {active ? (
@@ -95,6 +101,7 @@ export const Search = () => {
           type="text"
           value={inputValue}
           onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
           className={styles.input}
           placeholder="Search"
         />

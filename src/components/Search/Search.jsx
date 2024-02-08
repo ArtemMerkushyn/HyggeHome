@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { DebounceInput } from 'react-debounce-input';
 
 import Icons from '../Icons/Icons.jsx';
 import styles from './Search.module.css';
@@ -54,6 +55,11 @@ export const Search = () => {
 
   const handleInputChange = e => {
     setInputValue(e.target.value);
+    setSearchValue(e.target.value);
+
+    if (pathName !== '/search') {
+      navigate('search');
+    }
   };
 
   const searchName = () => {
@@ -96,7 +102,7 @@ export const Search = () => {
           active ? `${styles.search} ${styles.activeSearch}` : styles.search
         }
       >
-        <input
+        <DebounceInput
           id="searchInput"
           type="text"
           value={inputValue}
@@ -104,6 +110,8 @@ export const Search = () => {
           onKeyDown={handleKeyDown}
           className={styles.input}
           placeholder="Search"
+          minLength={2}
+          debounceTimeout={2000}
         />
         <button className={styles.searchBtn} onClick={searchName}>
           <Icons icon={'search'} />

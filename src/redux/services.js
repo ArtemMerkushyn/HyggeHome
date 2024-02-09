@@ -16,14 +16,6 @@ export const servicesApi = createApi({
     getFilterPrice: builder.query({
       query: ({ min, max }) => `search?min=${min}&max=${max}`,
     }),
-    registerUser: builder.mutation({
-      query: (newUser) => ({
-        url: '/user',
-        method: 'POST',
-        body: newUser
-
-      })
-    }),
   }),
 });
 
@@ -31,5 +23,4 @@ export const {
   useGetCandlesQuery,
   useSearchByNameQuery,
   useGetFilterPriceQuery,
-  useRegisterUserMutation
 } = servicesApi;

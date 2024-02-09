@@ -1,34 +1,24 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from './NewCollection.module.css';
 import Icons from '../../Icons/Icons';
-import { useGetCandlesQuery } from '../../../redux/services';
 import CardItem from '../../CardItem/CardItem';
+import SkeletonProductLib from '../../skeleton/SkeletonProductLib';
 
-export const NewCollection = () => {
-  const [catalog, setCatalog] = useState([]);
-  const { data, error, isLoading } = useGetCandlesQuery();
+
+export const NewCollection = ({catalog, error, isLoading, upperText, lowerText}) => {
   const [listPosition, setListPosition] = useState(0);
   const [scrollBarPosition, setScrollBarPosition] = useState(0);
 
-  useEffect(() => {
-    if (data) {
-      setCatalog(data);
-    }
-  }, [data]);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
 
   if (error) {
     return <div>Error loading data: {error.message}</div>;
   }
 
   const widthScroll = 634; // .scroll {width: 634px;}
-  const widthScrollNav = data ? 634 / (data.length - 2) : 0;
+  const widthScrollNav = catalog ? 634 / (catalog.length - 2) : 0;
   const widthSlide = 412 + 30;
-  const listPositionEndPointNext = data ? -(widthSlide * (data.length - 4)) : 0;
-  const listPositionEndPointPrev = data ? -(widthSlide * (data.length - 2)) : 0;
+  const listPositionEndPointNext = catalog ? -(widthSlide * (catalog.length - 4)) : 0;
+  const listPositionEndPointPrev = catalog ? -(widthSlide * (catalog.length - 2)) : 0;
 
   const handleNext = () => {
     if (listPosition < listPositionEndPointNext) {
@@ -51,10 +41,16 @@ export const NewCollection = () => {
   return (
     <>
       <div className={styles.wrapper}>
-        <h5 className={styles.new_collection_text}>New collection</h5>
-        <h3 className={styles.new_collection_goods_text}>New Hygge goods for comfort</h3>
+        <h5 className={styles.new_collection_text}>{upperText}</h5>
+        <h3 className={styles.new_collection_goods_text}>{lowerText}</h3>
         <ul className={styles.itemsList} style={{ left: `${listPosition}px` }}>
-          {catalog.map((candle, index) => (
+          {(isLoading) ? (<div className={styles.skeleton}>
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(loading => (
+          <div className="col-3" key={loading}>
+            <SkeletonProductLib />
+          </div>
+        ))}
+      </div>) : catalog.map((candle, index) => (
             <CardItem key={index} candle={candle} />
           ))}
         </ul>

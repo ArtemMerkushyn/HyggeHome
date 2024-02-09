@@ -50,7 +50,7 @@ export const Search = () => {
       <div className={styles.wrapperButtons}>
         <Filters
           colorsView={false}
-          data={data}
+          dataFilter={data}
           onUpdateFilteredData={updateFilteredData}
         />
         <div className={styles.dropdownList}>

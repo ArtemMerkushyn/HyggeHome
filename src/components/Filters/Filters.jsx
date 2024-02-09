@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Button from '../MainPageContent/Button/Button';
 import styles from './Filters.module.css';
 import { InputRange } from '../InputRange/InputRange.jsx';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { addColor } from '../../redux/slices/filterSlice.js';
+import { useGetFilterPriceQuery } from '../../redux/services.js';
+import { useLocation } from 'react-router-dom';
 
 const colors = [
   'blue',
@@ -17,7 +19,7 @@ const colors = [
   'pink',
 ];
 
-export default function Filters({ colorsView, data, onUpdateFilteredData }) {
+export default function Filters({ colorsView, dataFilter, onUpdateFilteredData }) {
   const [openFilter, setOpenFilter] = useState(false);
   const [selectedColors, setSelectedColors] = useState({
     blue: false,
@@ -32,7 +34,34 @@ export default function Filters({ colorsView, data, onUpdateFilteredData }) {
   const minPrice = useSelector(state => state.filter.filter.minPrice);
   const maxPrice = useSelector(state => state.filter.filter.maxPrice);
 
+  const [skipToken, setSkipToken] = useState(true);
+  const [minV, setMinV] = useState(null);
+  const [maxV, setMaxV] = useState(null);
+  const [filteredData, setFilteredData] = useState([]);
+  const prevDataRef = useRef([]);
+
+  const { data, isLoading } = useGetFilterPriceQuery({ min: minV, max: maxV }, { skip: skipToken });
+  
+  const location = useLocation();
+  const pathName = location.pathname;
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!isLoading && data) {
+      if (pathName !== '/search') {
+        setFilteredData(data);
+      } else {
+        setFilteredData(dataFilter);
+      }
+    }
+  }, [data, isLoading, pathName, dataFilter]);
+
+  useEffect(() => {
+    if (filteredData !== prevDataRef.current) {
+      prevDataRef.current = filteredData;
+      onUpdateFilteredData(filteredData);
+    }
+  }, [filteredData, onUpdateFilteredData]);
 
   const handleItemChange = color => {
     setSelectedColors(prevColors => ({
@@ -42,21 +71,19 @@ export default function Filters({ colorsView, data, onUpdateFilteredData }) {
   };
 
   const handleApply = () => {
-    const colors = Object.keys(selectedColors).filter(
-      color => selectedColors[color],
-    );
-    const min = minPrice;
-    const max = maxPrice;
-
-    dispatch(addColor(colors));
-
-    if (!data) return [];
-    const filteredData = data.filter(
-      item => item.price >= min && item.price <= max,
-    );
-
-    // Вызываем функцию onUpdateFilteredData для передачи отфильтрованных данных обратно в Candles
-    onUpdateFilteredData(filteredData);
+    const colors = Object.keys(selectedColors).filter(color => selectedColors[color]);
+  
+    if (pathName === '/search') {
+      const filteredDataSearch = dataFilter.filter(
+        item => item.price >= minPrice && item.price <= maxPrice,
+      );
+      onUpdateFilteredData(filteredDataSearch); // Передаем отфильтрованные данные напрямую
+    } else {
+      setMinV(minPrice);
+      setMaxV(maxPrice);
+      setSkipToken(false);
+      dispatch(addColor(colors));
+    }
   };
 
   return (

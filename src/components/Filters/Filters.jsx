@@ -19,7 +19,11 @@ const colors = [
   'pink',
 ];
 
-export default function Filters({ colorsView, dataFilter, onUpdateFilteredData }) {
+export default function Filters({
+  colorsView,
+  dataFilter,
+  onUpdateFilteredData,
+}) {
   const [openFilter, setOpenFilter] = useState(false);
   const [selectedColors, setSelectedColors] = useState({
     blue: false,
@@ -40,8 +44,11 @@ export default function Filters({ colorsView, dataFilter, onUpdateFilteredData }
   const [filteredData, setFilteredData] = useState([]);
   const prevDataRef = useRef([]);
 
-  const { data, isLoading } = useGetFilterPriceQuery({ min: minV, max: maxV }, { skip: skipToken });
-  
+  const { data, isLoading } = useGetFilterPriceQuery(
+    { min: minV, max: maxV },
+    { skip: skipToken },
+  );
+
   const location = useLocation();
   const pathName = location.pathname;
   const dispatch = useDispatch();
@@ -71,19 +78,22 @@ export default function Filters({ colorsView, dataFilter, onUpdateFilteredData }
   };
 
   const handleApply = () => {
-    const colors = Object.keys(selectedColors).filter(color => selectedColors[color]);
-  
+    const colors = Object.keys(selectedColors).filter(
+      color => selectedColors[color],
+    );
+
     if (pathName === '/search') {
       const filteredDataSearch = dataFilter.filter(
         item => item.price >= minPrice && item.price <= maxPrice,
       );
-      onUpdateFilteredData(filteredDataSearch); // Передаем отфильтрованные данные напрямую
+      onUpdateFilteredData(filteredDataSearch);
     } else {
       setMinV(minPrice);
       setMaxV(maxPrice);
       setSkipToken(false);
       dispatch(addColor(colors));
     }
+    setOpenFilter(false);
   };
 
   return (

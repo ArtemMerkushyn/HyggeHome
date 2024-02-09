@@ -56,7 +56,7 @@ export const Candles = () => {
       <div className={styles.wrapperButtons}>
         <Filters
           colorsView={true}
-          data={data}
+          dataFilter={data}
           onUpdateFilteredData={updateFilteredData}
         />
         <div className={styles.dropdownList}>

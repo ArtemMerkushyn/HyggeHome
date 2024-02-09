@@ -4,11 +4,10 @@ import Icons from '../../Icons/Icons';
 import CardItem from '../../CardItem/CardItem';
 import SkeletonProductLib from '../../skeleton/SkeletonProductLib';
 
+
 export const NewCollection = ({catalog, error, isLoading, upperText, lowerText}) => {
   const [listPosition, setListPosition] = useState(0);
   const [scrollBarPosition, setScrollBarPosition] = useState(0);
-
-
 
 
   if (error) {

@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Button from '../Button/Button';
 import MyInput from '../../UI/MyInput';
+import { useRegisterUserMutation } from '../../../redux/services';
 
 export const ModalForm = ({ toggleModal }) => {
   const [firstCheckbox, setFirstCheckbox] = useState(false);
@@ -14,6 +15,7 @@ export const ModalForm = ({ toggleModal }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [registerUser] = useRegisterUserMutation();
 
   const handleButton = () => {
     // Перевірка, чи всі поля заповнені
@@ -47,20 +49,25 @@ export const ModalForm = ({ toggleModal }) => {
     return true; 
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (handleButton()) {
-      toggleModal();
       const newUser = {
         firstName,
         lastName,
         email,
         password,
       }
-      console.log(newUser)
+      try {
+        const result = await registerUser({email: newUser.email, password: newUser.password, first: newUser.firstName, last: newUser.lastName}); 
+        toggleModal(); 
+        toast.success('User registered successfully');
+      } catch (error) {
+
+        toast.error('Failed to register user. Please try again later.');
+      }
     }
   };
-
   return (
     <div className={css.modal_container}>
       <button type="button" onClick={toggleModal} className={css.close_modal_button}>

@@ -64,21 +64,7 @@ export const Candles = () => {
           <Sort data={newData} onUpdateFilteredData={updateFilteredData} />
         </div>
       </div>
-      {newData.length === 0 ? (
-        <div className={styles.notFound}>
-          <img
-            style={{ borderRadius: '24px' }}
-            src="/images/notFound/notFound.jpg"
-            alt="not-found"
-          />
-        </div>
-      ) : (
-        <CardList
-          data={newData}
-          error={error}
-          isLoading={isLoading}
-        />
-      )}
+      <CardList data={newData} error={error} isLoading={isLoading} />
     </div>
   );
 };

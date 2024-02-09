@@ -37,14 +37,24 @@ export default function CardList({ data, error, isLoading }) {
 
   return (
     <div className={styles.wrapper}>
-      <ul
-        className={styles.cardList}
-        style={{ marginBottom: catalog.length > itemsPerPage ? '' : '129px' }}
-      >
-        {currentItems.map((candle, index) => (
-          <CandlesItem key={index} candle={candle} />
-        ))}
-      </ul>
+      {catalog.length === 0 ? (
+        <div className={styles.notFound}>
+          <img
+            style={{ borderRadius: '24px' }}
+            src="/images/notFound/notFound.jpg"
+            alt="not-found"
+          />
+        </div>
+      ) : (
+        <ul
+          className={styles.cardList}
+          style={{ marginBottom: catalog.length > itemsPerPage ? '' : '129px' }}
+        >
+          {currentItems.map((candle, index) => (
+            <CandlesItem key={index} candle={candle} />
+          ))}
+        </ul>
+      )}
       {catalog.length > itemsPerPage && (
         <div className={styles.pagination}>
           {Array.from({

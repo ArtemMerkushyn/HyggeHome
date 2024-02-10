@@ -1,0 +1,22 @@
+.stars {
+    display: flex;
+    gap: 4px;
+}
+
+.stars svg {
+    width: 24px;
+    height: 24px;
+}
+
+.starActive svg {
+    fill: #FCB654;
+    display: flex;
+    align-items: center;
+}
+
+.starNoActive svg {
+    fill: #FCB654;
+    opacity: .4;
+    display: flex;
+    align-items: center;
+}

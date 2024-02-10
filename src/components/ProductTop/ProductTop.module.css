@@ -1,0 +1,59 @@
+.product {
+    max-width: 1075px;
+    width: 100%;
+    display: flex;
+    gap: 27px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.info__item h3 {
+    font-family: DM Mono;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 47px;
+    letter-spacing: -6%;
+    margin-bottom: 10px;
+}
+
+.rating {
+    display: flex;
+    gap: 10px;
+    color: #fcb654;
+    font-family: DM Mono;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 6%;
+    margin-bottom: 10px;
+}
+
+.rating span {
+    display: flex;
+    align-items: center;
+}
+
+.toCatr button {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.text {
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 27px;
+}
+
+.price {
+    font-family: DM Mono;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 47px;
+    letter-spacing: -6%;
+    margin-bottom: 10px;
+}

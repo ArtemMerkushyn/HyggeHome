@@ -6,7 +6,7 @@ import styles from './ProductTop.module.css';
 import { SliderNoArrow } from './SliderNoArrow/SliderNoArrow';
 import { toast } from 'react-toastify';
 
-export const ProductTop = () => {
+export const ProductTop = ({ data }) => {
   const [amount, setAmount] = useState(0);
 
   const handleAmountChange = newAmount => {
@@ -22,7 +22,7 @@ export const ProductTop = () => {
       <SliderNoArrow />
       <div className={styles.info}>
         <div className={styles.info__item}>
-          <h3>{'Product name'}</h3>
+          <h3>{data.name}</h3>
           <div className={styles.rating}>
             <Rating rating={4} />
             <span>({'4'} reviews)</span>

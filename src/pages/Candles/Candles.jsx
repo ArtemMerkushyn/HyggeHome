@@ -11,13 +11,12 @@ import styles from './Candles.module.css';
 
 export const Candles = () => {
   const { data, error, isLoading } = useGetCandlesQuery();
+  const [newData, setNewData] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(setIsActive(false));
   }, [dispatch]);
-
-  const [newData, setNewData] = useState([]);
 
   const updateFilteredData = filteredData => {
     setNewData(filteredData);

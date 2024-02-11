@@ -19,7 +19,7 @@ export const ProductTop = ({ data }) => {
 
   return (
     <div className={styles.product}>
-      <SliderNoArrow />
+      <SliderNoArrow data={data} />
       <div className={styles.info}>
         <div className={styles.info__item}>
           <h3>{data.name}</h3>
@@ -34,7 +34,7 @@ export const ProductTop = ({ data }) => {
           </p>
         </div>
         <div className={styles.info__item}>
-          <div className={styles.price}>${'5'}</div>
+          <div className={styles.price}>${data.price}</div>
           <Amount onAmountChange={handleAmountChange} />
           <div className={styles.toCatr}>
             <Button funcClick={funcClick} text={'Add to cart'} />

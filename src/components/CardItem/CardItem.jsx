@@ -28,6 +28,10 @@ export default function CardItem({ candle }) {
     }
   };
 
+  const handleToProductPage = candle => {
+    navigate(`/product/${candle._id}`, { state: { candle } });
+  };
+
   return (
     <li className={styles.cardItem}>
       <div className={styles.itemWrapper}>
@@ -89,9 +93,7 @@ export default function CardItem({ candle }) {
         className={styles.cardPicture}
         src={candle.picture ? candle.picture : imageNotFound}
         alt="Candles"
-        onClick={() => {
-          navigate(`/product/${candle._id}`);
-        }}
+        onClick={() => handleToProductPage(candle)}
       />
     </li>
   );

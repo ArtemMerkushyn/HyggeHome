@@ -9,6 +9,7 @@ import { GetWarm } from './pages/GetWarm/GetWarm';
 import { TableGames } from './pages/TableGames/TableGames';
 import { BooksJournals } from './pages/BooksJournals/BooksJournals';
 import { Search } from './pages/Search/Search';
+import { Product } from './pages/Product/Product';
 
 export const router = createBrowserRouter([
   {
@@ -20,7 +21,7 @@ export const router = createBrowserRouter([
         element: <Main />,
       },
       {
-        path: '/candles',
+        path: 'candles',
         element: <Candles />,
       },
       {
@@ -40,10 +41,6 @@ export const router = createBrowserRouter([
         element: <GiftSets />,
       },
       {
-        path: 'gift-sets',
-        element: <GiftSets />,
-      },
-      {
         path: 'table-games',
         element: <TableGames />,
       },
@@ -53,8 +50,12 @@ export const router = createBrowserRouter([
       },
       {
         path: 'search',
-        element: <Search/>,
-      }
+        element: <Search />,
+      },
+      {
+        path: 'product/:id',
+        element: <Product />,
+      },
     ],
   },
 ]);

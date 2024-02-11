@@ -4,9 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectFavorites } from '../../redux/selectors';
 import { addFavorite, removeFavorite } from '../../redux/slices/favoriteSlice';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 export default function CardItem({ candle }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const itemFavorites = useSelector(selectFavorites);
 
@@ -87,6 +89,9 @@ export default function CardItem({ candle }) {
         className={styles.cardPicture}
         src={candle.picture ? candle.picture : imageNotFound}
         alt="Candles"
+        onClick={() => {
+          navigate(`/product/${candle._id}`);
+        }}
       />
     </li>
   );

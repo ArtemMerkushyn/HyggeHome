@@ -7,7 +7,7 @@ export const servicesApi = createApi({
   }),
   endpoints: builder => ({
     getCandles: builder.query({
-      query: () => 'products',
+      query: () => 'products?ofset=0&count=2000',
       providesTags: ['Candles'],
     }),
     searchByName: builder.query({
@@ -17,12 +17,11 @@ export const servicesApi = createApi({
       query: ({ min, max }) => `search?min=${min}&max=${max}`,
     }),
     registerUser: builder.mutation({
-      query: (newUser) => ({
+      query: newUser => ({
         url: 'user',
         method: 'POST',
-        body: newUser
-
-      })
+        body: newUser,
+      }),
     }),
   }),
 });
@@ -31,5 +30,5 @@ export const {
   useGetCandlesQuery,
   useSearchByNameQuery,
   useGetFilterPriceQuery,
-  useRegisterUserMutation
+  useRegisterUserMutation,
 } = servicesApi;

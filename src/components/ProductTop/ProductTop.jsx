@@ -7,15 +7,20 @@ import { SliderNoArrow } from './SliderNoArrow/SliderNoArrow';
 import { toast } from 'react-toastify';
 
 export const ProductTop = ({ data }) => {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(1);
 
   const handleAmountChange = newAmount => {
     setAmount(newAmount);
-  };
+  }
 
-  const funcClick = () => {
+  const handleAddToCart = () => {
+    const productToCart = {
+      data,
+      amount,
+    }
+    console.log(productToCart);
     toast.success(`You have added ${amount} products to the cart`);
-  };
+  }
 
   return (
     <div className={styles.product}>
@@ -37,10 +42,10 @@ export const ProductTop = ({ data }) => {
           <div className={styles.price}>${data.price}</div>
           <Amount onAmountChange={handleAmountChange} />
           <div className={styles.toCatr}>
-            <Button funcClick={funcClick} text={'Add to cart'} />
+            <Button funcClick={handleAddToCart} text={'Add to cart'} />
           </div>
         </div>
       </div>
     </div>
   );
-};
+}

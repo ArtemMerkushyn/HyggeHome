@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
 import AboutProduct from '../AboutProduct/AboutProduct';
 import Reviews from '../Reviews/Reviews';
 import Questions from '../Questions/Questions';
@@ -25,7 +27,7 @@ export default function TabSwitcher() {
             className={`${styles.title} ${
               selectedId === tabId ? styles.selected : ''
             }`}
-            key={tabId}
+            key={uuidv4()}
             onClick={() => setSelectedId(tabId)}
           >
             {tabId}

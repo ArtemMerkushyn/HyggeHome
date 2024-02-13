@@ -3,9 +3,10 @@ import styles from './NewCollection.module.css';
 import Icons from '../../Icons/Icons';
 import CardItem from '../../CardItem/CardItem';
 import SkeletonProductLib from '../../skeleton/SkeletonProductLib';
+import CarouselSlider from '../CarouselSlider/CarouselSlider';
 
 
-export const NewCollection = ({catalog, error, isLoading, upperText, lowerText}) => {
+export const NewCollection = ({catalog, error, isLoading, upperText, lowerText, sliderNeed}) => {
   const [listPosition, setListPosition] = useState(0);
   const [scrollBarPosition, setScrollBarPosition] = useState(0);
 
@@ -68,9 +69,10 @@ export const NewCollection = ({catalog, error, isLoading, upperText, lowerText})
           </button>
         </div>
       </div>
-      <div className={styles.scroll}>
-        <div className={styles.scrollnav} style={{ transform: `translateX(${scrollBarPosition}px)`, width: `${widthScrollNav}px` }}></div>
-      </div>
+      {sliderNeed && !isLoading && (
+      <CarouselSlider scrollBarPosition={scrollBarPosition} widthScrollNav={widthScrollNav}/>
+      )}
+
     </>
   );
 };

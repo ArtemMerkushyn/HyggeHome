@@ -1,0 +1,60 @@
+.name {
+  color: #252525;
+  font-family: 'DM Mono';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -1.44px;
+}
+
+.date {
+  color: #252525;
+  font-family: 'DM Mono';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-top: 20px;
+}
+
+.comment {
+  color: #252525;
+  font-family: 'Poppins';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: 20px;
+}
+
+.rectangle {
+  width: 1303px;
+  height: 1px;
+  flex-shrink: 0;
+  border-radius: 24px;
+  opacity: 0.3;
+  background: #fcb654;
+  margin-top: 20px;
+}
+
+.button {
+  display: inline-flex;
+  padding: 10px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 24px;
+  background: #fcb654;
+  border: none;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 40px;
+}

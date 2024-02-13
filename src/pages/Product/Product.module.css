@@ -1,20 +1,24 @@
+.wrapper {
+  margin-bottom: 120px;
+}
+
 .navigation {
-    margin: 60px 0 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: DM Mono;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 31px;
-    letter-spacing: -1.44px;
-    color: #caccce;
+  margin: 60px 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: DM Mono;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 31px;
+  letter-spacing: -1.44px;
+  color: #caccce;
 }
 
 .navigation svg {
-    height: 14px;
+  height: 14px;
 }
 
 .navigation span {
-    color: #252525;
+  color: #252525;
 }

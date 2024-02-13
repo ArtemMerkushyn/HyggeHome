@@ -11,7 +11,7 @@ export const Product = () => {
   const data = location.state.candle;
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <div className={styles.navigation}>
         <Link to={'/'}>Home</Link>
         <Icons icon="next" />

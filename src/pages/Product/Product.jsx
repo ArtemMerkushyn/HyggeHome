@@ -5,10 +5,22 @@ import { ProductTop } from '../../components/ProductTop/ProductTop';
 import Icons from '../../components/Icons/Icons';
 import styles from './Product.module.css';
 import ProductNavigation from '../../components/ProductNavigation/TabSwitcher/TabSwitcher';
+import { useEffect } from 'react';
 
 export const Product = () => {
   const location = useLocation();
   const data = location.state.candle;
+
+  useEffect(() => {
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'auto',
+      });
+    }
+
+    scrollToTop();
+  }, []);
 
   return (
     <div className={styles.wrapper}>

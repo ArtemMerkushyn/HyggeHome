@@ -29,7 +29,7 @@ export default function CardItem({ candle }) {
   };
 
   const handleToProductPage = candle => {
-    navigate(`/product/${candle._id}`, { state: { candle } });
+    navigate(`/${candle.category.toLowerCase()}/product/${candle._id}`, { state: { candle } });
   };
 
   return (

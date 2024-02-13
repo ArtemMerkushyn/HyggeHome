@@ -7,6 +7,7 @@ import styles from './Product.module.css';
 import { Carousel } from '../../components/MainPageContent/secondMainContent/NewCollection';
 import { useEffect, useState } from 'react';
 import { useGetCandlesQuery } from '../../redux/services';
+import ProductNavigation from '../../components/ProductNavigation/TabSwitcher/TabSwitcher';
 
 export const Product = () => {
   const location = useLocation();
@@ -29,6 +30,7 @@ export const Product = () => {
         <span>{product.name}</span>
       </div>
       <ProductTop data={product} />
+      <ProductNavigation />
       <Carousel 
       catalog={catalog} 
       error={error} 

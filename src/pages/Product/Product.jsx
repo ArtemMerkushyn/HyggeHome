@@ -37,6 +37,8 @@ export const Product = () => {
       <div className={styles.navigation}>
         <Link to={'/'}>Home</Link>
         <Icons icon="next" />
+        <Link to={`/${product.category}`}>{product.category}</Link>
+        <Icons icon="next" />
         <span>{product.name}</span>
       </div>
       <ProductTop data={product} />

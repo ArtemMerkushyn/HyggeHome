@@ -14,7 +14,6 @@ export default function Questions() {
               key={index}
               style={{
                 display: 'flex',
-                marginTop: '20px',
                 alignItems: 'baseline',
               }}
             >

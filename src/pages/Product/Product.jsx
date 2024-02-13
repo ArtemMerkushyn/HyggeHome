@@ -9,8 +9,8 @@ import { useEffect, useState } from 'react';
 import { useGetCandlesQuery } from '../../redux/services';
 
 export const Product = () => {
-  // const location = useLocation();
-  // const data = location.state.candle;
+  const location = useLocation();
+  const product = location.state.candle;
   const [catalog, setCatalog] = useState([]);
   const { data, error, isLoading } = useGetCandlesQuery();
 
@@ -23,12 +23,12 @@ export const Product = () => {
 
   return (
     <div>
-      {/* <div className={styles.navigation}>
+      <div className={styles.navigation}>
         <Link to={'/'}>Home</Link>
         <Icons icon="next" />
-        <span>{data.name}</span>
+        <span>{product.name}</span>
       </div>
-      <ProductTop data={data} /> */}
+      <ProductTop data={product} />
       <Carousel 
       catalog={catalog} 
       error={error} 

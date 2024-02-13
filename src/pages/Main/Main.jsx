@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useGetCandlesQuery } from '../../redux/services'
 import { Hero } from '../../components/MainPageContent/Hero/Hero';
 import { SpecialOffer } from '../../components/MainPageContent/SpecialOffer/SpecialOffer';
-import { NewCollection } from '../../components/MainPageContent/secondMainContent/NewCollection';
+import { Carousel } from '../../components/MainPageContent/secondMainContent/NewCollection';
 import { setIsActive } from '../../redux/slices/searchSlice';
 
 export const Main = () => {
@@ -24,7 +24,14 @@ export const Main = () => {
   return (
     <div>
       <Hero />
-      <NewCollection catalog={catalog} error={error} isLoading={isLoading} upperText='New collection' lowerText='New Hygge goods for comfort'/>
+      <Carousel 
+      catalog={catalog} 
+      error={error} 
+      isLoading={isLoading} 
+      upperText='New collection' 
+      lowerText='New Hygge goods for comfort'
+      sliderNeed={true}
+      />
       <SpecialOffer />
     </div>
   );

@@ -1,5 +1,5 @@
 .modal_container{
-    padding: 20px 80px 20px ;
+    padding: 15px 80px 20px ;
     position: relative;
 }
 
@@ -49,8 +49,8 @@ cursor: pointer;
     border: 1px solid #FCB654;
     padding: 10px;
     cursor: pointer;
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     flex-shrink: 0;
     border-radius: 50%;
     position: relative;
@@ -67,13 +67,13 @@ cursor: pointer;
   padding: 0;
   cursor: pointer;
   position: absolute;
-  top: 24px;
+  top: 20px;
   right: 24px;
 }
 .svg_div{
     position: absolute;
-    top: -0.5px;
-    left: -0.5px;
+    top: -2px;
+    left: -1px;
 }
 .agreement_text{
     color: #252525;

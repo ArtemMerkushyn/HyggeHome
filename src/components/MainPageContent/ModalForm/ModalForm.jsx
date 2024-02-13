@@ -181,7 +181,7 @@ export const ModalForm = ({ toggleModal }) => {
 
         <Button
           text="Create account"
-          style={{ width: '426px', heigth: '48px' }}
+          style={{ width: '426px', heigth: '46px' }}
           type="submit"
         />
       </form>

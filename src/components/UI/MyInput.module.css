@@ -3,10 +3,9 @@
     border: 1px solid #252525;
     display: flex;
     width: 426px;
-    height: 50px;
-    padding: 23px 30px;
+    height: 46px;
+    padding: 20px 27px;
     align-items: center;
-    gap: 10px;
     color: #252525;
     font-family: Poppins;
     font-size: 14px;
@@ -14,7 +13,7 @@
     font-weight: 500;
     line-height: normal;
     opacity: 0.6;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     
 }
 .modal_input:focus{

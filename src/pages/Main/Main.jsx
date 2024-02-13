@@ -24,7 +24,13 @@ export const Main = () => {
   return (
     <div>
       <Hero />
-      <NewCollection catalog={catalog} error={error} isLoading={isLoading} upperText='New collection' lowerText='New Hygge goods for comfort'/>
+      <NewCollection 
+      sliderNeeded={true}
+      catalog={catalog} 
+      error={error} i
+      sLoading={isLoading} 
+      upperText='New collection' 
+      lowerText='New Hygge goods for comfort'/>
       <SpecialOffer />
     </div>
   );

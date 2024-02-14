@@ -3,24 +3,24 @@
     "id": "0102",
     "name": "User name",
     "date": "Jan 10, 2024",
-    "questions": "Do you offer discounts for regular customers? Is it possible to track an order? Is there a possibility to return the goods?"
+    "question": "Do you offer discounts for regular customers? Is it possible to track an order? Is there a possibility to return the goods?"
   },
   {
     "id": "0103",
     "name": "User name",
     "date": "Jan 30, 2024",
-    "questions": "Do you offer free shipping?"
+    "question": "Do you offer free shipping?"
   },
   {
     "id": "0104",
     "name": "User name",
     "date": "Jan 08, 2024",
-    "questions": "Do you offer discounts for regular customers? Is it possible to track an order? Is there a possibility to return the goods?"
+    "question": "Do you offer discounts for regular customers? Is it possible to track an order? Is there a possibility to return the goods?"
   },
   {
     "id": "0105",
     "name": "User name",
     "date": "Jan 10, 2024",
-    "questions": "Do you offer free shipping?"
+    "question": "Do you offer free shipping?"
   }
 ]

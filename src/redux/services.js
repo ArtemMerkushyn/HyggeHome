@@ -7,7 +7,7 @@ export const servicesApi = createApi({
   }),
   endpoints: builder => ({
     getCandles: builder.query({
-      query: () => 'products?ofset=0&count=2000',
+      query: () => 'search?query=',
       providesTags: ['Candles'],
     }),
     searchByName: builder.query({

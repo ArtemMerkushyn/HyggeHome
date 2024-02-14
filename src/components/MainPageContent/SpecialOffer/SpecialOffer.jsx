@@ -10,8 +10,14 @@ export const SpecialOffer = () => {
     const [modal, setModal] = useState(false)
 
     const toggleModal = () => {
-        setModal(!modal)
+        setModal(!modal);
+        if (!modal) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
     }
+    
 
     return(
         <div className={css.special_offer_conatiner}>

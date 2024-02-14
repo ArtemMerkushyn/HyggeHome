@@ -12,7 +12,7 @@ import { NewCollection } from '../../components/MainPageContent/secondMainConten
 export const Product = () => {
   const location = useLocation();
   const product = location.state.candle;
-  const [catalog, setCatalog] = useState([])
+  const [catalog, setCatalog] = useState([]);
   const { data, error, isLoading } = useGetCandlesQuery();
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export const Product = () => {
 
   useEffect(() => {
     if (data) {
-      setCatalog(data.results);
+      setCatalog(data);
     }
   }, [data]);
 
@@ -43,12 +43,14 @@ export const Product = () => {
       </div>
       <ProductTop data={product} />
       <NewCollection
-      sliderNeeded={false}
-      catalog={catalog} 
-      error={error} i
-      sLoading={isLoading} 
-      upperText='products for you' 
-      lowerText='You might also like'/>
+        sliderNeeded={false}
+        catalog={catalog}
+        error={error}
+        i
+        sLoading={isLoading}
+        upperText="products for you"
+        lowerText="You might also like"
+      />
       <ProductNavigation />
     </div>
   );

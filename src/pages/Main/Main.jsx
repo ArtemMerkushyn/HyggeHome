@@ -17,7 +17,7 @@ export const Main = () => {
 
   useEffect(() => {
     if (data) {
-      setCatalog(data);
+      setCatalog(data.results);
     }
   }, [data]);
 

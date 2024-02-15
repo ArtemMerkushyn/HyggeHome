@@ -179,7 +179,7 @@ export const ModalForm = ({ toggleModal }) => {
         <Button 
         disabled={!firstCheckbox}
         text="Create account"
-        style={{ width: '426px', heigth: '46px' }}
+        style={{ width: '340.8px', heigth: '40px', marginTop: '3px' }}
         type="submit" />
       </form>
     </div>

@@ -35,15 +35,15 @@ export default function Footer() {
             Lighting Decor
           </NavLink>
           <NavLink style={active} to="/gift-sets">
-            Gift sets
+            Gift Sets
           </NavLink>
           <NavLink style={active} to="/get-warm">
-            Get warm
+            Get Warm
           </NavLink>
           <NavLink style={active} to="/table-games">
-            Table games
+            Table Games
           </NavLink>
-          <NavLink style={active} to="/books-journals">
+          <NavLink style={active} to="/books-&-journals">
             Books & Journals
           </NavLink>
         </div>

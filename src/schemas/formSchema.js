@@ -17,7 +17,7 @@ export const formSchema = yup.object().shape({
     .string()
     .min(8)
     .max(32)
-    .matches(passwordRules, {message: "Please create a stronger password. Password must include a capital letter, lowercase letter, a number and a symbol"})
+    .matches(passwordRules, {message: "Please create a stronger password"})
     .required("Please enter your password"),
     confirmPassword: yup
     .string()

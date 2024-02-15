@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const Button = ({ text, funcClick, style, type }) => {
   return (
-    <button className={css.special_button} onClick={funcClick} style={style} typeof={type}><p className={css.button_text}  >{text}</p></button>
+    <button className={css.special_button} onClick={funcClick} style={style} type={type}><p className={css.button_text}  >{text}</p></button>
   );
 };
 

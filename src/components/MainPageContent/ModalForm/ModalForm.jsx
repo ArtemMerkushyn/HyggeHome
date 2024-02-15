@@ -1,76 +1,59 @@
+import { useFormik } from 'formik';
 import React, { useState } from 'react';
-import css from './ModalForm.module.css';
-import Icons from '../../Icons/Icons';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Button from '../Button/Button';
 import MyInput from '../../UI/MyInput';
+import Button from '../Button/Button';
+import { formSchema } from '../../../schemas/formSchema';
 import { useRegisterUserMutation } from '../../../redux/services';
+import { toast } from 'react-toastify';
+import css from './ModalForm.module.css'
+import Icons from '../../Icons/Icons';
+
 
 export const ModalForm = ({ toggleModal }) => {
+
+  const [registerUser] = useRegisterUserMutation()
+
   const [firstCheckbox, setFirstCheckbox] = useState(false);
   const [secondCheckbox, setSecondCheckbox] = useState(false);
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [registerUser] = useRegisterUserMutation();
 
-  const handleButton = () => {
-    if (
-      firstName.trim() === '' ||
-      lastName.trim() === '' ||
-      email.trim() === '' ||
-      password.trim() === '' ||
-      confirmPassword.trim() === ''
-    ) {
-      toast.error('Please fill all fields');
-      return false;
+  const onSubmit = async (values) => {
+
+    if (firstCheckbox == true){
+    try {
+      await registerUser({
+          email: values.email,
+          password: values.password,
+          first: values.firstName,
+          last: values.lastName,
+          promo: secondCheckbox,
+      });
+
+    } catch (error) {
+      toast.error('Failed to register user. Please try again later.');
     }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      toast.error('Invalid email address');
-      return false;
+    toggleModal();
+      toast.success('User registered successfully');
+    } else {
+      toast.error('Please accept the policy')
     }
+  }
 
-    if (!firstCheckbox) {
-      toast.error('Accept the policy');
-      return false;
-    }
+  const {values, errors, touched, handleBlur, handleChange, handleSubmit} = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
 
-    if (password.trim() !== confirmPassword.trim()) {
-      toast.error('Passwords do not match');
-      return false;
-    }
+    }, 
+    validationSchema: formSchema,
+    onSubmit
+  })
 
-    return true;
-  };
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    if (handleButton()) {
-      const newUser = {
-        firstName,
-        lastName,
-        email,
-        password,
-      };
-      try {
-        await registerUser({
-          email: newUser.email,
-          password: newUser.password,
-          first: newUser.firstName,
-          last: newUser.lastName,
-        });
-        toggleModal();
-        toast.success('User registered successfully');
-      } catch (error) {
-        toast.error('Failed to register user. Please try again later.');
-      }
-    }
-  };
+  
+
   return (
     <div className={css.modal_container}>
       <button
@@ -80,65 +63,79 @@ export const ModalForm = ({ toggleModal }) => {
       >
         <Icons icon={'cross'} />
       </button>
-      <form
-        action="/submit"
-        method="post"
-        onSubmit={handleSubmit}
-        className={css.modal_form}
-      >
-        <h2 className={css.modal_register_text}>
+      
+      <form onSubmit={handleSubmit} autoComplete='off'>
+
+      <h2 className={css.modal_register_text}>
           Register Individual Account!
         </h2>
 
-        <MyInput
-          type="text"
-          id="first-name"
-          name="first-name"
-          placeholder="Your first name"
-          value={firstName}
-          onChange={e => setFirstName(e.target.value)}
-          labelFor="Your first name*"
+     <MyInput 
+        type="text"
+        id="first-name"
+        placeholder="Your first name"
+        name="firstName"
+        labelFor="Your first name*"
+        value={values.firstName}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        errorField={errors.firstName}
+        touched={touched.firstName}
         />
 
-        <MyInput
-          type="text"
-          id="last-name"
-          name="last-name"
-          placeholder="Your last name"
-          value={lastName}
-          onChange={e => setLastName(e.target.value)}
-          labelFor="Your last name*"
+     <MyInput 
+        type="text"
+        id="last-name"
+        name="lastName"
+        placeholder="Your last name"
+        labelFor="Your last name*"
+        value={values.lastName}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        errorField={errors.lastName}
+        touched={touched.lastName}
         />
 
-        <MyInput
-          type="text"
-          id="email"
-          name="email"
-          placeholder="Your email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          labelFor="Your Email*"
+     <MyInput 
+        type="text"
+        id="email"
+        name="email"
+        placeholder="Your email" 
+        labelFor="Your Email*"
+        value={values.email}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        errorField={errors.email}
+        touched={touched.email}
         />
 
-        <MyInput
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          labelFor="Create password*"
+     <MyInput 
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Password"
+        labelFor="Create password*"
+        value={values.password}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        errorField={errors.password}
+        touched={touched.password}
         />
 
-        <MyInput
-          type="password"
-          id="confirm-password"
-          name="confirm-password"
-          placeholder="Password"
-          value={confirmPassword}
-          onChange={e => setConfirmPassword(e.target.value)}
-          labelFor="Confirm the password*"
+     <MyInput 
+        type="password"
+        id="confirm-password"
+        name="confirmPassword"
+        placeholder="Password" 
+        labelFor="Confirm the password*"
+        value={values.confirmPassword}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        errorField={errors.confirmPassword}
+        touched={touched.confirmPassword}
+        
         />
+
 
         <div className={css.modal_checkbox_container}>
           <button
@@ -179,11 +176,11 @@ export const ModalForm = ({ toggleModal }) => {
           </label>
         </div>
 
-        <Button
-          text="Create account"
-          style={{ width: '426px', heigth: '46px' }}
-          type="submit"
-        />
+        <Button 
+        disabled={!firstCheckbox}
+        text="Create account"
+        style={{ width: '426px', heigth: '46px' }}
+        type="submit" />
       </form>
     </div>
   );

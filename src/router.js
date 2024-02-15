@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
         element: <TableGames />,
       },
       {
-        path: 'books-journals',
+        path: 'books-&-journals',
         element: <BooksJournals />,
       },
       {

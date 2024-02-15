@@ -34,24 +34,24 @@ export const PagesLinks = () => {
                 className={styles.item}
                 to="/gift-sets" 
                 style={active}>
-                Gift sets
+                Gift Sets
             </NavLink>
             <NavLink 
                 className={styles.item}
                 to="/get-warm"
                 style={active}>
-                Get warm
+                Get Warm
             </NavLink>
             <NavLink
                 className={styles.item}
                 to="/table-games" 
                 style={active}
                 >
-                Table games
+                Table Games
             </NavLink>
             <NavLink
                 className={styles.item} 
-                to="/books-journals" 
+                to="/books-&-journals" 
                 style={active}
                 >
                 Books & Journals

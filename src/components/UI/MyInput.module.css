@@ -14,11 +14,19 @@
     font-weight: 500;
     line-height: normal;
     opacity: 0.6;
-    margin-bottom: 20px;
-    
 }
 .modal_input:focus{
     outline: none;
     border-color: #FCB654;
 
+}
+.input_error{
+    border-color: #fc8181;
+}
+.error{
+    color: #fc8181;
+    font-size: 10px;
+}
+.input_container{
+    margin-bottom: 20px;
 }

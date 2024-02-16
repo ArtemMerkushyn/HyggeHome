@@ -45,7 +45,7 @@ export const LightingDecor = () => {
         atmosphere
       </h2>
       <div className={styles.wrapperButtons}>
-        <Filters onUpdateFilteredData={updateFilteredData} />
+        <Filters />
         <div className={styles.dropdownList}>
           Sort by
           <Sort data={newData} onUpdateFilteredData={updateFilteredData} />

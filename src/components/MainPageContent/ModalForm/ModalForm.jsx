@@ -18,7 +18,7 @@ export const ModalForm = ({ toggleModal }) => {
 
   const onSubmit = async (values) => {
 
-    if (firstCheckbox == true){
+    if (firstCheckbox === true){
     try {
       await registerUser({
           email: values.email,

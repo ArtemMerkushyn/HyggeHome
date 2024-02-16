@@ -44,6 +44,7 @@ export default function Filters({
   const [filteredData, setFilteredData] = useState([]);
   const prevDataRef = useRef([]);
   const sortValue = useSelector(state => state.filter.sortValue);
+  console.log(sortValue);
 
   const { data, isLoading } = useGetFilterPriceQuery(
     { min: minV, max: maxV },

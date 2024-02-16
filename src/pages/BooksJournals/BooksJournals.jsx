@@ -18,6 +18,7 @@ export const BooksJournals = () => {
 
   const updateFilteredData = filteredData => {
     setNewData(filteredData);
+    setNewData([]);
   };
 
   return (
@@ -45,7 +46,7 @@ export const BooksJournals = () => {
         for atmosphere
       </h2>
       <div className={styles.wrapperButtons}>
-        <Filters />
+        <Filters onUpdateFilteredData={updateFilteredData} />
         <div className={styles.dropdownList}>
           Sort by
           <Sort data={newData} onUpdateFilteredData={updateFilteredData} />

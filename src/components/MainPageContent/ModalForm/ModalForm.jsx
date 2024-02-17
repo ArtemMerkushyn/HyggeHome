@@ -122,20 +122,23 @@ export const ModalForm = ({ toggleModal }) => {
         touched={touched.password}
         />
 
-     <MyInput 
-        type="password"
-        id="confirm-password"
-        name="confirmPassword"
-        placeholder="Password" 
-        labelFor="Confirm the password*"
-        value={values.confirmPassword}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        errorField={errors.confirmPassword}
-        touched={touched.confirmPassword}
-        
-        />
-
+        <div className={css.hide_password}>
+          <MyInput 
+            type="password"
+            id="confirm-password"
+            name="confirmPassword"
+            placeholder="Password" 
+            labelFor="Confirm the password*"
+            value={values.confirmPassword}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            errorField={errors.confirmPassword}
+            touched={touched.confirmPassword}
+          />
+          <button className={css.hide_password_button}>
+            <Icons icon={'eye'} />
+          </button>
+        </div>
 
         <div className={css.modal_checkbox_container}>
           <button
@@ -179,7 +182,7 @@ export const ModalForm = ({ toggleModal }) => {
         <Button 
         disabled={!firstCheckbox}
         text="Create account"
-        style={{ width: '340.8px', heigth: '40px', marginTop: '3px' }}
+        style={{ width: '340.8px', marginTop: '3px' }}
         type="submit" />
       </form>
     </div>

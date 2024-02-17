@@ -82,4 +82,8 @@ font-style: normal;
 font-weight: 500;
 line-height: normal;
 }
+.hide_password_button{
+    position: absolute;
+    top: 0;
+}
 

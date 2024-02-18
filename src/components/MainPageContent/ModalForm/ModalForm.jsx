@@ -16,6 +16,8 @@ export const ModalForm = ({ toggleModal }) => {
   const [firstCheckbox, setFirstCheckbox] = useState(false);
   const [secondCheckbox, setSecondCheckbox] = useState(false);
   const [passwordVisability, setPasswordVisability] = useState(false)
+  const [confirmPasswordVisability, setConfirmPasswordVisability] = useState(false)
+
 
   const onSubmit = async (values) => {
 
@@ -134,7 +136,7 @@ export const ModalForm = ({ toggleModal }) => {
 
         <div className={css.hide_password}>
           <MyInput 
-            type={passwordVisability ? "text" : "password"}
+            type={confirmPasswordVisability ? "text" : "password"}
             id="confirm-password"
             name="confirmPassword"
             placeholder="Password" 
@@ -148,9 +150,9 @@ export const ModalForm = ({ toggleModal }) => {
           <button
             className={css.hide_password_button}
             type='button'
-            onClick={() => setPasswordVisability(!passwordVisability)}
+            onClick={() => setConfirmPasswordVisability(!confirmPasswordVisability)}
           >
-            {passwordVisability ? <Icons icon={'eye'} /> : <Icons icon={'closed_eye'}/> }
+            {confirmPasswordVisability ? <Icons icon={'eye'} /> : <Icons icon={'closed_eye'}/> }
           </button>
         </div>
 

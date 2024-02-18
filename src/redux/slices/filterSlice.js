@@ -6,7 +6,7 @@ const initialState = {
     maxPrice: '',
     color: [],
   },
-  sortValue: 'Cheapest',
+  sortValue: 'Popular',
 };
 
 export const filterSlice = createSlice({
@@ -14,7 +14,7 @@ export const filterSlice = createSlice({
   initialState,
   reducers: {
     addColor: (state, action) => {
-      state.filter.color.splice(0, state.filter.color.length,  action.payload);
+      state.filter.color.splice(0, state.filter.color.length, action.payload);
     },
     addPrice: (state, action) => {
       state.filter.minPrice = action.payload.minPrice.toString();
@@ -22,7 +22,7 @@ export const filterSlice = createSlice({
     },
     addSortValue: (state, action) => {
       state.sortValue = action.payload;
-    }
+    },
   },
 });
 

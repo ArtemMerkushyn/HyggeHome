@@ -1,32 +1,40 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import CardList from '../../components/CardList/CardList';
 import Filters from '../../components/Filters/Filters';
 import Sort from '../../components/Sort/Sort';
 import { useGetCandlesQuery } from '../../redux/services';
 import { setIsActive } from '../../redux/slices/searchSlice';
+import sortData from '../../utils/helpers/sort';
 import styles from './Candles.module.css';
 
 export const Candles = () => {
   const { data, error, isLoading } = useGetCandlesQuery();
+  const sortValue = useSelector(state => state.filter.sortValue);
   const [newData, setNewData] = useState([]);
+  const [dataList, setDataList] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(setIsActive(false));
   }, [dispatch]);
 
-  const updateFilteredData = filteredData => {
-    setNewData(filteredData);
-  };
-
   useEffect(() => {
     if (data) {
       setNewData(data);
     }
   }, [data]);
+
+  const updateFilteredData = filteredData => {
+    setNewData(filteredData);
+  };
+
+  useEffect(() => {
+    const sortedData = sortData({ option: sortValue, value: newData });
+    setDataList(sortedData);
+  }, [sortValue, newData]);
 
   return (
     <div className={styles.wrapperFilters}>
@@ -60,10 +68,10 @@ export const Candles = () => {
         />
         <div className={styles.dropdownList}>
           Sort by
-          <Sort data={newData} onUpdateFilteredData={updateFilteredData} />
+          <Sort />
         </div>
       </div>
-      <CardList data={newData} error={error} isLoading={isLoading} />
+      <CardList data={dataList} error={error} isLoading={isLoading} />
     </div>
   );
 };

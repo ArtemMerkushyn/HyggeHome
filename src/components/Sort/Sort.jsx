@@ -4,11 +4,10 @@ import styles from './Sort.module.css';
 import { useDispatch } from 'react-redux';
 import { addSortValue } from '../../redux/slices/filterSlice';
 
-export default function Sort({ data, onUpdateFilteredData }) {
+export default function Sort() {
   const [isOpen, setOpen] = useState(false);
   const [value, setValue] = useState('Popular');
   const dropdownRef = useRef(null);
-
   const dispatch = useDispatch();
 
   const toggleDropdown = event => {
@@ -20,14 +19,6 @@ export default function Sort({ data, onUpdateFilteredData }) {
     setValue(option);
     dispatch(addSortValue(option));
     setOpen(false);
-
-    if (option === 'Expensive') {
-      const sortedData = [...data].sort((a, b) => b.price - a.price);
-      onUpdateFilteredData(sortedData);
-    } else if (option === 'Cheapest') {
-      const sortedData = [...data].sort((a, b) => a.price - b.price);
-      onUpdateFilteredData(sortedData);
-    }
   };
 
   useEffect(() => {

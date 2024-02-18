@@ -43,7 +43,6 @@ export default function Filters({
   const [maxV, setMaxV] = useState(null);
   const [filteredData, setFilteredData] = useState([]);
   const prevDataRef = useRef([]);
-  const sortValue = useSelector(state => state.filter.sortValue);
 
   const { data, isLoading } = useGetFilterPriceQuery(
     { min: minV, max: maxV },
@@ -67,16 +66,9 @@ export default function Filters({
   useEffect(() => {
     if (filteredData !== prevDataRef.current) {
       prevDataRef.current = filteredData;
-
-      if (sortValue === 'Expensive') {
-        const sortedData = [...filteredData].sort((a, b) => b.price - a.price);
-        onUpdateFilteredData(sortedData);
-      } else if (sortValue === 'Cheapest') {
-        const sortedData = [...filteredData].sort((a, b) => a.price - b.price);
-        onUpdateFilteredData(sortedData);
-      }
+      onUpdateFilteredData(filteredData);
     }
-  }, [filteredData, onUpdateFilteredData, sortValue]);
+  }, [filteredData, onUpdateFilteredData]);
 
   const handleItemChange = color => {
     setSelectedColors(prevColors => ({
@@ -84,8 +76,6 @@ export default function Filters({
       [color]: !prevColors[color],
     }));
   };
-
-
 
   const handleApply = () => {
     const colors = Object.keys(selectedColors).filter(
@@ -96,13 +86,7 @@ export default function Filters({
       const filteredDataSearch = dataFilter.filter(
         item => item.price >= minPrice && item.price <= maxPrice,
       );
-      if (sortValue === 'Expensive') {
-        const sortedData = [...filteredDataSearch].sort((a, b) => b.price - a.price);
-        onUpdateFilteredData(sortedData);
-      } else if (sortValue === 'Cheapest') {
-        const sortedData = [...filteredDataSearch].sort((a, b) => a.price - b.price);
-        onUpdateFilteredData(sortedData);
-      }
+      onUpdateFilteredData(filteredDataSearch);
     } else {
       setMinV(minPrice);
       setMaxV(maxPrice);

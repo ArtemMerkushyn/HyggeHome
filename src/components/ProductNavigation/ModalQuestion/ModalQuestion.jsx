@@ -65,6 +65,7 @@ export default function ModalQuestion({ setShowModal, addNewQuestion }) {
             onChange={e => setFirstName(e.target.value)}
             name="firstName"
             required="true"
+            className={styles.input}
           />
         </label>
         <label className={styles.label}>

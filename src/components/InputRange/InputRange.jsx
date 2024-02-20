@@ -11,7 +11,6 @@ export const InputRange = ({ maxValue }) => {
   const [isDragging2, setIsDragging2] = useState(false);
   const [inputError1, setInputError1] = useState(false);
   const [inputError2, setInputError2] = useState(false);
-  const [closeDistancePoints, setCloseDistancePoints] = useState(false);
   const sliderRef = useRef(null);
   const dispatch = useDispatch();
 
@@ -31,13 +30,13 @@ export const InputRange = ({ maxValue }) => {
       // Проверка для предотвращения выхода за границы слайдера
       newPosition = Math.max(0, Math.min(newPosition, maxValue));
 
-      if (isDragging1 && newPosition <= parseInt(max, 10)) {
+      if (isDragging1 && newPosition <= parseInt(max, 10) - 13) {
         setMin(Math.round(newPosition).toString());
-      } else if (isDragging2 && newPosition >= parseInt(min, 10)) {
+      } else if (isDragging2 && newPosition >= parseInt(min, 10) + 13) {
         setMax(Math.round(newPosition).toString());
       }
     },
-    [isDragging1, isDragging2, maxValue, min, max],
+    [isDragging1, isDragging2, maxValue, min, max]
   );
 
   const handleMouseUp = () => {
@@ -61,7 +60,6 @@ export const InputRange = ({ maxValue }) => {
   useEffect(() => {
     setInputError1(min === '' || parseInt(min, 10) > parseInt(max, 10));
     setInputError2(max === '' || parseInt(max, 10) < parseInt(min, 10));
-    setCloseDistancePoints(min === max);
   }, [min, max]);
 
   useEffect(() => {
@@ -96,7 +94,6 @@ export const InputRange = ({ maxValue }) => {
           className={styles.slider__thumb1}
           style={{
             left: `calc(${(parseInt(min, 10) / maxValue) * 100}% - 10px)`,
-            zIndex: closeDistancePoints ? 7 : 5,
           }}
           onMouseDown={e => handleMouseDown(e, setIsDragging1)}
         >
@@ -148,3 +145,4 @@ export const InputRange = ({ maxValue }) => {
 InputRange.propTypes = {
   maxValue: PropTypes.number,
 };
+

@@ -52,6 +52,7 @@
   align-items: center;
   gap: 10px;
   outline: none;
+  border-radius: 20px;
 }
 
 .closeButton {
@@ -65,10 +66,10 @@
 }
 
 .closeButton:hover {
-  color: red;
+  color: rgb(255, 136, 0);
 }
 
 .textarea {
   resize: none;
-  padding: 5px;
+  padding: 6px;
 }

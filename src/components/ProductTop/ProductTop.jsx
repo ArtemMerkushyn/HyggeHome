@@ -32,11 +32,7 @@ export const ProductTop = ({ data }) => {
             <Rating rating={4} />
             <span>({'4'} reviews)</span>
           </div>
-          <p className={styles.text}>
-            {
-              'Fragrance Oil | Coconut soy candle Hygge’s fragrance oil candles provide a clean long-lasting scent. A true Canadian tradition- Frosty sleigh rides and steaming cider. Warm up with Hygge’s Mulled Cider with a side of a crackling wood wick. Our candle has scent notes of sweet orange, mulled cider, cinnamon and clove.'
-            }
-          </p>
+          <p className={styles.text}>{data.description}</p>
         </div>
         <div className={styles.info__item}>
           <div className={styles.price}>${data.price}</div>

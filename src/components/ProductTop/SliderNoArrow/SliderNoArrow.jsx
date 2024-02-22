@@ -28,7 +28,7 @@ export const SliderNoArrow = ({data}) => {
                 })}
             </div>
             <div className={styles.img}>
-                {productImgs.map((img, index) => {
+                {data.image.map((img, index) => {
                     return (
                         <img 
                             key={index}

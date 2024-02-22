@@ -19,7 +19,7 @@ export const SliderNoArrow = ({data}) => {
     return (
         <div className={styles.slider}>
             <div className={styles.dots}>
-                {productImgs.map((img, index) => {
+                {data.image.map((img, index) => {
                     return (
                         <div key={index} className={styles.dot} onClick={() => handleDotClick(index)}>
                             <img src={img} alt={index + 1} />

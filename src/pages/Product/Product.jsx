@@ -49,7 +49,7 @@ export const Product = () => {
       sLoading={isLoading} 
       upperText='products for you' 
       lowerText='You might also like'/>
-      <ProductNavigation />
+      <ProductNavigation data={product}/>
     </div>
   );
 };

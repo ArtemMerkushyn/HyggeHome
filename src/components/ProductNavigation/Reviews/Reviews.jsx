@@ -10,8 +10,8 @@ export default function Reviews() {
     >
       <ul>
         {items.map((item, index) => (
-          <>
-            <li key={index} style={{ display: 'flex', marginTop: '20px' }}>
+          <div key={index}>
+            <li style={{ display: 'flex', marginTop: '20px' }}>
               <div style={{ width: '332px' }}>
                 <p className={styles.name}>{item.name}</p>
                 <p className={styles.date}>{item.date}</p>
@@ -22,7 +22,7 @@ export default function Reviews() {
               </div>
             </li>
             <div className={styles.rectangle}></div>
-          </>
+          </div>
         ))}
       </ul>
       <button className={styles.button}>Open filters</button>

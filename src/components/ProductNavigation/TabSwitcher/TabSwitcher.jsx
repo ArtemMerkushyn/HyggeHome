@@ -1,9 +1,7 @@
 import { useState } from 'react';
-
 import AboutProduct from '../AboutProduct/AboutProduct';
 import Reviews from '../Reviews/Reviews';
 import Questions from '../Questions/Questions';
-
 import styles from './TabSwitcher.module.css';
 
 const tabComponents = {
@@ -14,7 +12,7 @@ const tabComponents = {
 
 const tabIds = ['About the product', 'Reviews', 'Questions'];
 
-export default function TabSwitcher() {
+export default function TabSwitcher({ data }) {
   const [selectedId, setSelectedId] = useState(tabIds[0]);
   const SelectedComponent = tabComponents[selectedId];
 
@@ -35,7 +33,9 @@ export default function TabSwitcher() {
       </div>
       <div className={styles.hr}></div>
       <div className={styles.wrapperContent}>
-        <SelectedComponent />
+        {/* Передаем данные только в выбранный компонент */}
+        {selectedId === 'About the product' && <SelectedComponent key={selectedId} data={data} />}
+        {selectedId !== 'About the product' && <SelectedComponent key={selectedId} />}
       </div>
     </>
   );

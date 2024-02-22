@@ -8,8 +8,6 @@ export const SliderNoArrow = ({data}) => {
         setSelectedImageIndex(index);
     }
 
-    console.log(data.image)
-
     return (
         <div className={styles.slider}>
             <div className={styles.dots}>

@@ -38,9 +38,8 @@ export default function Questions() {
     >
       <ul>
         {questions.map((item, index) => (
-          <>
+          <div key={index}>
             <li
-              key={index}
               style={{
                 display: 'flex',
                 alignItems: 'baseline',
@@ -55,7 +54,7 @@ export default function Questions() {
               </div>
             </li>
             <div className={styles.rectangle}></div>
-          </>
+          </div>
         ))}
       </ul>
       <button

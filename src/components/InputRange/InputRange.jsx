@@ -48,7 +48,7 @@ export const InputRange = ({ maxValue }) => {
     const inputValue = e.target.value;
     const intValue = parseInt(inputValue, 10);
   
-    if (setValue === setMin && (intValue >= parseInt(max, 10) || intValue <= 1)) {
+    if (setValue === setMin && (intValue >= parseInt(max, 10) || intValue <= 0)) {
       setValue((parseInt(max, 10) - 50).toString());
     } else if (setValue === setMin && intValue < 1) {
       setValue('1');

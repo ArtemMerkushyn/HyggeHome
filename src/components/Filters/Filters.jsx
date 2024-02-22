@@ -112,7 +112,7 @@ export default function Filters({
         }}
       >
         <h5>Price range:</h5>
-        <InputRange maxValue={100} />
+        <InputRange maxValue={300} />
         {colorsView ? (
           <div className={styles.colorFilters}>
             <h5>Color:</h5>

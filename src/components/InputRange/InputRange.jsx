@@ -30,9 +30,9 @@ export const InputRange = ({ maxValue }) => {
       // Проверка для предотвращения выхода за границы слайдера
       newPosition = Math.max(0, Math.min(newPosition, maxValue));
 
-      if (isDragging1 && newPosition <= parseInt(max, 10) - 13) {
+      if (isDragging1 && newPosition <= parseInt(max, 10) - 40) {
         setMin(Math.round(newPosition).toString());
-      } else if (isDragging2 && newPosition >= parseInt(min, 10) + 13) {
+      } else if (isDragging2 && newPosition >= parseInt(min, 10) + 40) {
         setMax(Math.round(newPosition).toString());
       }
     },
@@ -48,10 +48,14 @@ export const InputRange = ({ maxValue }) => {
     const inputValue = e.target.value;
     const intValue = parseInt(inputValue, 10);
   
-    if (setValue === setMin && intValue >= parseInt(max, 10)) {
-      setValue((parseInt(max, 10) - 13).toString()); 
-    } else if (setValue === setMax && intValue <= parseInt(min, 10)) {
-      setValue((parseInt(min, 10) + 13).toString());
+    if (setValue === setMin && (intValue >= parseInt(max, 10) || intValue <= 1)) {
+      setValue((parseInt(max, 10) - 40).toString());
+    } else if (setValue === setMin && intValue < 1) {
+      setValue('1');
+    } else if (setValue === setMax && intValue > maxValue) {
+      setValue(maxValue.toString());
+    } else if (setValue === setMax && intValue < parseInt(min, 10) + 40) {
+      setValue((parseInt(min, 10) + 40).toString());
     } else {
       setValue(inputValue);
     }

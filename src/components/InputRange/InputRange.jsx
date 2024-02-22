@@ -47,11 +47,11 @@ export const InputRange = ({ maxValue }) => {
   const handleInputChange = (e, setValue) => {
     const inputValue = e.target.value;
     const intValue = parseInt(inputValue, 10);
-
-    if (setValue === setMin && intValue > maxValue) {
-      setMin(maxValue.toString());
-    } else if (setValue === setMax && intValue > maxValue) {
-      setMax(maxValue.toString());
+  
+    if (setValue === setMin && intValue >= parseInt(max, 10)) {
+      setValue((parseInt(max, 10) - 13).toString()); 
+    } else if (setValue === setMax && intValue <= parseInt(min, 10)) {
+      setValue((parseInt(min, 10) + 13).toString());
     } else {
       setValue(inputValue);
     }

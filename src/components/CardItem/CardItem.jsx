@@ -37,7 +37,7 @@ export default function CardItem({ candle }) {
       <div className={styles.itemWrapper}>
         <img
           className={styles.cardImage}
-          src={candle.image ? candle.image : imageNotFound}
+          src={candle.image ? candle.image[0] : imageNotFound}
           alt="Candles"
         />
         <svg

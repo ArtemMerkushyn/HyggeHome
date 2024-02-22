@@ -18,6 +18,7 @@
   opacity: 1;
   transition: opacity 1s ease, transform 1s ease;
   cursor: pointer;
+  border-radius: 16px 16px 4px 4px;
 }
 
 .cardPicture {

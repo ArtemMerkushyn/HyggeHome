@@ -9,14 +9,14 @@ import { useGetFilterPriceQuery } from '../../redux/services.js';
 import { useLocation } from 'react-router-dom';
 
 const colors = [
-  'blue',
-  'green',
-  'grey',
-  'red',
-  'black',
-  'purple',
-  'yellow',
-  'pink',
+  'Blue',
+  'Green',
+  'Grey',
+  'Red',
+  'White',
+  'Purple',
+  'Yellow',
+  'Pink',
 ];
 
 export default function Filters({
@@ -26,14 +26,14 @@ export default function Filters({
 }) {
   const [openFilter, setOpenFilter] = useState(false);
   const [selectedColors, setSelectedColors] = useState({
-    blue: false,
-    green: false,
-    grey: false,
-    red: false,
-    black: false,
-    purple: false,
-    yellow: false,
-    pink: false,
+    Blue: false,
+    Green: false,
+    Grey: false,
+    Red: false,
+    White: false,
+    Purple: false,
+    Yellow: false,
+    Pink: false,
   });
   const minPrice = useSelector(state => state.filter.filter.minPrice);
   const maxPrice = useSelector(state => state.filter.filter.maxPrice);

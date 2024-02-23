@@ -40,7 +40,7 @@ export const Candles = () => {
     <div className={styles.wrapperFilters}>
       <div className={styles.wrapper}>
         <Link to={'/'}>
-          <span>Home </span>
+          <span>Home1 </span>
         </Link>
         <svg
           xmlns="http://www.w3.org/2000/svg"

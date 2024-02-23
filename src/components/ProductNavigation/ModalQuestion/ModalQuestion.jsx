@@ -1,6 +1,9 @@
 import { useState } from 'react';
-import styles from './ModalQuestion.module.css';
+import { MdOutlineClose } from "react-icons/md";
 import { toast } from 'react-toastify';
+
+import styles from './ModalQuestion.module.css';
+
 
 export default function ModalQuestion({ setShowModal, addNewQuestion }) {
   const [firstName, setFirstName] = useState('');
@@ -56,7 +59,7 @@ export default function ModalQuestion({ setShowModal, addNewQuestion }) {
           className={styles.closeButton}
           onClick={() => setShowModal(false)}
         >
-          X
+         <MdOutlineClose />
         </button>
         <h3 className={styles.title}>Write your question</h3>
         <label className={styles.label}>

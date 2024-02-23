@@ -4,16 +4,25 @@ import { useLocation } from 'react-router-dom';
 import { ProductTop } from '../../components/ProductTop/ProductTop';
 import Icons from '../../components/Icons/Icons';
 import styles from './Product.module.css';
-import ProductNavigation from '../../components/ProductNavigation/TabSwitcher/TabSwitcher';
+import TabSwitcher from '../../components/TabSwitcher/TabSwitcher';
 import { useEffect, useState } from 'react';
 import { useGetCandlesQuery } from '../../redux/services';
 import { NewCollection } from '../../components/MainPageContent/secondMainContent/NewCollection';
+import AboutProduct from '../../components/ProductNavigation/AboutProduct/AboutProduct';
+import Reviews from '../../components/ProductNavigation/Reviews/Reviews';
+import Questions from '../../components/ProductNavigation/Questions/Questions';
 
 export const Product = () => {
   const location = useLocation();
   const product = location.state.candle;
   const [catalog, setCatalog] = useState([])
   const { data, error, isLoading } = useGetCandlesQuery();
+
+  const tabs = [
+    { id: 'about', title: 'About the product', component: AboutProduct },
+    { id: 'reviews', title: 'Reviews', component: Reviews },
+    { id: 'questions', title: 'Questions', component: Questions },
+  ];
 
   useEffect(() => {
     function scrollToTop() {
@@ -49,7 +58,7 @@ export const Product = () => {
       sLoading={isLoading} 
       upperText='products for you' 
       lowerText='You might also like'/>
-      <ProductNavigation data={product}/>
+      <TabSwitcher tabs={tabs} data={product}/>
     </div>
   );
 };

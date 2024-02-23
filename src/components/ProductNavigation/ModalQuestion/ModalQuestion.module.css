@@ -78,6 +78,8 @@ border: 1px solid #252525;
   background-color: transparent;
   border: none;
   cursor: pointer;
+  width: 24px;
+  height: 24px;
 }
 
 .icons {

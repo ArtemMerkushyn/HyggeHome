@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import styles from './Amount.module.css';
 
-export const Amount = ({ onAmountChange }) => {
-  const [amount, setAmount] = useState(1);
+export const Amount = ({ onAmountChange, dataAmount}) => {
+  const [amount, setAmount] = useState(dataAmount ? dataAmount : 1);
 
   const handlePlus = () => {
     setAmount(amount + 1);

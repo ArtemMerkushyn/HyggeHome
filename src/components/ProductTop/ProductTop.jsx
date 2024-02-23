@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Button from '../MainPageContent/Button/Button';
 import { Rating } from '../Rating/Rating';
-import { Amount } from './Amount/Amount';
+import { Amount } from '../Amount/Amount';
 import styles from './ProductTop.module.css';
 import { SliderNoArrow } from './SliderNoArrow/SliderNoArrow';
 import { toast } from 'react-toastify';

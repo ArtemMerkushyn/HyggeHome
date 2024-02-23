@@ -67,6 +67,7 @@ export default function ModalQuestion({ setShowModal, addNewQuestion }) {
             name="firstName"
             required="true"
             className={styles.input}
+            placeholder='Your first name'
           />
         </label>
         <label className={styles.label}>
@@ -74,6 +75,7 @@ export default function ModalQuestion({ setShowModal, addNewQuestion }) {
           <input            
             name="email"            
             className={styles.input}
+            placeholder='Your email'
           />
         </label>
         <label className={styles.label}>

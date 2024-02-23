@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 
 import styles from './ModalQuestion.module.css';
 
-
 export default function ModalQuestion({ setShowModal, addNewQuestion }) {
   const [firstName, setFirstName] = useState('');
   const [question, setQuestion] = useState('');

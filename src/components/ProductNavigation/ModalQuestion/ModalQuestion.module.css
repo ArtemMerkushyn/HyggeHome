@@ -83,7 +83,8 @@ border: 1px solid #252525;
 .icons {
   width: 24px;
   height: 24px;
-  fill: #ffffff;
+  fill: #252525;
+  opacity: 0.6;
   transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
     fill: #fcb654;

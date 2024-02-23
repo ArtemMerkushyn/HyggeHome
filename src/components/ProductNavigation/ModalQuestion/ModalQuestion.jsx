@@ -58,7 +58,7 @@ export default function ModalQuestion({ setShowModal, addNewQuestion }) {
           className={styles.closeButton}
           onClick={() => setShowModal(false)}
         >
-         <MdOutlineClose />
+         <MdOutlineClose className={styles.icons}  />
         </button>
         <h3 className={styles.title}>Write your question</h3>
         <label className={styles.label}>

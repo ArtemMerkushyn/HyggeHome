@@ -10,6 +10,8 @@ import { TableGames } from './pages/TableGames/TableGames';
 import { BooksJournals } from './pages/BooksJournals/BooksJournals';
 import { Search } from './pages/Search/Search';
 import { Product } from './pages/Product/Product';
+import { Curt } from './pages/Curt/Curt';
+import { Wish } from './pages/Wish/Wish';
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +57,14 @@ export const router = createBrowserRouter([
       {
         path: '/:category/product/:id',
         element: <Product />,
+      },
+      {
+        path: 'curt',
+        element: <Curt/>
+      },
+      {
+        path: 'wish',
+        element: <Wish/>
       },
       {
         path: '*',

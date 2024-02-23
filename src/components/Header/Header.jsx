@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { PagesLinks } from '../PagesLinks/PagesLinks';
 import Icons from '../Icons/Icons.jsx';
 import styles from './Header.module.css';
@@ -8,6 +8,8 @@ export const Header = () => {
   const logoStyles = {
     fontFamily: 'DM Mono',
   };
+
+  const location = useLocation();
 
   return (
     <header className={styles.header}>
@@ -32,8 +34,12 @@ export const Header = () => {
         <PagesLinks />
         <div className={styles.wrapper}>
           <Search />
-          <Icons icon={'basket'} />
-          <Icons icon={'user'} />
+          <NavLink className={styles.link} to={'/curt'} style={{ borderBottom: location.pathname === '/curt' ? '2px solid #FCB654' : '2px solid transparent'}}>
+            <Icons icon={'basket'} />
+          </NavLink>
+          <NavLink className={styles.link} to={'/'}>
+            <Icons icon={'user'} />
+          </NavLink>
         </div>
       </div>
     </header>

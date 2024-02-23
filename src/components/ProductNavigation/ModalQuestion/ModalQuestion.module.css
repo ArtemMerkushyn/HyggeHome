@@ -74,14 +74,20 @@ border: 1px solid #252525;
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
-  padding: 0.5rem;
+  padding: 0;
   background-color: transparent;
   border: none;
   cursor: pointer;
 }
 
-.closeButton:hover {
-  color: rgb(255, 136, 0);
+.icons {
+  width: 24px;
+  height: 24px;
+  fill: #ffffff;
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    fill: #fcb654;
+  }
 }
 
 .textarea {

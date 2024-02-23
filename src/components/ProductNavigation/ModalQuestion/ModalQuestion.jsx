@@ -58,8 +58,9 @@ export default function ModalQuestion({ setShowModal, addNewQuestion }) {
         >
           X
         </button>
+        <h3 className={styles.title}>Write your question</h3>
         <label className={styles.label}>
-          Your first Name:
+        Your first name*
           <input
             value={firstName}
             onChange={e => setFirstName(e.target.value)}
@@ -69,18 +70,25 @@ export default function ModalQuestion({ setShowModal, addNewQuestion }) {
           />
         </label>
         <label className={styles.label}>
-          Your question:
+        Your email*
+          <input            
+            name="email"            
+            className={styles.input}
+          />
+        </label>
+        <label className={styles.label}>
+        Your question*
           <textarea
             value={question}
             onChange={e => setQuestion(e.target.value)}
             name="question"
-            placeholder="Enter the question"
+            placeholder="What materials are used in the production of candles?"
             rows={4}
             required="true"
             className={styles.textarea}
           />
         </label>
-        <button type="button" onClick={handleAddQuestion}>
+        <button type="button" onClick={handleAddQuestion} className={styles.button}>
           Add question
         </button>
       </div>

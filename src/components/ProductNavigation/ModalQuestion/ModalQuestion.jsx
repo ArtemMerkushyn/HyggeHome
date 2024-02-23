@@ -67,7 +67,7 @@ export default function ModalQuestion({ setShowModal, addNewQuestion }) {
             value={firstName}
             onChange={e => setFirstName(e.target.value)}
             name="firstName"
-            required="true"
+            required={true}
             className={styles.input}
             placeholder='Your first name'
           />
@@ -88,7 +88,7 @@ export default function ModalQuestion({ setShowModal, addNewQuestion }) {
             name="question"
             placeholder="What materials are used in the production of candles?"
             rows={4}
-            required="true"
+            required={true}
             className={styles.textarea}
           />
         </label>

@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const servicesApi = createApi({
   reducerPath: 'servicesApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://tc299.onrender.com/',
+    baseUrl: 'https://tc299.vercel.app/',
   }),
   endpoints: builder => ({
     getCandles: builder.query({

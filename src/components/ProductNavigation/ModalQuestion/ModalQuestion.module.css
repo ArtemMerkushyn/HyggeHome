@@ -74,7 +74,7 @@ border: 1px solid #252525;
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
-  padding: 0.5rem;
+  padding: 0;
   background-color: transparent;
   border: none;
   cursor: pointer;

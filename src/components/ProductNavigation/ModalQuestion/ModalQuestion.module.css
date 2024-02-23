@@ -80,8 +80,14 @@ border: 1px solid #252525;
   cursor: pointer;
 }
 
-.closeButton:hover {
-  color: rgb(255, 136, 0);
+.icons {
+  width: 24px;
+  height: 24px;
+  fill: #ffffff;
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    fill: #fcb654;
+  }
 }
 
 .textarea {

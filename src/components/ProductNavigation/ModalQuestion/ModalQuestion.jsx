@@ -3,6 +3,7 @@ import { MdOutlineClose } from "react-icons/md";
 import { toast } from 'react-toastify';
 
 import styles from './ModalQuestion.module.css';
+import Checkbox from '../Сheckbox/Checkbox';
 
 export default function ModalQuestion({ setShowModal, addNewQuestion }) {
   const [firstName, setFirstName] = useState('');
@@ -92,6 +93,9 @@ export default function ModalQuestion({ setShowModal, addNewQuestion }) {
             className={styles.textarea}
           />
         </label>
+        <div>
+        <Checkbox label="Send an answer to your question by email" />          
+        </div>
         <button type="button" onClick={handleAddQuestion} className={styles.button}>
           Add question
         </button>

@@ -4,7 +4,7 @@ import styles from './CurtItem.module.css';
 
 export const CurtItem = ({ productData }) => {
     const { dataProduct, amount } = productData;
-    const [amountCart, setAmountCart] = useState(amount);
+    const [amountCart, setAmountCart] = useState(amount || 1);
 
     const handleAmountChange = newAmount => {
         setAmountCart(newAmount);

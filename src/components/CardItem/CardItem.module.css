@@ -50,12 +50,6 @@
   display: none;
 }
 
-/* .cardImage:hover {
-  opacity: 0;
-  
-  cursor: pointer;
-} */
-
 .titleItem {
   color: #252525;
   font-family: 'DM Mono';
@@ -98,4 +92,23 @@
   height: 24px;
   background-color: transparent;
   border: none;
+}
+
+.button {
+  color: #fff;
+  font-family: 'Poppins';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  width: 412px;
+  padding: 10px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 24px;
+  background: #fcb654;
+  border: none;
+  margin-top: 10px;
 }

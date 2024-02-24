@@ -16,12 +16,13 @@ import { servicesApi } from './services';
 import searchReducer from './slices/searchSlice';
 import favoritesReducer from './slices/favoriteSlice';
 import filterReducer from './slices/filterSlice';
+import curtReducer from './slices/curtSlice';
 
 const persistConfig = {
   key: 'root',
   version: 1,
   storage,
-  whitelist: ['favorite', 'search'],
+  whitelist: ['favorite', 'search', 'curt'],
 };
 
 const reducers = combineReducers({
@@ -29,6 +30,7 @@ const reducers = combineReducers({
   search: searchReducer,
   favorite: favoritesReducer,
   filter: filterReducer,
+  curt: curtReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

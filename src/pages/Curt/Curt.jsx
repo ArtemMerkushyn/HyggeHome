@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import styles from './Curt.module.css';
 import Button from '../../components/MainPageContent/Button/Button';
-import { CurtItem } from './CurtItem/CurtItem';
+import { CurtItem } from '../../components/CurtItem/CurtItem';
 import { NewCollection } from '../../components/MainPageContent/secondMainContent/NewCollection';
 import { useGetCandlesQuery } from '../../redux/services';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectCurtProducts } from '../../redux/selectors';
 
 export const Curt = () => {
     const { data, isLoading } = useGetCandlesQuery();
@@ -15,31 +17,12 @@ export const Curt = () => {
             setLoadedData(data);
         }
     }, [data, isLoading]);
+
+    const curtItems = useSelector(selectCurtProducts);
     
     const handlerClick = () => {
         console.log('ok');
     }
-
-    const curtArr = [
-        {
-            image: ['https://raw.githubusercontent.com/DanyloFrolov/HyggeHomeP/main/Honey%20Bourbon.png'],
-            name: 'The Little Book of Hygge',
-            price: '10',
-            amount: 2,
-        },
-        {
-            image: ['https://raw.githubusercontent.com/DanyloFrolov/HyggeHomeP/main/Honey%20Bourbon.png'],
-            name: 'The Little Book of Hygge',
-            price: '20',
-            amount: 6,
-        },
-        {
-            image: ['https://raw.githubusercontent.com/DanyloFrolov/HyggeHomeP/main/Honey%20Bourbon.png'],
-            name: 'The Little Book of Hygge',
-            price: '30',
-            amount: 11,
-        },
-    ];
 
     return (
         <div style={{marginBottom: '120px'}}>
@@ -60,8 +43,15 @@ export const Curt = () => {
                 <div className={styles.sections__item} style={{maxWidth: '191px', width: '100%'}}>Total</div>
             </div>
             <div className={styles.wrapper}>
-                {curtArr.map((product, index) => (
-                    <CurtItem key={index} productData={product}/>
+                {curtItems.length === 0 ? (
+                    <div className={styles.notFound}>
+                        <img
+                            style={{ borderRadius: '24px' }}
+                            src="/images/notFound/notFound.jpg"
+                            alt="not-found"
+                        />
+                    </div>) : curtItems.map((product, index) => (
+                        <CurtItem key={index} productData={product}/>
                 ))}
             </div>
             <div className={styles.btn}><Button text={'Next step'} funcClick={handlerClick}/></div>

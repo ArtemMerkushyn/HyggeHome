@@ -1,14 +1,13 @@
 import styles from './CardItem.module.css';
 import imageNotFound from '../../image/broken-images.png';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFavorites } from '../../redux/selectors';
+import { selectCurtProducts, selectFavorites } from '../../redux/selectors';
 import { addFavorite, removeFavorite } from '../../redux/slices/favoriteSlice';
 import { toast } from 'react-toastify';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { addToCurt } from '../../redux/slices/curtSlice';
 
 export default function CardItem({ candle }) {
-  const [isToCard, setIsToCard] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -16,8 +15,10 @@ export default function CardItem({ candle }) {
   const pathName = location.pathname;
 
   const itemFavorites = useSelector(selectFavorites);
+  const curtItems = useSelector(selectCurtProducts);
 
   const isChecked = itemFavorites.some(({ _id }) => _id === candle._id);
+  const isInCurt = curtItems.some(item => item.dataProduct._id === candle._id);
 
   const handleToggleFavorite = () => {
     if (isChecked) {
@@ -28,10 +29,23 @@ export default function CardItem({ candle }) {
     } else {
       dispatch(addFavorite(candle));
       toast.success(`${candle.name} add to favorite`, {
-        theme: 'colored',
+        theme: '',
       });
     }
   };
+
+  const handleAddToCart = () => {
+    if(isInCurt === true) {
+      toast('You have already added the product to the cart');
+      return;
+    };
+
+    const productToCart = {
+      dataProduct: candle,
+    }
+    dispatch(addToCurt(productToCart));
+    toast.success(`You have added product to the cart`);
+  }
 
   const handleToProductPage = candle => {
     navigate(
@@ -69,7 +83,7 @@ export default function CardItem({ candle }) {
                 height="30"
                 viewBox="0 0 24 24"
                 className={styles.icons}
-                style={{ fill: isToCard ? '#fcb654' : '' }}
+                style={{ fill: isInCurt ? '#fcb654' : '' }}
               >
                 <path
                   d="M5 4H6.5L9 16M9 16H17M9 16C7.89543 16 7 16.8954 7 18C7 19.1046 7.89543 20 9 20C10.1046 20 11 19.1046 11 18C11 16.8954 10.1046 16 9 16ZM17 16C15.8954 16 15 16.8954 15 18C15 19.1046 15.8954 20 17 20C18.1046 20 19 19.1046 19 18C19 16.8954 18.1046 16 17 16ZM8.5 13H17.75L19 7H7.3125"
@@ -112,9 +126,7 @@ export default function CardItem({ candle }) {
       {pathName === '/wish' && (
         <button
           type="button"
-          onClick={() => {
-            setIsToCard(true);
-          }}
+          onClick={handleAddToCart}
           className={styles.button}
         >
           Add to cart

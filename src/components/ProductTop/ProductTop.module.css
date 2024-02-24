@@ -37,11 +37,6 @@
     align-items: center;
 }
 
-.toCatr button {
-    margin-top: 20px;
-    width: 100%;
-}
-
 .text {
     font-family: Poppins;
     font-size: 18px;
@@ -56,4 +51,41 @@
     line-height: 47px;
     letter-spacing: -6%;
     margin-bottom: 10px;
+}
+
+.btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-radius: 24px;
+    background: #fcb654;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+    opacity: 0.85; 
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn:disabled {
+    opacity: 1;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.added {
+    margin-top: 20px;
+    background: #fcb654;
+    border-radius: 24px;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
 }

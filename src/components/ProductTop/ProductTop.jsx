@@ -1,24 +1,40 @@
-import { useState } from 'react';
-import Button from '../MainPageContent/Button/Button';
+import { useEffect, useState } from 'react';
 import { Rating } from '../Rating/Rating';
 import { Amount } from '../Amount/Amount';
 import styles from './ProductTop.module.css';
 import { SliderNoArrow } from './SliderNoArrow/SliderNoArrow';
 import { toast } from 'react-toastify';
+import { addToCurt } from '../../redux/slices/curtSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCurtProducts } from '../../redux/selectors';
 
 export const ProductTop = ({ data }) => {
   const [amount, setAmount] = useState(1);
+  const [isInCurt, setIsInCurt] = useState(false); 
+  const curtItems = useSelector(selectCurtProducts);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const foundItem = curtItems.find(item => item.dataProduct._id === data._id);
+    setIsInCurt(!!foundItem);
+  }, [curtItems, data._id]);
 
   const handleAmountChange = newAmount => {
     setAmount(newAmount);
   }
 
   const handleAddToCart = () => {
+    if(isInCurt === true) {
+      toast('You have already added the product to the cart');
+      return;
+    }
+
     const productToCart = {
-      data,
+      dataProduct: data,
       amount,
     }
-    console.log(productToCart);
+    dispatch(addToCurt(productToCart));
     toast.success(`You have added ${amount} products to the cart`);
   }
 
@@ -37,11 +53,11 @@ export const ProductTop = ({ data }) => {
         <div className={styles.info__item}>
           <div className={styles.price}>${data.price}</div>
           <Amount onAmountChange={handleAmountChange} />
-          <div className={styles.toCatr}>
-            <Button funcClick={handleAddToCart} text={'Add to cart'} />
-          </div>
+          <button className={styles.btn} disabled={isInCurt} onClick={handleAddToCart}>{isInCurt ? 'Added to cart' : 'Add to cart'}</button>
         </div>
       </div>
     </div>
   );
 }
+
+

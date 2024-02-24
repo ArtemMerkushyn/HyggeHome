@@ -61,3 +61,8 @@
     gap: 30px;
     margin-bottom: 60px;
 }
+
+.notFound img {
+    margin: 30px auto;
+    width: 480px;
+}

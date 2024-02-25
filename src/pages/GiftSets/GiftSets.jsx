@@ -33,6 +33,7 @@ export const GiftSets = () => {
 
   const updateFilteredData = filteredData => {
     setNewData(filteredData);
+    setTotalPages(1);
   };
 
   const currentPage = number => {

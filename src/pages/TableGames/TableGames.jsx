@@ -33,6 +33,7 @@ export const TableGames = () => {
 
   const updateFilteredData = filteredData => {
     setNewData(filteredData);
+    setTotalPages(1);
   };
 
   const currentPage = number => {

@@ -1,18 +1,5 @@
-.modal_container{
-    padding: 12px 64px 16px ;
-    position: relative;
-}
 
-.modal_form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-.modal_form  .modal_register_text{
-align-self: flex-start;
-
-}
 .modal_register_text{
     color: #FCB654;
     font-family: "DM Mono";
@@ -20,39 +7,32 @@ align-self: flex-start;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    margin-bottom: 16px;
-}
-.modal_create_button{
-flex-shrink: 0;
-border-radius: 24px;
-border: 1px solid #FCB654;
-background: #FCB654;
-color: #FFF;
-font-family: Poppins;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-cursor: pointer;
+    margin-bottom: 20px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 .modal_checkbox_container{
-    margin-bottom: 12px;
     display: flex;
     flex-direction: row;
-    width: 340.8px;
+    width: 250px;
+    flex-direction: row;
+    align-items: center;
 }
 .modal_checkbox{
-    margin-top: 4px;
-    margin-right: 9.26px;
+    margin-right: 4px;
     background-color: transparent;
     border: 1px solid #FCB654;
-    padding: 10px;
     cursor: pointer;
-    width: 12px;
-    height: 12px;
+    width: 18px;
+    height: 18px;
     flex-shrink: 0;
     border-radius: 50%;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     }
 .modal_checkbox.checked {
     background-color: #FCB654;
@@ -66,13 +46,13 @@ cursor: pointer;
   padding: 0;
   cursor: pointer;
   position: absolute;
-  top: 15px;
+  top: 27px;
   right: 27px;
 }
 .svg_div{
     position: absolute;
-    top: -2px;
-    left: -2px;
+    top: -4px;
+    left: -3.5px;
 }
 .agreement_text{
     color: #252525;
@@ -81,6 +61,7 @@ font-size: 12px;
 font-style: normal;
 font-weight: 500;
 line-height: normal;
+max-width: 228px;
 }
 .hide_password {
     position: relative;
@@ -93,8 +74,18 @@ line-height: normal;
 .hide_password_button {
     position: absolute;
     right: 10px;
-    top: 59%;
+    top: 45px;
     transform: translateY(-50%);
     background: transparent;
     border: none;
+}
+.agreement_list{
+    margin: 20px 0;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+}
+.agreement{
+    display: flex;
+    
 }

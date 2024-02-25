@@ -5,9 +5,9 @@
     border-radius: 24px;
     border: 1px solid #252525;
     display: flex;
-    width: 340.8px;
+    width: 250px;
     height: 40px;
-    padding: 18.4px 24px;
+    padding: 14px 20px;
     align-items: center;
     gap: 8px;
     color: #252525;
@@ -15,7 +15,7 @@
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
-    line-height: normal;
+    line-height: 18px;
     opacity: 0.6;
 }
 .modal_input:focus{
@@ -31,6 +31,8 @@
     font-size: 10px;
 }
 .input_container{
+    margin-bottom: 10px;
+}
+.modal_input_label{
     margin-bottom: 8px;
-    height: 75.2px;
 }

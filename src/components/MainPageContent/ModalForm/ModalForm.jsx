@@ -26,8 +26,7 @@ export const ModalForm = ({ toggleModal }) => {
       await registerUser({
           email: values.email,
           password: values.password,
-          first: values.firstName,
-          last: values.lastName,
+          fullName: values.fullName,
           promo: secondCheckbox,
       });
 
@@ -43,8 +42,7 @@ export const ModalForm = ({ toggleModal }) => {
 
   const {values, errors, touched, handleBlur, handleChange, handleSubmit} = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
+      fullName: "",
       email: "",
       password: "",
       confirmPassword: "",
@@ -58,7 +56,7 @@ export const ModalForm = ({ toggleModal }) => {
   
 
   return (
-    <div className={css.modal_container}>
+    <>
       <button
         type="button"
         onClick={toggleModal}
@@ -70,33 +68,20 @@ export const ModalForm = ({ toggleModal }) => {
       <form onSubmit={handleSubmit} autoComplete='off'>
 
       <h2 className={css.modal_register_text}>
-          Register Individual Account!
+          Register Account
         </h2>
 
      <MyInput 
         type="text"
-        id="first-name"
-        placeholder="Your first name"
-        name="firstName"
-        labelFor="Your first name*"
-        value={values.firstName}
+        id="name"
+        placeholder="Your full name"
+        name="fullName"
+        labelFor="Your full name*"
+        value={values.fullName}
         onChange={handleChange}
         onBlur={handleBlur}
-        errorField={errors.firstName}
-        touched={touched.firstName}
-        />
-
-     <MyInput 
-        type="text"
-        id="last-name"
-        name="lastName"
-        placeholder="Your last name"
-        labelFor="Your last name*"
-        value={values.lastName}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        errorField={errors.lastName}
-        touched={touched.lastName}
+        errorField={errors.fullName}
+        touched={touched.fullName}
         />
 
      <MyInput 
@@ -155,52 +140,55 @@ export const ModalForm = ({ toggleModal }) => {
             {confirmPasswordVisability ? <Icons icon={'eye'} /> : <Icons icon={'closed_eye'}/> }
           </button>
         </div>
-
-        <div className={css.modal_checkbox_container}>
-          <button
-            type="button"
-            className={`${css.modal_checkbox} ${
-              firstCheckbox ? css.checked : ''
-            }`}
-            onClick={() => {
-              setFirstCheckbox(prev => !prev);
-            }}
-          >
-            <div className={css.svg_div}>
-              <Icons icon={'check'} />
+        <ul className={css.agreement_list}>
+          <li className={css.agreement}>
+            <div className={css.modal_checkbox_container}>
+              <button
+                type="button"
+                className={`${css.modal_checkbox} ${
+                  firstCheckbox ? css.checked : ''
+                }`}
+                onClick={() => {
+                  setFirstCheckbox(prev => !prev);
+                }}
+              >
+                <div className={css.svg_div}>
+                  <Icons icon={'check'} />
+                </div>
+              </button>
+              <label htmlFor="agreement" className={css.agreement_text}>
+                I accept the Purchase Rules, User Agreements, and Privacy Policy
+                conditions
+              </label>
             </div>
-          </button>
-          <label htmlFor="agreement" className={css.agreement_text}>
-            I accept the Purchase Rules, User Agreements, and Privacy Policy
-            conditions
-          </label>
-        </div>
-
-        <div className={css.modal_checkbox_container}>
-          <button
-            type="button"
-            className={`${css.modal_checkbox} ${
-              secondCheckbox ? css.checked : ''
-            }`}
-            onClick={() => {
-              setSecondCheckbox(prev => !prev);
-            }}
-          >
-            <div className={css.svg_div}>
-              <Icons icon={'check'} />
-            </div>
-          </button>
-          <label htmlFor="agreement" className={css.agreement_text}>
-            I agree to receive emails about the new offers from HyggeHome
-          </label>
-        </div>
-
+          </li>
+          <li className={css.agreement}>
+            <div className={css.modal_checkbox_container}>
+              <button
+                type="button"
+                className={`${css.modal_checkbox} ${
+                  secondCheckbox ? css.checked : ''
+                }`}
+                onClick={() => {
+                  setSecondCheckbox(prev => !prev);
+                }}
+              >
+                <div className={css.svg_div}>
+                  <Icons icon={'check'} />
+                </div>
+              </button>
+              <label htmlFor="agreement" className={css.agreement_text}>
+                I agree to receive emails about the new offers from HyggeHome
+              </label>
+              </div>
+            </li>
+        </ul>
         <Button 
         disabled={!firstCheckbox}
         text="Create account"
-        style={{ width: '340.8px', marginTop: '3px' }}
+        style={{ width: '250px' }}
         type="submit" />
       </form>
-    </div>
+      </>
   );
 };

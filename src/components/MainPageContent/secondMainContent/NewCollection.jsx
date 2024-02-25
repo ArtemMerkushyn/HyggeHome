@@ -14,7 +14,7 @@ export const NewCollection = ({ sliderNeeded, upperText, lowerText }) => {
 
   useEffect(() => {
     if (data) {
-      setCatalog(data);
+      setCatalog(data.results);
     }
   }, [data]);
 

@@ -9,12 +9,15 @@ import { useGetCandlesQuery } from '../../redux/services';
 import { setIsActive } from '../../redux/slices/searchSlice';
 import sortData from '../../utils/helpers/sort';
 import styles from './Candles.module.css';
+import Pagination from '../../components/Pagination/Pagination';
 
 export const Candles = () => {
-  const { data, error, isLoading } = useGetCandlesQuery();
+  const [page, setPage] = useState(1);
+  const { data, error, isLoading } = useGetCandlesQuery(page);
   const sortValue = useSelector(state => state.filter.sortValue);
   const [newData, setNewData] = useState([]);
   const [dataList, setDataList] = useState([]);
+  const [totalPages, setTotalPages] = useState(0);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,12 +26,17 @@ export const Candles = () => {
 
   useEffect(() => {
     if (data) {
-      setNewData(data);
+      setNewData(data.results);
+      setTotalPages(data.totalPages);
     }
   }, [data]);
 
   const updateFilteredData = filteredData => {
     setNewData(filteredData);
+  };
+
+  const currentPage = number => {
+    setPage(number);
   };
 
   useEffect(() => {
@@ -72,6 +80,7 @@ export const Candles = () => {
         </div>
       </div>
       <CardList data={dataList} error={error} isLoading={isLoading} />
+      <Pagination totalPages={totalPages} newPage={currentPage} />
     </div>
   );
 };

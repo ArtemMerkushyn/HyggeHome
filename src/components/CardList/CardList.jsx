@@ -4,6 +4,7 @@ import CandlesItem from '../CardItem/CardItem';
 import styles from './CardList.module.css';
 import SkeletonProductLib from '../skeleton/SkeletonProductLib';
 import scrollToTop from '../../utils/helpers/scrollToTop';
+import imgError from '../../image/error.jpeg';
 
 export default function CardList({ data, error, isLoading }) {
   const [catalog, setCatalog] = useState([]);
@@ -36,7 +37,11 @@ export default function CardList({ data, error, isLoading }) {
   }
 
   if (error) {
-    return <div>Error loading data: {error.message}</div>;
+    return (
+      <div className={styles.errorWrapper}>
+        <img className={styles.error} src={imgError} alt="Error loading" />
+      </div>
+    );
   }
 
   return (

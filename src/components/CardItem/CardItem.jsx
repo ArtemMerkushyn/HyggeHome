@@ -29,23 +29,23 @@ export default function CardItem({ candle }) {
     } else {
       dispatch(addFavorite(candle));
       toast.success(`${candle.name} add to favorite`, {
-        theme: '',
+        theme: 'colored',
       });
     }
   };
 
   const handleAddToCart = () => {
-    if(isInCurt === true) {
+    if (isInCurt === true) {
       toast('You have already added the product to the cart');
       return;
-    };
+    }
 
     const productToCart = {
       dataProduct: candle,
-    }
+    };
     dispatch(addToCurt(productToCart));
     toast.success(`You have added product to the cart`);
-  }
+  };
 
   const handleToProductPage = candle => {
     navigate(

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { setIsActive } from '../../redux/slices/searchSlice';
@@ -7,19 +7,42 @@ import Filters from '../../components/Filters/Filters';
 import Sort from '../../components/Sort/Sort';
 import CardList from '../../components/CardList/CardList';
 import styles from './TableGames.module.css';
+import { useGetTableGamesQuery } from '../../redux/services';
+import sortData from '../../utils/helpers/sort';
+import Pagination from '../../components/Pagination/Pagination';
 
 export const TableGames = () => {
+  const [page, setPage] = useState(1);
+  const { data, error, isLoading } = useGetTableGamesQuery(page);
+  const sortValue = useSelector(state => state.filter.sortValue);
   const [newData, setNewData] = useState([]);
+  const [dataList, setDataList] = useState([]);
+  const [totalPages, setTotalPages] = useState(0);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(setIsActive(false));
   }, [dispatch]);
 
+  useEffect(() => {
+    if (data) {
+      setNewData(data.results);
+      setTotalPages(data.totalPages);
+    }
+  }, [data]);
+
   const updateFilteredData = filteredData => {
     setNewData(filteredData);
-    setNewData([]);
   };
+
+  const currentPage = number => {
+    setPage(number);
+  };
+
+  useEffect(() => {
+    const sortedData = sortData({ option: sortValue, value: newData });
+    setDataList(sortedData);
+  }, [sortValue, newData]);
 
   return (
     <div className={styles.wrapperFilters}>
@@ -52,7 +75,8 @@ export const TableGames = () => {
           <Sort data={newData} onUpdateFilteredData={updateFilteredData} />
         </div>
       </div>
-      <CardList data={newData} />
+      <CardList data={dataList} error={error} isLoading={isLoading} />
+      <Pagination totalPages={totalPages} newPage={currentPage} />
     </div>
   );
 };

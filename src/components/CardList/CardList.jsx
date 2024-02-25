@@ -50,10 +50,7 @@ export default function CardList({ data, error, isLoading }) {
           />
         </div>
       ) : (
-        <ul
-          className={styles.cardList}
-          style={{ marginBottom: catalog.length > itemsPerPage ? '' : '129px' }}
-        >
+        <ul className={styles.cardList}>
           {currentItems.map((candle, index) => (
             <CandlesItem key={index} candle={candle} />
           ))}

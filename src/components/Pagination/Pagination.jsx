@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import styles from './Pagination.module.css';
+import scrollToTop from '../../utils/helpers/scrollToTop';
 
 export default function Pagination({ totalPages, newPage }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -10,13 +11,6 @@ export default function Pagination({ totalPages, newPage }) {
     newPage(pageNumber);
     scrollToTop();
   };
-
-  function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'auto',
-    });
-  }
 
   return (
     <>

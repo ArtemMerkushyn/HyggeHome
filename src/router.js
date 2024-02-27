@@ -12,6 +12,7 @@ import { Search } from './pages/Search/Search';
 import { Product } from './pages/Product/Product';
 import { Curt } from './pages/Curt/Curt';
 import { Wish } from './pages/Wish/Wish';
+import DeliveryPage from './pages/DeliveryPage/DeliveryPage';
 
 export const router = createBrowserRouter([
   {
@@ -60,15 +61,19 @@ export const router = createBrowserRouter([
       },
       {
         path: 'curt',
-        element: <Curt/>
+        element: <Curt />,
       },
       {
         path: 'wish',
-        element: <Wish/>
+        element: <Wish />,
+      },
+      {
+        path: 'delivery-page',
+        element: <DeliveryPage />,
       },
       {
         path: '*',
-        element: <Main/>,
+        element: <Main />,
       },
     ],
   },

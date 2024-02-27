@@ -20,7 +20,6 @@ export default function Delivery() {
     city: '',
     code: '',
     phone: '',
-    deliveryMethod: '',
   });
 
   const handleChange = e => {
@@ -37,19 +36,13 @@ export default function Delivery() {
   const validateField = (fieldName, value) => {
     let errorMessage = '';
 
-    if (fieldName === 'firstName' && fieldName === 'lastName') {
+    if (fieldName === 'firstName') {
       if (value.length < 3) {
         errorMessage = 'The name is too short';
       } else if (!/^[a-zA-Z0-9 ]*$/.test(value)) {
         errorMessage = 'The name must contain only letters and numbers';
       }
     }
-
-    // if (fieldName === 'email') {
-    //   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-    //     errorMessage = 'Please enter a valid email address';
-    //   }
-    // }
 
     setErrors({
       ...errors,
@@ -77,7 +70,7 @@ export default function Delivery() {
             required
           />
           {errors.firstName && (
-            <span className="error">{errors.firstName}</span>
+            <span className={styles.error}>{errors.firstName}</span>
           )}
         </div>
         <div className={styles.form_group}>
@@ -91,7 +84,9 @@ export default function Delivery() {
             placeholder="Your last name"
             required
           />
-          {errors.lastName && <span className="error">{errors.lastName}</span>}
+          {errors.lastName && (
+            <span className={styles.error}>{errors.lastName}</span>
+          )}
         </div>
         <div className={styles.form_group}>
           <label className={styles.form_label}>Your adress*</label>
@@ -104,7 +99,9 @@ export default function Delivery() {
             placeholder="Your adress"
             required
           />
-          {errors.adress && <span className="error">{errors.adress}</span>}
+          {errors.adress && (
+            <span className={styles.error}>{errors.adress}</span>
+          )}
         </div>
         <div className={styles.form_group}>
           <label className={styles.form_label}>Your city*</label>
@@ -117,7 +114,7 @@ export default function Delivery() {
             placeholder="Your city"
             required
           />
-          {errors.city && <span className="error">{errors.city}</span>}
+          {errors.city && <span className={styles.error}>{errors.city}</span>}
         </div>
         <div className={styles.form_group}>
           <label className={styles.form_label}>Postal code*</label>
@@ -130,7 +127,7 @@ export default function Delivery() {
             placeholder="Postal code"
             required
           />
-          {errors.code && <span className="error">{errors.code}</span>}
+          {errors.code && <span className={styles.error}>{errors.code}</span>}
         </div>
         <div className={styles.form_group}>
           <label className={styles.form_label}>Phone number*</label>
@@ -143,43 +140,58 @@ export default function Delivery() {
             placeholder="Phone number"
             required
           />
-          {errors.phone && <span className="error">{errors.phone}</span>}
+          {errors.phone && <span className={styles.error}>{errors.phone}</span>}
         </div>
-        <div style={{ marginTop: '60px' }}>
-          <legend className={styles.delivery_method}>Delivery method</legend>
 
-          <div>
+        <div style={{ marginTop: '60px' }}>
+          <h3 className={styles.delivery_method}>Delivery method</h3>
+
+          <div className={styles.radio_wrapper}>
             <input
               type="radio"
               id="method 1"
               name="deliveryMethod"
               value="method1"
+              checked={formData.deliveryMethod === 'method1'}
               onChange={handleChange}
-              defaultChecked
             />
-            <label htmlFor="method 1">Delivery method 1</label>
+            <div className={styles.divform}></div>
+            <label htmlFor="method 1" className={styles.radio_label}>
+              <span className={styles.span_title}>Delivery method 1</span>
+              <span className={styles.span_price}>$5</span>
+            </label>
           </div>
 
-          <div>
+          <div className={styles.radio_wrapper}>
             <input
               type="radio"
               id="method 2"
               name="deliveryMethod"
               value="method2"
+              checked={formData.deliveryMethod === 'method2'}
               onChange={handleChange}
             />
-            <label htmlFor="method 2">Delivery method 2</label>
+            <div className={styles.divform}></div>
+            <label htmlFor="method 2" className={styles.radio_label}>
+              <span className={styles.span_title}>Delivery method 2</span>
+              <span className={styles.span_price}>$10</span>
+            </label>
           </div>
 
-          <div>
+          <div className={styles.radio_wrapper}>
             <input
               type="radio"
               id="method 3"
               name="deliveryMethod"
               value="method3"
+              checked={formData.deliveryMethod === 'method3'}
               onChange={handleChange}
             />
-            <label htmlFor="method 3">Delivery method 3</label>
+            <div className={styles.divform}></div>
+            <label htmlFor="method 3" className={styles.radio_label}>
+              <span className={styles.span_title}>Delivery method 3</span>
+              <span className={styles.span_price}>$9</span>
+            </label>
           </div>
         </div>
         <div className={styles.button_wrapper}>

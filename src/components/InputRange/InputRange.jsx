@@ -114,11 +114,13 @@ export const InputRange = ({ maxValue, applyFilterPrice }) => {
       setMin(prevMin);
       //setMax(prevMax);
       setMax(input2Value > input1Value ?  max : prevMax);
+    } else if(input2Value > maxValue) {
+      setMax(prevMax);
     } else {
       setPrevMin(min);
       setPrevMax(max);
     }
-  }, [input1ValueError, input2ValueError, min, max, prevMin, prevMax, input1Value,input2Value]);
+  }, [input1ValueError, input2ValueError, min, max, prevMin, prevMax, input1Value,input2Value, maxValue]);
 
   return (
     <>

@@ -81,7 +81,7 @@ export const LightingDecor = () => {
         atmosphere
       </h2>
       <div className={styles.wrapperButtons}>
-        <Filters colorsView={true} onUpdateFilteredData={updateFilteredData} />
+        <Filters colorsView={false} onUpdateFilteredData={updateFilteredData} />
         <div className={styles.dropdownList}>
           Sort by
           <Sort />

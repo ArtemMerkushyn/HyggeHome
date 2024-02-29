@@ -1,5 +1,4 @@
 import React from 'react';
-// import { ModalForm } from "../ModalForm/ModalForm";
 import css from './Modal.module.css';
 
 export const Modal = ({ funcClick, children }) => {

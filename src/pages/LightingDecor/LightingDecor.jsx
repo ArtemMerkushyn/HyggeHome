@@ -41,10 +41,10 @@ export const LightingDecor = () => {
     }
   }, [data]);
 
-  const updateFilteredData = () => {
+  const updateFilteredData = colors => {
     setMin(minPrice);
     setMax(maxPrice);
-    setColors('');
+    setColors(colors);
   };
 
   const currentPage = number => {

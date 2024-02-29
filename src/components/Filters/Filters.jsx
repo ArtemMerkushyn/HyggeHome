@@ -43,7 +43,7 @@ export default function Filters({ colorsView, onUpdateFilteredData }) {
     const colors = Object.keys(selectedColors).filter(
       color => selectedColors[color],
     );
-    onUpdateFilteredData(true);
+    onUpdateFilteredData(colors);
     dispatch(addColor(colors));
 
     setOpenFilter(false);

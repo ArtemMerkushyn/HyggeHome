@@ -37,7 +37,7 @@ export default function Filters({
   });
   const minPrice = useSelector(state => state.filter.filter.minPrice);
   const maxPrice = useSelector(state => state.filter.filter.maxPrice);
-
+  console.log(minPrice, maxPrice)
   const [skipToken, setSkipToken] = useState(true);
   const [minV, setMinV] = useState(null);
   const [maxV, setMaxV] = useState(null);

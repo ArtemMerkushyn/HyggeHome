@@ -7,28 +7,40 @@ export const servicesApi = createApi({
   }),
   endpoints: builder => ({
     getCandles: builder.query({
-      query: ({ page, min, max, color }) =>
-        `/candles?page=${page}&min=${min}&max=${max}&color=${color}`,
+      query: ({ page, min, max, color }) => {
+        const colorParams = color.map(color => `color=${color}`).join('&');
+        return `/candles?page=${page}&min=${min}&max=${max}&${colorParams}`;
+      },
     }),
     getLightingDecor: builder.query({
-      query: ({ page, min, max, color }) =>
-        `/lighting-decor?page=${page}&min=${min}&max=${max}&color=${color}`,
+      query: ({ page, min, max, color }) => {
+        const colorParams = color.map(color => `color=${color}`).join('&');
+        return `/lighting-decor?page=${page}&min=${min}&max=${max}&${colorParams}`;
+      },
     }),
     getGiftSets: builder.query({
-      query: ({ page, min, max, color }) =>
-        `/gift-sets?page=${page}&min=${min}&max=${max}&color=${color}`,
+      query: ({ page, min, max, color }) => {
+        const colorParams = color.map(color => `color=${color}`).join('&');
+        return `/gift-sets?page=${page}&min=${min}&max=${max}&${colorParams}`;
+      },
     }),
     getGetWarm: builder.query({
-      query: ({ page, min, max, color }) =>
-        `/get-warm?page=${page}&min=${min}&max=${max}&color=${color}`,
+      query: ({ page, min, max, color }) => {
+        const colorParams = color.map(color => `color=${color}`).join('&');
+        return `/get-warm?page=${page}&min=${min}&max=${max}&${colorParams}`;
+      },
     }),
     getTableGames: builder.query({
-      query: ({ page, min, max, color }) =>
-        `/table-games?page=${page}&min=${min}&max=${max}&color=${color}`,
+      query: ({ page, min, max, color }) => {
+        const colorParams = color.map(color => `color=${color}`).join('&');
+        return `/table-games?page=${page}&min=${min}&max=${max}&${colorParams}`;
+      },
     }),
     getBooksAndJournals: builder.query({
-      query: ({ page, min, max, color }) =>
-        `/books-and-journals?page=${page}&min=${min}&max=${max}&color=${color}`,
+      query: ({ page, min, max, color }) => {
+        const colorParams = color.map(color => `color=${color}`).join('&');
+        return `/books-and-journals?page=${page}&min=${min}&max=${max}&${colorParams}`;
+      },
     }),
     searchByName: builder.query({
       query: name => `/search?query=${name}`,

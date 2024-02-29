@@ -13,8 +13,18 @@ import Pagination from '../../components/Pagination/Pagination';
 
 export const BooksJournals = () => {
   const [page, setPage] = useState(1);
-  const { data, error, isLoading } = useGetBooksAndJournalsQuery(page);
+  const [min, setMin] = useState('');
+  const [max, setMax] = useState('');
+  const [colors, setColors] = useState('');
+  const { data, error, isLoading } = useGetBooksAndJournalsQuery({
+    page: page,
+    min: min,
+    max: max,
+    color: colors,
+  });
   const sortValue = useSelector(state => state.filter.sortValue);
+  const minPrice = useSelector(state => state.filter.filter.minPrice);
+  const maxPrice = useSelector(state => state.filter.filter.maxPrice);
   const [newData, setNewData] = useState([]);
   const [dataList, setDataList] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
@@ -31,9 +41,10 @@ export const BooksJournals = () => {
     }
   }, [data]);
 
-  const updateFilteredData = filteredData => {
-    setNewData(filteredData);
-    setTotalPages(1);
+  const updateFilteredData = () => {
+    setMin(minPrice);
+    setMax(maxPrice);
+    setColors('');
   };
 
   const currentPage = number => {
@@ -73,7 +84,7 @@ export const BooksJournals = () => {
         <Filters onUpdateFilteredData={updateFilteredData} />
         <div className={styles.dropdownList}>
           Sort by
-          <Sort data={newData} onUpdateFilteredData={updateFilteredData} />
+          <Sort />
         </div>
       </div>
       <CardList data={dataList} error={error} isLoading={isLoading} />

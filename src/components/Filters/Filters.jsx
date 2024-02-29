@@ -35,9 +35,7 @@ export default function Filters({
     Yellow: false,
     Pink: false,
   });
-  const minPrice = useSelector(state => state.filter.filter.minPrice);
-  const maxPrice = useSelector(state => state.filter.filter.maxPrice);
-  console.log(minPrice, maxPrice)
+  const {minPrice, maxPrice, color} = useSelector(state => state.filter.filter);
   const [skipToken, setSkipToken] = useState(true);
   const [minV, setMinV] = useState(null);
   const [maxV, setMaxV] = useState(null);
@@ -112,7 +110,7 @@ export default function Filters({
         }}
       >
         <h5>Price range:</h5>
-        <InputRange maxValue={300} />
+        <InputRange maxValue={300} applyPrice={openFilter}/>
         {colorsView ? (
           <div className={styles.colorFilters}>
             <h5>Color:</h5>

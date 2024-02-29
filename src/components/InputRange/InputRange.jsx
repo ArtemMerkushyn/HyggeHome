@@ -4,10 +4,9 @@ import PropTypes from 'prop-types';
 import styles from './InputRange.module.css';
 import { useDispatch } from 'react-redux';
 
-export const InputRange = ({ maxValue }) => {
+export const InputRange = ({ maxValue, applyPrice }) => {
   const initialMin = Math.round(1).toString();
   const initialMax = Math.round(maxValue / 2).toString();
-
   const [min, setMin] = useState(initialMin);
   const [max, setMax] = useState(initialMax);
   const [prevMin, setPrevMin] = useState(initialMin);
@@ -64,8 +63,9 @@ export const InputRange = ({ maxValue }) => {
   }, [isDragging1, isDragging2, handleMouseMove]);
 
   useEffect(() => {
+    //if(!applyPrice) dispatch(addPrice({ minPrice: min, maxPrice: max }));
     dispatch(addPrice({ minPrice: min, maxPrice: max }));
-  }, [min, max, dispatch]);
+  }, [min, max, dispatch, applyPrice]);
 
   useEffect(() => {
     if (!input1ValueError) {

@@ -4,17 +4,17 @@ import Icons from '../../Icons/Icons';
 import CardItem from '../../CardItem/CardItem';
 import SkeletonProductLib from '../../skeleton/SkeletonProductLib';
 import CarouselSlider from './Slider/CarouselSlider';
-import { useGetCandlesQuery } from '../../../redux/services';
+import { useSearchByNameQuery } from '../../../redux/services';
 
 export const NewCollection = ({ sliderNeeded, upperText, lowerText }) => {
   const [catalog, setCatalog] = useState([]);
-  const { data, error, isLoading } = useGetCandlesQuery();
+  const { data, error, isLoading } = useSearchByNameQuery('');
   const [listPosition, setListPosition] = useState(0);
   const [scrollBarPosition, setScrollBarPosition] = useState(0);
 
   useEffect(() => {
     if (data) {
-      setCatalog(data.results);
+      setCatalog(data);
     }
   }, [data]);
 

@@ -15,7 +15,7 @@ export const Candles = () => {
   const [page, setPage] = useState(1);
   const [min, setMin] = useState('');
   const [max, setMax] = useState('');
-  const [colors, setColors] = useState('');
+  const [colors, setColors] = useState([]);
   const { data, error, isLoading } = useGetCandlesQuery({
     page: page,
     min: min,
@@ -25,6 +25,7 @@ export const Candles = () => {
   const sortValue = useSelector(state => state.filter.sortValue);
   const minPrice = useSelector(state => state.filter.filter.minPrice);
   const maxPrice = useSelector(state => state.filter.filter.maxPrice);
+
   const [newData, setNewData] = useState([]);
   const [dataList, setDataList] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
@@ -45,10 +46,10 @@ export const Candles = () => {
     setPage(number);
   };
 
-  const updateFilteredData = () => {
+  const updateFilteredData = colors => {
     setMin(minPrice);
     setMax(maxPrice);
-    setColors('');
+    setColors(colors);
   };
 
   useEffect(() => {

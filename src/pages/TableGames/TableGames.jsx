@@ -15,7 +15,7 @@ export const TableGames = () => {
   const [page, setPage] = useState(1);
   const [min, setMin] = useState('');
   const [max, setMax] = useState('');
-  const [colors, setColors] = useState('');
+  const [colors, setColors] = useState([]);
   const { data, error, isLoading } = useGetTableGamesQuery({
     page: page,
     min: min,

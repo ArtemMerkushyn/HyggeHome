@@ -15,7 +15,7 @@ export const BooksJournals = () => {
   const [page, setPage] = useState(1);
   const [min, setMin] = useState('');
   const [max, setMax] = useState('');
-  const [colors, setColors] = useState('');
+  const [colors, setColors] = useState([]);
   const { data, error, isLoading } = useGetBooksAndJournalsQuery({
     page: page,
     min: min,
@@ -81,7 +81,7 @@ export const BooksJournals = () => {
         for atmosphere
       </h2>
       <div className={styles.wrapperButtons}>
-        <Filters onUpdateFilteredData={updateFilteredData} colorsView={false}/>
+        <Filters onUpdateFilteredData={updateFilteredData} colorsView={false} />
         <div className={styles.dropdownList}>
           Sort by
           <Sort />

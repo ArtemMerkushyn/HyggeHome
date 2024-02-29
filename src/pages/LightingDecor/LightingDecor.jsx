@@ -15,7 +15,7 @@ export const LightingDecor = () => {
   const [page, setPage] = useState(1);
   const [min, setMin] = useState('');
   const [max, setMax] = useState('');
-  const [colors, setColors] = useState('');
+  const [colors, setColors] = useState([]);
   const { data, error, isLoading } = useGetLightingDecorQuery({
     page: page,
     min: min,

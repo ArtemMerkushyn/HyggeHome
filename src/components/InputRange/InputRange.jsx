@@ -27,16 +27,15 @@ export const InputRange = ({ maxValue }) => {
       let newPosition =
         ((e.clientX - sliderRect.left) / sliderRect.width) * maxValue;
 
-      // Проверка для предотвращения выхода за границы слайдера
       newPosition = Math.max(0, Math.min(newPosition, maxValue));
 
-      if (isDragging1 && newPosition <= parseInt(max, 10) - 50) {
+      if (isDragging1 && newPosition <= parseInt(max, 10)) {
         setMin(Math.round(newPosition).toString());
-      } else if (isDragging2 && newPosition >= parseInt(min, 10) + 50) {
+      } else if (isDragging2 && newPosition >= parseInt(min, 10)) {
         setMax(Math.round(newPosition).toString());
       }
     },
-    [isDragging1, isDragging2, maxValue, min, max]
+    [isDragging1, isDragging2, maxValue, min, max],
   );
 
   const handleMouseUp = () => {
@@ -47,15 +46,18 @@ export const InputRange = ({ maxValue }) => {
   const handleInputChange = (e, setValue) => {
     const inputValue = e.target.value;
     const intValue = parseInt(inputValue, 10);
-  
-    if (setValue === setMin && (intValue >= parseInt(max, 10) || intValue <= 0)) {
-      setValue((parseInt(max, 10) - 50).toString());
+
+    if (
+      setValue === setMin &&
+      (intValue >= parseInt(max, 10) || intValue <= 0)
+    ) {
+      setValue(parseInt(max, 10).toString());
     } else if (setValue === setMin && intValue < 1) {
       setValue('1');
     } else if (setValue === setMax && intValue > maxValue) {
       setValue(maxValue.toString());
-    } else if (setValue === setMax && intValue < parseInt(min, 10) + 50) {
-      setValue((parseInt(min, 10) + 50).toString());
+    } else if (setValue === setMax && intValue < parseInt(min, 10)) {
+      setValue(parseInt(min, 10).toString());
     } else {
       setValue(inputValue);
     }
@@ -87,7 +89,6 @@ export const InputRange = ({ maxValue }) => {
   }, [isDragging1, isDragging2, handleMouseMove]);
 
   useEffect(() => {
-    // Отправляем обновленные значения цен в хранилище
     dispatch(addPrice({ minPrice: min, maxPrice: max }));
   }, [min, max, dispatch]);
 
@@ -149,4 +150,3 @@ export const InputRange = ({ maxValue }) => {
 InputRange.propTypes = {
   maxValue: PropTypes.number,
 };
-

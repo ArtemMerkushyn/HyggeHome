@@ -7,22 +7,28 @@ export const servicesApi = createApi({
   }),
   endpoints: builder => ({
     getCandles: builder.query({
-      query: page => `/candles?page=${page}`,
+      query: ({ page, min, max, color }) =>
+        `/candles?page=${page}&min=${min}&max=${max}&color=${color}`,
     }),
     getLightingDecor: builder.query({
-      query: page => `/lighting-decor?page=${page}`,
+      query: ({ page, min, max, color }) =>
+        `/lighting-decor?page=${page}&min=${min}&max=${max}&color=${color}`,
     }),
     getGiftSets: builder.query({
-      query: page => `/gift-sets?page=${page}`,
+      query: ({ page, min, max, color }) =>
+        `/gift-sets?page=${page}&min=${min}&max=${max}&color=${color}`,
     }),
     getGetWarm: builder.query({
-      query: page => `/get-warm?page=${page}`,
+      query: ({ page, min, max, color }) =>
+        `/get-warm?page=${page}&min=${min}&max=${max}&color=${color}`,
     }),
     getTableGames: builder.query({
-      query: page => `/table-games?page=${page}`,
+      query: ({ page, min, max, color }) =>
+        `/table-games?page=${page}&min=${min}&max=${max}&color=${color}`,
     }),
     getBooksAndJournals: builder.query({
-      query: page => `/books-and-journals?page=${page}`,
+      query: ({ page, min, max, color }) =>
+        `/books-and-journals?page=${page}&min=${min}&max=${max}&color=${color}`,
     }),
     searchByName: builder.query({
       query: name => `/search?query=${name}`,

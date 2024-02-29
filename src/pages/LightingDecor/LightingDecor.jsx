@@ -13,8 +13,18 @@ import sortData from '../../utils/helpers/sort';
 
 export const LightingDecor = () => {
   const [page, setPage] = useState(1);
-  const { data, error, isLoading } = useGetLightingDecorQuery(page);
+  const [min, setMin] = useState('');
+  const [max, setMax] = useState('');
+  const [colors, setColors] = useState('');
+  const { data, error, isLoading } = useGetLightingDecorQuery({
+    page: page,
+    min: min,
+    max: max,
+    color: colors,
+  });
   const sortValue = useSelector(state => state.filter.sortValue);
+  const minPrice = useSelector(state => state.filter.filter.minPrice);
+  const maxPrice = useSelector(state => state.filter.filter.maxPrice);
   const [newData, setNewData] = useState([]);
   const [dataList, setDataList] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
@@ -31,9 +41,10 @@ export const LightingDecor = () => {
     }
   }, [data]);
 
-  const updateFilteredData = filteredData => {
-    setNewData(filteredData);
-    setTotalPages(1);
+  const updateFilteredData = () => {
+    setMin(minPrice);
+    setMax(maxPrice);
+    setColors('');
   };
 
   const currentPage = number => {
@@ -70,11 +81,7 @@ export const LightingDecor = () => {
         atmosphere
       </h2>
       <div className={styles.wrapperButtons}>
-        <Filters
-          colorsView={true}
-          dataFilter={data}
-          onUpdateFilteredData={updateFilteredData}
-        />
+        <Filters colorsView={true} onUpdateFilteredData={updateFilteredData} />
         <div className={styles.dropdownList}>
           Sort by
           <Sort />

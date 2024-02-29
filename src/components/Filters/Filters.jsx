@@ -65,7 +65,7 @@ export default function Filters({ colorsView, onUpdateFilteredData }) {
         }}
       >
         <h5>Price range:</h5>
-        <InputRange maxValue={300} />
+        <InputRange maxValue={300} applyFilterPrice={openFilter}/>
         {colorsView ? (
           <div className={styles.colorFilters}>
             <h5>Color:</h5>

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './InputRange.module.css';
 import { useDispatch } from 'react-redux';
 
-export const InputRange = ({ maxValue }) => {
+export const InputRange = ({ maxValue, applyFilterPrice }) => {
   const initialMin = Math.round(1).toString();
   const initialMax = Math.round(maxValue / 2).toString();
 
@@ -64,8 +64,9 @@ export const InputRange = ({ maxValue }) => {
   }, [isDragging1, isDragging2, handleMouseMove]);
 
   useEffect(() => {
+    //if(!applyFilterPrice) dispatch(addPrice({ minPrice: min, maxPrice: max }));
     dispatch(addPrice({ minPrice: min, maxPrice: max }));
-  }, [min, max, dispatch]);
+  }, [min, max, dispatch, applyFilterPrice]);
 
   useEffect(() => {
     if (!input1ValueError) {
@@ -170,4 +171,5 @@ export const InputRange = ({ maxValue }) => {
 
 InputRange.propTypes = {
     maxValue: PropTypes.number,
+    applyFilterPrice: PropTypes.bool,
 };

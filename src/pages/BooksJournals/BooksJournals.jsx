@@ -81,7 +81,7 @@ export const BooksJournals = () => {
         for atmosphere
       </h2>
       <div className={styles.wrapperButtons}>
-        <Filters onUpdateFilteredData={updateFilteredData} />
+        <Filters onUpdateFilteredData={updateFilteredData} colorsView={false}/>
         <div className={styles.dropdownList}>
           Sort by
           <Sort />

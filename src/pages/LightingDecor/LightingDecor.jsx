@@ -89,7 +89,12 @@ export const LightingDecor = () => {
           <Sort />
         </div>
       </div>
-      <CardList data={newData} error={error} isLoading={isLoading} />
+      <CardList
+        data={newData}
+        error={error}
+        isLoading={isLoading}
+        totalPages={totalPages}
+      />
       <Pagination totalPages={totalPages} newPage={currentPage} />
     </div>
   );

@@ -7,7 +7,6 @@ import Filters from '../../components/Filters/Filters';
 import Sort from '../../components/Sort/Sort';
 import { useGetCandlesQuery } from '../../redux/services';
 import { setIsActive } from '../../redux/slices/searchSlice';
-import sortData from '../../utils/helpers/sort';
 import styles from './Candles.module.css';
 import Pagination from '../../components/Pagination/Pagination';
 
@@ -16,18 +15,19 @@ export const Candles = () => {
   const [min, setMin] = useState('');
   const [max, setMax] = useState('');
   const [colors, setColors] = useState([]);
+  const [sort, setSort] = useState('');
   const { data, error, isLoading } = useGetCandlesQuery({
     page: page,
     min: min,
     max: max,
     color: colors,
+    sort: sort,
   });
   const sortValue = useSelector(state => state.filter.sortValue);
   const minPrice = useSelector(state => state.filter.filter.minPrice);
   const maxPrice = useSelector(state => state.filter.filter.maxPrice);
 
   const [newData, setNewData] = useState([]);
-  const [dataList, setDataList] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const dispatch = useDispatch();
 
@@ -53,9 +53,8 @@ export const Candles = () => {
   };
 
   useEffect(() => {
-    const sortedData = sortData({ option: sortValue, value: newData });
-    setDataList(sortedData);
-  }, [sortValue, newData]);
+    setSort(sortValue);
+  }, [sortValue]);
 
   return (
     <div className={styles.wrapperFilters}>
@@ -88,7 +87,7 @@ export const Candles = () => {
           <Sort />
         </div>
       </div>
-      <CardList data={dataList} error={error} isLoading={isLoading} />
+      <CardList data={newData} error={error} isLoading={isLoading} />
       <Pagination totalPages={totalPages} newPage={currentPage} />
     </div>
   );

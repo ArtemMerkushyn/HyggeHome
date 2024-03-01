@@ -8,7 +8,6 @@ import Sort from '../../components/Sort/Sort';
 import CardList from '../../components/CardList/CardList';
 import styles from './TableGames.module.css';
 import { useGetTableGamesQuery } from '../../redux/services';
-import sortData from '../../utils/helpers/sort';
 import Pagination from '../../components/Pagination/Pagination';
 
 export const TableGames = () => {
@@ -16,17 +15,18 @@ export const TableGames = () => {
   const [min, setMin] = useState('');
   const [max, setMax] = useState('');
   const [colors, setColors] = useState([]);
+  const [sort, setSort] = useState('');
   const { data, error, isLoading } = useGetTableGamesQuery({
     page: page,
     min: min,
     max: max,
     color: colors,
+    sort: sort,
   });
   const sortValue = useSelector(state => state.filter.sortValue);
   const minPrice = useSelector(state => state.filter.filter.minPrice);
   const maxPrice = useSelector(state => state.filter.filter.maxPrice);
   const [newData, setNewData] = useState([]);
-  const [dataList, setDataList] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const dispatch = useDispatch();
 
@@ -52,9 +52,8 @@ export const TableGames = () => {
   };
 
   useEffect(() => {
-    const sortedData = sortData({ option: sortValue, value: newData });
-    setDataList(sortedData);
-  }, [sortValue, newData]);
+    setSort(sortValue);
+  }, [sortValue]);
 
   return (
     <div className={styles.wrapperFilters}>
@@ -87,7 +86,7 @@ export const TableGames = () => {
           <Sort />
         </div>
       </div>
-      <CardList data={dataList} error={error} isLoading={isLoading} />
+      <CardList data={newData} error={error} isLoading={isLoading} />
       <Pagination totalPages={totalPages} newPage={currentPage} />
     </div>
   );

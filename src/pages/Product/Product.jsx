@@ -13,7 +13,7 @@ import Questions from '../../components/ProductNavigation/Questions/Questions';
 
 export const Product = () => {
   const location = useLocation();
-  const product = location.state.candle;
+  const product = location.state.item;
 
   const tabs = [
     { id: 'about', title: 'About the product', component: AboutProduct },

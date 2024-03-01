@@ -119,7 +119,7 @@ export default function CardItem({ item }) {
         <img
           className={styles.cardPicture}
           src={item.picture ? item.picture : imageNotFound}
-          alt="Candles"
+          alt="Product"
           onClick={() => handleToProductPage(item)}
         />
       </li>

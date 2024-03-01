@@ -6,7 +6,10 @@ const initialState = {
     maxPrice: '',
     color: [],
   },
-  sortValue: 'Popular',
+  sortValue: {
+    field: 'popular',
+    dir: 'desc',
+  },
 };
 
 export const filterSlice = createSlice({

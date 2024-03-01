@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 
 import styles from './Sort.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addSortValue } from '../../redux/slices/filterSlice';
 
 export default function Sort() {
+  const sortValue = useSelector(state => state.filter.sortValue);
   const [isOpen, setOpen] = useState(false);
-  const [value, setValue] = useState('Popular');
+  const [value, setValue] = useState('');
   const dropdownRef = useRef(null);
   const dispatch = useDispatch();
 
@@ -15,9 +16,28 @@ export default function Sort() {
     setOpen(!isOpen);
   };
 
+  useEffect(() => {
+    
+    const sortValueMap = {
+      popular: 'Popular',
+      reviews: 'Reviews',
+      price: sortValue.dir === 'desc' ? 'Expensive' : 'Cheapest',
+    };
+
+    setValue(sortValueMap[sortValue.field]);
+  }, [sortValue]);
+
   const handleOptionClick = option => {
     setValue(option);
-    dispatch(addSortValue(option));
+
+    const sortOptions = {
+      Popular: { field: 'popular', dir: 'desc' },
+      Reviews: { field: 'reviews', dir: 'desc' },
+      Expensive: { field: 'price', dir: 'desc' },
+      Cheapest: { field: 'price', dir: 'asc' },
+    };
+
+    dispatch(addSortValue(sortOptions[option]));
     setOpen(false);
   };
 

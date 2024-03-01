@@ -9,24 +9,24 @@ import CardList from '../../components/CardList/CardList';
 import styles from './LightingDecor.module.css';
 import { useGetLightingDecorQuery } from '../../redux/services';
 import Pagination from '../../components/Pagination/Pagination';
-import sortData from '../../utils/helpers/sort';
 
 export const LightingDecor = () => {
   const [page, setPage] = useState(1);
   const [min, setMin] = useState('');
   const [max, setMax] = useState('');
   const [colors, setColors] = useState([]);
+  const [sort, setSort] = useState('');
   const { data, error, isLoading } = useGetLightingDecorQuery({
     page: page,
     min: min,
     max: max,
     color: colors,
+    sort: sort,
   });
   const sortValue = useSelector(state => state.filter.sortValue);
   const minPrice = useSelector(state => state.filter.filter.minPrice);
   const maxPrice = useSelector(state => state.filter.filter.maxPrice);
   const [newData, setNewData] = useState([]);
-  const [dataList, setDataList] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const dispatch = useDispatch();
 
@@ -52,9 +52,8 @@ export const LightingDecor = () => {
   };
 
   useEffect(() => {
-    const sortedData = sortData({ option: sortValue, value: newData });
-    setDataList(sortedData);
-  }, [sortValue, newData]);
+    setSort(sortValue);
+  }, [sortValue]);
 
   return (
     <div className={styles.wrapperFilters}>
@@ -87,7 +86,7 @@ export const LightingDecor = () => {
           <Sort />
         </div>
       </div>
-      <CardList data={dataList} error={error} isLoading={isLoading} />
+      <CardList data={newData} error={error} isLoading={isLoading} />
       <Pagination totalPages={totalPages} newPage={currentPage} />
     </div>
   );

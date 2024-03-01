@@ -8,7 +8,7 @@ import Sort from '../../components/Sort/Sort';
 import CardList from '../../components/CardList/CardList';
 import styles from './GiftSets.module.css';
 import { useGetGiftSetsQuery } from '../../redux/services';
-import sortData from '../../utils/helpers/sort';
+
 import Pagination from '../../components/Pagination/Pagination';
 
 export const GiftSets = () => {
@@ -16,17 +16,19 @@ export const GiftSets = () => {
   const [min, setMin] = useState('');
   const [max, setMax] = useState('');
   const [colors, setColors] = useState([]);
+  const [sort, setSort] = useState('');
   const { data, error, isLoading } = useGetGiftSetsQuery({
     page: page,
     min: min,
     max: max,
     color: colors,
+    sort: sort,
   });
   const sortValue = useSelector(state => state.filter.sortValue);
   const minPrice = useSelector(state => state.filter.filter.minPrice);
   const maxPrice = useSelector(state => state.filter.filter.maxPrice);
+
   const [newData, setNewData] = useState([]);
-  const [dataList, setDataList] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const dispatch = useDispatch();
 
@@ -52,9 +54,8 @@ export const GiftSets = () => {
   };
 
   useEffect(() => {
-    const sortedData = sortData({ option: sortValue, value: newData });
-    setDataList(sortedData);
-  }, [sortValue, newData]);
+    setSort(sortValue);
+  }, [sortValue]);
 
   return (
     <div className={styles.wrapperFilters}>
@@ -87,7 +88,7 @@ export const GiftSets = () => {
           <Sort />
         </div>
       </div>
-      <CardList data={dataList} error={error} isLoading={isLoading} />
+      <CardList data={newData} error={error} isLoading={isLoading} />
       <Pagination totalPages={totalPages} newPage={currentPage} />
     </div>
   );

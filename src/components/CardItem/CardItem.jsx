@@ -18,7 +18,7 @@ export default function CardItem({ item }) {
   const curtItems = useSelector(selectCurtProducts);
 
   const isChecked = itemFavorites.some(({ _id }) => _id === item._id);
-  const isInCurt = curtItems.some(item => item.dataProduct._id === item._id);
+  const isInCurt = curtItems.some(curt => curt.dataProduct._id === item._id);
 
   const handleToggleFavorite = () => {
     if (isChecked) {

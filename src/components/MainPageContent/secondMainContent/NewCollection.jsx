@@ -65,9 +65,7 @@ export const NewCollection = ({ sliderNeeded, upperText, lowerText }) => {
               ))}
             </div>
           ) : (
-            catalog.map((candle, index) => (
-              <CardItem key={index} candle={candle} />
-            ))
+            catalog.map((item, index) => <CardItem key={index} item={item} />)
           )}
         </ul>
 

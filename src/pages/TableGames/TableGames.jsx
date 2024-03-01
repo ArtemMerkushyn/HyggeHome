@@ -11,11 +11,17 @@ import { useGetTableGamesQuery } from '../../redux/services';
 import Pagination from '../../components/Pagination/Pagination';
 
 export const TableGames = () => {
+  const sortValue = useSelector(state => state.filter.sortValue);
+  const minPrice = useSelector(state => state.filter.filter.minPrice);
+  const maxPrice = useSelector(state => state.filter.filter.maxPrice);
   const [page, setPage] = useState(1);
   const [min, setMin] = useState('');
   const [max, setMax] = useState('');
   const [colors, setColors] = useState([]);
-  const [sort, setSort] = useState('');
+  const [sort, setSort] = useState({
+    field: 'popular',
+    dir: 'desc',
+  });
   const { data, error, isLoading } = useGetTableGamesQuery({
     page: page,
     min: min,
@@ -23,9 +29,6 @@ export const TableGames = () => {
     color: colors,
     sort: sort,
   });
-  const sortValue = useSelector(state => state.filter.sortValue);
-  const minPrice = useSelector(state => state.filter.filter.minPrice);
-  const maxPrice = useSelector(state => state.filter.filter.maxPrice);
   const [newData, setNewData] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const dispatch = useDispatch();

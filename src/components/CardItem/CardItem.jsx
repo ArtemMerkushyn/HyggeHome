@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { addToCurt } from '../../redux/slices/curtSlice';
 
-export default function CardItem({ candle }) {
+export default function CardItem({ item }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -17,18 +17,18 @@ export default function CardItem({ candle }) {
   const itemFavorites = useSelector(selectFavorites);
   const curtItems = useSelector(selectCurtProducts);
 
-  const isChecked = itemFavorites.some(({ _id }) => _id === candle._id);
-  const isInCurt = curtItems.some(item => item.dataProduct._id === candle._id);
+  const isChecked = itemFavorites.some(({ _id }) => _id === item._id);
+  const isInCurt = curtItems.some(item => item.dataProduct._id === item._id);
 
   const handleToggleFavorite = () => {
     if (isChecked) {
-      dispatch(removeFavorite(candle));
-      toast.info(`${candle.name} remove from favorite`, {
+      dispatch(removeFavorite(item));
+      toast.info(`${item.name} remove from favorite`, {
         theme: 'colored',
       });
     } else {
-      dispatch(addFavorite(candle));
-      toast.success(`${candle.name} add to favorite`, {
+      dispatch(addFavorite(item));
+      toast.success(`${item.name} add to favorite`, {
         theme: 'colored',
       });
     }
@@ -41,18 +41,18 @@ export default function CardItem({ candle }) {
     }
 
     const productToCart = {
-      dataProduct: candle,
+      dataProduct: item,
     };
     dispatch(addToCurt(productToCart));
     toast.success(`You have added product to the cart`);
   };
 
-  const handleToProductPage = candle => {
+  const handleToProductPage = item => {
     navigate(
-      `/${candle.category.toLowerCase().replaceAll(' ', '-')}/product/${
-        candle._id
+      `/${item.category.toLowerCase().replaceAll(' ', '-')}/product/${
+        item._id
       }`,
-      { state: { candle } },
+      { state: { item } },
     );
   };
 
@@ -62,8 +62,8 @@ export default function CardItem({ candle }) {
         <div className={styles.itemWrapper}>
           <img
             className={styles.cardImage}
-            src={candle.image ? candle.image[0] : imageNotFound}
-            alt="Candles"
+            src={item.image ? item.image[0] : imageNotFound}
+            alt="Product"
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +75,7 @@ export default function CardItem({ candle }) {
             <path d="M1 1L373 2" stroke="#FCB654" strokeLinecap="round" />
           </svg>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <p className={styles.titleItem}>{candle.name}</p>
+            <p className={styles.titleItem}>{item.name}</p>
             <div className={styles.iconsWrapper}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -113,14 +113,14 @@ export default function CardItem({ candle }) {
               </button>
             </div>
           </div>
-          <p className={styles.priceItem}>${candle.price}</p>
+          <p className={styles.priceItem}>${item.price}</p>
         </div>
 
         <img
           className={styles.cardPicture}
-          src={candle.picture ? candle.picture : imageNotFound}
+          src={item.picture ? item.picture : imageNotFound}
           alt="Candles"
-          onClick={() => handleToProductPage(candle)}
+          onClick={() => handleToProductPage(item)}
         />
       </li>
       {pathName === '/wish' && (

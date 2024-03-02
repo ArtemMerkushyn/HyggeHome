@@ -1,13 +1,10 @@
-.special_button {
+.primary_button {
     padding: 10px 32px;
     background: #FCB654;
     border-radius: 24px;
     border: none;
     transition: opacity 0.3s, box-shadow 0.3s;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .button_text {
     color: #FFF;
     font-family: Poppins;
     font-size: 18px;
@@ -16,8 +13,21 @@
     line-height: normal;
   }
   
-  .special_button:hover {
+  .primary_button:hover {
     opacity: 0.85; 
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  .outlined_button{
+    padding: 10px 32px;
+    border-radius: 24px;
+    border: 1px solid #FCB654;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    color: #FCB654;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background-color: transparent;
   }
   

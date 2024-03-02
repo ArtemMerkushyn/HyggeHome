@@ -1,0 +1,160 @@
+.container{
+    display: flex;
+    gap: 30px;
+}
+.logIn_text{
+    font-family: DM Mono;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 31px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #FCB654;
+    margin-bottom: 20px;
+}
+.hide_password {
+    position: relative;
+}
+.hide_password_button {
+    position: absolute;
+    right: 10px;
+    top: 48px;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+}
+.hide_password_button svg {
+    width: 18px;
+    height: 18px;
+    transition: none;
+    border-bottom: none;
+}
+.hide_password_button svg:hover{
+    border-bottom: none;
+}
+.modal_checkbox_container {
+    display: flex;
+    flex-direction: row;
+    flex-direction: row;
+    align-items: center;
+}
+.modal_checkbox {
+    margin-right: 4px;
+    background-color: transparent;
+    border: 1px solid #FCB654;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.modal_checkbox svg{
+    transition: none;
+    border-bottom: none;
+}
+.modal_checkbox svg:hover{
+    border-bottom: none;
+}
+
+.modal_checkbox.checked {
+    background-color: #FCB654;
+    border-color: #FCB654;
+    color: #FFF;
+}
+.svg_div {
+    position: absolute;
+    top: -7px;
+    left: -3.5px;
+}
+.remember_me{
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+.svg_div svg {
+    border-bottom: none;
+}
+
+.svg_div svg:hover {
+    border-bottom: none;
+}
+.remember_and_remind{
+    display: flex;
+    gap: 28px;
+    margin-top: 20px;
+}
+.remind_password{
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    background: transparent;
+    border: none;
+    color: #FCB654;
+}
+.signIn_button{
+
+}
+.buttonDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.hr{
+    width: 1px ;
+    height: 259px;
+    opacity: 0.4px;
+    background-color: #FCB654;
+}
+.div_li{
+    display: flex;
+    align-self: center;
+    margin-top: 30px;
+}
+.logIn_with{
+    font-family: DM Mono;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: -0.06em;
+    text-align: left;
+    colo: #252525;
+    margin-bottom: 20px;
+}
+.logIn_with_container{
+    width: auto;
+    margin-top: 51px;
+}
+.logIn_with_button{
+    width: 200px;
+    height: 55px;
+    padding: 14px 20px;
+    background-color: transparent;
+    border-radius: 24px;
+    border: 1px solid #FCB654;
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: 0em;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+.logIn_with_button svg{
+    width: 17.64;
+    height: 18px;
+}

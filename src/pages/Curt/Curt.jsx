@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import styles from './Curt.module.css';
-import Button from '../../components/MainPageContent/Button/Button';
+import Button from '../../components/UI/Button/Button';
 import { CurtItem } from '../../components/CurtItem/CurtItem';
 import { NewCollection } from '../../components/MainPageContent/secondMainContent/NewCollection';
 import { selectCurtProducts } from '../../redux/selectors';

@@ -1,7 +1,7 @@
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
 import MyInput from '../../UI/MyInput';
-import Button from '../Button/Button';
+import Button from '../../UI/Button/Button';
 import { formSchema } from '../../../schemas/formSchema';
 import { useRegisterUserMutation } from '../../../redux/services';
 import { toast } from 'react-toastify';

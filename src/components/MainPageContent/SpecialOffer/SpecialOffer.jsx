@@ -1,4 +1,4 @@
-import Button from "../Button/Button"
+import Button from "../../UI/Button/Button"
 import { RegistrationForm } from "../RegistrationForm/RegistrationForm"
 import { Modal } from "../ModalWindow/Modal"
 import css from "./SpecialOffer.module.css"

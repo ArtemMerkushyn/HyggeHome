@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Button from '../MainPageContent/Button/Button';
+import Button from '../UI/Button/Button.jsx';
 import styles from './Filters.module.css';
 import { InputRange } from '../InputRange/InputRange.jsx';
 import PropTypes from 'prop-types';

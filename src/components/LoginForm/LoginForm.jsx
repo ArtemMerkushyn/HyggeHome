@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import css from './LoginForm.module.css'
 import MyInput from '../UI/MyInput';
 import Icons from '../Icons/Icons';
+import Button from '../UI/Button/Button';
 
 
-const LoginForm = () => {
+const LoginForm = ({closeModal, handleRegisterClick}) => {
 
     const [formValues, setFormValues] = useState({
         email: '',
@@ -20,8 +21,10 @@ const LoginForm = () => {
     
 
     return (
-        <div className={css.container}>
+        <ul className={css.container}>
+            <li>
             <h2 className={css.logIn_text}>Log in</h2>
+            <form>
             <MyInput 
                 type="text"
                 id="email"
@@ -51,29 +54,55 @@ const LoginForm = () => {
                     </button>
                     <div className={css.remember_and_remind}>
                         <div className={css.modal_checkbox_container}>
-                <button
-                    type="button"
-                    className={`${css.modal_checkbox} ${
-                    checkbox ? css.checked : ''
-                    }`}
-                    onClick={() => {
-                    setCheckbox(prev => !prev);
-                    }}
-                >
-                    <div className={css.svg_div}>
-                    <Icons icon={'check'} />
+                        <button
+                        type="button"
+                        className={`${css.modal_checkbox} ${
+                        checkbox ? css.checked : ''
+                        }`}
+                        onClick={() => {
+                        setCheckbox(prev => !prev);
+                        }}
+                        >
+                        <div className={css.svg_div}>
+                        <Icons icon={'check'} />
+                        </div>
+                        </button>
+                        <label htmlFor="remember" className={css.remember_me}>
+                        Remember me
+                        </label>
+                        </div>
+                        <button className={css.remind_password} onClick={() =>{ alert('ФУНКЦІОНАЛ НЕ ЗАВЕЗЛИ!!!!')}}>Remind password</button>
                     </div>
-                </button>
-                <label htmlFor="remember" className={css.remember_me}>
-                    Remember me
-                </label>
+                </div>
+                <div className={css.buttonDiv}>
+                <Button
+                    text='Log in'
+                    type='submit'
+                    style={{ width: '250px', marginTop: '23px' }}
+                    funcClick={closeModal}
+                    
+                />
+                <Button
+                    type='submit'
+                    text='Sign in'
+                    buttonType='outlined'
+                    funcClick={handleRegisterClick}
+                    style={{textDecoration: 'underline'}}
+                />
                     </div>
-                    <button className={css.remind_password}>Remind password</button>
-                    </div>
-            </div>
+                </form>
+            </li>
+            <li className={css.div_li}>
+                <div className={css.hr}></div>
+            </li>
+            <li className={css.logIn_with_container}>
+                <h2 className={css.logIn_with}>Log in with</h2>
+                <button className={css.logIn_with_button}><Icons icon='google'/>Google</button>
+                <button className={css.logIn_with_button}><Icons icon='facebook'/>Facebook</button>
+            </li>
 
 
-        </div>
+        </ul>
     );
 };
 

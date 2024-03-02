@@ -3,6 +3,7 @@ import { PagesLinks } from '../PagesLinks/PagesLinks';
 import Icons from '../Icons/Icons.jsx';
 import styles from './Header.module.css';
 import { Search } from '../Search/Search.jsx';
+import User from '../User/User.jsx';
 
 export const Header = () => {
   const logoStyles = {
@@ -38,7 +39,7 @@ export const Header = () => {
             <Icons icon={'basket'} />
           </NavLink>
           <NavLink className={styles.link} to={'/'}>
-            <Icons icon={'user'} />
+            <User/>
           </NavLink>
         </div>
       </div>

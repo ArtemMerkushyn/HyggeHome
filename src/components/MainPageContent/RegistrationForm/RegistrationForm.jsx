@@ -5,11 +5,11 @@ import Button from '../Button/Button';
 import { formSchema } from '../../../schemas/formSchema';
 import { useRegisterUserMutation } from '../../../redux/services';
 import { toast } from 'react-toastify';
-import css from './ModalForm.module.css'
+import css from './RegistrationForm.module.css'
 import Icons from '../../Icons/Icons';
 
 
-export const ModalForm = ({ toggleModal }) => {
+export const RegistrationForm = ({ toggleModal }) => {
 
   const [registerUser] = useRegisterUserMutation()
 

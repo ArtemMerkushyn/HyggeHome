@@ -1,5 +1,5 @@
 import Button from "../Button/Button"
-import { ModalForm } from "../ModalForm/ModalForm"
+import { RegistrationForm } from "../RegistrationForm/RegistrationForm"
 import { Modal } from "../ModalWindow/Modal"
 import css from "./SpecialOffer.module.css"
 import { useState } from "react"
@@ -30,7 +30,7 @@ export const SpecialOffer = () => {
                     </div>
                     <Button text={'Create account'} funcClick={toggleModal}/>
                 </li>
-                {modal && (<Modal funcClick={toggleModal}><ModalForm toggleModal={toggleModal}/></Modal>)}
+                {modal && (<Modal funcClick={toggleModal}><RegistrationForm toggleModal={toggleModal}/></Modal>)}
                 <li>
                     <img src="images/hero/specialOffer/фотографія.png" alt="cup of coffee" className={css.special_offer_image}/>
                 </li>

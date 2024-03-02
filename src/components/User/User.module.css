@@ -1,0 +1,16 @@
+.user_icon_button{
+    border: none;
+    background: transparent;
+}
+.container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+/* .container svg{
+    transition: none;
+    border-bottom: none;
+}
+.container svg:hover {
+    border-bottom: none;
+} */

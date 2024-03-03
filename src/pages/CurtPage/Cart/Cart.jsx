@@ -1,30 +1,14 @@
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import styles from './Cart.module.css';
+import { selectCurtProducts } from '../../../redux/selectors';
+import { NewCollection } from '../../../components/MainPageContent/secondMainContent/NewCollection';
+import { CurtItem } from '../../../components/CurtItem/CurtItem';
 
-import styles from './Curt.module.css';
-import Button from '../../components/UI/Button/Button';
-import { CurtItem } from '../../components/CurtItem/CurtItem';
-import { NewCollection } from '../../components/MainPageContent/secondMainContent/NewCollection';
-import { selectCurtProducts } from '../../redux/selectors';
-
-export const Curt = () => {
+export const Cart = () => {
   const curtItems = useSelector(selectCurtProducts);
-
-  const handlerClick = () => {
-    console.log('ok');
-  };
 
   return (
     <div style={{ marginBottom: '120px' }}>
-      <div className={styles.nav}>
-        <div className={styles.nav__item}>
-          <Link to={'/wish'}>Your wish list</Link>
-        </div>
-        <div className={styles.nav__item}>
-          <span>Your cart</span>
-        </div>
-      </div>
-      <div className={styles.line}></div>
       <div className={styles.sections}>
         <div
           className={styles.sections__item}
@@ -70,9 +54,6 @@ export const Curt = () => {
           ))
         )}
       </div>
-      <div className={styles.btn}>
-        <Button text={'Next step'} funcClick={handlerClick} />
-      </div>
       <NewCollection
         sliderNeeded={false}
         upperText="products for you"
@@ -80,4 +61,4 @@ export const Curt = () => {
       />
     </div>
   );
-};
+}

@@ -1,0 +1,26 @@
+.sections {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 10px;
+}
+
+.sections__item {
+    color: #caccce;
+    font-family: DM Mono;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 31px;
+    letter-spacing: -6%;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.notFound img {
+    margin: 30px auto;
+    width: 480px;
+}

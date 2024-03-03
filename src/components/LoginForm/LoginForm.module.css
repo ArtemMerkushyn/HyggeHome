@@ -158,3 +158,12 @@
     width: 17.64;
     height: 18px;
 }
+
+.logIn_with_container svg {
+    transition: none;
+    border-bottom: none;
+}
+
+.logIn_with_container svg:hover {
+    border-bottom: none;
+}

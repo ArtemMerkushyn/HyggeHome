@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import css from './LoginForm.module.css';
 import MyInput from '../UI/MyInput';
 import Icons from '../Icons/Icons';
 import Button from '../UI/Button/Button';
 import { useFormik } from 'formik';
 import { formSchema } from '../../schemas/formSchema';
+import Googlogin from '../Googlogin/Googlogin';
+import {gapi} from 'gapi-script'
 
 const LoginForm = ({ closeModal, handleRegisterClick }) => {
+
+        useEffect(() => {
+            function start() {
+                gapi.client.init({
+                    clientId: clientId,
+                    scope: ""
+                })
+            };
+            gapi.load('client:auth2', start);
+        })
 
         const onSubmit = (event) => {
         event.preventDefault();
@@ -25,6 +37,7 @@ const LoginForm = ({ closeModal, handleRegisterClick }) => {
 
     const [passwordVisibility, setPasswordVisibility] = useState(false);
     const [checkbox, setCheckbox] = useState(false);
+    const clientId = "385264558532-ki06cm6018e1lg683chsotp6lc7deqhg.apps.googleusercontent.com"
 
 
     return (       
@@ -103,8 +116,9 @@ const LoginForm = ({ closeModal, handleRegisterClick }) => {
             </div>
             <div className={css.logIn_with_container}>
                 <h2 className={css.logIn_with}>Log in with</h2>
-                <button className={css.logIn_with_button} type='button'><Icons icon='google' />Google</button>
-                <button className={css.logIn_with_button} type='button'><Icons icon='facebook' />Facebook</button>
+                    <Googlogin modalAction={closeModal} />
+                    <button className={css.logIn_with_button} type='button'><Icons icon='facebook' />Facebook</button>
+                    
             </div>
             </div>
             </>

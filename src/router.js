@@ -10,7 +10,7 @@ import { TableGames } from './pages/TableGames/TableGames';
 import { BooksJournals } from './pages/BooksJournals/BooksJournals';
 import { Search } from './pages/Search/Search';
 import { Product } from './pages/Product/Product';
-import { Curt } from './pages/Curt/Curt';
+import { CartPage } from './pages/CurtPage/CartPage';
 import { Wish } from './pages/Wish/Wish';
 import DeliveryPage from './pages/DeliveryPage/DeliveryPage';
 
@@ -60,8 +60,8 @@ export const router = createBrowserRouter([
         element: <Product />,
       },
       {
-        path: 'curt',
-        element: <Curt />,
+        path: 'cart',
+        element: <CartPage />,
       },
       {
         path: 'wish',

@@ -2,7 +2,7 @@ import styles from './CartPage.module.css';
 import { Cart } from './Cart/Cart';
 import { Delivery } from './Delivery/Delivery';
 import { Payment } from './Payment/Payment';
-import Button from '../../components/MainPageContent/Button/Button';
+import Button from '../../components/UI/Button/Button';
 import { TabSwitcher } from './TabSwitcher/TabSwitcher';
 
 const tabs = [

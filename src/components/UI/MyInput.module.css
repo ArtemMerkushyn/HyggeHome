@@ -17,6 +17,7 @@
     font-weight: 500;
     line-height: 18px;
     opacity: 0.6;
+    position: relative;
 }
 .modal_input:focus{
     outline: none;
@@ -29,6 +30,7 @@
 .error{
     color: #fc8181;
     font-size: 10px;
+    position: absolute;
 }
 .input_container{
     margin-bottom: 10px;

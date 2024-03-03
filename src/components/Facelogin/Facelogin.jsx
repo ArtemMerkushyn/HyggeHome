@@ -1,5 +1,4 @@
 import React from 'react';
-import { FacebookLoginButton } from 'react-social-login-buttons';
 import { LoginSocialFacebook } from 'reactjs-social-login';
 import css from '../LoginForm/LoginForm.module.css'
 import Icons from '../Icons/Icons';

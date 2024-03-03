@@ -157,4 +157,9 @@
 .logIn_with_button svg{
     width: 17.64;
     height: 18px;
+    transition: none;
+    border-bottom: none;
+}
+.logIn_with_button svg:hover {
+        border-bottom: none;
 }

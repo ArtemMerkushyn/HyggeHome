@@ -7,6 +7,7 @@ import { useFormik } from 'formik';
 import { formSchema } from '../../schemas/formSchema';
 import Googlogin from '../Googlogin/Googlogin';
 import {gapi} from 'gapi-script'
+import Facelogin from '../Facelogin/Facelogin';
 
 const LoginForm = ({ closeModal, handleRegisterClick }) => {
 
@@ -117,7 +118,7 @@ const LoginForm = ({ closeModal, handleRegisterClick }) => {
             <div className={css.logIn_with_container}>
                 <h2 className={css.logIn_with}>Log in with</h2>
                     <Googlogin modalAction={closeModal} />
-                    <button className={css.logIn_with_button} type='button'><Icons icon='facebook' />Facebook</button>
+                    <Facelogin modalAction={closeModal}/>
                     
             </div>
             </div>

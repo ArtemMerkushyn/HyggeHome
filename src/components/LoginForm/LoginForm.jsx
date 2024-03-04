@@ -6,6 +6,7 @@ import Button from '../UI/Button/Button';
 import { useFormik } from 'formik';
 import { formSchema } from '../../schemas/formSchema';
 import CustomGoogleLoginButton from '../GoogleLogin/CustomGoogleLoginButton';
+import CustomFacebookLoginButton from '../FacebookLogin/CustomFacebookLoginButton';
 
 const LoginForm = ({ closeModal, handleRegisterClick }) => {
 
@@ -104,8 +105,8 @@ const LoginForm = ({ closeModal, handleRegisterClick }) => {
             </div>
             <div className={css.logIn_with_container}>
                     <h2 className={css.logIn_with}>Log in with</h2>
-                    <CustomGoogleLoginButton />
-                    <button className={css.logIn_with_button} type='button'><Icons icon='facebook' />Facebook</button>
+                    <CustomGoogleLoginButton modalAction={closeModal}/>
+                    <CustomFacebookLoginButton modalAction={closeModal}/>
                 
             </div>
             </div>

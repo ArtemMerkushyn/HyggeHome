@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import React from 'react';
 import styles from './TabSwitcher.module.css';
 import Icons from '../../../components/Icons/Icons';
 
-
-export const TabSwitcher = ({ data, tabs }) => {
-    const [selectedId, setSelectedId] = useState(tabs[0].id);
+export const TabSwitcher = ({ data, tabs, selectedId, setSelectedId }) => {
+    const handleClick = (tabId) => {
+        setSelectedId(tabId);
+    }
 
     const lineWidth = (tabs.findIndex(t => t.id === selectedId) + 1) * (100 / tabs.length);
 
@@ -15,7 +16,7 @@ export const TabSwitcher = ({ data, tabs }) => {
                     <button
                         className={styles.title}
                         key={tab.id}
-                        onClick={() => setSelectedId(tab.id)}
+                        onClick={() => handleClick(tab.id)}
                     >
                         <div 
                             className={styles.check}

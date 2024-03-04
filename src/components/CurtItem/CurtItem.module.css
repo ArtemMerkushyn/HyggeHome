@@ -13,7 +13,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    margin-top: 40px;
+    position: relative;
+}
+
+.amount::before {
+    content: 'QTY';
+    position: absolute;
+    top: -34px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -6%;
+    color: #CACCCE;
+    font-family: DM Mono;
 }
 
 .img {
@@ -24,6 +38,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    margin-top: 40px;
 }
 
 .img img {
@@ -46,12 +61,39 @@
     padding-left: 20px;
 }
 
+.title::before {
+    content: 'Product';
+    position: absolute;
+    top: -34px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -6%;
+    color: #CACCCE;
+    font-family: DM Mono;
+}
+
 .price {
     font-family: DM Mono;
     font-size: 24px;
     font-weight: 400;
     line-height: 31px;
     letter-spacing: -6%;
+    position: relative;
+}
+
+.price::before {
+    content: 'Price';
+    position: absolute;
+    top: -34px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -6%;
+    color: #CACCCE;
+    font-family: DM Mono;
 }
 
 .allPrice {
@@ -60,4 +102,43 @@
     font-weight: 400;
     line-height: 31px;
     letter-spacing: -6%;
+}
+
+.allPrice::before {
+    content: 'Total';
+    position: absolute;
+    top: -34px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -6%;
+    color: #CACCCE;
+    font-family: DM Mono;
+}
+
+.minus {
+    height: 150px;
+    padding: 0 40px;
+    border-radius: 24px;
+    border: 1px solid #FCB654;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #FCB654;
+    margin-top: 40px;
+    position: relative;
+}
+
+.minus::before {
+    content: '';
+    width: 14px;
+    height: 3px;
+    background: #fff;
+    border-radius: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

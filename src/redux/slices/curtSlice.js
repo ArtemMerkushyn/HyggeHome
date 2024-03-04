@@ -14,9 +14,15 @@ export const curtSlice = createSlice({
     addToCurt: (state, action) => {
       state.curt.products.push(action.payload);
     },
+    removeFromCart: (state, action) => {
+      const updatedProducts = state.curt.products.filter(
+        product => product._id !== action.payload._id
+      );
+      state.curt.products = updatedProducts;
+    }
   },
 });
 
-export const { addToCurt } = curtSlice.actions;
+export const { addToCurt, removeFromCart } = curtSlice.actions;
 
 export default curtSlice.reducer;

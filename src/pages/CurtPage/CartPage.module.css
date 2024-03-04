@@ -1,6 +1,29 @@
 .btn {
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
     margin: 60px 0 120px;
+    gap: 30px;
+}
+
+.btnPrev {
+    padding: 10px 32px;
+    background: #fff;
+    border-radius: 24px;
+    border: none;
+    transition: opacity 0.3s, box-shadow 0.3s;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #252525;
+}
+
+.btnPrev:hover {
+    opacity: 0.85; 
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .btn button {

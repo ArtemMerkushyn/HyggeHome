@@ -18,7 +18,7 @@ export const Delivery = () => {
         city: '',
         postalCode: '',
         phoneNumber: '',
-        option: '5',
+        optionDeliveryMethod: '5',
     });
 
     const handleChange = (e) => {
@@ -28,7 +28,7 @@ export const Delivery = () => {
 
     const handleOptionChange = (e) => {
         const { value } = e.target;
-        setFormData(prevState => ({ ...prevState, option: value }));
+        setFormData(prevState => ({ ...prevState, optionDeliveryMethod: value }));
     }
 
     return (
@@ -49,26 +49,26 @@ export const Delivery = () => {
             ))}
             <h3 className={styles.title}>Delivery method</h3>
             <div className={styles.wrapper}>
-                {['5', '10', '9'].map(metod => (
-                    <label className={styles.metod} key={metod}>
+                {['5', '10', '9'].map(method => (
+                    <label className={styles.method} key={method}>
                         <input 
                             type="radio" 
                             name="option" 
-                            value={metod} 
-                            checked={formData.option === metod} 
+                            value={method} 
+                            checked={formData.optionDeliveryMethod === method} 
                             onChange={handleOptionChange} 
                             style={{ display: 'none' }}
                             required 
                         />
-                        <div className={styles.radio} htmlFor={metod}>
+                        <div className={styles.radio} htmlFor={method}>
                             <span
-                                style={{ backgroundColor: formData.option === metod ? '#FCB654' : 'transparent' }}
+                                style={{ backgroundColor: formData.optionDeliveryMethod === method ? '#FCB654' : 'transparent' }}
                             ></span>
                         </div>
                         <div className={styles.metod__img}></div>
                         <div className={styles.metod__info}>
                             <h5>Delivery method</h5>
-                            <span>${metod}</span>
+                            <span>${method}</span>
                         </div>
                     </label>
                 ))}

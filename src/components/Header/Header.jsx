@@ -54,7 +54,7 @@ export const Header = () => {
         <PagesLinks />
         <div className={styles.wrapper}>
           <Search />
-          <NavLink className={styles.link} to={'/cart'} style={{ borderBottom: location.pathname === '/curt' ? '2px solid #FCB654' : '2px solid transparent'}}>
+          <NavLink className={styles.link} to={'/cart'} style={{ borderBottom: location.pathname === '/cart' ? '2px solid #FCB654' : '2px solid transparent'}}>
             <Icons icon={'basket'} />
           </NavLink>
           <NavLink className={styles.link} to={'/'}>

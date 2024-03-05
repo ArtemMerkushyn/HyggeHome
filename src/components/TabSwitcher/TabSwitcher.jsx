@@ -2,8 +2,6 @@ import { useState } from 'react';
 import styles from './TabSwitcher.module.css';
 import PropTypes from 'prop-types';
 
-
-
 export default function TabSwitcher({ data, tabs }) {
   const [selectedId, setSelectedId] = useState(tabs[0].id);
 

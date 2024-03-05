@@ -1,0 +1,83 @@
+.title {
+    font-family: DM Mono;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: normal;
+    letter-spacing: -6%;
+    margin-bottom: 30px;
+}
+
+.method {
+    width: 420px;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.method:last-child {
+    margin-bottom: 120px;
+}
+
+.radio {
+    width: 24px;
+    height: 24px;
+    border-radius: 50px;
+    border: 2px solid #FCB654;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-right: 30px;
+}
+
+.radio span {
+    width: 14px;
+    height: 14px;
+    border-radius: 50px;
+    transition: all .2s linear;
+}
+
+.method__title {
+    font-family: DM Mono;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -6%;
+    font-weight: 400;
+}
+
+.commission {
+    font-family: DM Mono;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -6%;
+    font-weight: 400;
+    margin-left: auto;
+}
+
+.rules__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.rules {
+    width: 24px;
+    height: 24px;
+    background: #FCB654;
+    border-radius: 50px;
+    position: relative;
+    cursor: pointer;
+    transition: all .3s linear;
+}
+
+.rules svg {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.rules__text {
+    display: inline-block;
+}

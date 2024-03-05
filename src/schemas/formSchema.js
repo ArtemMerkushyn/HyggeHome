@@ -3,7 +3,9 @@ import * as yup from "yup";
 const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!.@#$%^&*]).{8,32}$/;
 
 export const formSchema = yup.object().shape({
-    fullName :yup.string().matches(/^[A-Za-z]+(?:\s[A-Za-z]+)+$/, 'Full name must include first name and last name'),
+    fullName: yup.string()
+        .matches(/^[A-Za-z]+(?:\s[A-Za-z]+)+$/, 'Full name must include first name and last name')
+    .required("Please enter your full name"),
     email: yup.string().email("Please enter a valid email")
         .test('not-ru', 'Russians are not allowed 🙂', value => {
             if (value) {

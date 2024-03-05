@@ -53,13 +53,6 @@
     justify-content: center;
 
 }
-.modal_checkbox svg{
-    transition: none;
-    border-bottom: none;
-}
-.modal_checkbox svg:hover{
-    border-bottom: none;
-}
 
 .modal_checkbox.checked {
     background-color: #FCB654;
@@ -68,8 +61,8 @@
 }
 .svg_div {
     position: absolute;
-    top: -7px;
-    left: -3.5px;
+    top: -4.5px;
+    left: -3.6px;
 }
 .remember_me{
     font-family: Poppins;
@@ -78,13 +71,6 @@
     line-height: 18px;
     letter-spacing: 0em;
     text-align: left;
-}
-.svg_div svg {
-    border-bottom: none;
-}
-
-.svg_div svg:hover {
-    border-bottom: none;
 }
 .remember_and_remind{
     display: flex;
@@ -101,9 +87,6 @@
     background: transparent;
     border: none;
     color: #FCB654;
-}
-.signIn_button{
-
 }
 .buttonDiv{
     display: flex;

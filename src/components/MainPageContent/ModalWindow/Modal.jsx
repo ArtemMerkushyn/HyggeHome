@@ -4,7 +4,6 @@ import css from './Modal.module.css';
 export const Modal = ({ funcClick, children }) => {
   const handleModalClick = e => {
     e.stopPropagation();
-    e.preventDefault();
   };
   return (
     <div className={css.overlay} onClick={funcClick}>

@@ -14,7 +14,6 @@ const CustomGoogleLoginButton = ({ modalAction }) => {
         onError: (error) => console.log('Login Failed:', error)
     });
 
-    // Спрацьовує, коли змінюється профіль користувача
     useEffect(() => {
         if (profile) {
             modalAction();

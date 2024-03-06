@@ -12,8 +12,6 @@ const MyWishlist = () => {
         <>
       <MyAccountNav/>
     <div className={css.wish}>
-
-      <div className={css.line}></div>
       <CardList data={favoritList} />
       <NewCollection
         sliderNeeded={false}

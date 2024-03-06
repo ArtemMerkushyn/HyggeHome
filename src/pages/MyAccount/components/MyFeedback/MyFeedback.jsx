@@ -1,5 +1,5 @@
 import React from 'react';
-import MyAccountNav from '../MyAccontNav/MyAccountNav';
+import MyAccountNav from '../../../../components/MyAccontNav/MyAccountNav';
 
 const MyFeedback = () => {
     return (

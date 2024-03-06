@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import MyAccountNav from '../MyAccontNav/MyAccountNav';
+import MyAccountNav from '../../../../components/MyAccontNav/MyAccountNav';
 import CardList from '../../../../components/CardList/CardList';
 import { NewCollection } from '../../../../components/MainPageContent/secondMainContent/NewCollection';
 import css from './MyWishlist.module.css'

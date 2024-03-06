@@ -57,9 +57,14 @@ export const Header = () => {
           <NavLink className={styles.link} to={'/cart'} style={{ borderBottom: location.pathname === '/cart' ? '2px solid #FCB654' : '2px solid transparent'}}>
             <Icons icon={'basket'} />
           </NavLink>
-          <NavLink className={styles.link} to={'/'}>
+          <NavLink 
+            className={styles.link} 
+            to={'/my-account'} 
+            style={{ borderBottom: location.pathname.startsWith('/my-account') ? '2px solid #FCB654' : '2px solid transparent'}}
+            >
             <User toggleModal={toggleModal} />
           </NavLink>
+
         </div>
       </div>
        {modal && (<Modal funcClick={toggleModal}>

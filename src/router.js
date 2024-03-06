@@ -13,6 +13,12 @@ import { Product } from './pages/Product/Product';
 import { CartPage } from './pages/CurtPage/CartPage';
 import { Wish } from './pages/Wish/Wish';
 import DeliveryPage from './pages/DeliveryPage/DeliveryPage';
+import MyAccount from './pages/MyAccount/MyAccount';
+import MyOrders from './pages/MyAccount/components/MyOrders/MyOrders';
+import MyWishlist from './pages/MyAccount/components/MyWishlist/MyWishlist';
+import MyFeedback from './pages/MyAccount/components/MyFeedback/MyFeedback';
+import MyDeliveryInfo from './pages/MyAccount/components/MyDeliveryInfo/MyDeliveryInfo';
+import MyCart from './pages/MyAccount/components/MyCart/MyCart';
 
 export const router = createBrowserRouter([
   {
@@ -74,6 +80,30 @@ export const router = createBrowserRouter([
       {
         path: '*',
         element: <Main />,
+      },
+      {
+        path: 'my-account',
+        element: <MyAccount/>
+      },
+      {
+        path: 'my-account/my-orders',
+        element: <MyOrders/>
+      },
+      {
+        path: 'my-account/my-wishlist',
+        element: <MyWishlist/>
+      },
+      {
+        path: 'my-account/my-feedback',
+        element: <MyFeedback/>
+      },
+      {
+        path: 'my-account/my-delivery-information',
+        element: <MyDeliveryInfo/>
+      },
+      {
+        path: '/my-account/my-cart',
+        element: <MyCart/>
       },
     ],
   },

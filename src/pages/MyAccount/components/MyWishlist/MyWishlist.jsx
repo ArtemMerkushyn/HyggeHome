@@ -8,19 +8,19 @@ import { selectFavorites } from '../../../../redux/selectors';
 const MyWishlist = () => {
   const favoritList = useSelector(selectFavorites);
 
-    return (
-        <>
+  return (
+    <div className={css.MyWishlist}>
       <MyAccountNav/>
-    <div className={css.wish}>
-      <CardList data={favoritList} />
-      <NewCollection
-        sliderNeeded={false}
-        upperText="products for you"
-        lowerText="You might also like"
-      />
-            </div>
-            </>
+      <div className={css.wish}>
+        <CardList data={favoritList} />
+        <NewCollection
+          sliderNeeded={false}
+          upperText="products for you"
+          lowerText="You might also like"
+        />
+      </div>
+    </div>
   );
-};
+}
 
 export default MyWishlist

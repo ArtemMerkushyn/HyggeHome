@@ -1,14 +1,15 @@
-
 .navBar {
     display: flex;
     flex-direction: column;
     float: left;
     margin-top: 60px;
+    margin-right: 30px;
     border-right: 1px solid #FCB654;
-    padding-left: 72px;
-    padding-right: 111px;
-    height: 740px;
+    min-height: 740px;
+    max-width: 411px;
+    width: 100%;
 }
+
 .headedText{
     font-family: DM Mono;
     font-size: 32px;
@@ -19,6 +20,7 @@
     margin-bottom: 33px;
     color: #252525;
 }
+
 .navLink{
     font-family: DM Mono;
     font-size: 24px;
@@ -27,6 +29,7 @@
     letter-spacing: -0.06em;
     text-align: left;
 }
+
 .linkContainer{
     display: flex;
     gap: 20px;

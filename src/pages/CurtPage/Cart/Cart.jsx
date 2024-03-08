@@ -9,7 +9,6 @@ import { useState } from 'react';
 export const Cart = () => {
   const curtItems = useSelector(selectCurtProducts);
   const [edit, setEdit] = useState(false);
-  console.log(curtItems)
 
   const handleEditCart = () => setEdit(true)
 

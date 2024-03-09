@@ -5,7 +5,7 @@ import styles from './CardList.module.css';
 import SkeletonProductLib from '../skeleton/SkeletonProductLib';
 import imgError from '../../image/error.jpeg';
 
-export default function CardList({ data, error, isLoading, totalPages }) {
+export default function CardList({ data, error, isLoading, totalPages, borderNeeded }) {
   if (isLoading) {
     return (
       <div className={styles.skeleton}>
@@ -29,7 +29,11 @@ export default function CardList({ data, error, isLoading, totalPages }) {
   return (
     <div
       className={styles.wrapper}
-      style={{ marginBottom: totalPages > 1 ? '60px' : '120px' }}
+      style={{
+        marginBottom: totalPages > 1 ? '60px' : '120px',
+        borderLeft: borderNeeded ? '1px solid #FCB654' : '',
+        paddingLeft: borderNeeded ? '50px' : ''
+      }}
     >
       {data.length === 0 ? (
         <div className={styles.notFound}>

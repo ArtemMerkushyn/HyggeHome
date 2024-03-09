@@ -7,36 +7,36 @@ import { useFormik } from 'formik';
 import { formSchema } from '../../schemas/formSchema';
 import CustomGoogleLoginButton from '../GoogleLogin/CustomGoogleLoginButton';
 import CustomFacebookLoginButton from '../FacebookLogin/CustomFacebookLoginButton';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setLoggedIn } from '../../redux/slices/userSlice';
-import { selectAuthorized } from '../../redux/selectors';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = ({ closeModal, handleRegisterClick }) => {
     const [passwordVisibility, setPasswordVisibility] = useState(false);
     const [checkbox, setCheckbox] = useState(false);
     const dispatch = useDispatch();
-    const authorized = useSelector(selectAuthorized);
+    const navigate = useNavigate();
+
+    const handleRegister = (values) => {
+            dispatch(setLoggedIn({values, token: 'bebra'}));
+            navigate('/my-account');
+        closeModal();
+  };
     
-    const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
+    const { values, errors, touched, handleBlur, handleChange, handleSubmit} = useFormik({
         initialValues: {
             email: '',
             logIn_password: '',
         },
         validationSchema: formSchema,
-        onSubmit: (values) => {
-            handleAuthorization(values); // Виклик функції авторизації
-            closeModal(); // Закриття модального вікна після відправки форми
-        },
+        onSubmit: handleRegister
     });
-
-    const handleAuthorization = (values) => {
-        dispatch(setLoggedIn(values)); // Виклик диспетчерської функції для авторизації
-    };
 
     return (
         <>
             <div className={css.container}>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleRegister} autoComplete="on">
+
                     <h2 className={css.logIn_text}>Log in</h2>
                     <MyInput
                         type="text"
@@ -85,7 +85,7 @@ const LoginForm = ({ closeModal, handleRegisterClick }) => {
                                     Remember me
                                 </label>
                             </div>
-                            <button className={css.remind_password} onClick={() => alert('ФУНКЦІОНАЛ НЕ ЗАВЕЗЛИ!!!!')}>
+                            <button className={css.remind_password} type="button" onClick={() => alert('ФУНКЦІОНАЛ НЕ ЗАВЕЗЛИ!!!!')}>
                                 Remind password
                             </button>
                         </div>
@@ -93,9 +93,9 @@ const LoginForm = ({ closeModal, handleRegisterClick }) => {
                     <div className={css.buttonDiv}>
                         <Button text="Log in" type="submit" style={{ width: '250px', marginTop: '23px' }} />
                         <Button
-                            type="button"
                             text="Sign in"
                             buttonType="outlined"
+                            type="button"
                             funcClick={handleRegisterClick}
                             style={{ textDecoration: 'underline' }}
                         />

@@ -1,13 +1,14 @@
-
+.wrapper {
+    margin-top: 20px;
+}
 .navBar {
     display: flex;
     flex-direction: column;
     float: left;
     margin-top: 60px;
-    border-right: 1px solid #FCB654;
-    padding-left: 72px;
-    padding-right: 111px;
-    height: 740px;
+    padding-right: 5%;
+    width: 28%;
+    
 }
 .headedText{
     font-family: DM Mono;
@@ -41,4 +42,10 @@
     text-align: left;
     border: none;
     background-color: transparent;
+}
+.fixed {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    /* Додайте інші стилі за потреби */
 }

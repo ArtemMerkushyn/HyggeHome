@@ -8,8 +8,6 @@ import { useState } from 'react';
 import { Modal } from '../MainPageContent/ModalWindow/Modal.jsx';
 import { RegistrationForm } from '../MainPageContent/RegistrationForm/RegistrationForm.jsx';
 import LoginForm from '../LoginForm/LoginForm.jsx';
-import { useSelector } from 'react-redux';
-import { selectAuthorized } from '../../redux/selectors.js';
 
 export const Header = () => {
   const logoStyles = {
@@ -18,7 +16,8 @@ export const Header = () => {
   const [modal, setModal] = useState(false)
   const [register, setRegister] = useState(false)
   const location = useLocation();
-  const authorized = useSelector(selectAuthorized)
+  const authorized = localStorage.getItem('token');
+
 
   const handleRegisterClick = () => {
     setRegister(!register)

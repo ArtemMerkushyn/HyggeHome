@@ -17,6 +17,7 @@ import searchReducer from './slices/searchSlice';
 import favoritesReducer from './slices/favoriteSlice';
 import filterReducer from './slices/filterSlice';
 import curtReducer from './slices/curtSlice';
+import userReducer from './slices/userSlice';
 
 const persistConfig = {
   key: 'root',
@@ -31,6 +32,7 @@ const reducers = combineReducers({
   favorite: favoritesReducer,
   filter: filterReducer,
   curt: curtReducer,
+  user: userReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

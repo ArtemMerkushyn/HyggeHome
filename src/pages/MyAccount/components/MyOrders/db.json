@@ -1,0 +1,152 @@
+[
+    {
+        "order_number": "058",
+        "order_date": "Jan 10, 2024",
+        "order_status":"Done",
+        "total_amount": "20$",
+        "order_adress": "705 Mendenhall St.",
+        "orderer": "Violeta Vaskovskaya",
+        "phone_number": "380123456789",
+        "email": "Vaskovskaya@gmail.com",
+        "product":{
+            "image": "https://simplycandles.co.nz/cdn/shop/products/small-metro-jar-essential-oil-candles-254022.jpg",
+            "product_name": "Sunday Morning",
+            "price": "$20",
+            "quantity": "2",
+            "total": "$40"
+        },
+        "payment_method": "Payment by card",
+        "delivery_type": "At the carrier's rates"
+    },
+    {
+        "order_number": "001",
+        "order_date": "Jan 10, 2024",
+        "order_status":"Canceled",
+        "total_amount": "45$",
+        "order_adress": "Groove St.",
+        "orderer": "Lok Dog",
+        "phone_number": "38069696969",
+        "email": "LOKDOK@gangsta.com",
+        "product":[
+            {
+            "image": "https://simplycandles.co.nz/cdn/shop/products/small-metro-jar-essential-oil-candles-254022.jpg",
+            "product_name": "Glock 18",
+            "price": "$15",
+            "quantity": "3",
+            "total": "$45"
+            },
+            {
+            "image": "https://simplycandles.co.nz/cdn/shop/products/small-metro-jar-essential-oil-candles-254022.jpg",
+            "product_name": "Dead crips",
+            "price": "$free",
+            "quantity": "23",
+            "total": "$0"
+            }
+        ],
+        "payment_method": "Payment by nyrka",
+        "delivery_type": "zakladka at the black hood"
+    },
+    {
+        "order_number": "456",
+        "order_date": "Feb 21, 2024",
+        "order_status": "Shipped",
+        "total_amount": "$50",
+        "order_address": "456 Oak St",
+        "orderer": "Jane Smith",
+        "phone_number": "987-654-3210",
+        "email": "jane.smith@example.com",
+        "product": [
+            {
+                "image": "https://simplycandles.co.nz/cdn/shop/products/small-metro-jar-essential-oil-candles-254022.jpg",
+                "product_name": "Product 2",
+                "price": "$25",
+                "quantity": "1",
+                "total": "$25"
+            },
+            {
+                "image": "https://simplycandles.co.nz/cdn/shop/products/small-metro-jar-essential-oil-candles-254022.jpg",
+                "product_name": "Product 3",
+                "price": "$20",
+                "quantity": "1",
+                "total": "$20"
+            }
+        ],
+        "payment_method": "PayPal",
+        "delivery_type": "Express Shipping"
+    },
+        {
+        "order_number": "456",
+        "order_date": "Feb 21, 2024",
+        "order_status": "Shipped",
+        "total_amount": "$50",
+        "order_address": "456 Oak St",
+        "orderer": "Jane Smith",
+        "phone_number": "987-654-3210",
+        "email": "jane.smith@example.com",
+        "product": [
+            {
+                "image": "https://simplycandles.co.nz/cdn/shop/products/small-metro-jar-essential-oil-candles-254022.jpg",
+                "product_name": "Product 2",
+                "price": "$25",
+                "quantity": "1",
+                "total": "$25"
+            },
+            {
+                "image": "https://simplycandles.co.nz/cdn/shop/products/small-metro-jar-essential-oil-candles-254022.jpg",
+                "product_name": "Product 3",
+                "price": "$20",
+                "quantity": "1",
+                "total": "$20"
+            }
+        ],
+        "payment_method": "PayPal",
+        "delivery_type": "Express Shipping"
+    },    {
+        "order_number": "456",
+        "order_date": "Feb 21, 2024",
+        "order_status": "Shipped",
+        "total_amount": "$50",
+        "order_address": "456 Oak St",
+        "orderer": "Jane Smith",
+        "phone_number": "987-654-3210",
+        "email": "jane.smith@example.com",
+        "product": [
+            {
+                "image": "https://simplycandles.co.nz/cdn/shop/products/small-metro-jar-essential-oil-candles-254022.jpg",
+                "product_name": "Product 2",
+                "price": "$25",
+                "quantity": "1",
+                "total": "$25"
+            },
+            {
+                "image": "https://simplycandles.co.nz/cdn/shop/products/small-metro-jar-essential-oil-candles-254022.jpg",
+                "product_name": "Product 3",
+                "price": "$20",
+                "quantity": "1",
+                "total": "$20"
+            }
+        ],
+        "payment_method": "PayPal",
+        "delivery_type": "Express Shipping"
+    },
+    {
+        "order_number": "789",
+        "order_date": "Feb 22, 2024",
+        "order_status": "Delivered",
+        "total_amount": "$45",
+        "order_address": "789 Pine St",
+        "orderer": "Alice Johnson",
+        "phone_number": "555-123-4567",
+        "email": "alice.johnson@example.com",
+        "product": {
+            "image": "https://simplycandles.co.nz/cdn/shop/products/small-metro-jar-essential-oil-candles-254022.jpg",
+            "product_name": "Product 4",
+            "price": "$15",
+            "quantity": "3",
+            "total": "$45"
+        },
+        "payment_method": "Bank Transfer",
+        "delivery_type": "Local Pickup"
+    }
+    
+]

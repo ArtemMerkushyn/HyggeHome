@@ -4,17 +4,27 @@ import css from '../LoginForm/LoginForm.module.css';
 import Icons from '../Icons/Icons';
 import { toast } from 'react-toastify';
 import useGoogleProfile from '../../utils/helpers/useGoogleProfile';
+import { useDispatch } from 'react-redux';
+import { setLoggedIn } from '../../redux/slices/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 const CustomGoogleLoginButton = ({ modalAction }) => {
     const [user, setUser] = useState(null);
     const profile = useGoogleProfile(user);
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     const login = useGoogleLogin({
-        onSuccess: (codeResponse) => setUser(codeResponse),
+        onSuccess: (codeResponse) => {
+            setUser(codeResponse)
+            dispatch(setLoggedIn({userData: profile, token: 'bebra'}))
+            navigate('/my-account')
+            
+
+        },
         onError: (error) => console.log('Login Failed:', error)
     });
 
-    // Спрацьовує, коли змінюється профіль користувача
     useEffect(() => {
         if (profile) {
             modalAction();

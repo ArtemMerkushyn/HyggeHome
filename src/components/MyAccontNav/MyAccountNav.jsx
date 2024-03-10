@@ -1,9 +1,20 @@
-import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import css from './MyAccontNav.module.css';
+import { useDispatch } from 'react-redux';
+import { setLoggedOut } from '../../redux/slices/userSlice';
 
 const MyAccountNav = () => {
+    const authorized = localStorage.getItem('token');
     const location = useLocation();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!authorized) {
+            navigate('/')
+        }
+    }, [authorized])
     return (
         <aside className={css.navBar}>
             <h2 className={css.headedText}>User name</h2>
@@ -23,6 +34,11 @@ const MyAccountNav = () => {
             <NavLink to='/my-account/my-delivery-information' className={css.navLink} style={{ color: location.pathname === '/my-account/my-delivery-information' ? '#FCB654' : ''}}>
                 My delivery information
                 </NavLink>
+                <NavLink to='/'>
+                        <button className={css.logOut_Button} onClick={() => dispatch(setLoggedOut())}>
+                            Log Out
+                        </button>
+                    </NavLink>
                 </div>
             </aside>
     );

@@ -16,6 +16,8 @@ export const Header = () => {
   const [modal, setModal] = useState(false)
   const [register, setRegister] = useState(false)
   const location = useLocation();
+  const authorized = localStorage.getItem('token');
+
 
   const handleRegisterClick = () => {
     setRegister(!register)
@@ -57,13 +59,18 @@ export const Header = () => {
           <NavLink className={styles.link} to={'/cart'} style={{ borderBottom: location.pathname === '/cart' ? '2px solid #FCB654' : '2px solid transparent'}}>
             <Icons icon={'basket'} />
           </NavLink>
-          <NavLink 
+
+          {authorized
+            ? (<NavLink 
             className={styles.link} 
             to={'/my-account'} 
             style={{ borderBottom: location.pathname.startsWith('/my-account') ? '2px solid #FCB654' : '2px solid transparent'}}
             >
+            <User/>
+            </NavLink>)
+            :
             <User toggleModal={toggleModal} />
-          </NavLink>
+          }
 
         </div>
       </div>

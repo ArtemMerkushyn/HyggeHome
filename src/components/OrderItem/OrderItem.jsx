@@ -1,9 +1,38 @@
 import React, { useState } from 'react';
 import css from './OrderItem.module.css'
 import Icons from '../Icons/Icons';
+import { Modal } from '../MainPageContent/ModalWindow/Modal';
+import FeedbackForm from '../FeedbackForm/FeedbackForm';
 
 const OrderItem = ({ data }) => {
     const [showDetails, setShowDetails] = useState(false)
+    const [modal, setModal] = useState(false)
+
+const toggleModal = () => {
+    const body = document.body;
+    setModal(!modal);
+    if (!modal) {
+        body.style.overflow = 'hidden';
+
+        // Додамо обробник подій для блокування кліків на елементи за межами модального вікна
+        document.addEventListener('click', handleOutsideClick);
+    } else {
+        body.style.overflow = 'auto';
+
+        // При закритті модального вікна видаляємо обробник подій
+        document.removeEventListener('click', handleOutsideClick);
+    }
+}
+
+const handleOutsideClick = (event) => {
+    const modalContainer = document.querySelector('.modal-container');
+    if (modalContainer && !modalContainer.contains(event.target)) {
+        // Якщо клік відбувся поза модальним вікном, відміняємо подію
+        event.stopPropagation();
+        event.preventDefault();
+    }
+}
+
     return (
         <div className={css.orderContainer}>
             <div className={css.orderitems}>
@@ -96,6 +125,8 @@ const OrderItem = ({ data }) => {
                             <p className={css.payment_details_data}>{data.total_amount}</p>
                         </div>
                     </div>
+                    <button className={css.feedback_button} onClick={toggleModal}>Leave a feedback</button>
+                    {modal && (<Modal funcClick={toggleModal}><FeedbackForm toggle={toggleModal} /></Modal>)}
                     </>
             )
             }

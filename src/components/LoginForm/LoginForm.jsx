@@ -4,29 +4,38 @@ import MyInput from '../UI/MyInput';
 import Icons from '../Icons/Icons';
 import Button from '../UI/Button/Button';
 import { useFormik } from 'formik';
-import { formSchema } from '../../schemas/formSchema';
+import { loginFormSchema } from '../../schemas/loginFormSchema';
 import CustomGoogleLoginButton from '../GoogleLogin/CustomGoogleLoginButton';
 import CustomFacebookLoginButton from '../FacebookLogin/CustomFacebookLoginButton';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setLoggedIn } from '../../redux/slices/userSlice';
 
 const LoginForm = ({ closeModal, handleRegisterClick }) => {
 
-        const onSubmit = (event) => {
-        event.preventDefault();
-        console.log(values);
-        closeModal()
-    }
-
-      const {values, errors, touched, handleBlur, handleChange, handleSubmit} = useFormik({
-    initialValues: {
-              email: "",
-            password: "",
-    }, 
-    validationSchema: formSchema,
-    onSubmit
-  })
-
+        
     const [passwordVisibility, setPasswordVisibility] = useState(false);
     const [checkbox, setCheckbox] = useState(false);
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+        
+    const onSubmit = () => {
+            console.log(values);
+            closeModal()
+            dispatch(setLoggedIn({userData: values, token: 'bebra'}))
+            navigate('/my-account')
+        }
+
+        const {values, errors, touched, handleBlur, handleChange, handleSubmit} = useFormik({
+        initialValues: {
+                email: "",
+                password: "",
+        }, 
+        validationSchema: loginFormSchema,
+        onSubmit
+    })
+
+
 
 
     return (       
@@ -56,6 +65,9 @@ const LoginForm = ({ closeModal, handleRegisterClick }) => {
                             labelFor="Password*"
                             value={values.password}
                             onChange={handleChange}
+                            onBlur={handleBlur}
+                            errorField={errors.password}
+                            touched={touched.password}
                         />
                         <button
                             className={css.hide_password_button}
@@ -89,7 +101,7 @@ const LoginForm = ({ closeModal, handleRegisterClick }) => {
                             text='Log in'
                             type={"submit"}
                             style={{ width: '250px', marginTop: '23px' }}
-                            funcClick={onSubmit}
+                            
                         />
                         <Button
                             type='button'

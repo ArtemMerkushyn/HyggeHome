@@ -14,7 +14,7 @@ const MyAccountNav = () => {
         if (!authorized) {
             navigate('/')
         }
-    }, [authorized])
+    }, [authorized,navigate])
     return (
         <aside className={css.navBar}>
             <h2 className={css.headedText}>User name</h2>

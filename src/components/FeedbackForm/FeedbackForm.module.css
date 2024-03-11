@@ -1,0 +1,64 @@
+.feedback_wrapper{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.leave_feedback_text {
+    font-family: DM Mono;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 31px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #FCB654;
+}
+
+.stars_div{
+    display: flex;
+    gap: 10px;
+}
+
+.star_button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.star_button svg {
+    fill: #FCB654;
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+}
+
+.star_button:hover svg {
+    opacity: 0.8;
+}
+
+.selected svg {
+    fill: #FCB654;
+    opacity: 1;
+}
+.feedback_textarea{
+    max-width: 250px;
+    width: 100%;
+    height: 130px;
+    border: 1px solid #252525;
+    border-radius: 24px;
+    padding: 14px;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #252525;
+    resize: none;
+    overflow-y: hidden;
+
+}
+
+.feedback_textarea:focus{
+    outline: none;
+    border-color: #FCB654;
+}

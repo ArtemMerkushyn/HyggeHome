@@ -8,6 +8,7 @@
   background: rgba(0, 0, 0, 0.7);
   justify-content: center;
   align-items: center;
+  z-index: 20;
   
 }
 
@@ -26,5 +27,6 @@
   display: flex;
   align-items: center;
   cursor: auto;
+  z-index: 21;
       
 }

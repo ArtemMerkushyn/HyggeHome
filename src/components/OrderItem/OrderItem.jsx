@@ -13,25 +13,14 @@ const toggleModal = () => {
     setModal(!modal);
     if (!modal) {
         body.style.overflow = 'hidden';
-
-        // Додамо обробник подій для блокування кліків на елементи за межами модального вікна
-        document.addEventListener('click', handleOutsideClick);
+        body.style.marginRight = '15px';
     } else {
         body.style.overflow = 'auto';
-
-        // При закритті модального вікна видаляємо обробник подій
-        document.removeEventListener('click', handleOutsideClick);
+        body.style.marginRight = '';
     }
 }
 
-const handleOutsideClick = (event) => {
-    const modalContainer = document.querySelector('.modal-container');
-    if (modalContainer && !modalContainer.contains(event.target)) {
-        // Якщо клік відбувся поза модальним вікном, відміняємо подію
-        event.stopPropagation();
-        event.preventDefault();
-    }
-}
+
 
     return (
         <div className={css.orderContainer}>

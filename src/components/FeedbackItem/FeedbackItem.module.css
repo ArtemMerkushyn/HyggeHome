@@ -60,7 +60,7 @@
 .btns__wrapper {
     display: flex;
     justify-content: flex-end;
-    gap: 30px;
+    gap: 20px;
 }
 
 .btns__wrapper button:first-child {

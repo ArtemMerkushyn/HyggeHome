@@ -1,0 +1,70 @@
+.feedbackContainer {
+    border-radius: 24px;
+    border: 1px solid #FCB654;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.feedbackWrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.name_and_date_container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.userName{
+    font-family: DM Mono;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 31px;
+    letter-spacing: -0.06em;
+    text-align: left;
+    color: #252525;
+
+}
+.date{
+    font-family: DM Mono;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0.06em;
+    text-align: left;
+    color: #252525;
+
+}
+.rating_and_feedback_container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 613px;
+    width: 100%;
+}
+.feedback_text{
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 27px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #252525;
+
+}
+.line {
+    width: 100%;
+    background-color: #FCB654;
+    height: 1px;
+    margin: 20px 0;
+}
+.btns__wrapper {
+    display: flex;
+    justify-content: flex-end;
+    gap: 30px;
+}
+
+.btns__wrapper button:first-child {
+    border: 1px solid #fcb654;
+    background: #fff;
+    color: #252525;
+}

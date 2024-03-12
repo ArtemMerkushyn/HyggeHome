@@ -14,8 +14,10 @@ export const SpecialOffer = () => {
         setModal(!modal);
         if (!modal) {
             document.body.style.overflow = 'hidden';
+            document.body.style.marginRight = '15px';
         } else {
             document.body.style.overflow = 'auto';
+            document.body.style.marginRight = '';
         }
     }
     

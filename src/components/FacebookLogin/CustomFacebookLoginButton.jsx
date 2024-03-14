@@ -9,11 +9,11 @@ const REDIRECT_URI = window.location.href;
 const CustomFacebookLoginButton = ({ modalAction }) => {
   const [provider, setProvider] = useState('');
   const [profile, setProfile] = useState(null);
-
+  console.log(provider);
   useEffect(() => {
     if (profile && profile.name) {
       toast.success(`Вітання, ${profile.name}`);
-      modalAction()
+      modalAction();
     }
   }, [profile, modalAction]);
 
@@ -33,8 +33,8 @@ const CustomFacebookLoginButton = ({ modalAction }) => {
       }}
     >
       <span>
-        <button className={css.logIn_with_button} type='button'>
-          <Icons icon='facebook' />
+        <button className={css.logIn_with_button} type="button">
+          <Icons icon="facebook" />
           Facebook
         </button>
       </span>

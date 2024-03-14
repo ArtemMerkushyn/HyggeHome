@@ -1,182 +1,63 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { addPrice } from '../../redux/slices/filterSlice.js';
-import PropTypes from 'prop-types';
+import Box from '@mui/material/Box';
+import Slider from '@mui/material/Slider';
+
+// import { addPrice } from '../../redux/slices/filterSlice.js';
+
 import styles from './InputRange.module.css';
-import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
-export const InputRange = ({ maxValue, applyFilterPrice }) => {
-  const initialMin = Math.round(1).toString();
-  const initialMax = Math.round(maxValue / 2).toString();
+function valuetext(value) {
+  return `${value}°C`;
+}
 
-  const [min, setMin] = useState(initialMin);
-  const [max, setMax] = useState(initialMax);
-  const [prevMin, setPrevMin] = useState(initialMin);
-  const [prevMax, setPrevMax] = useState(initialMax);
-  const [isDragging1, setIsDragging1] = useState(false);
-  const [isDragging2, setIsDragging2] = useState(false);
-  const [input1Value, setInput1Value] = useState(min);
-  const [input2Value, setInput2Value] = useState(max);
-  const [input1ValueError, setInput1ValueError] = useState(false);
-  const [input2ValueError, setInput2ValueError] = useState(false);
+const minDistance = 8;
 
-  const sliderRef = useRef(null);
-  const dispatch = useDispatch();
+export const InputRange = () => {
+  const [value, setValue] = useState([20, 37]);
 
-  const handleMouseMove = useCallback(
-    e => {
-      const sliderRect = sliderRef.current.getBoundingClientRect();
-      let newPosition =
-        ((e.clientX - sliderRect.left) / sliderRect.width) * maxValue;
+  const handleChange = (_event, newValue, activeThumb) => {
+    if (!Array.isArray(newValue)) {
+      return;
+    }
 
-      newPosition = Math.max(0, Math.min(newPosition, maxValue));
-
-      if (isDragging1 && newPosition <= parseInt(max, 10) - 20) {
-        setMin(Math.round(newPosition).toString());
-        setInput1Value(Math.round(newPosition).toString());
-      } else if (isDragging2 && newPosition >= parseInt(min, 10) + 20) {
-        setMax(Math.round(newPosition).toString());
-        setInput2Value(Math.round(newPosition).toString());
+    if (newValue[1] - newValue[0] < minDistance) {
+      if (activeThumb === 0) {
+        const clamped = Math.min(newValue[0], 100 - minDistance);
+        setValue([clamped, clamped + minDistance]);
+      } else {
+        const clamped = Math.max(newValue[1], minDistance);
+        setValue([clamped - minDistance, clamped]);
       }
-    },
-    [isDragging1, isDragging2, maxValue, min, max],
-  );
-
-  useEffect(() => {
-    const handleGlobalMouseMove = e => {
-      handleMouseMove(e);
-    };
-
-    const handleGlobalMouseUp = () => {
-      handleMouseUp();
-    };
-
-    if (isDragging1 || isDragging2) {
-      document.addEventListener('mousemove', handleGlobalMouseMove);
-      document.addEventListener('mouseup', handleGlobalMouseUp);
-    }
-
-    return () => {
-      document.removeEventListener('mousemove', handleGlobalMouseMove);
-      document.removeEventListener('mouseup', handleGlobalMouseUp);
-    };
-  }, [isDragging1, isDragging2, handleMouseMove]);
-
-  useEffect(() => {
-    dispatch(addPrice({ minPrice: min, maxPrice: max }));
-  }, [min, max, dispatch, applyFilterPrice]);
-
-  useEffect(() => {
-    if (!input1ValueError) {
-      setMin(input1Value);
-    }
-  }, [input1Value, input1ValueError]);
-
-  useEffect(() => {
-    if (!input2ValueError) {
-      setMax(input2Value);
-    }
-  }, [input2Value, input2ValueError]);
-
-  useEffect(() => {
-    setInput1ValueError(
-      input1Value === '' || parseInt(input1Value) > parseInt(input2Value),
-    );
-    setInput2ValueError(
-      input2Value === '' ||
-        parseInt(input2Value) < parseInt(input1Value) ||
-        parseInt(input2Value) > maxValue,
-    );
-  }, [input1Value, input2Value, maxValue]);
-
-  const handleMouseDown = (e, setIsDragging) => {
-    e.preventDefault();
-    setIsDragging(true);
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging1(false);
-    setIsDragging2(false);
-  };
-
-  const handleInputChange = (e, setInputValue) => {
-    const inputValue = e.target.value;
-    if (/^\d*$/.test(inputValue)) {
-      if (input1Value > input2Value) {
-      }
-      setInputValue(inputValue);
-    }
-  };
-
-  useEffect(() => {
-    if (input1ValueError || input2ValueError) {
-      setMin(prevMin);
-      setMax(input2Value > input1Value ? max : prevMax);
-    } else if (input2Value > maxValue) {
-      setMax(prevMax);
     } else {
-      setPrevMin(min);
-      setPrevMax(max);
+      setValue(newValue);
     }
-  }, [
-    input1ValueError,
-    input2ValueError,
-    min,
-    max,
-    prevMin,
-    prevMax,
-    input1Value,
-    input2Value,
-    maxValue,
-  ]);
-
+  };
   return (
     <>
-      <div className={styles.slider} ref={sliderRef}>
-        <div
-          className={styles.slider__thumb1}
-          style={{
-            left: `calc(${(parseInt(min, 10) / maxValue) * 100}% - 10px)`,
-          }}
-          onMouseDown={e => handleMouseDown(e, setIsDragging1)}
-        ></div>
-        <div
-          className={styles.line}
-          style={{
-            left: `calc(${(parseInt(min, 10) / maxValue) * 100}% - 10px)`,
-            width: `calc(${
-              ((parseInt(max, 10) - parseInt(min, 10)) / maxValue) * 100
-            }%)`,
-          }}
+      <Box sx={{ width: ' auto' }}>
+        <Slider
+          getAriaLabel={() => 'Minimum distance shift'}
+          value={value}
+          onChange={handleChange}
+          valueLabelDisplay="auto"
+          getAriaValueText={valuetext}
+          disableSwap
         />
-        <div
-          className={styles.slider__thumb2}
-          style={{
-            left: `calc(${(parseInt(max, 10) / maxValue) * 100}% - 10px)`,
-          }}
-          onMouseDown={e => handleMouseDown(e, setIsDragging2)}
-        ></div>
-      </div>
+      </Box>
       <div className={styles.priceInputs}>
         <input
           className={styles.priceInput}
-          style={{ background: input1ValueError ? '#f4adad' : '#fff' }}
           type="text"
-          value={input1Value}
-          onChange={e => handleInputChange(e, setInput1Value)}
+          value={value[0]}
+          onChange={handleChange}
         />
         <input
           className={styles.priceInput}
-          style={{ background: input2ValueError ? '#f4adad' : '#fff' }}
           type="text"
-          value={input2Value}
-          onChange={e => handleInputChange(e, setInput2Value)}
+          value={value[1]}
+          onChange={handleChange}
         />
       </div>
     </>
   );
-};
-
-InputRange.propTypes = {
-  maxValue: PropTypes.number,
-  applyFilterPrice: PropTypes.bool,
 };

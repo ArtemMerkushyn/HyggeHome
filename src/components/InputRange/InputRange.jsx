@@ -6,14 +6,14 @@ import Slider from '@mui/material/Slider';
 import styles from './InputRange.module.css';
 import { useState } from 'react';
 
-function valuetext(value) {
-  return `${value}$`;
-}
-
-const minDistance = 8;
-
 export const InputRange = () => {
   const [value, setValue] = useState([20, 37]);
+
+  const minDistance = 8;
+
+  // function valuetext(value) {
+  //   return `${value}$`;
+  // }
 
   const handleChange = (_event, newValue, activeThumb) => {
     if (!Array.isArray(newValue)) {
@@ -40,7 +40,7 @@ export const InputRange = () => {
           value={value}
           onChange={handleChange}
           valueLabelDisplay="auto"
-          getAriaValueText={valuetext}
+          // getAriaValueText={valuetext}
           disableSwap
           sx={{ color: '#FCB654' }}
         />
@@ -55,7 +55,7 @@ export const InputRange = () => {
         <input
           className={styles.priceInput}
           type="text"
-          value={value[1]}
+          value={value[1] - 8}
           onChange={handleChange}
         />
       </div>

@@ -7,7 +7,7 @@ import styles from './InputRange.module.css';
 import { useState } from 'react';
 
 function valuetext(value) {
-  return `${value}°C`;
+  return `${value}$`;
 }
 
 const minDistance = 8;
@@ -34,7 +34,7 @@ export const InputRange = () => {
   };
   return (
     <>
-      <Box sx={{ width: ' auto' }}>
+      <Box>
         <Slider
           getAriaLabel={() => 'Minimum distance shift'}
           value={value}
@@ -42,6 +42,7 @@ export const InputRange = () => {
           valueLabelDisplay="auto"
           getAriaValueText={valuetext}
           disableSwap
+          sx={{ color: '#FCB654' }}
         />
       </Box>
       <div className={styles.priceInputs}>

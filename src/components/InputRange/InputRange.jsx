@@ -24,8 +24,6 @@ export const InputRange = ({ maxValue, applyFilterPrice }) => {
 
   const handleMouseMove = useCallback(
     e => {
-      //if ((!isDragging1 && !isDragging2) || input1ValueError || input2ValueError) return;
-      
       const sliderRect = sliderRef.current.getBoundingClientRect();
       let newPosition =
         ((e.clientX - sliderRect.left) / sliderRect.width) * maxValue;
@@ -40,7 +38,7 @@ export const InputRange = ({ maxValue, applyFilterPrice }) => {
         setInput2Value(Math.round(newPosition).toString());
       }
     },
-    [isDragging1, isDragging2, maxValue, min, max]
+    [isDragging1, isDragging2, maxValue, min, max],
   );
 
   useEffect(() => {
@@ -64,7 +62,6 @@ export const InputRange = ({ maxValue, applyFilterPrice }) => {
   }, [isDragging1, isDragging2, handleMouseMove]);
 
   useEffect(() => {
-    //if(!applyFilterPrice) dispatch(addPrice({ minPrice: min, maxPrice: max }));
     dispatch(addPrice({ minPrice: min, maxPrice: max }));
   }, [min, max, dispatch, applyFilterPrice]);
 
@@ -73,7 +70,7 @@ export const InputRange = ({ maxValue, applyFilterPrice }) => {
       setMin(input1Value);
     }
   }, [input1Value, input1ValueError]);
-  
+
   useEffect(() => {
     if (!input2ValueError) {
       setMax(input2Value);
@@ -81,15 +78,18 @@ export const InputRange = ({ maxValue, applyFilterPrice }) => {
   }, [input2Value, input2ValueError]);
 
   useEffect(() => {
-    setInput1ValueError(input1Value === '' || parseInt(input1Value) > parseInt(input2Value));
-    setInput2ValueError(input2Value === '' || parseInt(input2Value) < parseInt(input1Value) || parseInt(input2Value) > maxValue);
+    setInput1ValueError(
+      input1Value === '' || parseInt(input1Value) > parseInt(input2Value),
+    );
+    setInput2ValueError(
+      input2Value === '' ||
+        parseInt(input2Value) < parseInt(input1Value) ||
+        parseInt(input2Value) > maxValue,
+    );
   }, [input1Value, input2Value, maxValue]);
 
   const handleMouseDown = (e, setIsDragging) => {
     e.preventDefault();
-    // if (!input1ValueError && !input2ValueError) {
-    //   setIsDragging(true);
-    // }
     setIsDragging(true);
   };
 
@@ -101,26 +101,33 @@ export const InputRange = ({ maxValue, applyFilterPrice }) => {
   const handleInputChange = (e, setInputValue) => {
     const inputValue = e.target.value;
     if (/^\d*$/.test(inputValue)) {
-      if(input1Value > input2Value) { 
-        
+      if (input1Value > input2Value) {
       }
       setInputValue(inputValue);
     }
-  }
-  
+  };
 
   useEffect(() => {
     if (input1ValueError || input2ValueError) {
       setMin(prevMin);
-      //setMax(prevMax);
-      setMax(input2Value > input1Value ?  max : prevMax);
-    } else if(input2Value > maxValue) {
+      setMax(input2Value > input1Value ? max : prevMax);
+    } else if (input2Value > maxValue) {
       setMax(prevMax);
     } else {
       setPrevMin(min);
       setPrevMax(max);
     }
-  }, [input1ValueError, input2ValueError, min, max, prevMin, prevMax, input1Value,input2Value, maxValue]);
+  }, [
+    input1ValueError,
+    input2ValueError,
+    min,
+    max,
+    prevMin,
+    prevMax,
+    input1Value,
+    input2Value,
+    maxValue,
+  ]);
 
   return (
     <>
@@ -131,8 +138,7 @@ export const InputRange = ({ maxValue, applyFilterPrice }) => {
             left: `calc(${(parseInt(min, 10) / maxValue) * 100}% - 10px)`,
           }}
           onMouseDown={e => handleMouseDown(e, setIsDragging1)}
-        >
-        </div>
+        ></div>
         <div
           className={styles.line}
           style={{
@@ -148,8 +154,7 @@ export const InputRange = ({ maxValue, applyFilterPrice }) => {
             left: `calc(${(parseInt(max, 10) / maxValue) * 100}% - 10px)`,
           }}
           onMouseDown={e => handleMouseDown(e, setIsDragging2)}
-        >
-        </div>
+        ></div>
       </div>
       <div className={styles.priceInputs}>
         <input
@@ -157,14 +162,14 @@ export const InputRange = ({ maxValue, applyFilterPrice }) => {
           style={{ background: input1ValueError ? '#f4adad' : '#fff' }}
           type="text"
           value={input1Value}
-          onChange={(e) => handleInputChange(e, setInput1Value)}
+          onChange={e => handleInputChange(e, setInput1Value)}
         />
         <input
           className={styles.priceInput}
           style={{ background: input2ValueError ? '#f4adad' : '#fff' }}
           type="text"
           value={input2Value}
-          onChange={(e) => handleInputChange(e, setInput2Value)}
+          onChange={e => handleInputChange(e, setInput2Value)}
         />
       </div>
     </>
@@ -172,6 +177,6 @@ export const InputRange = ({ maxValue, applyFilterPrice }) => {
 };
 
 InputRange.propTypes = {
-    maxValue: PropTypes.number,
-    applyFilterPrice: PropTypes.bool,
+  maxValue: PropTypes.number,
+  applyFilterPrice: PropTypes.bool,
 };

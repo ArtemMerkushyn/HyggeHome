@@ -62,11 +62,16 @@
 .rules {
     width: 24px;
     height: 24px;
-    background: #FCB654;
+    background: #fff;
+    border: 1px solid #FCB654;
     border-radius: 50px;
     position: relative;
     cursor: pointer;
     transition: all .3s linear;
+}
+
+.rules:hover {
+    background: #FCB654;
 }
 
 .rules svg {
@@ -80,4 +85,19 @@
 
 .rules__text {
     display: inline-block;
+}
+
+.btns {
+    display: flex;
+    justify-content: space-between;
+    margin: 60px 0 120px;
+}
+
+.btns button {
+    width: 412px;
+}
+
+.btns button:first-child {
+    color: #252525;
+    background: #fff;
 }

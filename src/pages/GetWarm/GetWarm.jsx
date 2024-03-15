@@ -19,6 +19,7 @@ export const GetWarm = () => {
   const [min, setMin] = useState('');
   const [max, setMax] = useState('');
   const [colors, setColors] = useState([]);
+  const [price, setPrice] = useState([]);
   const [sort, setSort] = useState({
     field: 'popular',
     dir: 'desc',
@@ -42,6 +43,7 @@ export const GetWarm = () => {
     if (data) {
       setNewData(data.results);
       setTotalPages(data.totalPages);
+      setPrice([data.minPrice, data.maxPrice]);
     }
   }, [data]);
 
@@ -84,7 +86,11 @@ export const GetWarm = () => {
         atmosphere
       </h2>
       <div className={styles.wrapperButtons}>
-        <Filters colorsView={false} onUpdateFilteredData={updateFilteredData} />
+        <Filters
+          colorsView={false}
+          onUpdateFilteredData={updateFilteredData}
+          price={price}
+        />
         <div className={styles.dropdownList}>
           Sort by
           <Sort />

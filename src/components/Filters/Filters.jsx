@@ -17,7 +17,7 @@ const colors = [
   'Pink',
 ];
 
-export default function Filters({ colorsView, onUpdateFilteredData }) {
+export default function Filters({ price, colorsView, onUpdateFilteredData }) {
   const [openFilter, setOpenFilter] = useState(false);
   const [selectedColors, setSelectedColors] = useState({
     Blue: false,
@@ -65,7 +65,7 @@ export default function Filters({ colorsView, onUpdateFilteredData }) {
         }}
       >
         <h5>Price range:</h5>
-        <InputRange maxValue={300} applyFilterPrice={openFilter}/>
+        <InputRange applyFilterPrice={openFilter} price={price} />
         {colorsView ? (
           <div className={styles.colorFilters}>
             <h5>Color:</h5>

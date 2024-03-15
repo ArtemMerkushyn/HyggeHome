@@ -17,6 +17,7 @@ export const Candles = () => {
   const [page, setPage] = useState(1);
   const [min, setMin] = useState('');
   const [max, setMax] = useState('');
+  const [price, setPrice] = useState([]);
   const [colors, setColors] = useState([]);
   const [sort, setSort] = useState({
     field: 'popular',
@@ -42,6 +43,7 @@ export const Candles = () => {
     if (data) {
       setNewData(data.results);
       setTotalPages(data.totalPages);
+      setPrice([data.minPrice, data.maxPrice]);
     }
   }, [data]);
 
@@ -84,7 +86,11 @@ export const Candles = () => {
         atmosphere
       </h2>
       <div className={styles.wrapperButtons}>
-        <Filters colorsView={true} onUpdateFilteredData={updateFilteredData} />
+        <Filters
+          colorsView={true}
+          onUpdateFilteredData={updateFilteredData}
+          price={price}
+        />
         <div className={styles.dropdownList}>
           Sort by
           <Sort />

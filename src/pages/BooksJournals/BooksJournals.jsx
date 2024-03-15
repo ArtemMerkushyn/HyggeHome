@@ -18,6 +18,7 @@ export const BooksJournals = () => {
   const [min, setMin] = useState('');
   const [max, setMax] = useState('');
   const [colors, setColors] = useState([]);
+  const [price, setPrice] = useState([]);
   const [sort, setSort] = useState({
     field: 'popular',
     dir: 'desc',
@@ -42,6 +43,7 @@ export const BooksJournals = () => {
     if (data) {
       setNewData(data.results);
       setTotalPages(data.totalPages);
+      setPrice([data.minPrice, data.maxPrice]);
     }
   }, [data]);
 
@@ -84,7 +86,11 @@ export const BooksJournals = () => {
         for atmosphere
       </h2>
       <div className={styles.wrapperButtons}>
-        <Filters onUpdateFilteredData={updateFilteredData} colorsView={false} />
+        <Filters
+          onUpdateFilteredData={updateFilteredData}
+          colorsView={false}
+          price={price}
+        />
         <div className={styles.dropdownList}>
           Sort by
           <Sort />

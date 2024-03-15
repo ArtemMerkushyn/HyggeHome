@@ -5,11 +5,15 @@ import { CurtItem } from '../../../components/CurtItem/CurtItem';
 import Button from '../../../components/UI/Button/Button';
 import { useState } from 'react';
 
-export const Cart = () => {
+export const Cart = ({ tabs, setSelectedId }) => {
   const curtItems = useSelector(selectCurtProducts);
   const [edit, setEdit] = useState(false);
 
-  const handleEditCart = () => setEdit(true)
+  const handleEditCart = () => setEdit(true);
+
+  const handleNextStep = () => {
+    setSelectedId(tabs[1].id);
+  }
 
   return (
     <div style={{ marginBottom: '120px' }}>
@@ -28,10 +32,11 @@ export const Cart = () => {
           ))
         )}
       </div>
-      <div className={styles.edit_btn}>
+      <div className={styles.btns}>
         {!edit ? (
           <Button text={'Edit cart'} funcClick={handleEditCart}/>
-        ) : <div style={{height: '77px', marginBottom: '30px'}}></div>}
+        ) : <div style={{height: '47px'}}></div>}
+        <Button text={'Next step'} funcClick={handleNextStep}/>
       </div>
     </div>
   );

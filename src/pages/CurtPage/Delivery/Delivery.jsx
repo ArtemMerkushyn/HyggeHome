@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import styles from './Delivery.module.css';
+import Button from '../../../components/UI/Button/Button';
+import { toast } from 'react-toastify';
+import validator from 'validator';
 
 const inputFields = [
     { label: 'Your first name*', placeholder: 'Your first name', id: 'firstName', name: 'firstName' },
@@ -7,10 +10,11 @@ const inputFields = [
     { label: 'Your address*', placeholder: 'Your address', id: 'address', name: 'address' },
     { label: 'Your city*', placeholder: 'Your city', id: 'city', name: 'city' },
     { label: 'Postal code*', placeholder: 'Postal code', id: 'postalCode', name: 'postalCode' },
-    { label: 'Phone number*', placeholder: 'Phone number', id: 'phoneNumber', name: 'phoneNumber', type: 'tel' }
+    { label: 'Phone number*', placeholder: 'Phone number', id: 'phoneNumber', name: 'phoneNumber', type: 'tel' },
+    { label: 'Your Email*', placeholder: 'Your email', id: 'email', name: 'email' }
 ];
 
-export const Delivery = () => {
+export const Delivery = ({ tabs, setSelectedId }) => {
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -18,17 +22,45 @@ export const Delivery = () => {
         city: '',
         postalCode: '',
         phoneNumber: '',
+        email: '',
         optionDeliveryMethod: '5',
     });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prevState => ({ ...prevState, [name]: value }));
+        let filteredValue = value;
+        if (name === 'phoneNumber') {
+            filteredValue = value.replace(/\D/g, '');
+        }
+        setFormData(prevState => ({ ...prevState, [name]: filteredValue }));
     }
 
     const handleOptionChange = (e) => {
         const { value } = e.target;
         setFormData(prevState => ({ ...prevState, optionDeliveryMethod: value }));
+    }
+
+    const handlePrevStep = () => {
+        setSelectedId(tabs[0].id);
+    }
+
+    const handleNextStep = () => {
+        for (const field of inputFields) {
+            if (!formData[field.name]) {
+                toast('Please fill in all fields');
+                return;
+            }
+        }
+        const phoneNumber = formData['phoneNumber'];
+        if (!/^\d{9}$/.test(phoneNumber)) {
+            toast('Please enter a valid phone number with 9 digits');
+            return;
+        }
+        if (!validator.isEmail(formData.email)) { // Check if email is valid
+            toast('Please enter a valid email address');
+            return;
+        }      
+        setSelectedId(tabs[2].id);
     }
 
     return (
@@ -44,6 +76,9 @@ export const Delivery = () => {
                         value={formData[field.name]}
                         onChange={handleChange}
                         required 
+                        pattern={field.name === 'phoneNumber' ? '\\d+' : undefined}
+                        minLength={field.name === 'phoneNumber' ? 9 : undefined}
+                        maxLength={field.name === 'phoneNumber' ? 9 : undefined}
                     />
                 </div> 
             ))}
@@ -73,6 +108,11 @@ export const Delivery = () => {
                     </label>
                 ))}
             </div>
+            <div className={styles.btns}>
+                <Button text={'Previous step'} funcClick={handlePrevStep}/>
+                <Button text={'Next step'} funcClick={handleNextStep}/>
+            </div>
         </form>
     );
 }
+

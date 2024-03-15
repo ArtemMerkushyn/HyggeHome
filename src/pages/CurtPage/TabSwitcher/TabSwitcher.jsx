@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './TabSwitcher.module.css';
 import Icons from '../../../components/Icons/Icons';
 
-export const TabSwitcher = ({ data, tabs, selectedId, setSelectedId }) => {
+export const TabSwitcher = ({ tabs, selectedId, setSelectedId }) => {
     const handleClick = (tabId) => {
         setSelectedId(tabId);
     }
@@ -36,7 +36,7 @@ export const TabSwitcher = ({ data, tabs, selectedId, setSelectedId }) => {
             <div className={styles.wrapperContent}>
                 {tabs.map(tab => (
                     selectedId === tab.id && (
-                        <tab.component key={tab.id} data={tab.data || data} />
+                        <tab.component key={tab.id} setSelectedId={setSelectedId} tabs={tabs} />
                     )
                 ))}
             </div>

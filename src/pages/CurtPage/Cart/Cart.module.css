@@ -25,6 +25,17 @@
     width: 480px;
 }
 
-.edit_btn button {
-    margin-bottom: 30px;
+.btns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+}
+
+.btns button {
+    width: 412px;
+}
+
+.btns button:first-child {
+    color: #252525;
+    background: #fff;
 }

@@ -8,40 +8,84 @@
 .heroSloganText{
 
    max-width: 552px;
-   max-height: 124px;
+   height: auto;
     color: #252525;
-font-family: "DM Mono";
-font-size: 48px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-letter-spacing: -2.88px;
-gap: 332px;
+    font-family: "DM Mono";
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -2.88px;
+    gap: 332px;
 
 }
 .heroSpanText{
     color: #FCB654;
-font-family: "DM Mono";
-font-size: 48px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-letter-spacing: -2.88px;
+    font-family: "DM Mono";
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -2.88px;
 }
 .heroParagraphText{
     max-width: 412px;
-    max-height: 108px;
+    max-height: auto;
     color: #252525;
-font-family: Poppins;
-font-size: 18px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
 .heroImage{
     margin-top: 60px;
-width: 1296px;
-height: 470px;
-flex-shrink: 0;
-border-radius: 24px;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 24px;
+    max-width: 100%;
+    overflow: hidden;
+
+}
+@media screen and (max-width: 768px) {
+    .heroTexDiv{
+        flex-direction: column;
+        background-image:linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(/public/images/hero/Hero-people.png);
+        padding: 134px 24px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 24px;
+        gap: 10px;
+    }
+    .heroSloganText{
+    font-family: DM Mono;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 47px;
+    letter-spacing: -0.06em;
+    text-align: left;
+    color: white;
+    }
+    .heroSpanText{
+    font-family: DM Mono;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 47px;
+    letter-spacing: -0.06em;
+    text-align: left;        
+    }
+    .heroParagraphText{
+        font-family: Poppins;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 27px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: white;
+
+    }
+    .heroImage{
+        display: none;
+    }
 }

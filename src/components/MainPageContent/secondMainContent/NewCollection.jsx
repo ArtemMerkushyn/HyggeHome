@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import styles from './NewCollection.module.css';
 import Icons from '../../Icons/Icons';
-import CardItem from '../../CardItem/CardItem';
 import SkeletonProductLib from '../../skeleton/SkeletonProductLib';
 import CarouselSlider from './Slider/CarouselSlider';
 import { useSearchByNameQuery } from '../../../redux/services';
+import NewCollectionItem from '../../NewCollectionItem/NewCollectionItem';
 
 export const NewCollection = ({ sliderNeeded, upperText, lowerText }) => {
   const [catalog, setCatalog] = useState([]);
@@ -65,7 +65,7 @@ export const NewCollection = ({ sliderNeeded, upperText, lowerText }) => {
               ))}
             </div>
           ) : (
-            catalog.map((item, index) => <CardItem key={index} item={item} />)
+            catalog.map((item, index) => <NewCollectionItem key={index} item={item} />)
           )}
         </ul>
 

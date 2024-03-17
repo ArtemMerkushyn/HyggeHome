@@ -22,9 +22,11 @@ export const NewCollection = ({ sliderNeeded, upperText, lowerText }) => {
     return <div>Error loading data: {error.message}</div>;
   }
 
+  const windowWidth = window.innerWidth;
+
   const widthScroll = 634;
   const widthScrollNav = catalog ? 634 / (catalog.length - 2) : 0;
-  const widthSlide = 412 + 30;
+  const widthSlide = windowWidth <= 767 ? 258+ 10 : 412 + 30;
   const listPositionEndPointNext = catalog
     ? -(widthSlide * (catalog.length - 4))
     : 0;

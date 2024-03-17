@@ -16,13 +16,11 @@ export const Main = () => {
   return (
     <div>
       <Hero />
-      <div style={{ marginTop: '120px' }}>
         <NewCollection
           sliderNeeded={true}
           upperText="New collection"
           lowerText="New Hygge goods for comfort"
         />
-      </div>
       <SpecialOffer />
     </div>
   );

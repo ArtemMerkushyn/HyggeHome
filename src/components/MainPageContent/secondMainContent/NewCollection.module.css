@@ -2,6 +2,7 @@
   position: relative;
   height: 596px;
   overflow: hidden;
+  margin-top: 120px;
 }
 
 .new_collection_text {
@@ -88,6 +89,7 @@
   .wrapper{
     height: 485px;
     padding: 0 15px;
+    margin-top: 60px;
   }
   .new_collection_text{
     font-family: DM Mono;
@@ -111,5 +113,8 @@
     top: auto;
     bottom: 0;
     right: 0;
+  }
+  .itemsList{
+    gap: 10px;
   }
 }

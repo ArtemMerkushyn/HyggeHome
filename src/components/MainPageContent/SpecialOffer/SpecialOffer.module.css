@@ -39,6 +39,7 @@
 @media screen and (max-width:767px){
     .special_offer_conatiner {
             margin: 60px 0;
+            padding: 0 15px;
         }
         .special_offer_list{
             flex-direction: column;

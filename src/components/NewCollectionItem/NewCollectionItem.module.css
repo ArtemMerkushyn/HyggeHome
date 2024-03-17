@@ -1,0 +1,149 @@
+.cardItem {
+    width: 412px;
+    height: 497px;
+    border-radius: 24px;
+    border: 1px solid #fcb654;
+    position: relative;
+    overflow: hidden;
+}
+
+.itemWrapper {
+    margin: 20px;
+}
+
+.cardImage {
+    object-fit: cover;
+    width: 372px;
+    height: 377px;
+    opacity: 1;
+    transition: opacity 1s ease, transform 1s ease;
+    cursor: pointer;
+    border-radius: 16px 16px 4px 4px;
+}
+
+.cardPicture {
+    position: absolute;
+    object-fit: cover;
+    width: 372px;
+    height: 377px;
+    top: 20px;
+    left: 20px;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: scale(1);
+}
+
+.cardPicture:hover {
+    top: 0;
+    left: 0;
+    opacity: 1;
+    width: 412px;
+    height: 497px;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.cardPicture:hover .itemWrapper {
+    display: none;
+}
+
+.titleItem {
+    color: #252525;
+    font-family: 'DM Mono';
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -1.44px;
+}
+
+.priceItem {
+    color: #252525;
+    font-family: 'DM Mono';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -1.44px;
+    opacity: 0.8;
+}
+
+.iconsWrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icons {
+    fill: none;
+    stroke: #fcb654;
+    cursor: pointer;
+}
+
+.icons:hover {
+    fill: #fcb654;
+}
+
+.favButton {
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border: none;
+}
+
+.button {
+    color: #fff;
+    font-family: 'Poppins';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: flex;
+    width: 412px;
+    padding: 10px 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 24px;
+    background: #fcb654;
+    border: none;
+    margin-top: 10px;
+}
+@media screen and (max-width:767px){
+    .cardItem{
+        width: 258px;
+        height: 330px;
+    }
+    .cardImage{
+        width: 227px;
+        height: 217px;
+    }
+    .cardPicture{
+        width: 227px;
+        height: 217px;
+    }
+    .titleItem {
+        font-family: DM Mono;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 21px;
+        letter-spacing: -0.06em;
+        text-align: left;
+
+    }
+    
+    .priceItem {
+        font-family: DM Mono;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 21px;
+        letter-spacing: -0.06em;
+        text-align: left;
+    }
+    .line{
+        overflow: hidden;
+    }
+}

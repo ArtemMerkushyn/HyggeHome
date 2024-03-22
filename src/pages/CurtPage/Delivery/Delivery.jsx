@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styles from './Delivery.module.css';
 import Button from '../../../components/UI/Button/Button';
 import { toast } from 'react-toastify';
@@ -14,17 +14,8 @@ const inputFields = [
     { label: 'Your Email*', placeholder: 'Your email', id: 'email', name: 'email' }
 ];
 
-export const Delivery = ({ tabs, setSelectedId }) => {
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        address: '',
-        city: '',
-        postalCode: '',
-        phoneNumber: '',
-        email: '',
-        optionDeliveryMethod: '5',
-    });
+export const Delivery = ({ tabs, setSelectedId, formData, setFormData }) => {
+    const [validation, setValidation] = useState(Object.fromEntries(inputFields.map(field => [field.name, true])));
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -33,6 +24,20 @@ export const Delivery = ({ tabs, setSelectedId }) => {
             filteredValue = value.replace(/\D/g, '');
         }
         setFormData(prevState => ({ ...prevState, [name]: filteredValue }));
+
+        validateField(name, filteredValue);
+    }
+
+    const validateField = (fieldName, value) => {
+        const isValid = fieldValidation(fieldName, value);
+        setValidation(prevState => ({ ...prevState, [fieldName]: isValid }));
+    }
+
+    const fieldValidation = (fieldName, value) => {
+        if (fieldName === 'phoneNumber') {
+            return /^\d{9}$/.test(value);
+        }
+        return true;
     }
 
     const handleOptionChange = (e) => {
@@ -45,23 +50,29 @@ export const Delivery = ({ tabs, setSelectedId }) => {
     }
 
     const handleNextStep = () => {
+        let isAnyFieldEmpty = false;
         for (const field of inputFields) {
             if (!formData[field.name]) {
-                toast('Please fill in all fields');
+                isAnyFieldEmpty = true;
+                setValidation(prevState => ({ ...prevState, [field.name]: false }));
+            }
+            if (!validation[field.name]) {
+                toast(`Please enter a valid ${field.label.toLowerCase()} field`);
                 return;
             }
         }
-        const phoneNumber = formData['phoneNumber'];
-        if (!/^\d{9}$/.test(phoneNumber)) {
-            toast('Please enter a valid phone number with 9 digits');
+        if (isAnyFieldEmpty) {
+            toast('Please fill in all fields');
             return;
         }
-        if (!validator.isEmail(formData.email)) { // Check if email is valid
+        if (!validator.isEmail(formData.email)) {
             toast('Please enter a valid email address');
+            setValidation(prevState => ({ ...prevState, email: false }));
             return;
         }      
         setSelectedId(tabs[2].id);
     }
+    
 
     return (
         <form onSubmit={(e) => e.preventDefault()}>
@@ -73,6 +84,10 @@ export const Delivery = ({ tabs, setSelectedId }) => {
                         placeholder={field.placeholder}
                         id={field.id}
                         name={field.name}
+                        style={{ 
+                            border: validation[field.name] === false ? '1px solid red' : '1px solid #252525',
+                            background: validation[field.name] === false ? '#f1c2c2' : '#fff'
+                        }}
                         value={formData[field.name]}
                         onChange={handleChange}
                         required 
@@ -80,6 +95,7 @@ export const Delivery = ({ tabs, setSelectedId }) => {
                         minLength={field.name === 'phoneNumber' ? 9 : undefined}
                         maxLength={field.name === 'phoneNumber' ? 9 : undefined}
                     />
+                    {!validation[field.name] && <p className={styles.error}>Please enter a valid {field.label.toLowerCase()} field</p>}
                 </div> 
             ))}
             <h3 className={styles.title}>Delivery method</h3>

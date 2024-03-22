@@ -1,17 +1,11 @@
-import { useState } from 'react';
 import Icons from '../../../components/Icons/Icons';
 import styles from './Payment.module.css';
 import Button from '../../../components/UI/Button/Button';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
-const PaymentMethod = [
-    { id: 1, method: 'Payment by card', commission: 'No commission' },
-    { id: 2, method: 'Google pay', commission: 'No commission' },
-];
-
-export const Payment = ({ tabs, setSelectedId }) => {
-    const [ paymentMethod, setPaymentMethod ] = useState(PaymentMethod[0]);
-    const [ rules, setRules ] = useState(false);
+export const Payment = ({ tabs, setSelectedId, PaymentMethod, paymentMethod, setPaymentMethod, rules, setRules}) => {
+    const navigate = useNavigate();
 
     const handleOptionChange = (e) => {
         const { value } = e.target;
@@ -26,6 +20,7 @@ export const Payment = ({ tabs, setSelectedId }) => {
         if(!rules) {
             toast('You must accept the purchase rules, User Agreements and the terms of the Privacy Policy');
         } else {
+            navigate('/')
             toast('You have successfully made your promise');
         }
     }

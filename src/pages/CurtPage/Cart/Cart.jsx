@@ -4,14 +4,19 @@ import { selectCurtProducts } from '../../../redux/selectors';
 import { CurtItem } from '../../../components/CurtItem/CurtItem';
 import Button from '../../../components/UI/Button/Button';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 export const Cart = ({ tabs, setSelectedId }) => {
   const curtItems = useSelector(selectCurtProducts);
   const [edit, setEdit] = useState(false);
 
-  const handleEditCart = () => setEdit(true);
+  const handleEditCart = () => setEdit(!edit);
 
   const handleNextStep = () => {
+    if(curtItems.length === 0) {
+      toast('your cart is empty');
+      return;
+    }
     setSelectedId(tabs[1].id);
   }
 
@@ -35,7 +40,7 @@ export const Cart = ({ tabs, setSelectedId }) => {
       <div className={styles.btns}>
         {!edit ? (
           <Button text={'Edit cart'} funcClick={handleEditCart}/>
-        ) : <div style={{height: '47px'}}></div>}
+        ) : (<Button text={'Close editing'} funcClick={handleEditCart}/>)}
         <Button text={'Next step'} funcClick={handleNextStep}/>
       </div>
     </div>

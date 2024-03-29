@@ -23,7 +23,7 @@ const LoginForm = ({ closeModal, handleRegisterClick }) => {
             console.log(values);
             closeModal()
             dispatch(setLoggedIn({userData: values, token: 'bebra'}))
-            navigate('/my-account')
+            navigate('/my-account/my-wishlist')
         }
 
         const {values, errors, touched, handleBlur, handleChange, handleSubmit} = useFormik({

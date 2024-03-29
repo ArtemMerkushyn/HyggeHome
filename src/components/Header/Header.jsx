@@ -65,7 +65,7 @@ export const Header = () => {
           {authorized
             ? (<NavLink 
             className={styles.link} 
-            to={'/my-account'} 
+            to={'/my-account/my-wishlist'} 
             style={{ borderBottom: location.pathname.startsWith('/my-account') ? '2px solid #FCB654' : '2px solid transparent'}}
             >
             <User/>

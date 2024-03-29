@@ -5,8 +5,8 @@ const initialState = {
   userData: {}
 };
 
-const savedToken = JSON.parse(localStorage.getItem('token'));
-const persistedToken = savedToken ? savedToken : initialState.token;
+const savedToken = localStorage.getItem('token');
+const persistedToken = savedToken ? JSON.parse(savedToken) : initialState.token;
 
 export const userSlice = createSlice({
   name: 'user',

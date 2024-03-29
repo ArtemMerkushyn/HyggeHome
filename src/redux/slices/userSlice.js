@@ -16,10 +16,12 @@ export const userSlice = createSlice({
       state.userData = action.payload.userData
       state.token = action.payload.token;
       localStorage.setItem('token', JSON.stringify(action.payload.token));
+      localStorage.setItem('user', JSON.stringify(action.payload.userData));
     },
     setLoggedOut: (state) => {
       state.token = null;
       localStorage.removeItem('token');
+      localStorage.removeItem('user');
     },
   }
 });

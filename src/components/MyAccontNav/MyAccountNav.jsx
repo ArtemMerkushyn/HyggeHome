@@ -7,6 +7,7 @@ import { setLoggedOut } from '../../redux/slices/userSlice';
 const MyAccountNav = () => {
     const authorized = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user'));
+    
     const location = useLocation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -15,11 +16,13 @@ const MyAccountNav = () => {
     useEffect(() => {
         if (!authorized) {
             navigate('/')
+            
         }
-    }, [authorized, navigate])
+        console.log(user)
+    }, [authorized, navigate, user])
     return (
         <aside className={css.navBar}>
-            <h2 className={css.headedText}>{user.name}</h2>
+            <h2 className={css.headedText}>{user ? user.name : "user"}</h2>
             <div className={css.linkContainer}>
             <NavLink to='/my-account/my-orders' className={css.navLink} style={{ color: location.pathname === '/my-account/my-orders' ? '#FCB654' : ''}}>
                 My orders

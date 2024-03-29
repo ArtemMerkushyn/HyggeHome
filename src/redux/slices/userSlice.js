@@ -5,8 +5,8 @@ const initialState = {
   userData: {}
 };
 
-const savedToken = JSON.parse(localStorage.getItem('token'));
-const persistedToken = savedToken ? savedToken : initialState.token;
+const savedToken = localStorage.getItem('token');
+const persistedToken = savedToken ? JSON.parse(savedToken) : initialState.token;
 
 export const userSlice = createSlice({
   name: 'user',
@@ -16,12 +16,10 @@ export const userSlice = createSlice({
       state.userData = action.payload.userData
       state.token = action.payload.token;
       localStorage.setItem('token', JSON.stringify(action.payload.token));
-      localStorage.setItem('user', JSON.stringify(action.payload.userData));
     },
     setLoggedOut: (state) => {
       state.token = null;
       localStorage.removeItem('token');
-      localStorage.removeItem('user');
     },
   }
 });

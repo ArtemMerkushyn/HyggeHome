@@ -29,7 +29,8 @@ const CustomGoogleLoginButton = ({ modalAction }) => {
         if (profile) {
             modalAction();
             toast.success(`Привіт, ${profile.name}`);
-            dispatch(setLoggedIn({userData: profile, token: 'bebra'}))
+            dispatch(setLoggedIn({ userData: profile, token: 'bebra' }))
+            localStorage.setItem('user', JSON.stringify(profile));
         }
     }, [profile, modalAction, dispatch]);
 

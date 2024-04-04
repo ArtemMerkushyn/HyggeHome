@@ -20,7 +20,9 @@ export const SpecialOffer = () => {
             document.body.style.marginRight = '';
         }
     }
-    
+    const windowWidth = window.innerWidth;
+    const picture = windowWidth <= 1157 && windowWidth >= 768 ? "images/hero/specialOffer/фотографія (1).png" : "images/hero/specialOffer/фотографія.png";
+
 
     return(
         <div className={css.special_offer_conatiner}>
@@ -34,7 +36,7 @@ export const SpecialOffer = () => {
                 </li>
                 {modal && (<Modal funcClick={toggleModal}><RegistrationForm toggleModal={toggleModal}/></Modal>)}
                 <li>
-                    <img src="images/hero/specialOffer/фотографія.png" alt="cup of coffee" className={css.special_offer_image}/>
+                    <img src={picture} alt="cup of coffee" className={css.special_offer_image}/>
                 </li>
             </ul>
          </div>

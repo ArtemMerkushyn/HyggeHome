@@ -24,9 +24,9 @@ export const NewCollection = ({ sliderNeeded, upperText, lowerText }) => {
 
   const windowWidth = window.innerWidth;
 
-  const widthScroll = 634;
-  const widthScrollNav = catalog ? 634 / (catalog.length - 2) : 0;
-  const widthSlide = windowWidth <= 767 ? 258+ 10 : 412 + 30;
+  const widthScroll = windowWidth >= 1157 ? 634 : 360;
+  const widthScrollNav = catalog ? widthScroll / (catalog.length - 2) : 0;
+  const widthSlide = windowWidth >= 1157 ? 412 + 30 : (windowWidth >= 768 ? 190 + 20 : 190 + 10);
   const listPositionEndPointNext = catalog
     ? -(widthSlide * (catalog.length - 4))
     : 0;

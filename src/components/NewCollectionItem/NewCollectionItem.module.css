@@ -5,10 +5,7 @@
     border: 1px solid #fcb654;
     position: relative;
     overflow: hidden;
-}
-
-.itemWrapper {
-    margin: 20px;
+    padding: 20px;
 }
 
 .cardImage {
@@ -48,6 +45,10 @@
 
 .cardPicture:hover .itemWrapper {
     display: none;
+}
+.infoWrapper{
+    display: flex;
+    justify-content: space-between;
 }
 
 .titleItem {
@@ -112,18 +113,32 @@
     border: none;
     margin-top: 10px;
 }
-@media screen and (max-width:767px){
+@media screen and (max-width:1157px){
     .cardItem{
-        width: 258px;
-        height: 330px;
+        width: 190px;
+        height: 232px;
+        padding: 15px;
+        overflow: hidden;
     }
     .cardImage{
-        width: 227px;
-        height: 217px;
+        width: 160px;
+        height: 119px;
+        overflow: hidden;
+    }
+    .itemWrapper .cardImage{
+        align-self: center;
+        padding: 0;
     }
     .cardPicture{
-        width: 227px;
-        height: 217px;
+        width: 190px;
+        height: 119px;
+    }
+    .cardPicture:hover{
+        width: 190px;
+        height: 232px;
+    }
+    .infoWrapper{
+        flex-direction: column;
     }
     .titleItem {
         font-family: DM Mono;
@@ -132,9 +147,16 @@
         line-height: 21px;
         letter-spacing: -0.06em;
         text-align: left;
+        width: 160px;
+        height: 40px;
 
     }
-    
+    .price_and_icons{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
     .priceItem {
         font-family: DM Mono;
         font-size: 16px;
@@ -142,6 +164,10 @@
         line-height: 21px;
         letter-spacing: -0.06em;
         text-align: left;
+        order: 1;
+    }
+    .iconsWrapper{
+        order: 2;
     }
     .line{
         overflow: hidden;

@@ -47,7 +47,33 @@
     overflow: hidden;
 
 }
-@media screen and (max-width: 768px) {
+
+@media screen and (min-width: 768px) and (max-width: 1157px){
+    .heroTexDiv{
+        margin-top: 30px;
+    }
+    .heroSloganText{
+        font-size: 32px;
+        max-width: 360px;
+    }
+    .heroSpanText{
+        font-size: 32px;
+    }
+    .heroParagraphText{
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        text-align: left;
+        max-width: 300px;
+
+    }
+    .heroImage{
+        margin-top: 30px;
+    }
+}
+
+@media screen and (max-width: 767px) {
     .heroTexDiv{
         flex-direction: column;
         background-image:linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(/public/images/hero/Hero-people.png);

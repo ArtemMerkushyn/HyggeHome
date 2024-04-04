@@ -36,6 +36,21 @@
     gap: 111px;
     list-style: none;
 }
+@media screen and (min-width: 768px) and (max-width: 1157px){
+    .special_offer_conatiner{
+        margin: 60px 0;
+    }
+    .special_offer_text_conatiner{
+        margin-bottom: 40px;
+    }
+    .special_offer_text{
+        font-size: 22px;
+    }
+    .special_offer_image{
+        width: 300px;
+        height: 200px;
+    }
+}
 @media screen and (max-width:767px){
     .special_offer_conatiner {
             margin: 60px 0;

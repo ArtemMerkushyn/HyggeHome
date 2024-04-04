@@ -77,8 +77,9 @@ export default function NewCollectionItem({ item }) {
             <path d="M1 1L373 2" stroke="#FCB654" strokeLinecap="round" />
                       </svg>
                       </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <div className={styles.infoWrapper}>
             <p className={styles.titleItem}>{item.name}</p>
+            <div className={styles.price_and_icons}>
             <div className={styles.iconsWrapper}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -115,8 +116,10 @@ export default function NewCollectionItem({ item }) {
                 </svg>
               </button>
             </div>
+          
+              <p className={styles.priceItem}>${item.price}</p>
+              </div>
           </div>
-          <p className={styles.priceItem}>${item.price}</p>
         </div>
 
         <img

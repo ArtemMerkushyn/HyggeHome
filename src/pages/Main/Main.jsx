@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-
+import css from './Main.module.css'
 import { Hero } from '../../components/MainPageContent/Hero/Hero';
 import { SpecialOffer } from '../../components/MainPageContent/SpecialOffer/SpecialOffer';
 import { NewCollection } from '../../components/MainPageContent/secondMainContent/NewCollection';
@@ -14,7 +14,7 @@ export const Main = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={css.container}>
       <Hero />
         <NewCollection
           sliderNeeded={true}

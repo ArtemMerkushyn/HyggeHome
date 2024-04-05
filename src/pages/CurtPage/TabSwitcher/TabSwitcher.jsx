@@ -32,13 +32,18 @@ export const TabSwitcher = ({ tabs, selectedId, setSelectedId }) => {
             toast('your cart is empty');
             return;
         }
-
-        if (selectedId === tabs[0].id) {
+    
+        if (tabId === tabs[0].id) {
+            setSelectedId(tabId);
+            return;
+        }
+    
+        if (selectedId === tabs[0].id) { 
             setSelectedId(tabs[1].id);
             return;
         }
-
-        if (selectedId === tabs[1].id) {   
+    
+        if (selectedId === tabs[1].id) {
             if (
                 formData.firstName === '' ||
                 formData.lastName === '' ||
@@ -50,27 +55,28 @@ export const TabSwitcher = ({ tabs, selectedId, setSelectedId }) => {
                 toast('Please fill in all fields');
                 return;
             }
-
-            if( formData.phoneNumber === '') {
+    
+            if (formData.phoneNumber === '') {
                 if (!/^\d{9}$/.test(formData['phoneNumber'])) {
                     toast('Please enter a valid phone number with 9 digits');
                     return;
                 }
             }
-
-            if(formData.email === '') {
+    
+            if (formData.email === '') {
                 toast('Please fill in email field');
                 return;
             }
-
-            if(!validator.isEmail(formData.email)) {
+    
+            if (!validator.isEmail(formData.email)) {
                 toast('Please enter a valid email address');
                 return;
             }
-        } 
+        }
         setSelectedId(tabId);
     }
-
+    
+    
     const lineWidth = (tabs.findIndex(t => t.id === selectedId) + 1) * (100 / tabs.length);
 
     return (

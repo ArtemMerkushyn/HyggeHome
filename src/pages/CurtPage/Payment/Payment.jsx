@@ -53,7 +53,7 @@ export const Payment = ({ tabs, setSelectedId, PaymentMethod, paymentMethod, set
             <div className={styles.rules__wrapper}>
                 <div className={styles.rules} style={{background: rules ? '#FCB654' : null }}>
                     <div 
-                        onClick={() => setRules(true)}
+                        onClick={() => setRules(!rules)}
                         style={{
                             opacity: rules ? 1 : 0,
                             transition: 'all .1s linear'

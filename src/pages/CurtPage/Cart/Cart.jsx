@@ -38,10 +38,18 @@ export const Cart = ({ tabs, setSelectedId }) => {
         )}
       </div>
       <div className={styles.btns}>
-        {!edit ? (
-          <Button text={'Edit cart'} funcClick={handleEditCart}/>
-        ) : (<Button text={'Close editing'} funcClick={handleEditCart}/>)}
-        <Button text={'Next step'} funcClick={handleNextStep}/>
+        {curtItems.length !== 0 ? (
+          !edit ? (
+            <Button text={'Edit cart'} funcClick={handleEditCart} />
+          ) : (
+            <Button text={'Close editing'} funcClick={handleEditCart} />
+          )
+        ) : (
+          <></>
+        )}
+        {curtItems.length !== 0 && (
+          <Button text={'Next step'} funcClick={handleNextStep} />
+        )}
       </div>
     </div>
   );

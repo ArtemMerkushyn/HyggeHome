@@ -1,6 +1,8 @@
 .user_icon_button{
     border: none;
     background: transparent;
+    display: flex;
+    align-items: center;
 }
 .container {
     position: relative;
@@ -14,4 +16,10 @@
 
 .container svg:not(:first-child):hover {
     border-bottom: none;
+}
+
+@media(max-width: 425px) {
+    .container {
+        display: none;
+    }
 }

@@ -101,3 +101,9 @@
 .searchBtn:hover svg {
   fill: #fcb654;
 }
+
+@media(max-width: 425px) {
+  .wrapper {
+    display: none;
+  }
+}

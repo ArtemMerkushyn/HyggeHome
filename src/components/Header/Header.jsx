@@ -12,7 +12,16 @@ import LoginForm from '../LoginForm/LoginForm.jsx';
 export const Header = () => {
   const logoStyles = {
     fontFamily: 'DM Mono',
-  };
+  }
+
+  const active = ({ isActive }) => {
+    return {
+        borderBottom: isActive ? '2px solid #FCB654' : ''
+    }
+  }
+
+  const[ burgerMenu, SetBurgerMenu ] = useState(false);
+
   const [modal, setModal] = useState(false)
   const [register, setRegister] = useState(false)
   const location = useLocation();
@@ -73,7 +82,11 @@ export const Header = () => {
             :
             <User toggleModal={toggleModal} />
           }
-
+          <button className={styles.burger__btn} onClick={() => SetBurgerMenu(true)}>
+            <span className={styles.burger__line}></span>
+            <span className={styles.burger__line}></span>
+            <span className={styles.burger__line}></span>
+          </button>
         </div>
       </div>
        {modal && (<Modal funcClick={toggleModal}>
@@ -82,6 +95,72 @@ export const Header = () => {
                     <RegistrationForm toggleModal={toggleModal}/>
                     :
                     <LoginForm closeModal={toggleModal} handleRegisterClick={handleRegisterClick} />}</Modal>)}
+      <div 
+        className={styles.burger__menu}
+        style={{top: burgerMenu ? 0 : '-100vh'}}
+      >
+        <div className={styles.burger__wrapper}>
+          <button className={styles.close} onClick={() => SetBurgerMenu(false)}></button>
+          <nav>
+            <NavLink 
+                className={styles.nav__item}
+                to="/" 
+                style={active}
+                onClick={() => SetBurgerMenu(false)}
+                >
+                Home
+            </NavLink>
+            <NavLink
+                className={styles.nav__item}
+                to="/candles" 
+                style={active}
+                onClick={() => SetBurgerMenu(false)}
+                >
+                Candles
+            </NavLink>
+            <NavLink 
+                className={styles.nav__item}
+                to="/lighting-decor" 
+                style={active}
+                onClick={() => SetBurgerMenu(false)}
+                >
+                Lighting Decor
+            </NavLink>
+            <NavLink
+                className={styles.nav__item}
+                to="/gift-sets" 
+                style={active}
+                onClick={() => SetBurgerMenu(false)}
+                >
+                Gift Sets
+            </NavLink>
+            <NavLink 
+                className={styles.nav__item}
+                to="/get-warm"
+                style={active}
+                onClick={() => SetBurgerMenu(false)}
+                >
+                Get Warm
+            </NavLink>
+            <NavLink
+                className={styles.nav__item}
+                to="/table-games" 
+                style={active}
+                onClick={() => SetBurgerMenu(false)}
+                >
+                Table Games
+            </NavLink>
+            <NavLink
+                className={styles.nav__item} 
+                to="/books-&-journals" 
+                style={active}
+                onClick={() => SetBurgerMenu(false)}
+                >
+                Books & Journals
+            </NavLink>
+          </nav>
+        </div>
+      </div>
     </header>
   );
 };

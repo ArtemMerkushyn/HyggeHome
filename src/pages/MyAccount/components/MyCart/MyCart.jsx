@@ -5,17 +5,6 @@ const MyCart = () => {
     return (
         <div>
             <MyAccountNav />
-            <h1>ncdsalkjlkasklmcsdmkcscsa</h1>
-            <h1>ncdsalkjlkasklmcsdmkcscsa</h1>
-            <h1>ncdsalkjlkasklmcsdmkcscsa</h1>
-            <h1>ncdsalkjlkasklmcsdmkcscsa</h1>
-            <h1>ncdsalkjlkasklmcsdmkcscsa</h1>
-            <h1>ncdsalkjlkasklmcsdmkcscsa</h1>
-            <h1>ncdsalkjlkasklmcsdmkcscsa</h1>
-            <h1>ncdsalkjlkasklmcsdmkcscsa</h1>
-            <h1>ncdsalkjlkasklmcsdmkcscsa</h1>
-            <h1>ncdsalkjlkasklmcsdmkcscsa</h1>
-            <h1>ncdsalkjlkasklmcsdmkcscsa</h1>
             
         </div>
     );

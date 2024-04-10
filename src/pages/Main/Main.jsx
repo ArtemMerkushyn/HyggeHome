@@ -8,6 +8,7 @@ import { setIsActive } from '../../redux/slices/searchSlice';
 
 export const Main = () => {
   const dispatch = useDispatch();
+  const authorized = localStorage.getItem('token');
 
   useEffect(() => {
     dispatch(setIsActive(false));
@@ -20,8 +21,9 @@ export const Main = () => {
           sliderNeeded={true}
           upperText="New collection"
           lowerText="New Hygge goods for comfort"
-        />
-      <SpecialOffer />
+      />
+      
+      {!authorized && <SpecialOffer />}
     </div>
   );
 };

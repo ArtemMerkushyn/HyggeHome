@@ -8,18 +8,18 @@ export const InputRange = ({ price, applyFilterPrice }) => {
   const [max, setMax] = useState(100);
   const step = Math.round(max / min);
   const minDistance = (max - min) * 0.08;
-  const [value, setValue] = useState([min, max]);
+  const [value, setValue] = useState([0, 0]);
   const [inputLeft, setInputLeft] = useState(min.toString());
   const [inputRight, setInputRight] = useState(max.toString());
 
-  useEffect(() => {
-    if (price.length > 0) {
-      setMin(price[0]);
-      setMax(price[1]);
-      setInputLeft(price[0]);
-      setInputRight(price[1]);
-    }
-  }, [price]);
+  // useEffect(() => {
+  //   if (price.length > 0) {
+  //     setMin(price[0]);
+  //     setMax(price[1]);
+  //     setInputLeft(price[0]);
+  //     setInputRight(price[1]);
+  //   }
+  // }, [price]);
 
   const handleChange = (_event, newValue, activeThumb) => {
     if (!Array.isArray(newValue)) {
@@ -47,12 +47,16 @@ export const InputRange = ({ price, applyFilterPrice }) => {
 
     if (index === 0) {
       if (parsedValue > max) return;
-      setInputLeft(parsedValue.toString());
+      setInputLeft([parsedValue.toString()]);
     } else {
       if (parsedValue > max) return;
       setInputRight(parsedValue.toString());
     }
   };
+
+  // useEffect(() => {
+  //   setValue([inputLeft, inputRight]);
+  // }, [inputLeft, inputRight, value]);
 
   return (
     <>
@@ -71,13 +75,13 @@ export const InputRange = ({ price, applyFilterPrice }) => {
         <input
           className={styles.priceInput}
           type="text"
-          value={inputLeft}
+          value={value[0]}
           onChange={e => handleChangeInput(0, e.target.value)}
         />
         <input
           className={styles.priceInput}
           type="text"
-          value={inputRight}
+          value={value[1]}
           onChange={e => handleChangeInput(1, e.target.value)}
         />
       </div>

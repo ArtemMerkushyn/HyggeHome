@@ -73,9 +73,19 @@
   margin-top: 30px;
   display: flex;
   gap: 30px;
-  transition: all 0.3s linear;
-  width: max-content;
+  transition: all 0.2s linear;
+  width: 100%;
   position: relative;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.itemsList::-webkit-scrollbar {
+  display: none;
+}
+.itemsList li {
+  scroll-snap-align: start;
 }
 
 .skeleton {

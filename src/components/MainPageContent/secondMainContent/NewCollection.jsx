@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './NewCollection.module.css';
 import Icons from '../../Icons/Icons';
 import SkeletonProductLib from '../../skeleton/SkeletonProductLib';
@@ -9,8 +9,13 @@ import NewCollectionItem from '../../NewCollectionItem/NewCollectionItem';
 export const NewCollection = ({ sliderNeeded, upperText, lowerText }) => {
   const [catalog, setCatalog] = useState([]);
   const { data, error, isLoading } = useSearchByNameQuery('');
-  const [listPosition, setListPosition] = useState(0);
   const [scrollBarPosition, setScrollBarPosition] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  const windowWidth = window.innerWidth;
+  const widthScroll = windowWidth >= 1157 ? 634 : 360;
+  const widthScrollNav = catalog ? widthScroll / (catalog.length - 2) : 0;
+  const widthSlide = windowWidth >= 1157 ? 412 + 30 : (windowWidth >= 768 ? 190 + 20 : 190 + 10);
 
   useEffect(() => {
     if (data) {
@@ -18,38 +23,51 @@ export const NewCollection = ({ sliderNeeded, upperText, lowerText }) => {
     }
   }, [data]);
 
-  if (error) {
-    return <div>Error loading data: {error.message}</div>;
-  }
-
-  const windowWidth = window.innerWidth;
-
-  const widthScroll = windowWidth >= 1157 ? 634 : 360;
-  const widthScrollNav = catalog ? widthScroll / (catalog.length - 2) : 0;
-  const widthSlide = windowWidth >= 1157 ? 412 + 30 : (windowWidth >= 768 ? 190 + 20 : 190 + 10);
-  const listPositionEndPointNext = catalog
-    ? -(widthSlide * (catalog.length - 4))
-    : 0;
-  const listPositionEndPointPrev = catalog
-    ? -(widthSlide * (catalog.length - 2))
-    : 0;
-
   const handleNext = () => {
-    if (listPosition < listPositionEndPointNext) {
-      setListPosition(widthSlide);
-      setScrollBarPosition(-widthScrollNav);
+    if (!isScrolling) {
+      const itemsList = document.querySelector(`.${styles.itemsList}`);
+      if (itemsList) {
+        setIsScrolling(true);
+        const { scrollLeft, scrollWidth, clientWidth } = itemsList;
+        const widthSlide = window.innerWidth >= 1157 ? 412 + 30 : (window.innerWidth >= 768 ? 190 + 20 : 190 + 10);
+        itemsList.scrollLeft += widthSlide;
+        setScrollBarPosition(prevPosition => prevPosition + widthScrollNav);
+        if (scrollLeft + clientWidth >= scrollWidth) {
+          setTimeout(() => {
+            setIsScrolling(false);
+            itemsList.scrollTo({ left: 0, behavior: 'smooth' });
+            setScrollBarPosition(0);
+          }, 500);
+        }
+
+        setTimeout(() => {
+          setIsScrolling(false);
+        }, 450);
+      }
     }
-    setListPosition(prevPosition => prevPosition - widthSlide);
-    setScrollBarPosition(prevPosition => prevPosition + widthScrollNav);
   };
 
   const handlePrev = () => {
-    if (listPosition > -widthSlide) {
-      setListPosition(listPositionEndPointPrev);
-      setScrollBarPosition(widthScroll);
+    if (!isScrolling) {
+      const itemsList = document.querySelector(`.${styles.itemsList}`);
+      if (itemsList) {
+        setIsScrolling(true);
+        const { scrollLeft } = itemsList;
+        const widthSlide = window.innerWidth >= 1157 ? 412 + 30 : (window.innerWidth >= 768 ? 190 + 20 : 190 + 10);
+        itemsList.scrollLeft -= widthSlide;
+        setScrollBarPosition(prevPosition => prevPosition - widthScrollNav);
+        if (scrollLeft === 0) {
+          
+            itemsList.scrollTo({ left: itemsList.scrollWidth, behavior: 'smooth' });
+            setScrollBarPosition(widthScroll - widthScrollNav);
+          
+        }
+
+        setTimeout(() => {
+          setIsScrolling(false);
+        }, 500);
+      }
     }
-    setListPosition(prevPosition => prevPosition + widthSlide);
-    setScrollBarPosition(prevPosition => prevPosition - widthScrollNav);
   };
 
   return (
@@ -57,7 +75,7 @@ export const NewCollection = ({ sliderNeeded, upperText, lowerText }) => {
       <div className={styles.wrapper}>
         <h5 className={styles.new_collection_text}>{upperText}</h5>
         <h3 className={styles.new_collection_goods_text}>{lowerText}</h3>
-        <ul className={styles.itemsList} style={{ left: `${listPosition}px` }}>
+        <ul className={styles.itemsList}>
           {isLoading ? (
             <div className={styles.skeleton}>
               {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(loading => (
@@ -72,12 +90,12 @@ export const NewCollection = ({ sliderNeeded, upperText, lowerText }) => {
         </ul>
 
         <div className={styles.arrows}>
-          <button className={styles.prev} onClick={handlePrev}>
+          <button className={styles.prev} onClick={handlePrev} disabled={isScrolling}>
             <div className={styles.left_arrow}>
               <Icons icon={'right_arrow'} />
             </div>
           </button>
-          <button className={styles.next} onClick={handleNext}>
+          <button className={styles.next} onClick={handleNext} disabled={isScrolling}>
             <div className={styles.right_arrow}>
               <Icons icon={'right_arrow'} />
             </div>

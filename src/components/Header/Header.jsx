@@ -102,65 +102,28 @@ export const Header = () => {
         <div className={styles.burger__wrapper}>
           <button className={styles.close} onClick={() => SetBurgerMenu(false)}></button>
           <nav>
-            <NavLink 
+            {[
+              { to: '/', text: 'Home' },
+              { to: '/candles', text: 'Candles' },
+              { to: '/lighting-decor', text: 'Lighting Decor' },
+              { to: '/gift-sets', text: 'Gift Sets' },
+              { to: '/get-warm', text: 'Get Warm' },
+              { to: '/table-games', text: 'Table Games' },
+              { to: '/books-&-journals', text: 'Books & Journals' },
+            ].map((item) => (
+              <NavLink
+                key={item.to}
                 className={styles.nav__item}
-                to="/" 
+                to={item.to}
                 style={active}
                 onClick={() => SetBurgerMenu(false)}
-                >
-                Home
-            </NavLink>
-            <NavLink
-                className={styles.nav__item}
-                to="/candles" 
-                style={active}
-                onClick={() => SetBurgerMenu(false)}
-                >
-                Candles
-            </NavLink>
-            <NavLink 
-                className={styles.nav__item}
-                to="/lighting-decor" 
-                style={active}
-                onClick={() => SetBurgerMenu(false)}
-                >
-                Lighting Decor
-            </NavLink>
-            <NavLink
-                className={styles.nav__item}
-                to="/gift-sets" 
-                style={active}
-                onClick={() => SetBurgerMenu(false)}
-                >
-                Gift Sets
-            </NavLink>
-            <NavLink 
-                className={styles.nav__item}
-                to="/get-warm"
-                style={active}
-                onClick={() => SetBurgerMenu(false)}
-                >
-                Get Warm
-            </NavLink>
-            <NavLink
-                className={styles.nav__item}
-                to="/table-games" 
-                style={active}
-                onClick={() => SetBurgerMenu(false)}
-                >
-                Table Games
-            </NavLink>
-            <NavLink
-                className={styles.nav__item} 
-                to="/books-&-journals" 
-                style={active}
-                onClick={() => SetBurgerMenu(false)}
-                >
-                Books & Journals
-            </NavLink>
+              >
+                {item.text}
+              </NavLink>
+            ))}
           </nav>
         </div>
       </div>
     </header>
   );
-};
+}

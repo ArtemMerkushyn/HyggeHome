@@ -17,7 +17,7 @@ export const CurtItem = ({ productData, edit }) => {
 
     const handleRemoveProduct = () => {
         dispatch(removeFromCart(dataProduct));
-        toast('You have removed an item from your cart');
+        toast(`${dataProduct.name} has been removed from the cart`);
     }
 
     return (

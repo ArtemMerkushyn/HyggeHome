@@ -95,6 +95,11 @@
     border: none;
 }
 
+.cartButtom {
+   background: #fff; 
+   border: none;
+}
+
 .button {
     color: #fff;
     font-family: 'Poppins';

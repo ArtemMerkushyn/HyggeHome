@@ -23,12 +23,12 @@ export default function NewCollectionItem({ item }) {
   const handleToggleFavorite = () => {
     if (isChecked) {
       dispatch(removeFavorite(item));
-      toast.info(`${item.name} remove from favorite`, {
+      toast.info(`${item.name} has been removed from the wishlist`, {
         theme: 'colored',
       });
     } else {
       dispatch(addFavorite(item));
-      toast.success(`${item.name} add to favorite`, {
+      toast.success(`${item.name} has been added to the wishlist`, {
         theme: 'colored',
       });
     }
@@ -44,7 +44,7 @@ export default function NewCollectionItem({ item }) {
       dataProduct: item,
     };
     dispatch(addToCurt(productToCart));
-    toast.success(`You have added product to the cart`);
+    toast.success(`${item.name} has been added to the cart`);
   };
 
   const handleToProductPage = item => {
@@ -81,21 +81,26 @@ export default function NewCollectionItem({ item }) {
             <p className={styles.titleItem}>{item.name}</p>
             <div className={styles.price_and_icons}>
             <div className={styles.iconsWrapper}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="30"
-                height="30"
-                viewBox="0 0 24 24"
-                className={styles.icons}
-                style={{ fill: isInCurt ? '#fcb654' : '' }}
-              >
-                <path
-                  d="M5 4H6.5L9 16M9 16H17M9 16C7.89543 16 7 16.8954 7 18C7 19.1046 7.89543 20 9 20C10.1046 20 11 19.1046 11 18C11 16.8954 10.1046 16 9 16ZM17 16C15.8954 16 15 16.8954 15 18C15 19.1046 15.8954 20 17 20C18.1046 20 19 19.1046 19 18C19 16.8954 18.1046 16 17 16ZM8.5 13H17.75L19 7H7.3125"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <button
+                className={styles.cartButtom}
+                onClick={handleAddToCart}
+                >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  viewBox="0 0 24 24"
+                  className={styles.icons}
+                  style={{ fill: isInCurt ? '#fcb654' : '' }}
+                >
+                  <path
+                    d="M5 4H6.5L9 16M9 16H17M9 16C7.89543 16 7 16.8954 7 18C7 19.1046 7.89543 20 9 20C10.1046 20 11 19.1046 11 18C11 16.8954 10.1046 16 9 16ZM17 16C15.8954 16 15 16.8954 15 18C15 19.1046 15.8954 20 17 20C18.1046 20 19 19.1046 19 18C19 16.8954 18.1046 16 17 16ZM8.5 13H17.75L19 7H7.3125"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
               <button
                 className={styles.favButton}
                 type="button"

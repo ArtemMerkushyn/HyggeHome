@@ -23,12 +23,12 @@ export default function CardItem({ item }) {
   const handleToggleFavorite = () => {
     if (isChecked) {
       dispatch(removeFavorite(item));
-      toast.info(`${item.name} remove from favorite`, {
+      toast.info(`${item.name} has been removed from the wishlist`, {
         theme: 'colored',
       });
     } else {
       dispatch(addFavorite(item));
-      toast.success(`${item.name} add to favorite`, {
+      toast.success(`${item.name} has been added to the wishlist`, {
         theme: 'colored',
       });
     }
@@ -44,7 +44,7 @@ export default function CardItem({ item }) {
       dataProduct: item,
     };
     dispatch(addToCurt(productToCart));
-    toast.success(`You have added product to the cart`);
+    toast.success(`${item.name} has been added to the cart`);
   };
 
   const handleToProductPage = item => {
@@ -83,6 +83,7 @@ export default function CardItem({ item }) {
                 height="30"
                 viewBox="0 0 24 24"
                 className={styles.icons}
+                onClick={handleAddToCart}
                 style={{ fill: isInCurt ? '#fcb654' : '' }}
               >
                 <path

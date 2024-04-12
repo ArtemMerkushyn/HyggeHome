@@ -148,6 +148,10 @@
     margin-bottom: 0;
 }
 
+.nav__item:hover {
+    border-bottom: 2px solid #FCB654;
+}
+
 @media(max-width: 1250px) {
     .burger__btn {
         display: block;

@@ -50,9 +50,16 @@ export const servicesApi = createApi({
     }),
     registerUser: builder.mutation({
       query: newUser => ({
-        url: 'user',
+        url: '/register',
         method: 'POST',
         body: newUser,
+      }),
+    }),
+    loginUser: builder.mutation({
+      query: user => ({
+        url: '/login',
+        method: 'POST',
+        body: user,
       }),
     }),
   }),
@@ -68,4 +75,5 @@ export const {
   useSearchByNameQuery,
   useGetFilterPriceQuery,
   useRegisterUserMutation,
+  useLoginUserMutation,
 } = servicesApi;

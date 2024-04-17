@@ -2,7 +2,7 @@
   position: relative;
   height: 596px;
   overflow: hidden;
-  margin: 120px 0;
+  margin-top: 120px ;
 }
 
 .new_collection_text {
@@ -98,7 +98,7 @@
 @media screen and (min-width: 768px) and (max-width: 1157px){
   .wrapper{
     height: 339px;
-    margin: 60px 0;
+    margin-top: 60px;
   }
   .new_collection_text{
     font-family: DM Mono;
@@ -120,6 +120,9 @@
   }
   .itemsList{
     gap: 20px;
+  }
+  .arrows{
+    top: 0;
   }
 }
 @media screen and (max-width:767px){

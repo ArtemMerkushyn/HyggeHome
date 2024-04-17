@@ -7,12 +7,12 @@ import { useRegisterUserMutation } from '../../../redux/services';
 import { toast } from 'react-toastify';
 import css from './RegistrationForm.module.css'
 import Icons from '../../Icons/Icons';
+import GoogleRegister from '../../GoogleRegister/GoogleRegister';
 
 
 export const RegistrationForm = ({ toggleModal }) => {
 
   const [registerUser] = useRegisterUserMutation()
-
   const [firstCheckbox, setFirstCheckbox] = useState(false);
   const [secondCheckbox, setSecondCheckbox] = useState(false);
   const [passwordVisability, setPasswordVisability] = useState(false)
@@ -28,6 +28,7 @@ export const RegistrationForm = ({ toggleModal }) => {
           password: values.password,
           fullName: values.fullName,
           promo: secondCheckbox,
+          regType: 'email',
       });
 
     } catch (error) {
@@ -187,7 +188,10 @@ export const RegistrationForm = ({ toggleModal }) => {
         disabled={!firstCheckbox}
         text="Create account"
         style={{ width: '250px' }}
-        type="submit" />
+          type="submit" />
+        
+        {/* will be deleted soon */}
+        <GoogleRegister/>
       </form>
       </>
   );

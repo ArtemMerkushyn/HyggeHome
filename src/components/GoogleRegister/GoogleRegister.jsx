@@ -15,12 +15,12 @@ const GoogleRegister = () => {
     const dispatch = useDispatch();
 
     const handleUserRegistration = async (profile) => {
-        const { id, email, verified_email, name } = profile;
+        const { email, verified_email, name, id } = profile;
         const userData = {
-            id: id,
             email: email,
             verified_email: verified_email,
             name: name,
+            id: id,
             regType: "google",
         };
 

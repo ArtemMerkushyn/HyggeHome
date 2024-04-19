@@ -13,12 +13,16 @@ const MyAccountNav = () => {
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
 
+    const storeUser = (userData) => {
+        setUser(userData)
+    }
+
     useEffect(() => {
         if (!authorized) {
             navigate('/');
         }
-        setUser(storedUser);
-    }, [authorized, navigate, storedUser]);
+        storeUser(storedUser)
+    }, [authorized, navigate]);
 
     return (
         <aside className={css.navBar}>

@@ -54,3 +54,18 @@
     transform: translate(-50%, -50%);
     transition: opacity .5s linear;
 }
+
+@media screen and (min-width: 768px) and (max-width: 1157px) {
+    .dots {
+       gap: 21px; 
+    }
+    .dot {
+    width: 50px;
+    height: 54px;
+    border-radius: 12px;
+    }
+    .img{
+     width: 370px;   
+     height: 353px;
+    }
+}

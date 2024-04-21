@@ -51,8 +51,10 @@ export const ProductTop = ({ data }) => {
           <p className={styles.text}>{data.description}</p>
         </div>
         <div className={styles.info__item}>
-          <div className={styles.price}>${data.price}</div>
-          <Amount onAmountChange={handleAmountChange} />
+          <div className={styles.price_and_amount}>
+            <p className={styles.price}>${data.price}</p>
+            <Amount onAmountChange={handleAmountChange} />
+            </div>
           <button className={styles.btn} disabled={isInCurt} onClick={handleAddToCart}>{isInCurt ? 'Added to cart' : 'Add to cart'}</button>
         </div>
       </div>

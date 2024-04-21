@@ -34,3 +34,19 @@
     justify-content: center;
     align-items: center;
 }
+
+@media screen and (min-width: 768px) and (max-width: 1157px) {
+    .wrapper {
+        width: 88px;
+        height: 29px;
+    }
+    .btn {
+        width: 29px;
+    }
+    .amountText{
+        font-size: 14px;
+    }
+    .wrapper .amountText{
+        align-self: center;
+    }
+}

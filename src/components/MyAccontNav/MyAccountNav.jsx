@@ -11,22 +11,17 @@ const MyAccountNav = () => {
     const location = useLocation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [user, setUser] = useState(null);
 
-    const storeUser = (userData) => {
-        setUser(userData)
-    }
 
     useEffect(() => {
         if (!authorized) {
             navigate('/');
         }
-        storeUser(storedUser)
-    }, [authorized, navigate]);
+    }, [authorized, navigate, ]);
 
     return (
         <aside className={css.navBar}>
-            {user ? <h2 className={css.headedText}>{user.name}</h2> : <h2 className={css.headedText}>User</h2>}
+            {storedUser ? <h2 className={css.headedText}>{storedUser.name}</h2> : <h2 className={css.headedText}>User</h2>}
             <div className={css.linkContainer}>
                 <NavLink to='/my-account/my-orders' className={css.navLink} style={{ color: location.pathname === '/my-account/my-orders' ? '#FCB654' : ''}}>
                     My orders

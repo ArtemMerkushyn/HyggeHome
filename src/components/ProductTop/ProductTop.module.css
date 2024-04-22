@@ -2,7 +2,7 @@
     max-width: 1075px;
     width: 100%;
     display: flex;
-    gap: 27px;
+    gap: 30px;
 }
 
 .info {
@@ -88,4 +88,83 @@
     color: #fff;
     text-align: center;
     padding: 10px 0;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1157px) {
+    .product{
+        width: 100%;
+    }
+    .info__item h3{
+        font-family: DM Mono;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 28.64px;
+        letter-spacing: -0.06em;
+        text-align: left;
+    }
+    .rating{
+        font-family: DM Mono;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18.23px;
+        letter-spacing: 0.06em;
+        text-align: left;
+
+    }
+    .text {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21px;
+        text-align: left;
+
+    }
+    .price_and_amount{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+    .price{
+        font-family: DM Mono;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 28.64px;
+        letter-spacing: -0.06em;
+        text-align: left;
+
+    }
+    .btn{
+        max-width: 180px;
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .product {
+        flex-direction: column;
+        padding: 0 15px;
+    }
+    .info__item h3 {
+        font-family: DM Mono;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 31.25px;
+        letter-spacing: -0.06em;
+        text-align: left;
+
+    }
+    .text {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21px;
+        text-align: left;
+
+    }
+    .price_and_amount {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        margin-top: 10px;
+    }
 }

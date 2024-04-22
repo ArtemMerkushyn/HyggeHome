@@ -69,3 +69,22 @@
      height: 353px;
     }
 }
+
+@media screen and (max-width: 767px) {
+    .slider {
+        flex-direction: column-reverse;
+    }
+    .dots {
+        flex-direction: row;
+        gap: 15px;
+    }
+    .dot {
+        width: 71px;
+        height: 67px;
+        border-radius: 24px;
+    }
+    .img {
+        width: 330px;
+        height: 319px;
+    }
+}

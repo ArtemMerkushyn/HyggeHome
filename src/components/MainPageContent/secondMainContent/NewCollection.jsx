@@ -9,7 +9,7 @@ import NewCollectionItem from '../../NewCollectionItem/NewCollectionItem';
 export const NewCollection = ({ sliderNeeded, upperText, lowerText }) => {
   const [catalog, setCatalog] = useState([]);
   const [carousel, setCarousel] = useState(catalog)
-  const { data, error, isLoading } = useSearchByNameQuery('');
+  const { data, isLoading } = useSearchByNameQuery('');
   const [scrollBarPosition, setScrollBarPosition] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
 

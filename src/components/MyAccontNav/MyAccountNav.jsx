@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import css from './MyAccontNav.module.css';
 import { useDispatch } from 'react-redux';

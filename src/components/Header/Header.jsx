@@ -8,16 +8,11 @@ import { useState } from 'react';
 import { Modal } from '../MainPageContent/ModalWindow/Modal.jsx';
 import { RegistrationForm } from '../MainPageContent/RegistrationForm/RegistrationForm.jsx';
 import LoginForm from '../LoginForm/LoginForm.jsx';
+import BurgerMenu from './BurgerMenu/BurgerMenu.jsx';
 
 export const Header = () => {
   const logoStyles = {
     fontFamily: 'DM Mono',
-  }
-
-  const active = ({ isActive }) => {
-    return {
-        borderBottom: isActive ? '2px solid #FCB654' : ''
-    }
   }
 
   const[ burgerMenu, SetBurgerMenu ] = useState(false);
@@ -89,41 +84,15 @@ export const Header = () => {
           </button>
         </div>
       </div>
-       {modal && (<Modal funcClick={toggleModal}>
-                {register
-                    ?
-                    <RegistrationForm toggleModal={toggleModal}/>
-                    :
-                    <LoginForm closeModal={toggleModal} handleRegisterClick={handleRegisterClick} />}</Modal>)}
-      <div 
-        className={styles.burger__menu}
-        style={{top: burgerMenu ? 0 : '-100vh'}}
-      >
-        <div className={styles.burger__wrapper}>
-          <button className={styles.close} onClick={() => SetBurgerMenu(false)}></button>
-          <nav>
-            {[
-              { to: '/', text: 'Home' },
-              { to: '/candles', text: 'Candles' },
-              { to: '/lighting-decor', text: 'Lighting Decor' },
-              { to: '/gift-sets', text: 'Gift Sets' },
-              { to: '/get-warm', text: 'Get Warm' },
-              { to: '/table-games', text: 'Table Games' },
-              { to: '/books-&-journals', text: 'Books & Journals' },
-            ].map((item) => (
-              <NavLink
-                key={item.to}
-                className={styles.nav__item}
-                to={item.to}
-                style={active}
-                onClick={() => SetBurgerMenu(false)}
-              >
-                {item.text}
-              </NavLink>
-            ))}
-          </nav>
-        </div>
-      </div>
+      {modal && (
+        <Modal funcClick={toggleModal}>
+            {register ? 
+              <RegistrationForm toggleModal={toggleModal}/> 
+                : <LoginForm closeModal={toggleModal} handleRegisterClick={handleRegisterClick} />
+            }
+        </Modal>)
+      }
+      <BurgerMenu burgerMenu={burgerMenu} SetBurgerMenu={SetBurgerMenu}/>
     </header>
   );
 }

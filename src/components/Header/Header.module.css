@@ -84,7 +84,7 @@
     bottom: 0;
 }
 
-@media(max-width: 1250px) {
+@media(max-width: 1270px) {
     .burger__btn {
         display: block;
     }

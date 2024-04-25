@@ -16,7 +16,7 @@
     border-bottom: 2px solid #FCB654;
 }
 
-@media(max-width: 1250px) {
+@media(max-width: 1270px) {
     .wrapper {
         display: none;
     }

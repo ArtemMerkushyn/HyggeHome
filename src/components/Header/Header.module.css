@@ -83,6 +83,12 @@
 .burger__line:nth-child(3) {
     bottom: 0;
 }
+.wishListContainer{
+    position: absolute;
+    right: 10%;
+    top: 100px;
+    z-index: 9999;
+}
 
 @media(max-width: 1270px) {
     .burger__btn {
@@ -91,6 +97,9 @@
 
     .burger__menu {
         display: block;
+    }
+    .heartwrapper{
+        display: none;
     }
 }
 

@@ -9,6 +9,7 @@ import { Modal } from '../MainPageContent/ModalWindow/Modal.jsx';
 import { RegistrationForm } from '../MainPageContent/RegistrationForm/RegistrationForm.jsx';
 import LoginForm from '../LoginForm/LoginForm.jsx';
 import BurgerMenu from './BurgerMenu/BurgerMenu.jsx';
+import WIshListModal from '../WishListModal/WIshListModal.jsx';
 
 export const Header = () => {
   const logoStyles = {
@@ -19,6 +20,7 @@ export const Header = () => {
 
   const [modal, setModal] = useState(false)
   const [register, setRegister] = useState(false)
+  const [wishListOpen, setWishListOpen] = useState(false)
   const location = useLocation();
   const authorized = localStorage.getItem('token');
 
@@ -62,6 +64,9 @@ export const Header = () => {
         <PagesLinks />
         <div className={styles.wrapper}>
           <Search />
+          <div className={styles.heartwrapper} onClick={() => setWishListOpen((prev) => !prev)}>
+            <Icons icon={"heart"} />
+            </div>
           <NavLink className={styles.link} to={'/cart'} style={{ borderBottom: location.pathname === '/cart' ? '2px solid #FCB654' : '2px solid transparent'}}>
             <Icons icon={'basket'} />
           </NavLink>
@@ -92,7 +97,12 @@ export const Header = () => {
             }
         </Modal>)
       }
-      <BurgerMenu burgerMenu={burgerMenu} SetBurgerMenu={SetBurgerMenu}/>
+      <BurgerMenu burgerMenu={burgerMenu} SetBurgerMenu={SetBurgerMenu} />
+      {wishListOpen && (
+        <div className={styles.wishListContainer}>
+          <WIshListModal toggleAction={setWishListOpen}/>
+        </div>
+      )}
     </header>
   );
 }

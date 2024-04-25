@@ -6,6 +6,7 @@
     border-radius: 50px;
     cursor: pointer;
     overflow: hidden;
+    margin-bottom: 120px;
 }
 
 .scrollnav {
@@ -17,6 +18,7 @@
 @media screen and (max-width:1157px){
     .scroll{
         width: 360px;
+        margin-bottom: 60px;
     }
 }
 @media screen and (max-width:767px) {

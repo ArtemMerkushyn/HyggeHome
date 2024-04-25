@@ -9,7 +9,7 @@
     text-transform: uppercase;
 }
 .special_offer_conatiner{
-    margin: 120px 0;
+    margin-bottom: 120px;
 }
 .special_offer_text{
     max-width: 552px;
@@ -38,7 +38,7 @@
 }
 @media screen and (min-width: 768px) and (max-width: 1157px){
     .special_offer_conatiner{
-        margin: 60px 0;
+        margin-bottom: 60px;
     }
     .special_offer_text_conatiner{
         margin-bottom: 40px;
@@ -53,7 +53,7 @@
 }
 @media screen and (max-width:767px){
     .special_offer_conatiner {
-            margin: 60px 0;
+            margin-bottom: 60px;
             padding: 0 15px;
         }
         .special_offer_list{

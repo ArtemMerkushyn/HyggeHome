@@ -1,0 +1,158 @@
+.cardItem {
+  width: 210px;
+  height: 232px;
+  border-radius: 24px;
+  border: 1px solid #fcb654;
+  position: relative;
+  padding: 15px;
+  overflow: hidden;
+}
+.deleteFromFavoriteButton{
+  background-color: #fcb654;
+  width: 33px;
+  height: 33px;
+  position: absolute;
+  border: 1px solid #fcb654;
+  border-radius: 50%;
+  right: -4px;
+  top: -4px;
+  z-index: 99998;
+}
+.deleteFromFavoriteButton svg{
+  width: 10px;
+  height: 10px;
+  fill: white;
+}
+
+.cardItem .cardImage {
+  padding: 0;
+}
+.itemWrapper .cardImage {
+  align-self: center;
+  padding: 0;
+}
+
+.cardImage {
+  object-fit: cover;
+  height: 119px;
+  width: 180px;
+  opacity: 1;
+  transition: opacity 1s ease, transform 1s ease;
+  cursor: pointer;
+  border-radius: 16px 16px 4px 4px;
+}
+
+.cardPicture {
+  position: absolute;
+  object-fit: cover;
+  width: 210px;
+  height: 119px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: scale(1);
+}
+
+.cardPicture:hover {
+  top: 0;
+  left: 0;
+  opacity: 1;
+  width: 210px;
+  height: 232px;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: scale(1.05);
+  cursor: pointer;
+  z-index: 99999;
+}
+
+.cardPicture:hover .itemWrapper {
+  display: none;
+}
+
+.infoWrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.titleItem {
+  font-family: DM Mono;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.06em;
+  text-align: left;
+  height: 40px;
+
+}
+
+.priceItem {
+  font-family: "DM Mono";
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 23.44px;
+  letter-spacing: -0.06em;
+  text-align: left;
+
+}
+.price_and_icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.iconsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icons {
+  fill: none;
+  stroke: #fcb654;
+  cursor: pointer;
+}
+
+.icons:hover {
+  fill: #fcb654;
+}
+
+.favButton {
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: none;
+}
+
+.cartButtom {
+  background: #fff;
+  border: none;
+}
+
+.button {
+  color: #fff;
+  font-family: 'Poppins';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  width: 412px;
+  padding: 10px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 24px;
+  background: #fcb654;
+  border: none;
+  margin-top: 10px;
+}
+.line {
+  overflow: hidden;
+}
+.iconsWrapper {
+  order: 2;
+}

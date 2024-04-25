@@ -1,0 +1,48 @@
+
+.container{
+    display: flex;
+    width: 100%;
+    max-width: 1176px;
+    height: 100%;
+    max-height: 596px;
+    border: 1px solid #FCB654;
+    border-radius: 24px;
+    background-color: white;
+    padding: 30px 20px;
+    flex-direction: column;
+    overflow: hidden;
+}
+.infoContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 40px;
+}
+.headedText{
+    font-family: DM Mono;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 41.66px;
+    letter-spacing: -0.06em;
+    text-align: left;
+    color: #FCB654;
+    
+
+}
+.closeModal{
+    background-color: transparent;
+    border: none;
+    
+}
+.closeModal svg{
+    fill: #FCB654;
+    width: 39px;
+    height: 39px;
+}
+.itemList{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 21px;
+}

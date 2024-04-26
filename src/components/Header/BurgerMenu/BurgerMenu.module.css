@@ -112,12 +112,29 @@
 }
 
 @media(max-width: 1250px) {
+    .burger__wrapper {
+        padding: 20px;
+    }
+
     .burger__btn {
         display: block;
     }
 
     .burger__menu {
         display: block;
+    }
+
+    .username {
+        top: 20px;
+    }
+}
+
+@media(max-width: 630px) {
+    .burger__wrapper {
+        padding: 8px 20px;
+    }
+    .username {
+        top: 8px;
     }
 }
 

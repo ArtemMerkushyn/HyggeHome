@@ -130,7 +130,7 @@
 @media(max-width: 630px) {
   .search.activeSearch {
     top: 100%;
-    transform: translateY(100%);
+    transform: translateY(46%);
     width: 50vw;
     left: -50vw;
   }

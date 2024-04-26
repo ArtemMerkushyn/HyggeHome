@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectCurtProducts, selectFavorites } from '../../redux/selectors';
 import { addFavorite, removeFavorite } from '../../redux/slices/favoriteSlice';
 import { toast } from 'react-toastify';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { addToCurt } from '../../redux/slices/curtSlice';
 import Icons from '../Icons/Icons';
 

@@ -59,6 +59,25 @@
     transform: rotate(-45deg);
 }
 
+.auth {
+    display: flex;
+    align-items: center;
+    color: #252525;
+    opacity: 60%;
+}
+
+.auth button {
+    font-size: 14px;
+    line-height: 21px;
+    border: none;
+    outline: none;
+    background: #fff;
+}
+
+.nav__items {
+    padding-top: 20px;
+}
+
 .nav__item {
     display: block;
     width: fit-content;

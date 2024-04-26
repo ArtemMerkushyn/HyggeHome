@@ -18,9 +18,9 @@ export const Header = () => {
 
   const[ burgerMenu, SetBurgerMenu ] = useState(false);
 
-  const [modal, setModal] = useState(false)
-  const [register, setRegister] = useState(false)
-  const [wishListOpen, setWishListOpen] = useState(false)
+  const [modal, setModal] = useState(false);
+  const [register, setRegister] = useState(false);
+  const [wishListOpen, setWishListOpen] = useState(false);
   const location = useLocation();
   const authorized = localStorage.getItem('token');
 
@@ -62,7 +62,7 @@ export const Header = () => {
       </Link>
       <div className={styles.wrapper}>
         <PagesLinks />
-        <div className={styles.wrapper}>
+        <div className={styles.wrapper__action}>
           <Search />
           <div className={styles.heartwrapper} onClick={() => setWishListOpen((prev) => !prev)}>
             <Icons icon={"heart"} />
@@ -97,7 +97,7 @@ export const Header = () => {
             }
         </Modal>)
       }
-      <BurgerMenu burgerMenu={burgerMenu} SetBurgerMenu={SetBurgerMenu} />
+      <BurgerMenu burgerMenu={burgerMenu} SetBurgerMenu={SetBurgerMenu} toggleModal={toggleModal} />
       {wishListOpen && (
         <div className={styles.wishListContainer}>
           <WIshListModal toggleAction={setWishListOpen}/>

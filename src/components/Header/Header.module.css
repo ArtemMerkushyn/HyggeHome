@@ -109,6 +109,17 @@
     }
 }
 
+@media(max-width: 764px) {
+    .logo {
+        font-size: 18px;
+    }
+    
+    .logo svg {
+        width: 60px;
+        height: 40px;
+    }
+}
+
 @media(max-width: 425px) {
     .link svg{
         display: none;

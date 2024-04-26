@@ -102,6 +102,40 @@
   fill: #fcb654;
 }
 
+@media(max-width: 1260px) {
+  .search {
+    top: 50%;
+    transform: translateY(-50%);
+    left: -45px;
+    width: 45px;
+  }
+
+  .search.activeSearch {
+    width: 340px;
+    left: -340px;
+  }
+
+  .input {
+    width: 89%;
+  }
+}
+
+@media(max-width: 768px) {
+  .search.activeSearch {
+    width: 45vw;
+    left: -45vw;
+  }
+}
+
+@media(max-width: 630px) {
+  .search.activeSearch {
+    top: 100%;
+    transform: translateY(100%);
+    width: 50vw;
+    left: -50vw;
+  }
+}
+
 @media(max-width: 425px) {
   .wrapper {
     display: none;

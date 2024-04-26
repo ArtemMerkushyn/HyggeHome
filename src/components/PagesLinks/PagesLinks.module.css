@@ -1,6 +1,6 @@
 .wrapper {
     display: flex;
-    gap: 30px;
+    gap: 20px;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -16,7 +16,7 @@
     border-bottom: 2px solid #FCB654;
 }
 
-@media(max-width: 1270px) {
+@media(max-width: 1260px) {
     .wrapper {
         display: none;
     }

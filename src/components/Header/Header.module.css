@@ -29,7 +29,13 @@
 .wrapper {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 40px;
+}
+
+.wrapper__action {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .wrapper svg {
@@ -90,7 +96,7 @@
     z-index: 9999;
 }
 
-@media(max-width: 1270px) {
+@media(max-width: 1260px) {
     .burger__btn {
         display: block;
     }

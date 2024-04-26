@@ -1,12 +1,28 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import styles from './BurgerMenu.module.css';
+import { setLoggedOut } from '../../../redux/slices/userSlice';
+import { useDispatch } from 'react-redux';
 
-export default function BurgerMenu({ burgerMenu, SetBurgerMenu }) {
+export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
     const storedUser = JSON.parse(localStorage.getItem('user'));
+    const authorized = localStorage.getItem('token');
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const active = ({ isActive }) => {
         return {
             borderBottom: isActive ? '2px solid #FCB654' : '',
         }
+    }
+
+    const logInHandler = () => {
+        toggleModal();
+        SetBurgerMenu(false);
+    }
+
+    const logOutHandler = () => {
+        dispatch(setLoggedOut());
+        SetBurgerMenu(false);
+        navigate('/');
     }
 
     return (
@@ -16,8 +32,13 @@ export default function BurgerMenu({ burgerMenu, SetBurgerMenu }) {
         >
             <div className={styles.burger__wrapper}>
                 <button className={styles.close} onClick={() => SetBurgerMenu(false)}></button>
-                {storedUser ? <spam className={styles.username}>{storedUser.name}</spam> : <span className={styles.username}>Houseguest</span>}
-                <nav>
+                <div className={styles.username}>
+                    {authorized ? <spam>{storedUser.name}</spam> : <span>Houseguest</span>}
+                    <div className={styles.auth}>
+                        {authorized ? (<button onClick={logOutHandler}>Log out</button>) : (<button onClick={logInHandler}>Log in</button>)}
+                    </div>
+                </div>
+                <nav className={styles.nav__items}>
                     {[
                         { to: '/cart', text: 'My cart' },
                         { to: '/wish', text: 'My wish list' },

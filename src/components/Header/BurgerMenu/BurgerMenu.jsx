@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import styles from './BurgerMenu.module.css';
 import { setLoggedOut } from '../../../redux/slices/userSlice';
 import { useDispatch } from 'react-redux';
+import { Search2 } from '../../Search2/Search2';
 
 export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
     const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -38,6 +39,7 @@ export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
                         {authorized ? (<button onClick={logOutHandler}>Log out</button>) : (<button onClick={logInHandler}>Log in</button>)}
                     </div>
                 </div>
+                <Search2/>
                 <nav className={styles.nav__items}>
                     {[
                         { to: '/cart', text: 'My cart' },

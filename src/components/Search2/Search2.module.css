@@ -43,6 +43,6 @@
 
 @media(max-width: 425px) {
     .search {
-        display: block;
+        display: flex;
     }
 }

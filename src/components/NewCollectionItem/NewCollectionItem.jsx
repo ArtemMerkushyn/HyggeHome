@@ -79,7 +79,7 @@ export default function NewCollectionItem({ item }) {
                       </div>
           <div className={styles.infoWrapper}>
             <p className={styles.titleItem}>{item.name}</p>
-            <div className={styles.price_and_icons}>
+            
             <div className={styles.iconsWrapper}>
               <button
                 className={styles.cartButtom}
@@ -124,7 +124,7 @@ export default function NewCollectionItem({ item }) {
           
               <p className={styles.priceItem}>${item.price}</p>
               </div>
-          </div>
+          
         </div>
 
         <img

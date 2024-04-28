@@ -96,7 +96,7 @@ const WishListModalItem = ({ item, toggleAction }) => {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="30"
-                  height="30"
+                  height="28"
                   viewBox="0 0 24 24"
                   className={styles.icons}
                   style={{ fill: isInCurt ? '#fcb654' : '' }}

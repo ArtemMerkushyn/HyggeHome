@@ -63,6 +63,7 @@
   transform: scale(1.05);
   cursor: pointer;
   z-index: 99999;
+  border-radius: 24px;
 }
 
 .cardPicture:hover .itemWrapper {

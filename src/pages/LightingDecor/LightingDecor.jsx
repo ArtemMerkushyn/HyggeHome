@@ -81,8 +81,7 @@ export const LightingDecor = () => {
         <span className={styles.wrapperSpan}> Lighting Decor</span>
       </div>
       <h2 className={styles.title}>
-        Choose the <span className={styles.spanTitle}>lighting decor</span> for
-        atmosphere
+        Make your room unique with <span className={styles.spanTitle}>lighting decor</span>
       </h2>
       <div className={styles.wrapperButtons}>
         <Filters

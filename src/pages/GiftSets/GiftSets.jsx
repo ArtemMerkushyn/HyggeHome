@@ -83,8 +83,7 @@ export const GiftSets = () => {
         <span className={styles.wrapperSpan}> Gift Sets</span>
       </div>
       <h2 className={styles.title}>
-        Choose the <span className={styles.spanTitle}>gift sets</span> for
-        atmosphere
+        Choose <span className={styles.spanTitle}>gift sets</span> for the loved ones
       </h2>
       <div className={styles.wrapperButtons}>
         <Filters

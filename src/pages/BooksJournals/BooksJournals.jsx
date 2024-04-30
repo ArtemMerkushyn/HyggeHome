@@ -82,8 +82,8 @@ export const BooksJournals = () => {
         <span className={styles.wrapperSpan}> Books & Journals</span>
       </div>
       <h2 className={styles.title}>
-        Choose the <span className={styles.spanTitle}>books & journals</span>{' '}
-        for atmosphere
+        Dive into the hygge with our <span className={styles.spanTitle}>books & journals</span>{' '}
+        collection
       </h2>
       <div className={styles.wrapperButtons}>
         <Filters

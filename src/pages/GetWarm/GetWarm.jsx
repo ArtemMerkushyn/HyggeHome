@@ -82,8 +82,7 @@ export const GetWarm = () => {
         <span className={styles.wrapperSpan}> Get Warm</span>
       </div>
       <h2 className={styles.title}>
-        Choose the <span className={styles.spanTitle}>get warm</span> for
-        atmosphere
+        <span className={styles.spanTitle}>Get warm</span> for hygge atmosphere
       </h2>
       <div className={styles.wrapperButtons}>
         <Filters

@@ -81,8 +81,7 @@ export const TableGames = () => {
         <span className={styles.wrapperSpan}> Table Games</span>
       </div>
       <h2 className={styles.title}>
-        Choose the <span className={styles.spanTitle}>table games</span> for
-        atmosphere
+        Grab few <span className={styles.spanTitle}>table games</span> for unforgettable hygge evening with friends
       </h2>
       <div className={styles.wrapperButtons}>
         <Filters onUpdateFilteredData={updateFilteredData} price={price} />

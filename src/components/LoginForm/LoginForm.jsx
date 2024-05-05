@@ -10,20 +10,26 @@ import CustomFacebookLoginButton from '../FacebookLogin/CustomFacebookLoginButto
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setLoggedIn } from '../../redux/slices/userSlice';
+import { useLoginUserMutation } from '../../redux/services';
 
 const LoginForm = ({ closeModal, handleRegisterClick }) => {
 
         
     const [passwordVisibility, setPasswordVisibility] = useState(false);
     const [checkbox, setCheckbox] = useState(false);
+    const [loginUser] = useLoginUserMutation()
     const navigate = useNavigate()
     const dispatch = useDispatch()
         
-    const onSubmit = () => {
+    const onSubmit = async (values) => {
             console.log(values);
             closeModal()
             dispatch(setLoggedIn({userData: values, token: 'bebra'}))
-            navigate('/my-account/my-wishlist')
+        navigate('/my-account/my-wishlist')
+        await loginUser({
+            email: values.email,
+            password: values.password
+        })
         }
 
         const {values, errors, touched, handleBlur, handleChange, handleSubmit} = useFormik({

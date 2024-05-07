@@ -34,6 +34,8 @@
 }
 .input_container{
     margin-bottom: 10px;
+    max-width: 250px;
+    width: 100%;
 }
 .modal_input_label{
     margin-bottom: 8px;

@@ -1,0 +1,106 @@
+form{
+    padding-right: 30px;
+    width: 280px;;
+}
+.modal_register_text {
+    color: #FCB654;
+    font-family: "DM Mono";
+    font-size: 19.2px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+    width: fit-content;
+}
+
+.modal_checkbox_container {
+    display: flex;
+    flex-direction: row;
+    width: 250px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.modal_checkbox {
+    margin-right: 4px;
+    background-color: transparent;
+    border: 1px solid #FCB654;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.modal_checkbox.checked {
+    background-color: #FCB654;
+    border-color: #FCB654;
+    color: #FFF;
+}
+
+.close_modal_button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 27px;
+    right: 27px;
+}
+
+.svg_div {
+    position: absolute;
+    top: -4.5px;
+    left: -3.6px;
+}
+
+.agreement_text {
+    color: #252525;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    max-width: 228px;
+}
+
+.hide_password {
+    position: relative;
+}
+
+.hide_password input {
+    padding-right: 40px;
+}
+
+.hide_password_button {
+    position: absolute;
+    right: 20px;
+    top: 48px;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+}
+
+.logIn_with {
+    font-family: DM Mono;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: -0.06em;
+    text-align: left;
+    colo: #252525;
+    margin-bottom: 20px;
+}
+
+.logIn_with_container {
+    width: auto;
+    margin-top: 51px;
+    padding-left: 30px;
+    border-left: 1px solid #FCB654;
+    height: 279px;
+}

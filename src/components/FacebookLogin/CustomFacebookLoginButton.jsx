@@ -9,7 +9,6 @@ const REDIRECT_URI = window.location.href;
 const CustomFacebookLoginButton = ({ modalAction }) => {
   const [provider, setProvider] = useState('');
   const [profile, setProfile] = useState(null);
-  console.log(provider);
   useEffect(() => {
     if (profile && profile.name) {
       toast.success(`Вітання, ${profile.name}`);

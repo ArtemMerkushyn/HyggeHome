@@ -95,6 +95,9 @@
     top: 100px;
     z-index: 9999;
 }
+.heartwrapper{
+    padding-top: 6px;
+}
 
 @media(max-width: 1260px) {
     .header {

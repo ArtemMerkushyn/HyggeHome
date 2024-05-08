@@ -1,5 +1,5 @@
 import React from 'react';
-
+import NewCollectionItem from '../NewCollectionItem/NewCollectionItem';
 import CardItem from '../CardItem/CardItem';
 import styles from './CardList.module.css';
 import SkeletonProductLib from '../skeleton/SkeletonProductLib';
@@ -42,7 +42,7 @@ export default function CardList({ data, error, isLoading, totalPages }) {
       ) : (
         <ul className={styles.cardList}>
           {data.map((item, index) => (
-            <CardItem key={index} item={item} />
+            <NewCollectionItem key={index} item={item} />
           ))}
         </ul>
       )}

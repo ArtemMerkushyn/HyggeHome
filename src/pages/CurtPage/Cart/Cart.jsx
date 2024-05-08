@@ -13,15 +13,15 @@ export const Cart = ({ tabs, setSelectedId }) => {
   const handleEditCart = () => setEdit(!edit);
 
   const handleNextStep = () => {
-    if(curtItems.length === 0) {
+    if (curtItems.length === 0) {
       toast('your cart is empty');
       return;
     }
     setSelectedId(tabs[1].id);
-  }
+  };
 
   return (
-    <div style={{ marginBottom: '120px' }}>
+    <div className={styles.container}>
       <div className={styles.wrapper}>
         {curtItems.length === 0 ? (
           <div className={styles.notFound}>
@@ -33,24 +33,19 @@ export const Cart = ({ tabs, setSelectedId }) => {
           </div>
         ) : (
           curtItems.map((product, index) => (
-            <CurtItem key={index} productData={product} edit={edit}/>
+            <CurtItem key={index} productData={product} index={index} />
           ))
         )}
-      </div>
-      <div className={styles.btns}>
-        {curtItems.length !== 0 ? (
-          !edit ? (
-            <Button text={'Edit cart'} funcClick={handleEditCart} />
-          ) : (
-            <Button text={'Close editing'} funcClick={handleEditCart} />
-          )
-        ) : (
-          <></>
-        )}
         {curtItems.length !== 0 && (
-          <Button text={'Next step'} funcClick={handleNextStep} />
+          <span className={styles.button_span}>
+            <Button
+              text={'Next step'}
+              funcClick={handleNextStep}
+              style={{ width: '280px', justifySelf: 'flex-end' }}
+            />
+          </span>
         )}
       </div>
     </div>
   );
-}
+};

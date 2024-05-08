@@ -1,41 +1,63 @@
+.container {
+  margin-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+}
 .sections {
-    display: flex;
-    gap: 30px;
-    margin-bottom: 10px;
+  display: flex;
+  gap: 30px;
+  margin-bottom: 10px;
 }
 
 .sections__item {
-    color: #caccce;
-    font-family: DM Mono;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 31px;
-    letter-spacing: -6%;
+  color: #caccce;
+  font-family: DM Mono;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 31px;
+  letter-spacing: -6%;
 }
 
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
 }
 
 .notFound img {
-    margin: 30px auto;
-    width: 480px;
+  margin: 30px auto;
+  width: 480px;
 }
 
 .btns {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 60px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
 }
 
 .btns button {
-    width: 412px;
+  width: 412px;
 }
 
 .btns button:first-child {
-    color: #252525;
-    background: #fff;
+  color: #252525;
+  background: #fff;
+}
+div .button_span {
+  align-self: flex-end;
+}
+@media screen and (min-width: 768px) and (max-width: 1157px) {
+  .container {
+    display: flex;
+    margin-bottom: 60px;
+  }
+  .container .wrapper {
+    align-self: center;
+    max-width: 690px;
+    width: 100%;
+  }
+  .wrapper {
+    margin-top: 30px;
+  }
 }

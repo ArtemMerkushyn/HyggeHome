@@ -26,6 +26,9 @@
   line-height: 60px; /* 133.333% */
   letter-spacing: -1.35px;
 }
+.textLogo_2 {
+  display: none;
+}
 
 .span {
   color: #6883a0;
@@ -38,6 +41,7 @@
 
 .nav {
   display: flex;
+  flex-direction: row;
   gap: 30px;
   color: #fff;
   font-family: 'Poppins';
@@ -53,6 +57,11 @@
 
 .nav a:hover {
   border-bottom: 2px solid #fcb654;
+}
+.nav_wrapper_1,
+.nav_wrapper_2 {
+  display: flex;
+  gap: 30px;
 }
 
 .icons {
@@ -87,4 +96,120 @@
   align-items: center;
   margin-top: 60px;
   margin-bottom: 60px;
+}
+@media screen and (min-width: 768px) and (max-width: 1157px) {
+  .footer {
+    padding-top: 30px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 150px;
+    justify-content: space-between;
+  }
+  .wrapper {
+    flex-wrap: nowrap;
+    height: 90px;
+    justify-content: space-around;
+    gap: 30px;
+    align-items: start;
+    padding-right: 0px;
+  }
+  .wrapperLogo svg {
+    height: 36px;
+    width: 66px;
+  }
+  .text_container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .textLogo {
+    font-size: 18px;
+    line-height: 18px;
+  }
+  .textLogo_2 {
+    color: #fcb654;
+    font-family: 'DM Mono';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px; /* 133.333% */
+    letter-spacing: -1.35px;
+    display: block;
+  }
+  .iconsWrapper {
+    display: none;
+  }
+  .nav {
+    height: 90px;
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 30px;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: left;
+    gap: 40px;
+    width: 281px;
+  }
+  .wrapperInput {
+    flex-direction: column;
+    gap: 15px;
+
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .icons_tablet {
+    width: 18px;
+    height: 18px;
+    fill: #ffffff;
+    transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    &:hover {
+      fill: #fcb654;
+    }
+  }
+  .nav_wrapper_1,
+  .nav_wrapper_2 {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .iconsWrapper_tablet {
+    display: flex;
+    gap: 20px;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 27px;
+  }
+  .text {
+    font-size: 22px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .footer {
+    height: 570px;
+    flex-direction: column;
+    padding-top: 30px;
+    gap: 30px;
+  }
+  .wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .nav,
+  .nav_wrapper_1,
+  .nav_wrapper_2 {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .wrapperInput {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 0;
+  }
+  .container {
+    height: 66px;
+  }
 }

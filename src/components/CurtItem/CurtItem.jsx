@@ -25,11 +25,12 @@ export const CurtItem = ({ productData, index }) => {
       <div className={styles.img}>
         <img src={dataProduct.image[0]} alt="img" />
       </div>
-      <div className={styles.product_info}>
-        <div className={styles.li_product}>
-          {index === 0 && <p className={styles.product_info_text}>Product</p>}
-          <div className={styles.title}>{dataProduct.name}</div>
-        </div>
+
+      <div className={styles.li_product}>
+        {index === 0 && <p className={styles.product_info_text}>Product</p>}
+        <div className={styles.title}>{dataProduct.name}</div>
+      </div>
+      <span className={styles.span}>
         <div className={styles.li}>
           {index === 0 && <p className={styles.product_info_text}>Price</p>}
 
@@ -50,7 +51,7 @@ export const CurtItem = ({ productData, index }) => {
             ${dataProduct.price * amountCart}
           </div>
         </div>
-      </div>
+      </span>
       <button className={styles.minus} onClick={handleRemoveProduct}></button>
     </div>
   );

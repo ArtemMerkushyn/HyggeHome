@@ -61,3 +61,16 @@ div .button_span {
     margin-top: 30px;
   }
 }
+@media screen and (max-width: 767px) {
+  .wrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .container {
+    margin-bottom: 60px;
+  }
+  div .button_span {
+    align-self: center;
+  }
+}

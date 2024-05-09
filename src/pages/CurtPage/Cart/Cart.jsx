@@ -36,16 +36,16 @@ export const Cart = ({ tabs, setSelectedId }) => {
             <CurtItem key={index} productData={product} index={index} />
           ))
         )}
-        {curtItems.length !== 0 && (
-          <span className={styles.button_span}>
-            <Button
-              text={'Next step'}
-              funcClick={handleNextStep}
-              style={{ width: '280px', justifySelf: 'flex-end' }}
-            />
-          </span>
-        )}
       </div>
+      {curtItems.length !== 0 && (
+        <span className={styles.button_span}>
+          <Button
+            text={'Next step'}
+            funcClick={handleNextStep}
+            style={{ width: '280px', justifySelf: 'flex-end' }}
+          />
+        </span>
+      )}
     </div>
   );
 };

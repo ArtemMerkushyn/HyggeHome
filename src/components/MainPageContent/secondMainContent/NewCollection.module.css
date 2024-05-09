@@ -2,7 +2,7 @@
   position: relative;
   height: 596px;
   overflow: hidden;
-  margin-top: 120px ;
+  margin-top: 120px;
 }
 
 .new_collection_text {
@@ -95,66 +95,62 @@
   flex-wrap: wrap;
   gap: 30px;
 }
-@media screen and (min-width: 768px) and (max-width: 1157px){
-  .wrapper{
+@media screen and (min-width: 768px) and (max-width: 1157px) {
+  .wrapper {
     height: 339px;
     margin-top: 60px;
   }
-  .new_collection_text{
+  .new_collection_text {
     font-family: DM Mono;
     font-size: 16px;
     font-weight: 400;
     line-height: 20.83px;
     letter-spacing: 0.06em;
     text-align: left;
-
   }
-  .new_collection_goods_text{
+  .new_collection_goods_text {
     font-family: DM Mono;
     font-size: 22px;
     font-weight: 400;
     line-height: 28.64px;
     letter-spacing: -0.06em;
     text-align: left;
-
   }
-  .itemsList{
+  .itemsList {
     gap: 20px;
   }
-  .arrows{
+  .arrows {
     top: 0;
   }
 }
-@media screen and (max-width:767px){
-  .wrapper{
+@media screen and (max-width: 767px) {
+  .wrapper {
     height: 392px;
     padding: 0 15px;
     margin: 60px 0;
   }
-  .new_collection_text{
+  .new_collection_text {
     font-family: DM Mono;
     font-size: 16px;
     font-weight: 400;
     line-height: 21px;
     letter-spacing: 0.06em;
     text-align: left;
-
   }
-  .new_collection_goods_text{
+  .new_collection_goods_text {
     font-family: DM Mono;
     font-size: 24px;
     font-weight: 400;
     line-height: 31px;
     letter-spacing: -0.06em;
     text-align: left;
-
   }
-  .arrows{
+  .arrows {
     top: auto;
     bottom: 0;
     right: 0;
   }
-  .itemsList{
+  .itemsList {
     gap: 10px;
   }
 }

@@ -8,8 +8,6 @@ import validator from 'validator';
 
 export const TabSwitcher = ({ tabs, selectedId, setSelectedId }) => {
   const curtItems = useSelector(selectCurtProducts);
-  const scrollContainer = document.querySelector(`.${styles.scrollContainer}`);
-  const { scrollLeft } = scrollContainer;
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -30,6 +28,10 @@ export const TabSwitcher = ({ tabs, selectedId, setSelectedId }) => {
   const [rules, setRules] = useState(false);
 
   const handleClick = tabId => {
+    const scrollContainer = document.querySelector(
+      `.${styles.scrollContainer}`,
+    );
+    const { scrollLeft } = scrollContainer;
     if (curtItems.length === 0) {
       toast('your cart is empty');
       return;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './TabSwitcher.module.css';
 import Icons from '../../../components/Icons/Icons';
 import { selectCurtProducts } from '../../../redux/selectors';
@@ -8,6 +8,7 @@ import validator from 'validator';
 
 export const TabSwitcher = ({ tabs, selectedId, setSelectedId }) => {
   const curtItems = useSelector(selectCurtProducts);
+  const [handleNext, setHandleNext] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -27,7 +28,15 @@ export const TabSwitcher = ({ tabs, selectedId, setSelectedId }) => {
   const [paymentMethod, setPaymentMethod] = useState(PaymentMethod[0]);
   const [rules, setRules] = useState(false);
 
-  const handleClick = tabId => {
+  useEffect(() => {
+    const scrollContainer = document.querySelector(
+      `.${styles.scrollContainer}`,
+    );
+    const { scrollLeft } = scrollContainer;
+    scrollContainer.scrollLeft += 350;
+  }, [handleNext]);
+
+  const handleClick = (tabId, handleNext) => {
     const scrollContainer = document.querySelector(
       `.${styles.scrollContainer}`,
     );
@@ -44,7 +53,7 @@ export const TabSwitcher = ({ tabs, selectedId, setSelectedId }) => {
 
     if (selectedId === tabs[0].id) {
       setSelectedId(tabs[1].id);
-      scrollContainer.scrollLeft += 400;
+
       return;
     }
 
@@ -134,6 +143,8 @@ export const TabSwitcher = ({ tabs, selectedId, setSelectedId }) => {
                 setPaymentMethod={setPaymentMethod}
                 rules={rules}
                 setRules={setRules}
+                handleNext={handleNext}
+                setHandleNext={setHandleNext}
               />
             ),
         )}

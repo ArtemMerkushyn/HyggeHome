@@ -15,8 +15,12 @@ export const CartPage = () => {
   const [selectedId, setSelectedId] = useState(tabs[0].id);
 
   return (
-    <div style={{ paddingBottom: selectedId === tabs[0].id ? '120px': 0 }}>
-      <TabSwitcher tabs={tabs} selectedId={selectedId} setSelectedId={setSelectedId}/>
+    <div style={{ paddingBottom: selectedId === tabs[0].id ? '120px' : 0 }}>
+      <TabSwitcher
+        tabs={tabs}
+        selectedId={selectedId}
+        setSelectedId={setSelectedId}
+      />
       {selectedId === tabs[0].id ? (
         <NewCollection
           sliderNeeded={false}

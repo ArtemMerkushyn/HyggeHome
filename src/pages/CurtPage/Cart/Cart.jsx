@@ -6,11 +6,9 @@ import Button from '../../../components/UI/Button/Button';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 
-export const Cart = ({ tabs, setSelectedId }) => {
+export const Cart = ({ tabs, setSelectedId, setHandleNext, handleNext }) => {
   const curtItems = useSelector(selectCurtProducts);
   const [edit, setEdit] = useState(false);
-
-  const handleEditCart = () => setEdit(!edit);
 
   const handleNextStep = () => {
     if (curtItems.length === 0) {
@@ -18,6 +16,7 @@ export const Cart = ({ tabs, setSelectedId }) => {
       return;
     }
     setSelectedId(tabs[1].id);
+    setHandleNext(!handleNext);
   };
 
   return (

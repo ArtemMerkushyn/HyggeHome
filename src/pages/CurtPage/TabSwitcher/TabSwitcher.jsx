@@ -27,66 +27,33 @@ export const TabSwitcher = ({ tabs, selectedId, setSelectedId }) => {
 
   const [paymentMethod, setPaymentMethod] = useState(PaymentMethod[0]);
   const [rules, setRules] = useState(false);
+  const [previousTab, setPreviousTab] = useState(null);
 
   useEffect(() => {
     const scrollContainer = document.querySelector(
       `.${styles.scrollContainer}`,
     );
     const { scrollLeft } = scrollContainer;
-    scrollContainer.scrollLeft += 350;
-  }, [handleNext]);
 
-  const handleClick = (tabId, handleNext) => {
-    const scrollContainer = document.querySelector(
-      `.${styles.scrollContainer}`,
-    );
-    const { scrollLeft } = scrollContainer;
+    if (previousTab === 'cart' && selectedId === 'delivery') {
+      scrollContainer.scrollLeft += 350;
+    } else if (previousTab === 'payment' && selectedId === 'delivery') {
+      scrollContainer.scrollLeft -= 350;
+    } else if (previousTab === 'delivery' && selectedId === 'payment') {
+      scrollContainer.scrollLeft += 350;
+    } else if (previousTab === 'delivery' && selectedId === 'cart') {
+      scrollContainer.scrollLeft -= 350;
+    }
+
+    setPreviousTab(selectedId);
+  }, [selectedId]);
+
+  const handleClick = tabId => {
     if (curtItems.length === 0) {
       toast('your cart is empty');
       return;
     }
 
-    if (tabId === tabs[0].id) {
-      setSelectedId(tabId);
-      return;
-    }
-
-    if (selectedId === tabs[0].id) {
-      setSelectedId(tabs[1].id);
-
-      return;
-    }
-
-    if (selectedId === tabs[1].id) {
-      if (
-        formData.firstName === '' ||
-        formData.lastName === '' ||
-        formData.address === '' ||
-        formData.city === '' ||
-        formData.postalCode === '' ||
-        formData.optionDeliveryMethod === ''
-      ) {
-        toast('Please fill in all fields');
-        return;
-      }
-
-      if (formData.phoneNumber === '') {
-        if (!/^\d{9}$/.test(formData['phoneNumber'])) {
-          toast('Please enter a valid phone number with 9 digits');
-          return;
-        }
-      }
-
-      if (formData.email === '') {
-        toast('Please fill in email field');
-        return;
-      }
-
-      if (!validator.isEmail(formData.email)) {
-        toast('Please enter a valid email address');
-        return;
-      }
-    }
     setSelectedId(tabId);
   };
 

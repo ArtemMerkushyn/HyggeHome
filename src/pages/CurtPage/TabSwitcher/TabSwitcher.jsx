@@ -50,8 +50,53 @@ export const TabSwitcher = ({ tabs, selectedId, setSelectedId }) => {
 
   const handleClick = tabId => {
     if (curtItems.length === 0) {
-      toast('your cart is empty');
+      toast('Your cart is empty');
       return;
+    }
+
+    if (tabId === tabs[0].id) {
+      setSelectedId(tabId);
+      return;
+    }
+
+    if (selectedId === tabs[0].id) {
+      setSelectedId(tabs[1].id);
+      return;
+    }
+
+    if (selectedId === tabs[1].id) {
+      // Check if all fields are filled
+      if (
+        formData.firstName === '' ||
+        formData.lastName === '' ||
+        formData.address === '' ||
+        formData.city === '' ||
+        formData.postalCode === '' ||
+        formData.optionDeliveryMethod === ''
+      ) {
+        toast('Please fill in all fields');
+        return;
+      }
+
+      // Check phone number format
+      if (formData.phoneNumber === '') {
+        if (!/^\d{9}$/.test(formData.phoneNumber)) {
+          toast('Please enter a valid phone number with 9 digits');
+          return;
+        }
+      }
+
+      // Check if email field is filled
+      if (formData.email === '') {
+        toast('Please fill in email field');
+        return;
+      }
+
+      // Check email format
+      if (!validator.isEmail(formData.email)) {
+        toast('Please enter a valid email address');
+        return;
+      }
     }
 
     setSelectedId(tabId);

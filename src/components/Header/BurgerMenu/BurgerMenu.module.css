@@ -88,12 +88,12 @@
     transition: all .2s linear;
 }
 
-.nav__item:nth-child(2) {
+.nav__item.border {
     position: relative;
     margin-bottom: 10px;
 }
 
-.nav__item:nth-child(2)::before {
+.nav__item.border::before {
     content: '';
     position: absolute;
     bottom: -11px;
@@ -139,7 +139,7 @@
 }
 
 @media(max-width: 425px) {
-    .link svg{
+    .link svg {
         display: none;
     }
 }

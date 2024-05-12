@@ -128,6 +128,9 @@
 }
 
 @media(max-width: 630px) {
+  .wrapper {
+    display: none;
+  }
   .search.activeSearch {
     top: 100%;
     transform: translateY(46%);

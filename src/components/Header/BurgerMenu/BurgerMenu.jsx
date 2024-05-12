@@ -44,6 +44,9 @@ export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
                     {[
                         { to: '/cart', text: 'My cart' },
                         { to: '/wish', text: 'My wish list' },
+                        authorized ? { to: '/my-account/my-orders', text: 'My orders' } : null,
+                        authorized ? { to: '/', text: 'My reviews' } : null,
+                        authorized ? { to: '/my-account/my-delivery-information', text: 'My delivery information' } : null,
                         { to: '/', text: 'Home' },
                         { to: '/candles', text: 'Candles' },
                         { to: '/lighting-decor', text: 'Lighting Decor' },
@@ -52,15 +55,16 @@ export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
                         { to: '/table-games', text: 'Table Games' },
                         { to: '/books-&-journals', text: 'Books & Journals' },
                     ].map((item) => (
-                        <NavLink
+                        item && (<NavLink
                             key={item.to}
-                            className={styles.nav__item}
+                            className={item.text === 'Home' ? `${styles.nav__item} border` : styles.nav__item}
                             to={item.to}
                             style={active}
                             onClick={() => SetBurgerMenu(false)}
                         >
                             {item.text}
                         </NavLink>
+                        )
                     ))}
                 </nav>
             </div>

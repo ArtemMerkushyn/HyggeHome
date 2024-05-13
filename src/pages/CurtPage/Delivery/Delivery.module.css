@@ -1,107 +1,170 @@
 .field {
-    font-family: Poppins;
-    max-width: 633px;
-    width: 100%;
-    margin-bottom: 20px;
+  font-family: Poppins;
+  max-width: 633px;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .field label {
-    font-size: 14px;
-    line-height: 21px;
-    font-weight: 500;
-    color: #252525;
-    display: block;
-    margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 500;
+  color: #252525;
+  display: block;
+  margin-bottom: 8px;
 }
 
 .field input {
-    width: 100%;
-    padding: 23px 30px;
-    border-radius: 24px;
-    outline: none;
-    background: #f1c2c2;
+  width: 100%;
+  padding: 23px 30px;
+  border-radius: 24px;
+  outline: none;
+  background: #f1c2c2;
 }
 
 .title {
-    font-family: DM Mono;
-    font-size: 24px;
-    line-height: 21px;
-    font-weight: 400;
-    letter-spacing: -6%;
-    margin: 40px 0 30px;
+  font-family: DM Mono;
+  font-size: 24px;
+  line-height: 21px;
+  font-weight: 400;
+  letter-spacing: -6%;
+  margin: 40px 0 30px;
 }
 
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
 }
 
 .method {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  cursor: pointer;
 }
 
 .radio {
-    width: 32px;
-    height: 32px;
-    border-radius: 50px;
-    border: 2px solid #FCB654;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50px;
+  border: 2px solid #fcb654;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .radio span {
-    width: 24px;
-    height: 24px;
-    border-radius: 50px;
-    transition: all .2s linear;
+  width: 24px;
+  height: 24px;
+  border-radius: 50px;
+  transition: all 0.2s linear;
 }
 
 .metod__img {
-    width: 190px;
-    height: 150px;
-    border: 1px solid #FCB65466;
-    border-radius: 24px;
-    background: #D9D9D9;
+  width: 190px;
+  height: 150px;
+  border: 1px solid #fcb65466;
+  border-radius: 24px;
+  background: #d9d9d9;
 }
 
 .metod__info h5 {
-    font-family: DM Mono;
-    font-size: 18px;
-    line-height: 24px;
-    font-weight: 400;
-    margin-bottom: 10px;
+  font-family: DM Mono;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  margin-bottom: 10px;
 }
 
 .metod__info span {
-    font-family: DM Mono;
-    font-size: 16px;
-    line-height: 20px;
-    font-weight: 400;
-    color: #FCB654;
+  font-family: DM Mono;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #fcb654;
 }
 
 .btns {
-    display: flex;
-    justify-content: space-between;
-    margin: 60px 0 120px;
+  display: flex;
+  justify-content: space-between;
+  margin: 60px 0 120px;
 }
 
 .btns button {
-    width: 412px;
+  width: 412px;
 }
 
 .btns button:first-child {
-    color: #252525;
-    background: #fff;
+  color: #252525;
+  background: #fff;
+  border: 1px solid #fcb654;
 }
 
 .invalid {
-    border: 1px solid red;
+  border: 1px solid red;
+}
+@media screen and (min-width: 768px) and (max-width: 1157px) {
+  .field {
+    max-width: 450px;
+  }
+  .field label {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    text-align: left;
+  }
+  .title {
+    font-family: DM Mono;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 23.44px;
+    letter-spacing: -0.06em;
+    text-align: left;
+  }
+  .metod__img {
+    width: 100px;
+    height: 100px;
+  }
+  .btns {
+    margin: 40px 0 60px;
+    justify-content: space-around;
+  }
+}
+@media screen and (max-width: 767px) {
+  .field {
+    max-width: 330px;
+  }
+  .field label {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: left;
+  }
+  .field input {
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    text-align: left;
+    padding: 14px 20px;
+  }
+  .metod__img {
+    width: 100px;
+    height: 100px;
+  }
+  .btns {
+    margin: 30px 0 60px;
+    justify-content: space-around;
+  }
+  .btns button {
+    width: 172px;
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px;
+    padding: 10px 24px;
+  }
 }

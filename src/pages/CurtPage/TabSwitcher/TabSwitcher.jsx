@@ -116,7 +116,13 @@ export const TabSwitcher = ({ tabs, selectedId, setSelectedId }) => {
               onClick={
                 selectedId !== tab.id ? () => handleClick(tab.id) : undefined
               }
-              style={{ cursor: selectedId === tab.id ? 'default' : 'pointer' }}
+              style={{
+                cursor: selectedId === tab.id ? 'default' : 'pointer',
+                color:
+                  index < tabs.findIndex(t => t.id === selectedId)
+                    ? '#fcb654'
+                    : '#252525',
+              }}
             >
               <div
                 className={styles.check}

@@ -48,7 +48,7 @@ export const SignIn = ({ toggleModal, handleLoginClick }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit} autoComplete="off">
+      <form onSubmit={handleSubmit} autoComplete="off" className={css.form}>
         <h2 className={css.modal_register_text}>Sign in</h2>
 
         <MyInput

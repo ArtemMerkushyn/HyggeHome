@@ -70,20 +70,20 @@ export const Search2 = () => {
   }
     return (
         <div className={styles.search}>
-        <DebounceInput
-            id="searchInput"
-            type="text"
-            value={inputValue}
-            onChange={handleInputChange}
-            onKeyDown={handleKeyDown}
-            className={styles.input}
-            placeholder="Search"
-            minLength={1}
-            debounceTimeout={2000}
-        />
-            <button className={styles.searchBtn} onClick={searchName}>
-                <Icons icon={'search'} />
-            </button>
+          <DebounceInput
+              id="searchInput"
+              type="text"
+              value={inputValue}
+              onChange={handleInputChange}
+              onKeyDown={handleKeyDown}
+              className={styles.input}
+              placeholder="Search"
+              minLength={1}
+              debounceTimeout={2000}
+          />
+          <button className={styles.searchBtn} onClick={searchName}>
+              <Icons icon={'search'} />
+          </button>
         </div>
     );
 }

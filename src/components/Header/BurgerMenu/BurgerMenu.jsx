@@ -52,19 +52,33 @@ export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
         </div>
         <Search2 />
         <nav className={styles.nav__items}>
+          <div className={styles.nav__top}>
+            {[
+              { to: '/cart', text: 'My cart' },
+              { to: '/wish', text: 'My wish list' },
+              authorized ? { to: '/my-account/my-orders', text: 'My orders' } : null,
+              authorized ? { to: '/', text: 'My reviews' } : null,
+              authorized ? { to: '/my-account/my-delivery-information', text: 'My delivery information' } : null,
+            ].map(
+              item =>
+                item && (
+                  <NavLink
+                    key={item.to}
+                    className={
+                      item.text === 'Home'
+                        ? `${styles.nav__item} border`
+                        : styles.nav__item
+                    }
+                    to={item.to}
+                    style={active}
+                    onClick={() => SetBurgerMenu(false)}
+                  >
+                    {item.text}
+                  </NavLink>
+                )
+            )}
+          </div>
           {[
-            { to: '/cart', text: 'My cart' },
-            { to: '/wish', text: 'My wish list' },
-            authorized
-              ? { to: '/my-account/my-orders', text: 'My orders' }
-              : null,
-            authorized ? { to: '/', text: 'My reviews' } : null,
-            authorized
-              ? {
-                  to: '/my-account/my-delivery-information',
-                  text: 'My delivery information',
-                }
-              : null,
             { to: '/', text: 'Home' },
             { to: '/candles', text: 'Candles' },
             { to: '/lighting-decor', text: 'Lighting Decor' },

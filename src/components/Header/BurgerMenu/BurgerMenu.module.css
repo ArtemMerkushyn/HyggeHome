@@ -78,29 +78,20 @@
     padding-top: 20px;
 }
 
+.nav__top {
+    border-bottom: 2px solid #FCB65466;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
 .nav__item {
     display: block;
     width: fit-content;
     border-bottom: 2px solid #fff;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 18px;
     line-height: 30px;
     transition: all .2s linear;
-}
-
-.nav__item.border {
-    position: relative;
-    margin-bottom: 10px;
-}
-
-.nav__item.border::before {
-    content: '';
-    position: absolute;
-    bottom: -11px;
-    left: 0;
-    width: 320px;
-    height: 2px;
-    background: #FCB65466;
 }
 
 .nav__item:last-child {

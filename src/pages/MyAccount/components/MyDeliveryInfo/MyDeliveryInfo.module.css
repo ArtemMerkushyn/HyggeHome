@@ -76,6 +76,9 @@
 }
 
 @media(max-width: 650px) {
+    .wrapper {
+        margin-top: 20px;
+    }
     .navbar {
         display: none;
     }
@@ -87,6 +90,6 @@
     }
 
     .btns button {
-        padding: 10px 12px;
+        padding: 10px;
     }
 }

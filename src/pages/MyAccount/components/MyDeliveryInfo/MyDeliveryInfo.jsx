@@ -47,7 +47,9 @@ const MyDeliveryInfo = () => {
 
     return (
         <div className={styles.MyDeliveryInfo}>
-            <MyAccountNav/>
+            <div className={styles.navbar}>
+                <MyAccountNav/>
+            </div>
             <div className={styles.wrapper}>
                 <h3 className={styles.title}>My delivery information</h3>
                 <div className={styles.form}>

@@ -6,8 +6,7 @@
     margin-right: 30px;
     border-right: 1px solid #FCB654;
     min-height: 740px;
-    max-width: 411px;
-    width: 100%;
+    padding-right: 20px;
 }
 
 .headedText{

@@ -1,8 +1,7 @@
-
-.container{
+.container {
     display: flex;
     width: 100%;
-    max-width: 1176px;
+    max-width: 960px;
     height: 100%;
     max-height: 596px;
     border: 1px solid #FCB654;
@@ -12,14 +11,16 @@
     flex-direction: column;
     overflow: hidden;
 }
-.infoContainer{
+
+.infoContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 20px;
     gap: 40px;
 }
-.headedText{
+
+.headedText {
     font-family: DM Mono;
     font-size: 32px;
     font-weight: 400;
@@ -30,19 +31,42 @@
     
 
 }
-.closeModal{
+
+.closeModal {
     background-color: transparent;
     border: none;
-    
 }
-.closeModal svg{
+
+.closeModal svg {
     fill: #FCB654;
     width: 39px;
     height: 39px;
 }
-.itemList{
+
+.itemList {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 21px;
+    gap: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+@media (max-width: 1100px) {
+    .container {
+        max-width: 730px;
+    }
+}
+
+@media (max-width: 820px) {
+    .container {
+        width: 500px;
+    }
+}
+
+@media (max-width: 630px) {
+    .container {
+        width: 100%;
+        padding:10px;
+    }
 }

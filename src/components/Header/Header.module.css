@@ -89,14 +89,17 @@
 .burger__line:nth-child(3) {
     bottom: 0;
 }
-.wishListContainer{
-    position: absolute;
+
+.wishListContainer {
+    position: fixed;
     right: 10%;
     top: 100px;
     z-index: 9999;
 }
-.heartwrapper{
-    padding-top: 6px;
+
+.heartwrapper {
+    display: flex;
+    align-items: center;
 }
 
 @media(max-width: 1260px) {
@@ -111,9 +114,6 @@
     .burger__menu {
         display: block;
     }
-    .heartwrapper{
-        display: none;
-    }
 }
 
 @media(max-width: 764px) {
@@ -127,13 +127,11 @@
     }
 }
 
-@media(max-width: 630px) {
-    .header {
-        margin-top: 0;
-    }
-  }
-
 @media(max-width: 425px) {
+    .wrapper__action {
+        gap: 5px;
+    }
+
     .link svg{
         display: none;
     }

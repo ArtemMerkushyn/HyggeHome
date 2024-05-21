@@ -1,70 +1,156 @@
 .feedbackContainer {
-    border-radius: 24px;
-    border: 1px solid #FCB654;
-    padding: 20px;
-    margin-bottom: 20px;
+  border-radius: 24px;
+  border: 1px solid #fcb654;
+  padding: 20px;
+  margin-bottom: 20px;
 }
-.feedbackWrapper{
-    display: flex;
-    justify-content: space-between;
+.feedbackWrapper {
+  display: flex;
+  justify-content: space-between;
 }
 
-.name_and_date_container{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.name_and_date_container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 126px;
+  width: 100%;
 }
-.userName{
-    font-family: DM Mono;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 31px;
-    letter-spacing: -0.06em;
-    text-align: left;
-    color: #252525;
-
+.userName {
+  font-family: DM Mono;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 31px;
+  letter-spacing: -0.06em;
+  text-align: left;
+  color: #252525;
 }
-.date{
-    font-family: DM Mono;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 21px;
-    letter-spacing: 0.06em;
-    text-align: left;
-    color: #252525;
-
+.date {
+  font-family: DM Mono;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0.06em;
+  text-align: left;
+  color: #252525;
 }
-.rating_and_feedback_container{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 613px;
-    width: 100%;
+.rating_and_feedback_container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 613px;
+  width: 100%;
 }
-.feedback_text{
-    font-family: Poppins;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 27px;
-    letter-spacing: 0em;
-    text-align: left;
-    color: #252525;
-
+.feedback_text {
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #252525;
 }
 .line {
-    width: 100%;
-    background-color: #FCB654;
-    height: 1px;
-    margin: 20px 0;
+  width: 100%;
+  background-color: #fcb654;
+  height: 1px;
+  margin: 20px 0;
 }
 .btns__wrapper {
-    display: flex;
-    justify-content: flex-end;
-    gap: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
 }
 
 .btns__wrapper button:first-child {
-    border: 1px solid #fcb654;
-    background: #fff;
-    color: #252525;
+  border: 1px solid #fcb654;
+  background: #fff;
+  color: #252525;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1157px) {
+  .feedbackWrapper {
+    gap: 10px;
+  }
+  .userName {
+    font-family: DM Mono;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 23.44px;
+    letter-spacing: -0.06em;
+    text-align: left;
+  }
+  .feedback_text {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: left;
+  }
+  .line {
+    margin: 10px 0;
+  }
+  .btns__wrapper {
+    gap: 10px;
+    justify-content: center;
+  }
+  .btns__wrapper button {
+    font-size: 16px;
+    font-weight: 400;
+    padding: 10px;
+  }
+  .btns__wrapper button:nth-child(1) {
+    width: 133px;
+  }
+  .btns__wrapper button:nth-child(2) {
+    width: 233px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .feedbackContainer {
+    padding: 18px;
+    margin-bottom: 10px;
+  }
+  .feedbackWrapper {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .name_and_date_container {
+    gap: 10px;
+  }
+  .userName {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 23.44px;
+    letter-spacing: -0.06em;
+    text-align: left;
+  }
+  .feedback_text {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: left;
+  }
+  .btns__wrapper {
+    gap: 4px;
+  }
+  .btns__wrapper button:nth-child(1) {
+    width: 81px;
+    height: 44px;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    padding: 10px 15px;
+  }
+  .btns__wrapper button:nth-child(2) {
+    width: 205px;
+    padding: 10px 8.5px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+  }
 }

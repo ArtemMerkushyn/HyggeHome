@@ -1,46 +1,51 @@
 .navBar {
-    display: flex;
-    flex-direction: column;
-    float: left;
-    margin-top: 60px;
-    margin-right: 30px;
-    border-right: 1px solid #FCB654;
-    min-height: 740px;
-    padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  float: left;
+  margin-top: 60px;
+  margin-right: 30px;
+  border-right: 1px solid #fcb654;
+  min-height: 740px;
+  padding-right: 20px;
 }
 
-.headedText{
-    font-family: DM Mono;
-    font-size: 32px;
-    font-weight: 400;
-    line-height: 42px;
-    letter-spacing: -0.06em;
-    text-align: left;
-    margin-bottom: 33px;
-    color: #252525;
+.headedText {
+  font-family: DM Mono;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 42px;
+  letter-spacing: -0.06em;
+  text-align: left;
+  margin-bottom: 33px;
+  color: #252525;
 }
 
-.navLink{
-    font-family: DM Mono;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 31px;
-    letter-spacing: -0.06em;
-    text-align: left;
+.navLink {
+  font-family: DM Mono;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 31px;
+  letter-spacing: -0.06em;
+  text-align: left;
 }
 
-.linkContainer{
-    display: flex;
-    gap: 20px;
-    flex-direction: column;
+.linkContainer {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
 }
-.logOut_Button{
-    font-family: DM Mono;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 26px;
-    letter-spacing: -0.06em;
-    text-align: left;
-    border: none;
-    background-color: transparent;
+.logOut_Button {
+  font-family: DM Mono;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: -0.06em;
+  text-align: left;
+  border: none;
+  background-color: transparent;
+}
+@media screen and (max-width: 767px) {
+  .navBar {
+    display: none;
+  }
 }

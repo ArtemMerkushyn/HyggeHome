@@ -135,4 +135,8 @@
     .link svg{
         display: none;
     }
+
+    .heartwrapper {
+        display: none;
+    }
 }

@@ -19,6 +19,7 @@ import MyWishlist from './pages/MyAccount/components/MyWishlist/MyWishlist';
 import MyFeedback from './pages/MyAccount/components/MyFeedback/MyFeedback';
 import MyDeliveryInfo from './pages/MyAccount/components/MyDeliveryInfo/MyDeliveryInfo';
 import MyCart from './pages/MyAccount/components/MyCart/MyCart';
+import { MyReviews } from './pages/MyAccount/components/MyReviews/MyReviews';
 
 export const router = createBrowserRouter([
   {
@@ -104,6 +105,10 @@ export const router = createBrowserRouter([
       {
         path: '/my-account/my-cart',
         element: <MyCart/>
+      },
+      {
+        path: 'my-account/reviews',
+        element: <MyReviews/>
       },
     ],
   },

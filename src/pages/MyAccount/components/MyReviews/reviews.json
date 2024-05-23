@@ -1,0 +1,62 @@
+[
+    {
+        "user_name": "Anna",
+        "rating": 5,
+        "date": "Feb 5, 2024",
+        "feedback": "Absolutely fantastic experience! The product exceeded my expectations, and the customer service was top-notch. Highly recommended!"
+    },
+    {
+        "user_name": "John",
+        "rating": 4,
+        "date": "Mar 15, 2024",
+        "feedback": "Great product quality and fast delivery. However, packaging could be improved to reduce waste. Overall, satisfied with the purchase."
+    },
+    {
+        "user_name": "Emily",
+        "rating": 3,
+        "date": "Apr 2, 2024",
+        "feedback": "Average experience. Product was decent, but delivery took longer than expected. Customer service response was slow. Room for improvement."
+    },
+    {
+        "user_name": "Michael",
+        "rating": 5,
+        "date": "May 10, 2024",
+        "feedback": "Outstanding service! The product arrived earlier than anticipated, and the quality surpassed my expectations. Will definitely buy again!"
+    },
+    {
+        "user_name": "Sophia",
+        "rating": 2,
+        "date": "Jun 20, 2024",
+        "feedback": "Disappointing experience. Product arrived damaged, and customer service was unresponsive. Would not recommend."
+    },
+    {
+        "user_name": "David",
+        "rating": 4,
+        "date": "Jul 7, 2024",
+        "feedback": "Very pleased with the product quality and delivery speed. Minor issue with the packaging, but overall satisfied with the purchase."
+    },
+    {
+        "user_name": "Olivia",
+        "rating": 5,
+        "date": "Aug 18, 2024",
+        "feedback": "Excellent product and service! The item was exactly as described, and delivery was swift. Highly recommend this seller!"
+    },
+    {
+        "user_name": "Ethan",
+        "rating": 3,
+        "date": "Sep 5, 2024",
+        "feedback": "Product met expectations, but delivery was delayed. Customer service was helpful in resolving the issue, but improvement is needed in shipping."
+    },
+    {
+        "user_name": "Ava",
+        "rating": 4,
+        "date": "Oct 12, 2024",
+        "feedback": "Good overall experience. The product was of good quality, and delivery was on time. Would consider purchasing again."
+    },
+    {
+        "user_name": "William",
+        "rating": 1,
+        "date": "Nov 30, 2024",
+        "feedback": "Terrible experience! The product never arrived, and attempts to contact customer service were futile. Avoid this seller at all costs!"
+    }
+]

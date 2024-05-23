@@ -3,10 +3,13 @@
   border: 1px solid #fcb654;
   padding: 20px;
   margin-bottom: 20px;
+  width: 100%;
 }
+
 .feedbackWrapper {
   display: flex;
   justify-content: space-between;
+  gap: 20px;
 }
 
 .name_and_date_container {
@@ -16,6 +19,7 @@
   max-width: 126px;
   width: 100%;
 }
+
 .userName {
   font-family: DM Mono;
   font-size: 24px;
@@ -25,6 +29,7 @@
   text-align: left;
   color: #252525;
 }
+
 .date {
   font-family: DM Mono;
   font-size: 16px;
@@ -34,13 +39,15 @@
   text-align: left;
   color: #252525;
 }
+
 .rating_and_feedback_container {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: 613px;
+  max-width: 966px;
   width: 100%;
 }
+
 .feedback_text {
   font-family: Poppins;
   font-size: 18px;
@@ -50,12 +57,14 @@
   text-align: left;
   color: #252525;
 }
+
 .line {
   width: 100%;
   background-color: #fcb654;
   height: 1px;
   margin: 20px 0;
 }
+
 .btns__wrapper {
   display: flex;
   justify-content: flex-end;
@@ -68,57 +77,25 @@
   color: #252525;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1157px) {
-  .feedbackWrapper {
-    gap: 10px;
-  }
-  .userName {
-    font-family: DM Mono;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 23.44px;
-    letter-spacing: -0.06em;
-    text-align: left;
-  }
-  .feedback_text {
-    font-family: Poppins;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 24px;
-    text-align: left;
-  }
-  .line {
-    margin: 10px 0;
-  }
-  .btns__wrapper {
-    gap: 10px;
-    justify-content: center;
-  }
-  .btns__wrapper button {
-    font-size: 16px;
-    font-weight: 400;
-    padding: 10px;
-  }
-  .btns__wrapper button:nth-child(1) {
-    width: 133px;
-  }
-  .btns__wrapper button:nth-child(2) {
-    width: 233px;
-  }
+.btns__wrapper button:nth-child(2) {
+  display: none;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 580px) {
   .feedbackContainer {
     padding: 18px;
     margin-bottom: 10px;
   }
+
   .feedbackWrapper {
     flex-direction: column;
     gap: 10px;
   }
+
   .name_and_date_container {
     gap: 10px;
   }
+
   .userName {
     font-size: 18px;
     font-weight: 400;
@@ -126,15 +103,18 @@
     letter-spacing: -0.06em;
     text-align: left;
   }
+
   .feedback_text {
     font-size: 16px;
     font-weight: 500;
     line-height: 24px;
     text-align: left;
   }
+
   .btns__wrapper {
-    gap: 4px;
+    gap: 10px;
   }
+
   .btns__wrapper button:nth-child(1) {
     width: 81px;
     height: 44px;
@@ -145,12 +125,17 @@
     text-align: left;
     padding: 10px 15px;
   }
+
   .btns__wrapper button:nth-child(2) {
-    width: 205px;
-    padding: 10px 8.5px;
+    display: block;
+    padding: 10px 15px;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
     text-align: left;
+  }
+
+  .btns__wrapper button:nth-child(3) {
+    display: none;
   }
 }

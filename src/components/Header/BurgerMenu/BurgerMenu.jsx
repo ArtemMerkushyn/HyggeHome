@@ -57,7 +57,7 @@ export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
               { to: '/cart', text: 'My cart' },
               { to: '/wish', text: 'My wish list' },
               authorized ? { to: '/my-account/my-orders', text: 'My orders' } : null,
-              authorized ? { to: '/', text: 'My reviews' } : null,
+              authorized ? { to: '/my-account/reviews', text: 'My reviews' } : null,
               authorized ? { to: '/my-account/my-delivery-information', text: 'My delivery information' } : null,
             ].map(
               item =>

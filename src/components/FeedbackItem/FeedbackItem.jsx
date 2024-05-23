@@ -25,6 +25,7 @@ const FeedbackItem = ({ data, index, onDeleteFeedback }) => {
       <div className={css.line}></div>
       <div className={css.btns__wrapper}>
         <Button text={'Delete review'} funcClick={handleDelete} />
+        <Button text={'Product page'} />
         <Button text={'Go to the product page'} />
       </div>
     </div>

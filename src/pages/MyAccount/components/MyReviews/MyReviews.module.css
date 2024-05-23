@@ -1,0 +1,33 @@
+.reviews__page {
+    display: flex;
+    width: 100%;
+    gap: 30px;
+}
+
+.container {
+    padding-top: 60px;
+    margin-bottom: 120px;
+    width: 72%;
+}
+
+.title {
+    font-size: 40px;
+    line-height: 52px;
+    font-weight: 400;
+    letter-spacing: -0.06em;
+    margin-bottom: 30px;
+}
+
+@media(max-width: 1260px) {
+    .container {
+        width: 100%;
+    }
+}
+
+@media(max-width: 835px) {
+    .title {
+        font-style: 32px;
+        line-height: 40px;
+        margin-bottom: 20px;
+    }
+}

@@ -56,16 +56,6 @@ const MyAccountNav = () => {
           My wishlist
         </NavLink>
         <NavLink
-          to="/my-account/my-feedback"
-          className={css.navLink}
-          style={{
-            color:
-              location.pathname === '/my-account/my-feedback' ? '#FCB654' : '',
-          }}
-        >
-          My reviews
-        </NavLink>
-        <NavLink
           to="/my-account/reviews"
           className={css.navLink}
           style={{
@@ -73,7 +63,7 @@ const MyAccountNav = () => {
               location.pathname === '/my-account/reviews' ? '#FCB654' : '',
           }}
         >
-          My reviews2
+          My reviews
         </NavLink>
         <NavLink
           to="/my-account/my-delivery-information"

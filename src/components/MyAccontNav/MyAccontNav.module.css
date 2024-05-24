@@ -29,11 +29,17 @@
   text-align: left;
 }
 
+.navLink:hover {
+  color: #fcb654;
+  transition: all .1s linear;
+}
+
 .linkContainer {
   display: flex;
   gap: 20px;
   flex-direction: column;
 }
+
 .logOut_Button {
   font-family: DM Mono;
   font-size: 20px;
@@ -44,6 +50,12 @@
   border: none;
   background-color: transparent;
 }
+
+.logOut_Button:hover {
+  color: #fcb654;
+  transition: all .1s linear;
+}
+
 @media screen and (max-width: 1260px) {
   .navBar {
     display: none;

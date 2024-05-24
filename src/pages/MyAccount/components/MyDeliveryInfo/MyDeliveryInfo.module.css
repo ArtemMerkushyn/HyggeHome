@@ -109,5 +109,11 @@
 }
 
 @media(max-width: 425px) {
-
+    .edit button {
+        overflow: hidden;
+        white-space: nowrap;
+        width: 112px;
+        padding: 10px 42px;
+        word-spacing: 42px;
+    }
 }

@@ -80,7 +80,9 @@ const MyDeliveryInfo = () => {
                             </div>
                         </div>
                     ) : (
-                        <Button text={'Edit my delivery information'} funcClick={() => setEdit(true)} />
+                        <div className={styles.edit}>
+                            <Button text={'Edit my delivery information'} funcClick={() => setEdit(true)} />
+                        </div>
                     )}
                 </div>
             </div>

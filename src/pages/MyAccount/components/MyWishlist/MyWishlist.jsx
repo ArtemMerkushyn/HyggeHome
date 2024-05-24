@@ -12,6 +12,7 @@ const MyWishlist = () => {
     <div className={css.MyWishlist}>
       <MyAccountNav/>
       <div className={css.wish}>
+        <h3 className={css.title}>My delivery information</h3>
         <CardList data={favoritList} />
         <NewCollection
           sliderNeeded={false}

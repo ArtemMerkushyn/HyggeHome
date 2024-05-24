@@ -55,7 +55,7 @@ export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
           <div className={styles.nav__top}>
             {[
               { to: '/cart', text: 'My cart' },
-              { to: '/wish', text: 'My wish list' },
+              { to: '/my-account/my-wishlist', text: 'My wish list' },
               authorized ? { to: '/my-account/my-orders', text: 'My orders' } : null,
               authorized ? { to: '/my-account/reviews', text: 'My reviews' } : null,
               authorized ? { to: '/my-account/my-delivery-information', text: 'My delivery information' } : null,

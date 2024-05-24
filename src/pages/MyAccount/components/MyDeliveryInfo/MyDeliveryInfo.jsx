@@ -72,8 +72,12 @@ const MyDeliveryInfo = () => {
                 <div className={styles.btns}>
                     {edit ? (
                         <div className={styles.btns__wrapper}>
-                            <Button text={'Cancel changes'} funcClick={handleCancel} />
-                            <Button text={'Save my delivery information'} funcClick={handleSubmit} />
+                            <div className={styles.cancel}>
+                                <Button text={'Cancel changes'} funcClick={handleCancel} />
+                            </div>
+                            <div className={styles.save}>
+                                <Button text={'Save my delivery information'} funcClick={handleSubmit} />
+                            </div>
                         </div>
                     ) : (
                         <Button text={'Edit my delivery information'} funcClick={() => setEdit(true)} />

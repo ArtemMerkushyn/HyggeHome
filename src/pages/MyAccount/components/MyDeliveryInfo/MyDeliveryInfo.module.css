@@ -1,5 +1,6 @@
 .MyDeliveryInfo {
     display: flex;
+    gap: 30px;
 }
 
 .wrapper {
@@ -13,14 +14,14 @@
     font-size: 40px;
     line-height: 52px;
     font-weight: 400;
-    letter-spacing: -6%;
-    margin: 30px 0;
+    letter-spacing: -0.06em;
+    margin-bottom: 30px;
 }
 
 .form {
     width: 100%;
     padding: 20px;
-    border: 1px solid #fcb65466;
+    border: 1px solid #fcb654;
     border-radius: 24px;
 }
 
@@ -59,15 +60,21 @@
     gap: 30px;
 }
 
-.btns__wrapper button:first-child {
+.cancel button {
     border: 1px solid #fcb654;
     background: #fff;
     color: #252525;
 }
 
+@media (max-width: 1260px) {
+    .MyDeliveryInfo {
+        gap: 0;
+    }
+}
+
 @media(max-width: 835px) {
     .title {
-        margin: 20px 0;
+        margin-bottom: 20px;
     }
 
     .field input {
@@ -76,20 +83,31 @@
 }
 
 @media(max-width: 650px) {
-    .wrapper {
-        margin-top: 20px;
-    }
     .navbar {
         display: none;
+    }
+
+    .field input {
+        padding: 14px 10px;
+    }
+
+    .cancel button {
+        overflow: hidden;
+        width: 112px;
+        white-space: nowrap;
+        word-spacing: 24px;
+        padding: 10px 24px;
+    }
+
+    .save button {
+        overflow: hidden;
+        width: 112px;
+        white-space: nowrap;
+        word-spacing: 36px;
+        padding: 10px 36px;
     }
 }
 
 @media(max-width: 425px) {
-    .title {
-        margin: 10px 0;
-    }
 
-    .btns button {
-        padding: 10px;
-    }
 }

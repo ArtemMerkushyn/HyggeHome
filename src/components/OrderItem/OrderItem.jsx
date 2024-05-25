@@ -26,14 +26,14 @@ const toggleModal = () => {
         <div className={css.orderContainer}>
             <div className={css.orderitems}>
                 <div className={css.order_data}>
-                    <h3 className={css.order_number_and_date}>№{data.order_number} {data.order_date}  </h3>
+                    <h3 className={css.order_number_and_date}>№{data.order_number} {data.order_date} </h3>
                     <p className={`${css[data.order_status.toLowerCase() === "done" ? "order_status_done" : "order_status_canceled"]}`}>
                         {data.order_status}
                     </p>
 
                 </div> 
                 <div className={css.order_data}>
-                    <h3 className={css.total_amount_text}> ORDER AMOUNT</h3>
+                    <h3 className={css.total_amount_text}>ORDER AMOUNT</h3>
                     <p className={css.total_amount_number}>{data.total_amount}</p>
                 </div>
                     <button className={css.show_more_button} onClick={() => setShowDetails(!showDetails)} style={{transform: showDetails? "rotate(270deg)" : ""}}>
@@ -55,7 +55,7 @@ const toggleModal = () => {
                         <div className={css.product_wrapper}>
                              {Array.isArray(data.product) ? (
                                 data.product.map((product, index) => (
-                                <div  className={css.product_details} key={index}>
+                                <div className={css.product_details} key={index}>
                                     <img className={css.product_photo} src={product.image} alt={`Product ${index}`} />
                                     <div className={css.product_name_div}>
                                         <p className={css.product_text}>Product name</p>
@@ -77,23 +77,23 @@ const toggleModal = () => {
                             ))
                         ) : (
                             <div className={css.product_details}>
-                                        <img className={css.product_photo} src={data.product.image} alt={`Product`} />
-                                        <div className={css.product_name_div}>
-                                            <p className={css.product_text}>Product name</p>
-                                            <p className={css.product_detail}>{data.product.product_name}</p>
-                                        </div>
-                                        <div className={css.product_div}>
-                                            <p className={css.product_text}>Price</p>
-                                            <p className={css.product_detail}>{data.product.price}</p>
-                                        </div>
-                                         <div className={css.product_div}>
-                                            <p className={css.product_text}>QTY</p>
-                                            <p className={css.product_quantity}>{data.product.quantity}</p>
-                                        </div>
-                                         <div className={css.product_div}>
-                                            <p className={css.product_text}>Total</p>
-                                            <p className={css.product_detail}>{data.product.total}</p>
-                                        </div>
+                                <img className={css.product_photo} src={data.product.image} alt={`Product`} />
+                                <div className={css.product_name_div}>
+                                    <p className={css.product_text}>Product name</p>
+                                    <p className={css.product_detail}>{data.product.product_name}</p>
+                                </div>
+                                <div className={css.product_div}>
+                                    <p className={css.product_text}>Price</p>
+                                    <p className={css.product_detail}>{data.product.price}</p>
+                                </div>
+                                 <div className={css.product_div}>
+                                    <p className={css.product_text}>QTY</p>
+                                    <p className={css.product_quantity}>{data.product.quantity}</p>
+                                </div>
+                                 <div className={css.product_div}>
+                                    <p className={css.product_text}>Total</p>
+                                    <p className={css.product_detail}>{data.product.total}</p>
+                                </div>
                             </div>
                         )}
                         </div>

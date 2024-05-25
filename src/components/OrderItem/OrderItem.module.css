@@ -1,20 +1,31 @@
-.orderContainer{
+.orderContainer {
+    width: 100%;
     border-radius: 24px;
     border: 1px solid #FCB654;
     padding: 20px;
     margin-bottom: 20px;
 }
-.orderitems{
+
+.orderitems {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 5px;
 }
-.order_data{
+
+.order_data {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
-.order_number_and_date{
+
+.total_amount_text {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+}
+
+.order_number_and_date {
     font-family: DM Mono;
     font-size: 16px;
     font-weight: 400;
@@ -24,7 +35,8 @@
     color: #252525;
     opacity: 0.8;
 }
-.order_status_done{
+
+.order_status_done {
     font-family: Poppins;
     font-size: 18px;
     font-weight: 500;
@@ -34,7 +46,8 @@
     opacity: 0.8;
     color: #FCB654;
 }
-.order_status_canceled{
+
+.order_status_canceled {
     font-family: Poppins;
     font-size: 18px;
     font-weight: 500;
@@ -44,7 +57,8 @@
     opacity: 0.8;
     color: #252525;  
 }
-.order_amount_text{
+
+.order_amount_text {
     font-family: DM Mono;
     font-size: 16px;
     font-weight: 400;
@@ -54,6 +68,7 @@
     opacity: 0.8;
     color: #252525;
 }
+
 .order_amount_number{
     font-family: Poppins;
     font-size: 18px;
@@ -70,33 +85,41 @@
     opacity: 0.8;
     color: #252525;
 }
+
 .show_more_button{
     background: transparent;
     border: none;
     transform: rotate(90deg);
 }
+
 .show_more_button svg{
     width: 22px;
     height: 14px;
 
 }
+
 .line{
     width: 100%;
     background-color: #FCB654;
     height: 1px;
     margin: 20px 0 ;
 }
-.more_details_content{
+
+.more_details_content {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
 }
-.more_order_details{
+
+.more_order_details {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.details_text{
+
+.details_text {
     font-family: Poppins;
     font-size: 18px;
     font-weight: 500;
@@ -104,22 +127,23 @@
     letter-spacing: 0em;
     text-align: left;
     opacity: 0.8;
-    max-width: 171px;
-    width: 100%;
-
 }
-.product_details{
+
+.product_details {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     gap: 30px;
     margin-bottom: 22px;
 }
+
 .product_photo{
     width: 50px;
     height: 50px;
     border: 1px solid #FCB654;
     border-radius: 50%;
 }
+
 .product_text{
     font-family: DM Mono;
     font-size: 16px;
@@ -131,6 +155,7 @@
     color: #252525;
 
 }
+
 .product_detail{
     font-family: DM Mono;
     font-size: 18px;
@@ -143,17 +168,21 @@
     width: 100%;
 
 }
+
 .product_div{
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
+
 .product_name_div{
     display: flex;
     flex-direction: column;
-    width: 192px;
+    max-width: 192px;
+    width: 100%;
     gap: 4px;
 }
+
 .product_quantity{
     font-family: Poppins;
     font-size: 18px;
@@ -163,18 +192,21 @@
     text-align: left;
     color: #252525;
 }
+
 .payment_container{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 13px;
 }
-.payment_details_container{
+
+.payment_details_container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.payment_details_data{
+
+.payment_details_data {
     font-family: Poppins;
     font-size: 18px;
     font-weight: 400;
@@ -184,6 +216,7 @@
     color: #252525;
 
 }
+
 .payment_details{
     font-family: DM Mono;
     font-size: 16px;
@@ -195,6 +228,7 @@
     color: #252525;
 
 }
+
 .feedback_button{
     font-family: DM Mono;
     font-size: 16px;
@@ -208,4 +242,44 @@
     border: none;
     margin-top: 18px;
 
+}
+
+@media (max-width: 706px) {
+    .product_wrapper {
+        width: 100%;
+    }
+
+    .product_details {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 425px) {
+    .orderContainer {
+        padding: 10px 15px;
+    }
+
+    .product_photo {
+        width: 30px;
+        height: 30px;
+    }
+
+    .details_text,
+    .more_order_details {
+        font-size: 13px;
+    }
+
+    .product_detail,
+    .product_quantity {
+        font-size: 12px;
+    }
+
+    .payment_details_container {
+        gap: 10px;
+    }
+    
+    .payment_details_data {
+        font-size: 13px;
+        text-align: right;
+    }
 }

@@ -1,14 +1,25 @@
-.headed_text{
-        font-family: DM Mono;
-        font-size: 40px;
-        font-weight: 400;
-        line-height: 52px;
-        letter-spacing: -0.06em;
-        text-align: left;
-        margin-bottom: 30px;
+.wrapper {
+    display: flex;
+    gap: 30px;
 }
+
+.title {
+    font-family: DM Mono;
+    font-size: 40px;
+    line-height: 52px;
+    font-weight: 400;
+    letter-spacing: -0.06em;
+    margin-bottom: 30px;
+}
+
 .container {
     padding-top: 60px;
-    margin-left: 441px;
+    max-width: 855px;
+    width: 100%;
+}
 
+@media(max-width: 835px) {
+    .title {
+        margin-bottom: 20px;
+    }
 }

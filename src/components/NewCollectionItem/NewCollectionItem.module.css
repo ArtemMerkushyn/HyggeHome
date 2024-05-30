@@ -63,6 +63,9 @@
     font-weight: 400;
     line-height: normal;
     letter-spacing: -1.44px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .priceItem {

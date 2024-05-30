@@ -85,9 +85,10 @@
 }
 
 .icons {
-    fill: none;
+    fill: transparent;
     stroke: #fcb654;
     cursor: pointer;
+    transition: all .1s linear;
 }
 
 .icons:hover {

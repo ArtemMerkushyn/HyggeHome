@@ -56,16 +56,21 @@ export default function NewCollectionItem({ item }) {
     );
   };
 
+  const handleError = (e) => {
+    e.target.src = '/images/notFound/broken-images.png';
+  };
+
   return (
     <div>
       <li className={styles.cardItem}>
         <div className={styles.itemWrapper}>
           <img
             className={styles.cardImage}
-            src={item.image ? item.image[0] : imageNotFound}
+            src={item.image[0]}
             alt="Product"
-                  />
-                  <div className={styles.line}>
+            onError={handleError}
+          />
+          <div className={styles.line}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="374"
@@ -132,6 +137,7 @@ export default function NewCollectionItem({ item }) {
           src={item.picture ? item.picture : imageNotFound}
           alt="Product"
           onClick={() => handleToProductPage(item)}
+          onError={handleError}
         />
       </li>
       {pathName === '/wish' && (

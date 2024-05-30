@@ -31,9 +31,7 @@
     transition: opacity 0.3s ease, transform 0.3s ease;
     transform: scale(1);
 }
-.infoWrapper .priceItem{
 
-}
 .cardPicture:hover {
     top: 0;
     left: 0;
@@ -48,6 +46,7 @@
 .cardPicture:hover .itemWrapper {
     display: none;
 }
+
 .infoWrapper{
     display: flex;
     justify-content: space-between;
@@ -100,11 +99,16 @@
     height: 24px;
     background-color: transparent;
     border: none;
+    position: relative;
+    z-index: 10;
 }
 
 .cartButtom {
-   background: #fff; 
-   border: none;
+    background: #fff; 
+    border: none;
+    background: transparent;
+    position: relative;
+    z-index: 10;
 }
 
 .button {

@@ -1,88 +1,52 @@
-import Box from '@mui/material/Box';
-import Slider from '@mui/material/Slider';
+import { useState, useEffect } from 'react';
 import styles from './InputRange.module.css';
-import { useEffect, useState } from 'react';
+import ReactSlider from 'react-slider';
 
 export const InputRange = ({ price, applyFilterPrice }) => {
-  const [min, setMin] = useState(0);
-  const [max, setMax] = useState(100);
-  const step = Math.round(max / min);
-  const minDistance = (max - min) * 0.08;
-  const [value, setValue] = useState([0, 0]);
-  const [inputLeft, setInputLeft] = useState(min.toString());
-  const [inputRight, setInputRight] = useState(max.toString());
+  const [values, setValues] = useState([price[0], price[1]]);
 
-  // useEffect(() => {
-  //   if (price.length > 0) {
-  //     setMin(price[0]);
-  //     setMax(price[1]);
-  //     setInputLeft(price[0]);
-  //     setInputRight(price[1]);
-  //   }
-  // }, [price]);
-
-  const handleChange = (_event, newValue, activeThumb) => {
-    if (!Array.isArray(newValue)) {
-      return;
+  useEffect(() => {
+    if (price && price.length === 2) {
+      setValues([price[0], price[1]]);
     }
+  }, [price]);
 
-    if (newValue[1] - newValue[0] < minDistance) {
-      if (activeThumb === 0) {
-        const clamped = Math.min(newValue[0], max - minDistance);
-        setValue([clamped, clamped + minDistance]);
-      } else {
-        const clamped = Math.max(newValue[1], minDistance);
-        setValue([clamped - minDistance, clamped]);
-      }
-    } else {
-      setValue(newValue);
+  const handleInputChange = (index, event) => {
+    const newValue = Number(event.target.value);
+    if (!isNaN(newValue)) {
+      const newValues = [...values];
+      newValues[index] = newValue;
+      setValues(newValues);
     }
   };
-
-  const handleChangeInput = (index, e) => {
-    let parsedValue = parseInt(e);
-    if (isNaN(parsedValue)) {
-      parsedValue = 0;
-    }
-
-    if (index === 0) {
-      if (parsedValue > max) return;
-      setInputLeft([parsedValue.toString()]);
-    } else {
-      if (parsedValue > max) return;
-      setInputRight(parsedValue.toString());
-    }
-  };
-
-  // useEffect(() => {
-  //   setValue([inputLeft, inputRight]);
-  // }, [inputLeft, inputRight, value]);
 
   return (
     <>
-      <Box>
-        <Slider
-          step={step}
-          min={min}
-          max={max}
-          value={value}
-          onChange={handleChange}
-          valueLabelDisplay="off"
-          sx={{ color: '#FCB654' }}
-        />
-      </Box>
+      <ReactSlider
+        className={styles.slider}
+        onChange={setValues}
+        value={values}
+        min={price[0]}
+        max={price[1]}
+        step={1}
+        thumbClassName={styles.thumb}
+        trackClassName={styles.track}
+        minDistance={1}
+        pearling
+      />
+
       <div className={styles.priceInputs}>
         <input
           className={styles.priceInput}
           type="text"
-          value={value[0]}
-          onChange={e => handleChangeInput(0, e.target.value)}
+          value={values[0]}
+          onChange={event => handleInputChange(0, event)}
         />
         <input
           className={styles.priceInput}
           type="text"
-          value={value[1]}
-          onChange={e => handleChangeInput(1, e.target.value)}
+          value={values[1]}
+          onChange={event => handleInputChange(1, event)}
         />
       </div>
     </>

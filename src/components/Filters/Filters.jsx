@@ -43,7 +43,7 @@ export default function Filters({ price, colorsView, onUpdateFilteredData }) {
     const colors = Object.keys(selectedColors).filter(
       color => selectedColors[color],
     );
-    onUpdateFilteredData(colors);
+    onUpdateFilteredData({ colors });
     dispatch(addColor(colors));
 
     setOpenFilter(false);
@@ -65,7 +65,7 @@ export default function Filters({ price, colorsView, onUpdateFilteredData }) {
         }}
       >
         <h5>Price range:</h5>
-        <InputRange applyFilterPrice={openFilter} price={price} />
+        <InputRange applyFilterPrice={onUpdateFilteredData} price={price} />
         {colorsView ? (
           <div className={styles.colorFilters}>
             <h5>Color:</h5>

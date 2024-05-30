@@ -51,10 +51,16 @@ export const Candles = () => {
     setPage(number);
   };
 
-  const updateFilteredData = colors => {
-    setMin(minPrice);
-    setMax(maxPrice);
-    setColors(colors);
+  const updateFilteredData = ({ minPrice, maxPrice, colors }) => {
+    if (minPrice !== undefined) {
+      setMin(minPrice);
+    }
+    if (maxPrice !== undefined) {
+      setMax(maxPrice);
+    }
+    if (colors !== undefined) {
+      setColors(colors);
+    }
   };
 
   useEffect(() => {

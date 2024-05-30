@@ -1,6 +1,6 @@
 import React from 'react';
 import NewCollectionItem from '../NewCollectionItem/NewCollectionItem';
-import CardItem from '../CardItem/CardItem';
+
 import styles from './CardList.module.css';
 import SkeletonProductLib from '../skeleton/SkeletonProductLib';
 import imgError from '../../image/error.jpeg';

@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+const headersCors = "credentials: 'include', mode: 'cors',";
+
 export const servicesApi = createApi({
   reducerPath: 'servicesApi',
   baseQuery: fetchBaseQuery({
@@ -46,11 +48,15 @@ export const servicesApi = createApi({
       query: name => `/search?query=${name}`,
     }),
     getFilterPrice: builder.query({
-      query: ({ min, max }) => `/search?min=${min}&max=${max}`,
+      query: ({ min, max }) => ({
+        url: `/search?min=${min}&max=${max}`,
+        headersCors
+      })
     }),
     registerUser: builder.mutation({
       query: newUser => ({
         url: '/register',
+        headersCors,
         method: 'POST',
         body: newUser,
       }),
@@ -58,6 +64,7 @@ export const servicesApi = createApi({
     loginUser: builder.mutation({
       query: user => ({
         url: '/login',
+        headersCors,
         method: 'POST',
         body: user,
       }),

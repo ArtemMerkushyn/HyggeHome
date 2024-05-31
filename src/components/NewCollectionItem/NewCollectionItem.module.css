@@ -100,16 +100,12 @@
     height: 24px;
     background-color: transparent;
     border: none;
-    position: relative;
-    z-index: 10;
 }
 
 .cartButtom {
     background: #fff; 
     border: none;
     background: transparent;
-    position: relative;
-    z-index: 10;
 }
 
 .button {

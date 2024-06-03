@@ -4,6 +4,8 @@ export const servicesApi = createApi({
   reducerPath: 'servicesApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://tc299.onrender.com',
+    credentials: 'include',
+    mode: 'cors',
   }),
   endpoints: builder => ({
     getCandles: builder.query({
@@ -53,6 +55,8 @@ export const servicesApi = createApi({
         url: '/register',
         method: 'POST',
         body: newUser,
+        credentials: 'include',
+        mode: 'cors',
       }),
     }),
     loginUser: builder.mutation({
@@ -60,6 +64,8 @@ export const servicesApi = createApi({
         url: '/login',
         method: 'POST',
         body: user,
+        credentials: 'include',
+        mode: 'cors',
       }),
     }),
   }),

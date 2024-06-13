@@ -43,6 +43,11 @@ export const Candles = () => {
     if (data) {
       setNewData(data.results);
       setTotalPages(data.totalPages);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (data && !price.length) {
       setPrice([data.minPrice, data.maxPrice]);
     }
   }, [data]);
@@ -51,12 +56,12 @@ export const Candles = () => {
     setPage(number);
   };
 
-  const updateFilteredData = ({ minPrice, maxPrice, colors }) => {
-    if (minPrice !== undefined) {
-      setMin(minPrice);
+  const updateFilteredData = ({ minPr, maxPr, colors }) => {
+    if (minPr !== undefined) {
+      setMin(minPr);
     }
-    if (maxPrice !== undefined) {
-      setMax(maxPrice);
+    if (maxPr !== undefined) {
+      setMax(maxPr);
     }
     if (colors !== undefined) {
       setColors(colors);

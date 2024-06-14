@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Button from '../UI/Button/Button.jsx';
 import styles from './Filters.module.css';
 import { InputRange } from '../InputRange/InputRange.jsx';
@@ -17,9 +17,14 @@ const colors = [
   'Pink',
 ];
 
-export default function Filters({ price, colorsView, onUpdateFilteredData }) {
+export default function Filters({
+  colorsView,
+  onUpdateFilteredData,
+  currentPrice,
+  setCurrentPrice,
+  defaultPrice,
+}) {
   const [openFilter, setOpenFilter] = useState(false);
-  const [priceRange, setPriceRange] = useState([]);
   const [selectedColors, setSelectedColors] = useState({
     Blue: false,
     Green: false,
@@ -32,12 +37,6 @@ export default function Filters({ price, colorsView, onUpdateFilteredData }) {
   });
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (price) {
-      setPriceRange(price);
-    }
-  }, []);
 
   const handleItemChange = color => {
     setSelectedColors(prevColors => ({
@@ -52,8 +51,8 @@ export default function Filters({ price, colorsView, onUpdateFilteredData }) {
     );
     onUpdateFilteredData({
       colors,
-      minPr: priceRange[0],
-      maxPr: priceRange[1],
+      minPr: currentPrice[0],
+      maxPr: currentPrice[1],
     });
     dispatch(addColor(colors));
 
@@ -76,7 +75,11 @@ export default function Filters({ price, colorsView, onUpdateFilteredData }) {
         }}
       >
         <h5>Price range:</h5>
-        <InputRange price={price} setPriceRange={setPriceRange} />
+        <InputRange
+          defaultPrice={defaultPrice}
+          currentPrice={currentPrice}
+          setCurrentPrice={setCurrentPrice}
+        />
         {colorsView ? (
           <div className={styles.colorFilters}>
             <h5>Color:</h5>

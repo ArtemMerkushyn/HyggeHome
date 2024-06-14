@@ -12,13 +12,12 @@ import Pagination from '../../components/Pagination/Pagination';
 
 export const LightingDecor = () => {
   const sortValue = useSelector(state => state.filter.sortValue);
-  const minPrice = useSelector(state => state.filter.filter.minPrice);
-  const maxPrice = useSelector(state => state.filter.filter.maxPrice);
+  const [defaultPrice, setDefaultPrice] = useState([0, 0]);
+  const [currentPrice, setCurrentPrice] = useState([0, 0]);
   const [page, setPage] = useState(1);
   const [min, setMin] = useState('');
   const [max, setMax] = useState('');
   const [colors, setColors] = useState([]);
-  const [price, setPrice] = useState([]);
   const [sort, setSort] = useState({
     field: 'popular',
     dir: 'desc',
@@ -42,18 +41,24 @@ export const LightingDecor = () => {
     if (data) {
       setNewData(data.results);
       setTotalPages(data.totalPages);
-      setPrice([data.minPrice, data.maxPrice]);
+
+      if (!defaultPrice[0] && !defaultPrice[1]) {
+        setDefaultPrice([data.minPrice, data.maxPrice]);
+        setCurrentPrice([data.minPrice, data.maxPrice]);
+      }
     }
-  }, [data]);
+  }, [data, defaultPrice]);
 
-  const updateFilteredData = colors => {
-    setMin(minPrice);
-    setMax(maxPrice);
-    setColors(colors);
-  };
-
-  const currentPage = number => {
-    setPage(number);
+  const updateFilteredData = ({ minPr, maxPr, colors }) => {
+    if (minPr !== undefined) {
+      setMin(minPr);
+    }
+    if (maxPr !== undefined) {
+      setMax(maxPr);
+    }
+    if (colors !== undefined) {
+      setColors(colors);
+    }
   };
 
   useEffect(() => {
@@ -81,13 +86,16 @@ export const LightingDecor = () => {
         <span className={styles.wrapperSpan}> Lighting Decor</span>
       </div>
       <h2 className={styles.title}>
-        Make your room unique with <span className={styles.spanTitle}>lighting decor</span>
+        Make your room unique with{' '}
+        <span className={styles.spanTitle}>lighting decor</span>
       </h2>
       <div className={styles.wrapperButtons}>
         <Filters
           colorsView={false}
           onUpdateFilteredData={updateFilteredData}
-          price={price}
+          currentPrice={currentPrice}
+          setCurrentPrice={setCurrentPrice}
+          defaultPrice={defaultPrice}
         />
         <div className={styles.dropdownList}>
           Sort by
@@ -100,7 +108,7 @@ export const LightingDecor = () => {
         isLoading={isLoading}
         totalPages={totalPages}
       />
-      <Pagination totalPages={totalPages} newPage={currentPage} />
+      <Pagination totalPages={totalPages} newPage={setPage} />
     </div>
   );
 };

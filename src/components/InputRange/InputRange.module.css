@@ -71,3 +71,15 @@
   letter-spacing: -0.84px;
   outline: none;
 }
+
+/* Chrome, Safari, Edge, Opera */
+.priceInput::-webkit-outer-spin-button,
+.priceInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.priceInput[type='number'] {
+  -moz-appearance: textfield;
+}

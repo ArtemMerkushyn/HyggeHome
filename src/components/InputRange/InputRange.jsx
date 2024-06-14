@@ -1,48 +1,55 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './InputRange.module.css';
 import ReactSlider from 'react-slider';
 
-export const InputRange = ({ price, setPriceRange }) => {
-  const [values, setValues] = useState([price[0], price[1]]);
-  const [range, setRange] = useState([0, 0]);
+export const InputRange = ({ defaultPrice, currentPrice, setCurrentPrice }) => {
+  const [inputMinValue, setMin] = useState(0);
+  const [inputMaxValue, setMax] = useState(0);
 
   useEffect(() => {
-    if (price && price.length === 2) {
-      setValues([price[0], price[1]]);
-      setRange([price[0], price[1]]);
+    setMin(currentPrice[0]);
+    setMax(currentPrice[1]);
+  }, [currentPrice]);
+
+  function onSliderChange(event) {
+    setCurrentPrice(event);
+  }
+
+  function onMinChange() {
+    let minPrice = +inputMinValue;
+
+    if (+minPrice < defaultPrice[0]) {
+      minPrice = defaultPrice[0];
     }
-  }, [price]);
-
-  const handleInputChange = (index, event) => {
-    let newValue = Number(event.target.value);
-    if (!isNaN(newValue)) {
-      const newValues = [...values];
-
-      if (index === 0 && newValue < price[0]) {
-        newValue = price[0];
-      }
-      if (index === 1 && newValue > price[1]) {
-        newValue = price[1];
-      }
-      newValues[index] = newValue;
-      setValues(newValues);
-      setPriceRange(newValues);
+    if (+minPrice >= currentPrice[1]) {
+      minPrice = currentPrice[1] - 1;
     }
-  };
 
-  const setSlider = event => {
-    setValues(event);
-    setPriceRange(event);
-  };
+    setCurrentPrice([minPrice, currentPrice[1]]);
+    setMin(minPrice);
+  }
+
+  function onMaxChange() {
+    let maxPrice = +inputMaxValue;
+
+    if (maxPrice > defaultPrice[1]) {
+      maxPrice = defaultPrice[1];
+    }
+    if (+inputMaxValue <= currentPrice[0]) {
+      maxPrice = currentPrice[0] + 1;
+    }
+    setCurrentPrice([currentPrice[0], maxPrice]);
+    setMax(maxPrice);
+  }
 
   return (
     <>
       <ReactSlider
         className={styles.slider}
-        onChange={setSlider}
-        value={values}
-        min={range[0]}
-        max={range[1]}
+        onChange={onSliderChange}
+        value={currentPrice}
+        min={defaultPrice[0]}
+        max={defaultPrice[1]}
         step={1}
         thumbClassName={styles.thumb}
         trackClassName={styles.track}
@@ -53,17 +60,17 @@ export const InputRange = ({ price, setPriceRange }) => {
       <div className={styles.priceInputs}>
         <input
           className={styles.priceInput}
-          type="text"
-          value={values[0]}
-          onChange={event => handleInputChange(0, event)}
-          readOnly
+          type="number"
+          value={inputMinValue}
+          onChange={e => setMin(e.target.value)}
+          onBlur={() => onMinChange()}
         />
         <input
           className={styles.priceInput}
-          type="text"
-          value={values[1]}
-          onChange={event => handleInputChange(1, event)}
-          readOnly
+          type="number"
+          value={inputMaxValue}
+          onChange={e => setMax(e.target.value)}
+          onBlur={() => onMaxChange()}
         />
       </div>
     </>

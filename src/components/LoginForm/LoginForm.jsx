@@ -27,6 +27,7 @@ const LoginForm = ({ closeModal, handleRegisterClick }) => {
     const response = await loginUser({
       email: values.email,
       password: values.password,
+      regType: 'email',
     });
     if (response.error) {
       console.error('Login failed:', response.error);

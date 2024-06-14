@@ -12,13 +12,13 @@ import Pagination from '../../components/Pagination/Pagination';
 
 export const Candles = () => {
   const sortValue = useSelector(state => state.filter.sortValue);
-  const minPrice = useSelector(state => state.filter.filter.minPrice);
-  const maxPrice = useSelector(state => state.filter.filter.maxPrice);
   const [page, setPage] = useState(1);
   const [min, setMin] = useState('');
   const [max, setMax] = useState('');
-  const [price, setPrice] = useState([]);
   const [colors, setColors] = useState([]);
+  const [defaultPrice, setDefaultPrice] = useState([0, 0]);
+  const [currentPrice, setCurrentPrice] = useState([0, 0]);
+
   const [sort, setSort] = useState({
     field: 'popular',
     dir: 'desc',
@@ -43,18 +43,13 @@ export const Candles = () => {
     if (data) {
       setNewData(data.results);
       setTotalPages(data.totalPages);
-    }
-  }, [data]);
 
-  useEffect(() => {
-    if (data && !price.length) {
-      setPrice([data.minPrice, data.maxPrice]);
+      if (!defaultPrice[0] && !defaultPrice[1]) {
+        setDefaultPrice([data.minPrice, data.maxPrice]);
+        setCurrentPrice([data.minPrice, data.maxPrice]);
+      }
     }
-  }, [data]);
-
-  const currentPage = number => {
-    setPage(number);
-  };
+  }, [data, defaultPrice]);
 
   const updateFilteredData = ({ minPr, maxPr, colors }) => {
     if (minPr !== undefined) {
@@ -100,7 +95,9 @@ export const Candles = () => {
         <Filters
           colorsView={true}
           onUpdateFilteredData={updateFilteredData}
-          price={price}
+          currentPrice={currentPrice}
+          setCurrentPrice={setCurrentPrice}
+          defaultPrice={defaultPrice}
         />
         <div className={styles.dropdownList}>
           Sort by
@@ -113,7 +110,7 @@ export const Candles = () => {
         isLoading={isLoading}
         totalPages={totalPages}
       />
-      <Pagination totalPages={totalPages} newPage={currentPage} />
+      <Pagination totalPages={totalPages} newPage={setPage} />
     </div>
   );
 };

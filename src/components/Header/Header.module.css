@@ -1,142 +1,153 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
-    align-items: center;
-    margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  margin-top: 30px;
 }
 
 .logo {
-    font-family: "DM Mono";
-    font-size: 24px;
-    line-height: normal;
-    letter-spacing: -0.72px;
-    color: #6883A0;
-    display: flex;
-    gap: 10px;
-    align-items: center;
+  font-family: 'DM Mono';
+  font-size: 24px;
+  line-height: normal;
+  letter-spacing: -0.72px;
+  color: #6883a0;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 .logo svg {
-    width: 88px;
-    height: 60px;
+  width: 88px;
+  height: 60px;
 }
 
 .yellow {
-    color: #FCB654;
+  color: #fcb654;
 }
 
 .wrapper {
-    display: flex;
-    align-items: center;
-    gap: 40px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
 
 .wrapper__action {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .wrapper svg {
-    fill: #252525;
-    cursor: pointer;
-    transition: all .2s linear;
-    width: 24px;
-    height: 31px;
-    border-bottom: 2px solid transparent;
+  fill: #252525;
+  cursor: pointer;
+  transition: all 0.2s linear;
+  width: 24px;
+  height: 31px;
+  border-bottom: 2px solid transparent;
 }
 
 .wrapper svg:hover {
-    border-bottom: 2px solid #FCB654;
+  border-bottom: 2px solid #fcb654;
 }
 
 .wrapper a {
-    display: flex;
-    align-items: center;
-    height: 31px;
+  display: flex;
+  align-items: center;
+  height: 31px;
 }
 
 .burger__btn {
-    width: 36px;
-    height: 24px;
-    background: #fff;
-    position: relative;
-    outline: none;
-    border: none;
-    padding: 10px 5px;
-    display: none;
+  width: 36px;
+  height: 24px;
+  background: #fff;
+  position: relative;
+  outline: none;
+  border: none;
+  padding: 10px 5px;
+  display: none;
 }
 
 .burger__line {
-    width: 100%;
-    height: 4px;
-    position: absolute;
-    left: 0;
-    background: #FCB654;
-    border-radius: 50px;
+  width: 100%;
+  height: 4px;
+  position: absolute;
+  left: 0;
+  background: #fcb654;
+  border-radius: 50px;
 }
 
 .burger__line:nth-child(1) {
-    top: 0;
+  top: 0;
 }
 
 .burger__line:nth-child(2) {
-    top: 50%;
-    transform: translateY(-50%);
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .burger__line:nth-child(3) {
-    bottom: 0;
+  bottom: 0;
 }
 
 .wishListContainer {
-    position: fixed;
-    right: 10%;
-    top: 100px;
-    z-index: 9999;
+  position: fixed;
+  right: 10%;
+  top: 100px;
+  z-index: 9999;
+}
+.overflow {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
 }
 
 .heartwrapper {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-@media(max-width: 1260px) {
-    .header {
-        margin-top: 10px;
-    }
-    
-    .burger__btn {
-        display: block;
-    }
+@media (max-width: 1260px) {
+  .header {
+    margin-top: 10px;
+  }
 
-    .burger__menu {
-        display: block;
-    }
+  .burger__btn {
+    display: block;
+  }
+
+  .burger__menu {
+    display: block;
+  }
 }
 
-@media(max-width: 764px) {
-    .logo {
-        font-size: 18px;
-    }
-    
-    .logo svg {
-        width: 60px;
-        height: 40px;
-    }
+@media (max-width: 764px) {
+  .logo {
+    font-size: 18px;
+  }
+
+  .logo svg {
+    width: 60px;
+    height: 40px;
+  }
 }
 
-@media(max-width: 425px) {
-    .wrapper__action {
-        gap: 5px;
-    }
+@media (max-width: 425px) {
+  .wrapper__action {
+    gap: 5px;
+  }
 
-    .link svg{
-        display: none;
-    }
+  .link svg {
+    display: none;
+  }
 
-    .heartwrapper {
-        display: none;
-    }
+  .heartwrapper {
+    display: none;
+  }
 }

@@ -6,7 +6,7 @@
   position: relative;
   padding: 15px;
 }
-.deleteFromFavoriteButton{
+.deleteFromFavoriteButton {
   background-color: #fcb654;
   width: 33px;
   height: 33px;
@@ -17,7 +17,7 @@
   top: -4px;
   z-index: 99998;
 }
-.deleteFromFavoriteButton svg{
+.deleteFromFavoriteButton svg {
   width: 10px;
   height: 10px;
   fill: white;
@@ -85,17 +85,15 @@
   letter-spacing: -0.06em;
   text-align: left;
   height: 40px;
-
 }
 
 .priceItem {
-  font-family: "DM Mono";
+  font-family: 'DM Mono';
   font-size: 18px;
   font-weight: 400;
   line-height: 23.44px;
   letter-spacing: -0.06em;
   text-align: left;
-
 }
 .price_and_icons {
   display: flex;

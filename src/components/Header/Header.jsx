@@ -17,10 +17,9 @@ export const Header = () => {
   };
 
   const [burgerMenu, SetBurgerMenu] = useState(false);
-
+  const [wish, setWish] = useState(false);
   const [modal, setModal] = useState(false);
   const [register, setRegister] = useState(false);
-  const [wishListOpen, setWishListOpen] = useState(false);
   const location = useLocation();
   const authorized = localStorage.getItem('token');
 
@@ -34,6 +33,21 @@ export const Header = () => {
       document.body.style.overflow = 'hidden';
       document.body.style.marginRight = '15px';
       setRegister(false);
+    } else {
+      document.body.style.overflow = 'auto';
+      document.body.style.marginRight = '';
+    }
+  };
+
+  const handleModalClick = e => {
+    e.stopPropagation();
+  };
+
+  const toggleWish = () => {
+    setWish(!wish);
+    if (!wish) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.marginRight = '15px';
     } else {
       document.body.style.overflow = 'auto';
       document.body.style.marginRight = '';
@@ -63,10 +77,7 @@ export const Header = () => {
         <PagesLinks />
         <div className={styles.wrapper__action}>
           <Search />
-          <div
-            className={styles.heartwrapper}
-            onClick={() => setWishListOpen(prev => !prev)}
-          >
+          <div className={styles.heartwrapper} onClick={toggleWish}>
             <Icons icon={'heart'} />
           </div>
           <NavLink
@@ -127,9 +138,11 @@ export const Header = () => {
         SetBurgerMenu={SetBurgerMenu}
         toggleModal={toggleModal}
       />
-      {wishListOpen && (
-        <div className={styles.wishListContainer}>
-          <WIshListModal toggleAction={setWishListOpen} />
+      {wish && (
+        <div className={styles.overflow} onClick={toggleWish}>
+          <div className={styles.wishListContainer} onClick={handleModalClick}>
+            <WIshListModal toggleAction={toggleWish} />
+          </div>
         </div>
       )}
     </header>

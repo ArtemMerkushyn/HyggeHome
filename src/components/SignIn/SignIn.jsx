@@ -145,7 +145,7 @@ export const SignIn = ({ toggleModal, handleLoginClick }) => {
         />
       </form>
       <div className={css.logIn_with_container}>
-        <h2 className={css.logIn_with}>Log in with</h2>
+        <h2 className={css.logIn_with}>Sign in with</h2>
         <GoogleRegister modalAction={toggleModal} />
         <CustomFacebookLoginButton modalAction={toggleModal} />
       </div>

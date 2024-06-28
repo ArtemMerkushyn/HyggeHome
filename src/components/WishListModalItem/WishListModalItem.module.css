@@ -1,3 +1,7 @@
+.cardItem__wrapper {
+  position: relative;
+}
+
 .cardItem {
   width: 210px;
   height: 232px;
@@ -5,7 +9,9 @@
   border: 1px solid #fcb654;
   position: relative;
   padding: 15px;
+  overflow: hidden;
 }
+
 .deleteFromFavoriteButton {
   background-color: #fcb654;
   width: 33px;
@@ -15,8 +21,9 @@
   border-radius: 50%;
   right: -4px;
   top: -4px;
-  z-index: 99998;
+  z-index: 10;
 }
+
 .deleteFromFavoriteButton svg {
   width: 10px;
   height: 10px;
@@ -26,6 +33,7 @@
 .cardItem .cardImage {
   padding: 0;
 }
+
 .itemWrapper .cardImage {
   align-self: center;
   padding: 0;
@@ -45,12 +53,13 @@
   position: absolute;
   object-fit: cover;
   width: 210px;
-  height: 119px;
+  height: 232px;
   top: 0;
   left: 0;
   opacity: 0;
   transition: opacity 0.3s ease, transform 0.3s ease;
   transform: scale(1);
+  z-index: 1;
 }
 
 .cardPicture:hover {
@@ -62,12 +71,8 @@
   transition: opacity 0.5s ease, transform 0.5s ease;
   transform: scale(1.05);
   cursor: pointer;
-  z-index: 99999;
+  z-index: 8;
   border-radius: 24px;
-}
-
-.cardPicture:hover .itemWrapper {
-  display: none;
 }
 
 .infoWrapper {
@@ -100,6 +105,12 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 15px;
+  z-index: 5;
 }
 
 .iconsWrapper {
@@ -126,7 +137,7 @@
 }
 
 .cartButtom {
-  background: #fff;
+  background: transparent;
   border: none;
 }
 

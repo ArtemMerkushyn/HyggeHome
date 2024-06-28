@@ -63,10 +63,11 @@ const WishListModalItem = ({ item, toggleAction }) => {
   };
 
   return (
+    <div className={styles.cardItem__wrapper}>
+      <button className={styles.deleteFromFavoriteButton} onClick={handleRemoveFavorite}>
+        <Icons icon={'cross'}/>
+      </button>
       <li className={styles.cardItem}>
-          <button className={styles.deleteFromFavoriteButton} onClick={handleRemoveFavorite}>
-              <Icons icon={'cross'}/>
-          </button>
         <div className={styles.itemWrapper}>
           <img
             className={styles.cardImage}
@@ -133,7 +134,7 @@ const WishListModalItem = ({ item, toggleAction }) => {
           
               <p className={styles.priceItem}>${item.price}</p>
               </div>
-              </div>
+            </div>
               <img
                 className={styles.cardPicture}
                 src={item.picture ? item.picture : imageNotFound}
@@ -141,9 +142,8 @@ const WishListModalItem = ({ item, toggleAction }) => {
                 onClick={() => handleToProductPage(item)}
                 />
         </div>
-
-        
       </li>
+    </div>
   );
 }
 

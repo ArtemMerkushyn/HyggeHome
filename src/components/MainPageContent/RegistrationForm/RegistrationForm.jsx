@@ -7,9 +7,13 @@ import { useRegisterUserMutation } from '../../../redux/services';
 import { toast } from 'react-toastify';
 import css from './RegistrationForm.module.css';
 import Icons from '../../Icons/Icons';
+import { useSelector } from 'react-redux';
+import { selectCurtProducts, selectFavorites } from '../../../redux/selectors';
 
 export const RegistrationForm = ({ toggleModal }) => {
   const [registerUser] = useRegisterUserMutation();
+  const favoriteItems = useSelector(selectFavorites);
+  const cartItems = useSelector(selectCurtProducts);
   const [firstCheckbox, setFirstCheckbox] = useState(false);
   const [secondCheckbox, setSecondCheckbox] = useState(false);
   const [passwordVisability, setPasswordVisability] = useState(false);
@@ -18,6 +22,8 @@ export const RegistrationForm = ({ toggleModal }) => {
 
   const onSubmit = async values => {
     if (firstCheckbox === true) {
+      const wishList = favoriteItems.map(item => item._id);
+      const cartList = cartItems.map(item => item.dataProduct._id);
       try {
         await registerUser({
           email: values.email,
@@ -25,6 +31,8 @@ export const RegistrationForm = ({ toggleModal }) => {
           fullName: values.fullName,
           promo: secondCheckbox,
           regType: 'email',
+          wishList: wishList,
+          inCart: cartList,
         });
       } catch (error) {
         toast.error('Failed to register user. Please try again later.');
@@ -60,7 +68,6 @@ export const RegistrationForm = ({ toggleModal }) => {
 
       <form onSubmit={handleSubmit} autoComplete="off">
         <h2 className={css.modal_register_text}>Register Account</h2>
-
         <MyInput
           type="text"
           id="name"
@@ -73,7 +80,6 @@ export const RegistrationForm = ({ toggleModal }) => {
           errorField={errors.fullName}
           touched={touched.fullName}
         />
-
         <MyInput
           type="text"
           id="email"
@@ -86,7 +92,6 @@ export const RegistrationForm = ({ toggleModal }) => {
           errorField={errors.email}
           touched={touched.email}
         />
-
         <div className={css.hide_password}>
           <MyInput
             type={passwordVisability ? 'text' : 'password'}
@@ -112,7 +117,7 @@ export const RegistrationForm = ({ toggleModal }) => {
             )}
           </button>
         </div>
-
+        Назар, [02.07.2024 17:58]
         <div className={css.hide_password}>
           <MyInput
             type={confirmPasswordVisability ? 'text' : 'password'}

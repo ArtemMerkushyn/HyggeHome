@@ -26,7 +26,7 @@ export const SignIn = ({ toggleModal, handleLoginClick }) => {
         fullName: values.fullName,
         promo: secondCheckbox,
         regType: 'email',
-      });
+      }).then(data => console.log(data));
     } catch (error) {
       toast.error('Failed to register user. Please try again later.');
     }

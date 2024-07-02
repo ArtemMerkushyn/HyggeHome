@@ -117,7 +117,6 @@ export const RegistrationForm = ({ toggleModal }) => {
             )}
           </button>
         </div>
-        Назар, [02.07.2024 17:58]
         <div className={css.hide_password}>
           <MyInput
             type={confirmPasswordVisability ? 'text' : 'password'}

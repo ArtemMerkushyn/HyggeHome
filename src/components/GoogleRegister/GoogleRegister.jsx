@@ -4,23 +4,32 @@ import css from '../LoginForm/LoginForm.module.css';
 import Icons from '../Icons/Icons';
 import { toast } from 'react-toastify';
 import useGoogleProfile from '../../utils/helpers/useGoogleProfile';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setLoggedIn } from '../../redux/slices/userSlice';
 import { useRegisterUserMutation } from '../../redux/services';
+import { useNavigate } from 'react-router-dom';
+import { selectCurtProducts, selectFavorites } from '../../redux/selectors';
 
-const GoogleRegister = () => {
+const GoogleRegister = ({ modalAction }) => {
   const [user, setUser] = useState(null);
   const profile = useGoogleProfile(user);
   const [registerUser] = useRegisterUserMutation();
+  const favoriteItems = useSelector(selectFavorites);
+  const cartItems = useSelector(selectCurtProducts);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleUserRegistration = async profile => {
+    const wishList = favoriteItems.map(item => item._id);
+    const cartList = cartItems.map(item => item.dataProduct._id);
     const userData = {
       email: profile.email,
       verified_email: profile.verified_email,
       name: profile.name,
       id: profile.id,
       regType: 'google',
+      wishList: wishList,
+      inCart: cartList,
     };
 
     if (profile.verified_email === true) {
@@ -35,7 +44,10 @@ const GoogleRegister = () => {
   const handleSuccessLogin = async codeResponse => {
     setUser(codeResponse);
     dispatch(setLoggedIn({ userData: profile, token: 'bebra' }));
-    await handleUserRegistration(profile);
+    await handleUserRegistration(profile).then(data => {
+      modalAction();
+      navigate('/my-account');
+    });
   };
 
   const register = useGoogleLogin({

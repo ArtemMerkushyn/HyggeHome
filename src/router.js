@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
         element: <Search />,
       },
       {
-        path: '/:category/product/:id',
+        path: '/:category/product/:product_article',
         element: <Product />,
       },
       {

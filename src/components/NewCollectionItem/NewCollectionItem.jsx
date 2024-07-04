@@ -50,7 +50,7 @@ export default function NewCollectionItem({ item }) {
   const handleToProductPage = item => {
     navigate(
       `/${item.category.toLowerCase().replaceAll(' ', '-')}/product/${
-        item._id
+        item.article
       }`,
       { state: { item } },
     );

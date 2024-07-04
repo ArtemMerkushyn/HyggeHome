@@ -44,6 +44,9 @@ export const servicesApi = createApi({
         return `/books-and-journals?page=${page}&min=${min}&max=${max}&${colorParams}&sort=${sort.field}&dir=${sort.dir}`;
       },
     }),
+    getProduct: builder.query({
+      query: product_article => `/product?article=${product_article}`,
+    }),
     searchByName: builder.query({
       query: name => `/search?query=${name}`,
     }),
@@ -78,6 +81,7 @@ export const {
   useGetGetWarmQuery,
   useGetTableGamesQuery,
   useGetBooksAndJournalsQuery,
+  useGetProductQuery,
   useSearchByNameQuery,
   useGetFilterPriceQuery,
   useRegisterUserMutation,

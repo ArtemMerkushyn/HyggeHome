@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react';
 import styles from './InputRange.module.css';
 import ReactSlider from 'react-slider';
 
-export const InputRange = ({ defaultPrice, currentPrice, setCurrentPrice }) => {
-  const [inputMinValue, setMin] = useState(0);
-  const [inputMaxValue, setMax] = useState(0);
+export const InputRange = ({ defaultPrice = [0, 100], currentPrice = [0, 100], setCurrentPrice }) => {
+  const [inputMinValue, setMin] = useState(currentPrice[0]);
+  const [inputMaxValue, setMax] = useState(currentPrice[1]);
 
   useEffect(() => {
-    setMin(currentPrice[0]);
-    setMax(currentPrice[1]);
+    if (currentPrice && currentPrice.length >= 2) {
+      setMin(currentPrice[0]);
+      setMax(currentPrice[1]);
+    }
   }, [currentPrice]);
 
   function onSliderChange(event) {
@@ -63,16 +65,17 @@ export const InputRange = ({ defaultPrice, currentPrice, setCurrentPrice }) => {
           type="number"
           value={inputMinValue}
           onChange={e => setMin(e.target.value)}
-          onBlur={() => onMinChange()}
+          onBlur={onMinChange}
         />
         <input
           className={styles.priceInput}
           type="number"
           value={inputMaxValue}
           onChange={e => setMax(e.target.value)}
-          onBlur={() => onMaxChange()}
+          onBlur={onMaxChange}
         />
       </div>
     </>
   );
 };
+

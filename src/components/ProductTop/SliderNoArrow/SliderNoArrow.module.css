@@ -86,7 +86,7 @@
 @media screen and (min-width: 768px) and (max-width: 1157px) {
     .img {
         width: 370px;   
-        height: 353px;
+        height: 370px;
     }
 
     .dots {
@@ -94,8 +94,8 @@
     }
 
     .dot {
-        width: 50px;
-        height: 54px;
+        width: 70px;
+        height: 70px;
         border-radius: 12px;
     }
 }
@@ -107,7 +107,7 @@
 
     .img {
         width: 330px;
-        height: 319px;
+        height: 330px;
     }
 
     .dots {
@@ -124,5 +124,29 @@
     .like {
         width: 36px;
         height: 36px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .img {
+        width: calc(100vw - 30px);
+        height: calc(100vw - 30px);
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .slider {
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .img {
+        width: calc(100vw - 10px);
+        height: calc(100vw - 10px);
+    }
+
+    .dot {
+        width: 60px;
+        height: 60px;
     }
 }

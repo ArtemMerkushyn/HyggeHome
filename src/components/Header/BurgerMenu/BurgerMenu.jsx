@@ -38,7 +38,7 @@ export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
         ></button>
         <div className={styles.username}>
           {authorized ? (
-            <spam>{!storedUser ? 'User' : storedUser.name}</spam>
+            <span>{!storedUser ? 'User' : storedUser.name}</span>
           ) : (
             <span>Houseguest</span>
           )}

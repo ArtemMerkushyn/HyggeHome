@@ -16,11 +16,10 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.wrapper}>
-        <NavLink to="/">
-          <div className={styles.container}>
+        <div className={styles.container}>
+          <NavLink to="/">
             <div className={styles.wrapperLogo}>
               <Icons icon={'logo'} />
-
               <div className={styles.text_container}>
                 <p className={styles.textLogo}>
                   <span>H</span>
@@ -36,34 +35,34 @@ export default function Footer() {
                 </p>
               </div>
             </div>
-            <div className={styles.iconsWrapper_tablet}>
-              <a
-                href="https://www.facebook.com"
-                aria-label="Read more about Hygge Home"
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-              >
-                <FaFacebook className={styles.icons_tablet} />
-              </a>
-              <a
-                href="https://twitter.com/"
-                aria-label="Read more about Hygge Home"
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-              >
-                <FaXTwitter className={styles.icons_tablet} />
-              </a>
-              <a
-                href="https://www.instagram.com/"
-                aria-label="Read more about Hygge Home"
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-              >
-                <FaInstagram className={styles.icons_tablet} />
-              </a>
-            </div>
+          </NavLink>
+          <div className={styles.iconsWrapper_tablet}>
+            <a
+              href="https://www.facebook.com"
+              aria-label="Read more about Hygge Home"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+            >
+              <FaFacebook className={styles.icons_tablet} />
+            </a>
+            <a
+              href="https://twitter.com/"
+              aria-label="Read more about Hygge Home"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+            >
+              <FaXTwitter className={styles.icons_tablet} />
+            </a>
+            <a
+              href="https://www.instagram.com/"
+              aria-label="Read more about Hygge Home"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+            >
+              <FaInstagram className={styles.icons_tablet} />
+            </a>
           </div>
-        </NavLink>
+        </div>
         <div className={styles.nav}>
           <div className={styles.nav_wrapper_1}>
             <NavLink style={active} to="/candles">

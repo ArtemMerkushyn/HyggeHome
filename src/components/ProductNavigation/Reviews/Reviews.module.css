@@ -1,3 +1,7 @@
+.review {
+  margin-top: 20px;
+}
+
 .name {
   color: #252525;
   font-family: 'DM Mono';
@@ -33,7 +37,7 @@
 }
 
 .rectangle {
-  width: 1303px;
+  /* width: 1303px; */
   height: 1px;
   flex-shrink: 0;
   border-radius: 24px;

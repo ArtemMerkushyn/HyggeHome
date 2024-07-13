@@ -11,12 +11,12 @@ export default function Reviews() {
       <ul>
         {items.map((item, index) => (
           <div key={index}>
-            <li style={{ display: 'flex', marginTop: '20px' }}>
-              <div style={{ width: '332px' }}>
+            <li className={styles.review} style={{ display: 'flex' }}>
+              <div className={styles.review__left} style={{ width: '332px' }}>
                 <p className={styles.name}>{item.name}</p>
                 <p className={styles.date}>{item.date}</p>
               </div>
-              <div style={{ width: '743px' }}>
+              <div className={styles.review__right} style={{ width: '743px' }}>
                 <Rating rating={item.rating} />
                 <p className={styles.comment}>{item.comment}</p>
               </div>

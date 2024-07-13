@@ -1,5 +1,5 @@
 .about {
-  width: 633px;
+  /* width: 633px; */
   color: #252525;
   font-family: 'Poppins';
   font-size: 18px;
@@ -7,4 +7,18 @@
   font-weight: 500;
   line-height: normal;
   opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+  .about {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .about {
+    font-size: 14px;
+    line-height: 16px;
+  }
 }

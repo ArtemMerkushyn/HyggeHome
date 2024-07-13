@@ -1,6 +1,6 @@
 .wrapper {
   position: relative;
-  height: 596px;
+  /* height: 596px; */
   overflow: hidden;
   margin-top: 120px;
 }
@@ -97,7 +97,7 @@
 }
 @media screen and (min-width: 768px) and (max-width: 1157px) {
   .wrapper {
-    height: 339px;
+    /* height: 339px; */
     margin-top: 60px;
   }
   .new_collection_text {
@@ -123,9 +123,9 @@
     top: 0;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .wrapper {
-    height: 392px;
+    /* height: 392px; */
     margin: 60px 0;
   }
   
@@ -145,12 +145,20 @@
     letter-spacing: -0.06em;
     text-align: left;
   }
+
+  .itemsList {
+    gap: 10px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .wrapper {
+    padding-bottom: 58px;
+  }
+  
   .arrows {
     top: auto;
     bottom: 0;
     right: 0;
-  }
-  .itemsList {
-    gap: 10px;
   }
 }

@@ -55,13 +55,11 @@ export const Product = () => {
 
       <ProductTop data={product} />
 
-      <div style={{ marginTop: '120px' }}>
-        <NewCollection
-          sliderNeeded={false}
-          upperText="products for you"
-          lowerText="You might also like"
-        />
-      </div>
+      <NewCollection
+        sliderNeeded={false}
+        upperText="products for you"
+        lowerText="You might also like"
+      />
 
       <TabSwitcher tabs={tabs} data={product} />
     </div>

@@ -33,30 +33,24 @@ export default function Questions() {
   }, [showModal]);
 
   return (
-    <div
-      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
-    >
-      <ul>
-        {questions.map((item, index) => (
-          <div key={index}>
-            <li
-              style={{
-                display: 'flex',
-                alignItems: 'baseline',
-              }}
-            >
-              <div style={{ width: '332px' }}>
-                <p className={styles.name}>{item.name}</p>
-                <p className={styles.date}>{item.date}</p>
-              </div>
-              <div style={{ width: '743px' }}>
-                <p className={styles.comment}>{item.question}</p>
-              </div>
-            </li>
-            <div className={styles.rectangle}></div>
+    <div>
+      {questions.map((item, index) => (
+        <div className={styles.question} key={index}>
+          <div
+            className={styles.question__wrapper}
+            key={index}
+          >
+            <div className={styles.question__left}>
+              <p className={styles.name}>{item.name}</p>
+              <p className={styles.date}>{item.date}</p>
+            </div>
+            <div>
+              <p className={styles.comment}>{item.question}</p>
+            </div>
           </div>
-        ))}
-      </ul>
+          <div className={styles.rectangle}></div>
+        </div>
+      ))}
       <button
         type="button"
         className={styles.button}

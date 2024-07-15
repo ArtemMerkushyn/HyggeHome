@@ -1,5 +1,12 @@
 .review {
   margin-top: 20px;
+  display: flex;
+}
+
+.review__left {
+  width: 20%;
+  min-width: 200px;
+  padding-right: 20px;
 }
 
 .name {
@@ -23,6 +30,11 @@
   text-transform: uppercase;
   opacity: 0.8;
   margin-top: 20px;
+}
+
+.review__right svg {
+  width: 24px;
+  height: 24px;
 }
 
 .comment {
@@ -62,4 +74,48 @@
   font-weight: 400;
   line-height: normal;
   margin-top: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .review__left {
+    min-width: 150px;
+  }
+
+  .name {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .date {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  .comment {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+@media screen and (max-width: 500px)  {
+  .review {
+    display: block;
+  }
+
+  .review__left {
+    padding-right: 0;
+  }
+
+  .date {
+    margin-bottom: 10px;
+  }
+
+  .comment {
+    margin-top: 10px;
+  }
+
+  .rectangle {
+    margin-top: 10px;
+  }
 }

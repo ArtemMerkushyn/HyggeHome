@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import css from './MyAccontNav.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setLoggedOut } from '../../redux/slices/userSlice';
+import { selectUser } from '../../redux/selectors';
 
 const MyAccountNav = () => {
   const authorized = localStorage.getItem('token');
-  const storedUser = JSON.parse(localStorage.getItem('user'));
+  const storedUser = useSelector(selectUser);
+  console.log(storedUser);
 
   const location = useLocation();
   const dispatch = useDispatch();
@@ -59,8 +61,7 @@ const MyAccountNav = () => {
           to="/my-account/reviews"
           className={css.navLink}
           style={{
-            color:
-              location.pathname === '/my-account/reviews' ? '#FCB654' : '',
+            color: location.pathname === '/my-account/reviews' ? '#FCB654' : '',
           }}
         >
           My reviews

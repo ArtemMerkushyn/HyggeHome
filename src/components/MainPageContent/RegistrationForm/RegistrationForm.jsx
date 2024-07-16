@@ -20,25 +20,28 @@ export const RegistrationForm = ({ toggleModal }) => {
   const [confirmPasswordVisability, setConfirmPasswordVisability] =
     useState(false);
 
-  const onSubmit = async values => {
+  const onSubmit = values => {
     if (firstCheckbox === true) {
-      const wishList = favoriteItems.map(item => item._id);
-      const cartList = cartItems.map(item => item.dataProduct._id);
       try {
-        await registerUser({
+        registerUser({
           email: values.email,
           password: values.password,
           fullName: values.fullName,
           promo: secondCheckbox,
           regType: 'email',
-          wishList: wishList,
-          inCart: cartList,
+          wishList: favoriteItems,
+          inCart: cartItems,
+        }).then(res => {
+          if (res.error) {
+            toast.console.error(res.error.data.error);
+          } else {
+            toggleModal();
+            toast.success('User registered successfully');
+          }
         });
       } catch (error) {
         toast.error('Failed to register user. Please try again later.');
       }
-      toggleModal();
-      toast.success('User registered successfully');
     } else {
       toast.error('Please accept the policy');
     }

@@ -24,36 +24,49 @@ const LoginForm = ({ closeModal, handleRegisterClick }) => {
   const dispatch = useDispatch();
   const itemFavorites = useSelector(selectFavorites);
   const curtItems = useSelector(selectCurtProducts);
+  console.log(curtItems);
 
   const onSubmit = values => {
-    loginUser({
-      email: values.email,
-      password: values.password,
-      regType: 'email',
-    }).then(res => {
-      if (res.error) {
-        toast.error(res);
-      } else {
-        console.log(res);
-        // res.data.wishList.forEach(item => {
-        //   const isFavorite = itemFavorites.some(
-        //     favorite => favorite._id === item._id,
-        //   );
-        //   if (!isFavorite) {
-        //     dispatch(addFavorite(item));
-        //   }
-        // });
-        // res.data.inCart.forEach(item => {
-        //   const isInCart = curtItems.some(cart => cart._id === item._id);
-        //   if (!isInCart) {
-        //     dispatch(addToCurt(item));
-        //   }
-        // });
-        // closeModal();
-        // dispatch(setLoggedIn({ userData: values, token: 'bebra' }));
-        // navigate('/my-account/my-wishlist');
-      }
-    });
+    try {
+      loginUser({
+        email: values.email,
+        password: values.password,
+        regType: 'email',
+      }).then(res => {
+        if (res.error) {
+          toast.error(res);
+        } else {
+          console.log(res);
+          res.data.wishList.forEach(item => {
+            const isFavorite = itemFavorites.some(
+              favorite => favorite._id === item._id,
+            );
+            if (!isFavorite) {
+              dispatch(addFavorite(item));
+            }
+          });
+          res.data.inCart.forEach(item => {
+            const isInCart = curtItems.some(cart => cart._id === item._id);
+            if (!isInCart) {
+              dispatch(addToCurt(item));
+            }
+          });
+          closeModal();
+          dispatch(
+            setLoggedIn({
+              userData: {
+                name: res.data.fullName,
+                email: res.data.email,
+              },
+              token: 'bebra',
+            }),
+          );
+          navigate('/my-account/my-wishlist');
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =

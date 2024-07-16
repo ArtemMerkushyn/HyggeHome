@@ -8,9 +8,13 @@ import { loginFormSchema } from '../../schemas/loginFormSchema';
 import CustomGoogleLoginButton from '../GoogleLogin/CustomGoogleLoginButton';
 import CustomFacebookLoginButton from '../FacebookLogin/CustomFacebookLoginButton';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setLoggedIn } from '../../redux/slices/userSlice';
 import { useLoginUserMutation } from '../../redux/services';
+import { toast } from 'react-toastify';
+import { selectCurtProducts, selectFavorites } from '../../redux/selectors';
+import { addFavorite } from '../../redux/slices/favoriteSlice';
+import { addToCurt } from '../../redux/slices/curtSlice';
 
 const LoginForm = ({ closeModal, handleRegisterClick }) => {
   const [passwordVisibility, setPasswordVisibility] = useState(false);
@@ -18,22 +22,38 @@ const LoginForm = ({ closeModal, handleRegisterClick }) => {
   const [loginUser] = useLoginUserMutation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const itemFavorites = useSelector(selectFavorites);
+  const curtItems = useSelector(selectCurtProducts);
 
-  const onSubmit = async values => {
-    console.log(values);
-    closeModal();
-    dispatch(setLoggedIn({ userData: values, token: 'bebra' }));
-    navigate('/my-account/my-wishlist');
-    const response = await loginUser({
+  const onSubmit = values => {
+    loginUser({
       email: values.email,
       password: values.password,
       regType: 'email',
+    }).then(res => {
+      if (res.error) {
+        toast.error(res);
+      } else {
+        console.log(res);
+        // res.data.wishList.forEach(item => {
+        //   const isFavorite = itemFavorites.some(
+        //     favorite => favorite._id === item._id,
+        //   );
+        //   if (!isFavorite) {
+        //     dispatch(addFavorite(item));
+        //   }
+        // });
+        // res.data.inCart.forEach(item => {
+        //   const isInCart = curtItems.some(cart => cart._id === item._id);
+        //   if (!isInCart) {
+        //     dispatch(addToCurt(item));
+        //   }
+        // });
+        // closeModal();
+        // dispatch(setLoggedIn({ userData: values, token: 'bebra' }));
+        // navigate('/my-account/my-wishlist');
+      }
     });
-    if (response.error) {
-      console.error('Login failed:', response.error);
-    } else {
-      console.log('Login successful:', response.data);
-    }
   };
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =

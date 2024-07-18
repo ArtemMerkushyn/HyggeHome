@@ -13,7 +13,7 @@ export const favoritesSlice = createSlice({
     },
     removeFavorite: (state, action) => {
       const updatedFavorites = state.favorites.filter(
-        item => item._id !== action.payload._id,
+        item => item.article !== action.payload.article,
       );
       state.favorites = updatedFavorites;
     },

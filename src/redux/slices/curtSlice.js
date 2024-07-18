@@ -16,7 +16,7 @@ export const curtSlice = createSlice({
     },
     removeFromCart: (state, action) => {
       const updatedProducts = state.curt.products.filter(
-        product => product.dataProduct._id !== action.payload._id
+        product => product.dataProduct.article !== action.payload.article
       );
       state.curt.products = updatedProducts;
     }

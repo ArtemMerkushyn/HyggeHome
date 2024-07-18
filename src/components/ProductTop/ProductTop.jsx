@@ -10,22 +10,24 @@ import { selectCurtProducts } from '../../redux/selectors';
 
 export const ProductTop = ({ data }) => {
   const [amount, setAmount] = useState(1);
-  const [isInCurt, setIsInCurt] = useState(false); 
+  const [isInCurt, setIsInCurt] = useState(false);
   const curtItems = useSelector(selectCurtProducts);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const foundItem = curtItems.find(item => item.dataProduct._id === data._id);
+    const foundItem = curtItems.find(
+      item => item.dataProduct.article === data.article,
+    );
     setIsInCurt(!!foundItem);
-  }, [curtItems, data._id]);
+  }, [curtItems, data.article]);
 
   const handleAmountChange = newAmount => {
     setAmount(newAmount);
-  }
+  };
 
   const handleAddToCart = () => {
-    if(isInCurt === true) {
+    if (isInCurt === true) {
       toast('You have already added the product to the cart');
       return;
     }
@@ -33,10 +35,10 @@ export const ProductTop = ({ data }) => {
     const productToCart = {
       dataProduct: data,
       amount,
-    }
+    };
     dispatch(addToCurt(productToCart));
     toast.success(`You have added ${amount} products to the cart`);
-  }
+  };
 
   return (
     <div className={styles.product}>
@@ -54,12 +56,16 @@ export const ProductTop = ({ data }) => {
           <div className={styles.price_and_amount}>
             <p className={styles.price}>${data.price}</p>
             <Amount onAmountChange={handleAmountChange} />
-            </div>
-          <button className={styles.btn} disabled={isInCurt} onClick={handleAddToCart}>{isInCurt ? 'Added to cart' : 'Add to cart'}</button>
+          </div>
+          <button
+            className={styles.btn}
+            disabled={isInCurt}
+            onClick={handleAddToCart}
+          >
+            {isInCurt ? 'Added to cart' : 'Add to cart'}
+          </button>
         </div>
       </div>
     </div>
   );
-}
-
-
+};

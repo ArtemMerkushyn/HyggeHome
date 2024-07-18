@@ -35,21 +35,18 @@ const LoginForm = ({ closeModal, handleRegisterClick }) => {
         if (res.error) {
           toast.error(res.error.data.error);
         } else {
-          console.log(res);
           res.data.wishList.forEach(item => {
             const isFavorite = itemFavorites.some(
-              favorite => favorite._id === item._id,
+              favorite => favorite.article === item.article,
             );
             if (!isFavorite) {
               dispatch(addFavorite(item));
             }
           });
           res.data.inCart.forEach(item => {
-            console.log(curtItems);
             const isInCart = curtItems.some(
-              cart => cart.dataProduct._id === item.product._id,
+              cart => cart.dataProduct.article === item.product.article,
             );
-            console.log(isInCart + `${item.product.name}`);
             if (!isInCart) {
               dispatch(addToCurt({ dataProduct: item.product }));
             }

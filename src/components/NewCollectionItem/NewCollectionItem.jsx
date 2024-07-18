@@ -17,8 +17,12 @@ export default function NewCollectionItem({ item }) {
   const itemFavorites = useSelector(selectFavorites);
   const curtItems = useSelector(selectCurtProducts);
 
-  const isChecked = itemFavorites.some(({ _id }) => _id === item._id);
-  const isInCurt = curtItems.some(curt => curt.dataProduct._id === item._id);
+  const isChecked = itemFavorites.some(
+    ({ article }) => article === item.article,
+  );
+  const isInCurt = curtItems.some(
+    curt => curt.dataProduct.article === item.article,
+  );
 
   const handleToggleFavorite = () => {
     if (isChecked) {
@@ -56,7 +60,7 @@ export default function NewCollectionItem({ item }) {
     );
   };
 
-  const handleError = (e) => {
+  const handleError = e => {
     e.target.src = '/images/notFound/broken-images.png';
   };
 
@@ -71,25 +75,21 @@ export default function NewCollectionItem({ item }) {
             onError={handleError}
           />
           <div className={styles.line}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="374"
-            height="3"
-            viewBox="0 0 374 3"
-            fill="none"
-            
-          >
-            <path d="M1 1L373 2" stroke="#FCB654" strokeLinecap="round" />
-                      </svg>
-                      </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="374"
+              height="3"
+              viewBox="0 0 374 3"
+              fill="none"
+            >
+              <path d="M1 1L373 2" stroke="#FCB654" strokeLinecap="round" />
+            </svg>
+          </div>
           <div className={styles.infoWrapper}>
             <p className={styles.titleItem}>{item.name}</p>
-            
+
             <div className={styles.iconsWrapper}>
-              <button
-                className={styles.cartButtom}
-                onClick={handleAddToCart}
-                >
+              <button className={styles.cartButtom} onClick={handleAddToCart}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="30"
@@ -126,10 +126,9 @@ export default function NewCollectionItem({ item }) {
                 </svg>
               </button>
             </div>
-          
-              <p className={styles.priceItem}>${item.price}</p>
-              </div>
-          
+
+            <p className={styles.priceItem}>${item.price}</p>
+          </div>
         </div>
 
         <img

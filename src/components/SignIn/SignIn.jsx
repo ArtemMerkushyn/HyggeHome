@@ -9,6 +9,8 @@ import css from './SignIn.module.css';
 import Icons from '../Icons/Icons';
 import GoogleRegister from '../GoogleRegister/GoogleRegister';
 import CustomFacebookLoginButton from '../FacebookLogin/CustomFacebookLoginButton';
+import { useSelector } from 'react-redux';
+import { selectCurtProducts, selectFavorites } from '../../redux/selectors';
 
 export const SignIn = ({ toggleModal, handleLoginClick }) => {
   const [registerUser] = useRegisterUserMutation();
@@ -17,21 +19,31 @@ export const SignIn = ({ toggleModal, handleLoginClick }) => {
   const [passwordVisability, setPasswordVisability] = useState(false);
   const [confirmPasswordVisability, setConfirmPasswordVisability] =
     useState(false);
+  const favoriteItems = useSelector(selectFavorites);
+  const cartItems = useSelector(selectCurtProducts);
 
   const onSubmit = async values => {
+    const cart = cartItems.map(cart => cart.dataProduct);
     try {
-      await registerUser({
+      registerUser({
         email: values.email,
         password: values.password,
         fullName: values.fullName,
         promo: secondCheckbox,
         regType: 'email',
-      }).then(data => console.log(data));
+        wishList: favoriteItems,
+        inCart: cart,
+      }).then(res => {
+        if (res.error) {
+          toast.console.error(res.error.data.error);
+        } else {
+          toggleModal();
+          toast.success('User registered successfully');
+        }
+      });
     } catch (error) {
       toast.error('Failed to register user. Please try again later.');
     }
-    toggleModal();
-    toast.success('User registered successfully');
   };
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =

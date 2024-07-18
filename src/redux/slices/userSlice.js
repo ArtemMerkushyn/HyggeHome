@@ -2,7 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   token: null,
-  userData: {}
+  userData: {
+    name: null,
+    email: null,
+  }
 };
 
 const savedToken = localStorage.getItem('token');
@@ -20,6 +23,10 @@ export const userSlice = createSlice({
     setLoggedOut: (state) => {
       state.token = null;
       localStorage.removeItem('token');
+      state.userData = {
+         name: null,
+         email: null,
+      }
     },
   }
 });

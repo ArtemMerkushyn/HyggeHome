@@ -1,11 +1,12 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import styles from './BurgerMenu.module.css';
 import { setLoggedOut } from '../../../redux/slices/userSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Search2 } from '../../Search2/Search2';
+import { selectUser } from '../../../redux/selectors';
 
 export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
-  const storedUser = JSON.parse(localStorage.getItem('user'));
+  const storedUser = useSelector(selectUser);
   const authorized = localStorage.getItem('token');
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -56,9 +57,18 @@ export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
             {[
               { to: '/cart', text: 'My cart' },
               { to: '/my-account/my-wishlist', text: 'My wish list' },
-              authorized ? { to: '/my-account/my-orders', text: 'My orders' } : null,
-              authorized ? { to: '/my-account/reviews', text: 'My reviews' } : null,
-              authorized ? { to: '/my-account/my-delivery-information', text: 'My delivery information' } : null,
+              authorized
+                ? { to: '/my-account/my-orders', text: 'My orders' }
+                : null,
+              authorized
+                ? { to: '/my-account/reviews', text: 'My reviews' }
+                : null,
+              authorized
+                ? {
+                    to: '/my-account/my-delivery-information',
+                    text: 'My delivery information',
+                  }
+                : null,
             ].map(
               item =>
                 item && (
@@ -75,7 +85,7 @@ export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
                   >
                     {item.text}
                   </NavLink>
-                )
+                ),
             )}
           </div>
           {[

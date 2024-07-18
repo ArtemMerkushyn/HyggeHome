@@ -71,6 +71,9 @@ export const servicesApi = createApi({
         mode: 'cors',
       }),
     }),
+     getUserOnload: builder.query({
+      query: '/user-onload',
+    }),
   }),
 });
 
@@ -86,4 +89,5 @@ export const {
   useGetFilterPriceQuery,
   useRegisterUserMutation,
   useLoginUserMutation,
+  useGetUserOnloadQuery,
 } = servicesApi;

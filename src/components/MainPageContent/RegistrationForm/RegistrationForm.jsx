@@ -22,6 +22,7 @@ export const RegistrationForm = ({ toggleModal }) => {
 
   const onSubmit = values => {
     if (firstCheckbox === true) {
+      const cart = cartItems.map(cart => cart.dataProduct);
       try {
         registerUser({
           email: values.email,
@@ -30,7 +31,7 @@ export const RegistrationForm = ({ toggleModal }) => {
           promo: secondCheckbox,
           regType: 'email',
           wishList: favoriteItems,
-          inCart: cartItems,
+          inCart: cart,
         }).then(res => {
           if (res.error) {
             toast.console.error(res.error.data.error);

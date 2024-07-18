@@ -24,7 +24,6 @@ const LoginForm = ({ closeModal, handleRegisterClick }) => {
   const dispatch = useDispatch();
   const itemFavorites = useSelector(selectFavorites);
   const curtItems = useSelector(selectCurtProducts);
-  console.log(curtItems);
 
   const onSubmit = values => {
     try {
@@ -34,7 +33,7 @@ const LoginForm = ({ closeModal, handleRegisterClick }) => {
         regType: 'email',
       }).then(res => {
         if (res.error) {
-          toast.error(res);
+          toast.error(res.error);
         } else {
           console.log(res);
           res.data.wishList.forEach(item => {
@@ -46,9 +45,13 @@ const LoginForm = ({ closeModal, handleRegisterClick }) => {
             }
           });
           res.data.inCart.forEach(item => {
-            const isInCart = curtItems.some(cart => cart._id === item._id);
+            console.log(curtItems);
+            const isInCart = curtItems.some(
+              cart => cart.dataProduct._id === item.product._id,
+            );
+            console.log(isInCart + `${item.product.name}`);
             if (!isInCart) {
-              dispatch(addToCurt(item));
+              dispatch(addToCurt({ dataProduct: item.product }));
             }
           });
           closeModal();

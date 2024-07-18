@@ -33,7 +33,7 @@ const LoginForm = ({ closeModal, handleRegisterClick }) => {
         regType: 'email',
       }).then(res => {
         if (res.error) {
-          toast.error(res.error);
+          toast.error(res.error.data.error);
         } else {
           console.log(res);
           res.data.wishList.forEach(item => {

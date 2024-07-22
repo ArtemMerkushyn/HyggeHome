@@ -8,7 +8,7 @@ import NewCollectionItem from '../../NewCollectionItem/NewCollectionItem';
 
 export const NewCollection = ({ sliderNeeded, upperText, lowerText }) => {
   const [catalog, setCatalog] = useState([]);
-  const [carousel, setCarousel] = useState(catalog)
+  const [carousel, setCarousel] = useState(catalog);
   const { data, isLoading } = useSearchByNameQuery('');
   const [scrollBarPosition, setScrollBarPosition] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
@@ -16,57 +16,65 @@ export const NewCollection = ({ sliderNeeded, upperText, lowerText }) => {
   const windowWidth = window.innerWidth;
   const widthScroll = windowWidth >= 1158 ? 634 : 360;
   const widthScrollNav = catalog ? widthScroll / (catalog.length - 2) : 0;
-  const widthSlide = windowWidth >= 1157 ? 412 + 30 : (windowWidth >= 768 ? 190 + 20 : 190 + 10);
+  const widthSlide =
+    windowWidth >= 1157 ? 412 + 30 : windowWidth >= 768 ? 190 + 20 : 190 + 10;
   const itemsList = document.querySelector(`.${styles.itemsList}`);
-  
+
   useEffect(() => {
     if (data) {
-      setCatalog(data);
+      setCatalog(data.results);
     }
   }, [data]);
 
   const handleScroll = () => {
     const { scrollLeft } = itemsList;
-    const scrollPosition = (scrollLeft/ widthSlide) * widthScrollNav
-    setScrollBarPosition(scrollPosition)
+    const scrollPosition = (scrollLeft / widthSlide) * widthScrollNav;
+    setScrollBarPosition(scrollPosition);
     //
-    
-  }
+  };
 
   const handleNext = () => {
     if (!isScrolling) {
       const { scrollLeft, scrollWidth, clientWidth } = itemsList;
-      const scrollPosition = (scrollLeft / widthSlide) * widthScrollNav
+      const scrollPosition = (scrollLeft / widthSlide) * widthScrollNav;
       setIsScrolling(true);
       if (itemsList) {
-        const widthSlide = window.innerWidth >= 1157 ? 412 + 30 : (window.innerWidth >= 768 ? 190 + 20 : 190 + 10);
+        const widthSlide =
+          window.innerWidth >= 1157
+            ? 412 + 30
+            : window.innerWidth >= 768
+            ? 190 + 20
+            : 190 + 10;
         if (scrollLeft + clientWidth >= scrollWidth) {
-            setIsScrolling(false);
-            itemsList.scrollTo({ left: 0, behavior: 'smooth' });
-            setScrollBarPosition(0);
+          setIsScrolling(false);
+          itemsList.scrollTo({ left: 0, behavior: 'smooth' });
+          setScrollBarPosition(0);
         } else {
           itemsList.scrollLeft += widthSlide;
-          setScrollBarPosition(scrollPosition)
+          setScrollBarPosition(scrollPosition);
         }
-          setIsScrolling(false);
+        setIsScrolling(false);
       }
     }
   };
 
   const handlePrev = () => {
     const { scrollLeft } = itemsList;
-    const scrollPosition = (scrollLeft / widthSlide) * widthScrollNav
-      if (itemsList) {
-        const widthSlide = window.innerWidth >= 1157 ? 412 + 30 : (window.innerWidth >= 768 ? 190 + 20 : 190 + 10);
-        itemsList.scrollLeft -= widthSlide;
-        setScrollBarPosition(scrollPosition);
-        if (scrollLeft === 0) {
-            itemsList.scrollTo({ left: itemsList.scrollWidth, behavior: 'smooth' });
-            setScrollBarPosition(widthScroll - widthScrollNav);
-          
-        }
-
+    const scrollPosition = (scrollLeft / widthSlide) * widthScrollNav;
+    if (itemsList) {
+      const widthSlide =
+        window.innerWidth >= 1157
+          ? 412 + 30
+          : window.innerWidth >= 768
+          ? 190 + 20
+          : 190 + 10;
+      itemsList.scrollLeft -= widthSlide;
+      setScrollBarPosition(scrollPosition);
+      if (scrollLeft === 0) {
+        itemsList.scrollTo({ left: itemsList.scrollWidth, behavior: 'smooth' });
+        setScrollBarPosition(widthScroll - widthScrollNav);
       }
+    }
   };
 
   return (
@@ -84,29 +92,39 @@ export const NewCollection = ({ sliderNeeded, upperText, lowerText }) => {
               ))}
             </div>
           ) : (
-            catalog.map((item, index) => <NewCollectionItem key={index} item={item} />)
+            catalog.map((item, index) => (
+              <NewCollectionItem key={index} item={item} />
+            ))
           )}
-          {windowWidth <= 767 && itemsList &&itemsList.scrollLeft >= ((carousel.length * widthSlide) - (widthSlide * 7)) && (
-            catalog.map((item, index) => <NewCollectionItem key={index + catalog.length} item={item} />)
-            
-          )}
+          {windowWidth <= 767 &&
+            itemsList &&
+            itemsList.scrollLeft >=
+              carousel.length * widthSlide - widthSlide * 7 &&
+            catalog.map((item, index) => (
+              <NewCollectionItem key={index + catalog.length} item={item} />
+            ))}
         </ul>
 
-
-
         <div className={styles.arrows}>
-          <button className={styles.prev} onClick={handlePrev} disabled={isScrolling}>
+          <button
+            className={styles.prev}
+            onClick={handlePrev}
+            disabled={isScrolling}
+          >
             <div className={styles.left_arrow}>
               <Icons icon={'right_arrow'} />
             </div>
           </button>
-          <button className={styles.next} onClick={handleNext} disabled={isScrolling}>
+          <button
+            className={styles.next}
+            onClick={handleNext}
+            disabled={isScrolling}
+          >
             <div className={styles.right_arrow}>
               <Icons icon={'right_arrow'} />
             </div>
           </button>
         </div>
-        
       </div>
 
       {sliderNeeded && (

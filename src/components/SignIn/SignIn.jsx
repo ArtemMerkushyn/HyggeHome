@@ -35,7 +35,7 @@ export const SignIn = ({ toggleModal, handleLoginClick }) => {
         inCart: cart,
       }).then(res => {
         if (res.error) {
-          toast.console.error(res.error.data.error);
+          toast.error(res.error.data.error);
         } else {
           toggleModal();
           toast.success('User registered successfully');

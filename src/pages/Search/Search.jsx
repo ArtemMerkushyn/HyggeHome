@@ -6,21 +6,54 @@ import CardList from '../../components/CardList/CardList';
 import Filters from '../../components/Filters/Filters';
 import Sort from '../../components/Sort/Sort';
 import styles from './Search.module.css';
+import Pagination from '../../components/Pagination/Pagination';
 
 export const Search = () => {
   const { data, error, isLoading } = useSelector(state => state.search);
+  console.log(data)
 
   const [newData, setNewData] = useState([]);
+  const [defaultPrice, setDefaultPrice] = useState([0, 0]);
+  const [currentPrice, setCurrentPrice] = useState([0, 0]);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const [min, setMin] = useState('');
+  const [max, setMax] = useState('');
+  const [colors, setColors] = useState([]);
 
-  const updateFilteredData = filteredData => {
-    setNewData(filteredData);
-  };
+  // const updateFilteredData = filteredData => {
+  //   setNewData(filteredData);
+  // };
+
+  // useEffect(() => {
+  //   if (data) {
+  //     setNewData(data.results);
+  //   }
+  // }, [data]);
 
   useEffect(() => {
     if (data) {
-      setNewData(data);
+      setNewData(data.results);
+      setTotalPages(data.totalPages);
+
+      if (!defaultPrice[0] && !defaultPrice[1]) {
+        setDefaultPrice([data.minPrice, data.maxPrice]);
+        setCurrentPrice([data.minPrice, data.maxPrice]);
+      }
     }
-  }, [data]);
+  }, [data, defaultPrice]);
+
+  const updateFilteredData = ({ minPr, maxPr, colors }) => {
+    if (minPr !== undefined) {
+      setMin(minPr);
+    }
+    if (maxPr !== undefined) {
+      setMax(maxPr);
+    }
+    if (colors !== undefined) {
+      setColors(colors);
+    }
+  };
 
   return (
     <div className={styles.wrapperFilters}>
@@ -50,15 +83,23 @@ export const Search = () => {
       <div className={styles.wrapperButtons}>
         <Filters
           colorsView={false}
-          dataFilter={data}
           onUpdateFilteredData={updateFilteredData}
+          currentPrice={currentPrice}
+          setCurrentPrice={setCurrentPrice}
+          defaultPrice={defaultPrice}
         />
         <div className={styles.dropdownList}>
           Sort by
           <Sort data={newData} onUpdateFilteredData={updateFilteredData} />
         </div>
       </div>
-      <CardList data={newData} error={error} isLoading={isLoading} />
+      <CardList
+        data={newData}
+        error={error}
+        isLoading={isLoading}
+        totalPages={totalPages}
+      />
+      <Pagination totalPages={totalPages} newPage={setPage} />
     </div>
   );
 };

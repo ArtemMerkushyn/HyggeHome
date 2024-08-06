@@ -20,6 +20,10 @@ export const Search = () => {
   const [min, setMin] = useState('');
   const [max, setMax] = useState('');
   const [colors, setColors] = useState([]);
+  const [sort, setSort] = useState({
+    field: 'popular',
+    dir: 'desc',
+  });
 
   // const updateFilteredData = filteredData => {
   //   setNewData(filteredData);

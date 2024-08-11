@@ -24,7 +24,6 @@ export const Search = () => {
   const { data, error, isLoading } = useSearchByNameQuery(searchValue, {
     skip: !searchValue,
   });
-  // console.log(searchValue)
 
   const location = useLocation();
   const pathName = location.pathname;
@@ -55,21 +54,6 @@ export const Search = () => {
     dispatch(setIsActive(false));
   };
 
-  // const handleInputChange = e => {
-  //   if (e.target.value.trim() === '') {
-  //     setInputValue('');
-  //     return toast.error('The field cannot be empty.');
-  //   }
-
-  //   setInputValue(e.target.value);
-  //   setSearchValue(e.target.value);
-
-  //   dispatch(setSearchInputValue(searchValue));
-
-  //   if (pathName !== '/search') {
-  //     navigate('search');
-  //   }
-  // };
   const handleInputChange = e => {
     const value = e.target.value.trim();
     if (value === '') {
@@ -85,6 +69,7 @@ export const Search = () => {
     
     if (pathName !== '/search') {
       navigate('search');
+      return;
     }
   };
   

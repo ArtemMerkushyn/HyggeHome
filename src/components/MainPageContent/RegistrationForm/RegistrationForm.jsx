@@ -21,28 +21,38 @@ export const RegistrationForm = ({ toggleModal }) => {
     useState(false);
 
   const onSubmit = values => {
-    if (firstCheckbox === true) {
-      const cart = cartItems.map(cart => cart.dataProduct);
-      try {
-        registerUser({
-          email: values.email,
-          password: values.password,
-          fullName: values.fullName,
-          promo: secondCheckbox,
-          regType: 'email',
-          wishList: favoriteItems,
-          inCart: cart,
-        }).then(res => {
+    if (firstCheckbox) {
+      const cart = cartItems.map(cart => {
+        return {
+          article: cart.dataProduct.article,
+          quantity: cart.amount,
+        };
+      });
+      const wish = favoriteItems.map(item => item.article);
+      registerUser({
+        email: values.email,
+        password: values.password,
+        fullName: values.fullName,
+        promo: secondCheckbox,
+        regType: 'email',
+        wishList: wish,
+        inCart: cart,
+      })
+        .then(res => {
           if (res.error) {
             toast.error(res.error.data.error);
+          } else if (!res.data) {
+            toast.error('User is already exist');
           } else {
             toggleModal();
             toast.success('User registered successfully');
           }
+        })
+        .catch(error => {
+          toast.error(
+            'Failed to register user. Please try again later.' + error,
+          );
         });
-      } catch (error) {
-        toast.error('Failed to register user. Please try again later.');
-      }
     } else {
       toast.error('Please accept the policy');
     }

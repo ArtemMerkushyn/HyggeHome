@@ -10,7 +10,6 @@ import Pagination from '../../components/Pagination/Pagination';
 
 export const Search = () => {
   const { data, error, isLoading } = useSelector(state => state.search);
-  console.log(data)
 
   const [newData, setNewData] = useState([]);
   const [defaultPrice, setDefaultPrice] = useState([0, 0]);

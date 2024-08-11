@@ -106,6 +106,7 @@
   justify-content: center;
   align-items: center;
   z-index: 20;
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .heartwrapper {
@@ -124,6 +125,9 @@
 
   .burger__menu {
     display: block;
+  }
+  .user_icon {
+    display: none;
   }
 }
 

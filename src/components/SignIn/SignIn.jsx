@@ -22,27 +22,41 @@ export const SignIn = ({ toggleModal, handleLoginClick }) => {
   const favoriteItems = useSelector(selectFavorites);
   const cartItems = useSelector(selectCurtProducts);
 
-  const onSubmit = async values => {
-    const cart = cartItems.map(cart => cart.dataProduct);
-    try {
+  const onSubmit = values => {
+    if (firstCheckbox) {
+      const cart = cartItems.map(cart => {
+        return {
+          article: cart.dataProduct.article,
+          quantity: cart.amount,
+        };
+      });
+      const wish = favoriteItems.map(item => item.article);
       registerUser({
         email: values.email,
         password: values.password,
         fullName: values.fullName,
         promo: secondCheckbox,
         regType: 'email',
-        wishList: favoriteItems,
+        wishList: wish,
         inCart: cart,
-      }).then(res => {
-        if (res.error) {
-          toast.error(res.error.data.error);
-        } else {
-          toggleModal();
-          toast.success('User registered successfully');
-        }
-      });
-    } catch (error) {
-      toast.error('Failed to register user. Please try again later.');
+      })
+        .then(res => {
+          if (res.error) {
+            toast.error(res.error.data.error);
+          } else if (!res.data) {
+            toast.error('User is already exist');
+          } else {
+            toggleModal();
+            toast.success('User registered successfully');
+          }
+        })
+        .catch(error => {
+          toast.error(
+            'Failed to register user. Please try again later.' + error,
+          );
+        });
+    } else {
+      toast.error('Please accept the policy');
     }
   };
 

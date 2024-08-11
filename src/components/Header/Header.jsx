@@ -92,22 +92,23 @@ export const Header = () => {
           >
             <Icons icon={'basket'} />
           </NavLink>
-
-          {authorized ? (
-            <NavLink
-              className={styles.link}
-              to={'/my-account/my-wishlist'}
-              style={{
-                borderBottom: location.pathname.startsWith('/my-account')
-                  ? '2px solid #FCB654'
-                  : '2px solid transparent',
-              }}
-            >
-              <User />
-            </NavLink>
-          ) : (
-            <User toggleModal={toggleModal} />
-          )}
+          <div className={styles.user_icon}>
+            {authorized ? (
+              <NavLink
+                className={styles.link}
+                to={'/my-account/my-wishlist'}
+                style={{
+                  borderBottom: location.pathname.startsWith('/my-account')
+                    ? '2px solid #FCB654'
+                    : '2px solid transparent',
+                }}
+              >
+                <User />
+              </NavLink>
+            ) : (
+              <User toggleModal={toggleModal} />
+            )}
+          </div>
           <button
             className={styles.burger__btn}
             onClick={() => SetBurgerMenu(true)}

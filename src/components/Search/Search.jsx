@@ -54,17 +54,7 @@ export const Search = () => {
   };
 
   const handleInputChange = e => {
-    if (e.target.value.trim() === '') {
-      setInputValue('');
-      return toast.error('The field cannot be empty.');
-    }
-
     setInputValue(e.target.value);
-    setSearchValue(e.target.value);
-
-    if (pathName !== '/search') {
-      navigate('search');
-    }
   };
 
   const searchName = () => {
@@ -116,7 +106,7 @@ export const Search = () => {
           className={styles.input}
           placeholder="Search"
           minLength={1}
-          debounceTimeout={2000}
+          debounceTimeout={10000}
         />
         <button className={styles.searchBtn} onClick={searchName}>
           <Icons icon={'search'} />

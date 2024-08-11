@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    curt: {
-        products: [],
-        allPrice: null,
-    },
+  curt: {
+    products: [],
+    allPrice: null,
+  },
 };
 
 export const curtSlice = createSlice({
@@ -19,10 +19,20 @@ export const curtSlice = createSlice({
         product => product.dataProduct.article !== action.payload.article
       );
       state.curt.products = updatedProducts;
-    }
+    },
+    changeAmount: (state, action) => {
+      const { product, amount } = action.payload;
+      const index = state.curt.products.findIndex(
+        item => item.dataProduct.article === product.article
+      );
+
+      if (index !== -1) {
+        state.curt.products[index] = { ...state.curt.products[index], amount: amount };
+      }
+    },
   },
 });
 
-export const { addToCurt, removeFromCart } = curtSlice.actions;
+export const { addToCurt, removeFromCart, changeAmount } = curtSlice.actions;
 
 export default curtSlice.reducer;

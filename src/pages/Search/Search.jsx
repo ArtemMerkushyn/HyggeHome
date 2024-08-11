@@ -7,6 +7,7 @@ import Filters from '../../components/Filters/Filters';
 import Sort from '../../components/Sort/Sort';
 import styles from './Search.module.css';
 import Pagination from '../../components/Pagination/Pagination';
+import { useGetSearchFilterPriceQuery } from "../../redux/services";
 
 export const Search = () => {
   const { data, error, isLoading } = useSelector(state => state.search);
@@ -20,15 +21,12 @@ export const Search = () => {
   const [max, setMax] = useState('');
   const [colors, setColors] = useState([]);
 
-  // const updateFilteredData = filteredData => {
-  //   setNewData(filteredData);
-  // };
-
-  // useEffect(() => {
-  //   if (data) {
-  //     setNewData(data.results);
-  //   }
-  // }, [data]);
+  const { data } = useGetSearchFilterPriceQuery({
+    name: searchInputValue,
+    page: page,
+    min: min,
+    max: max,
+  });  
 
   useEffect(() => {
     if (data) {
@@ -75,10 +73,11 @@ export const Search = () => {
         <span className={styles.wrapperSpan}> Search</span>
       </div>
       <h2 className={styles.title}>
-        {data.length === 0
+        {Array.isArray(data) && data.length === 0
           ? 'Sorry, your request did not yield any results'
           : "Here's what we found"}
       </h2>
+
       <div className={styles.wrapperButtons}>
         <Filters
           colorsView={false}
@@ -86,6 +85,7 @@ export const Search = () => {
           currentPrice={currentPrice}
           setCurrentPrice={setCurrentPrice}
           defaultPrice={defaultPrice}
+          searchInputValue={searchInputValue}
         />
         <div className={styles.dropdownList}>
           Sort by

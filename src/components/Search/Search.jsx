@@ -12,6 +12,7 @@ import {
   setIsActive,
   setIsLoading,
   setSearch,
+  setSearchInputValue,
 } from '../../redux/slices/searchSlice.js';
 import { selectIsActive } from '../../redux/selectors.js';
 
@@ -56,6 +57,7 @@ export const Search = () => {
   const handleInputChange = e => {
     setInputValue(e.target.value);
   };
+  
 
   const searchName = () => {
     if (inputValue.trim() === '') {

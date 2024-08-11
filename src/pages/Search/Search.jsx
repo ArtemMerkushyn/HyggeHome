@@ -9,8 +9,7 @@ import styles from './Search.module.css';
 import Pagination from '../../components/Pagination/Pagination';
 
 export const Search = () => {
-  const { data, error, isLoading } = useSelector(state => state.search);
-  console.log(data)
+  const { data, searchInputValue, error, isLoading } = useSelector(state => state.search);
 
   const [newData, setNewData] = useState([]);
   const [defaultPrice, setDefaultPrice] = useState([0, 0]);
@@ -91,6 +90,7 @@ export const Search = () => {
           currentPrice={currentPrice}
           setCurrentPrice={setCurrentPrice}
           defaultPrice={defaultPrice}
+          searchInputValue={searchInputValue}
         />
         <div className={styles.dropdownList}>
           Sort by

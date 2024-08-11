@@ -23,6 +23,7 @@ export default function Filters({
   currentPrice,
   setCurrentPrice,
   defaultPrice,
+  searchInputValue
 }) {
   const [openFilter, setOpenFilter] = useState(false);
   const [selectedColors, setSelectedColors] = useState({

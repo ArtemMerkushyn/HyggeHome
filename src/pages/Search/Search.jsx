@@ -7,12 +7,10 @@ import Filters from '../../components/Filters/Filters';
 import Sort from '../../components/Sort/Sort';
 import styles from './Search.module.css';
 import Pagination from '../../components/Pagination/Pagination';
-import { useGetSearchFilterPriceQuery } from '../../redux/services';
+import { useGetSearchFilterPriceQuery } from "../../redux/services";
 
 export const Search = () => {
-  const { searchInputValue, error, isLoading } = useSelector(
-    state => state.search,
-  );
+   const { searchInputValue, error, isLoading } = useSelector(state => state.search);
 
   const [newData, setNewData] = useState([]);
   const [defaultPrice, setDefaultPrice] = useState([0, 0]);
@@ -28,7 +26,7 @@ export const Search = () => {
     page: page,
     min: min,
     max: max,
-  });
+  });  
 
   useEffect(() => {
     if (data) {

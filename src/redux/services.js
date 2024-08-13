@@ -53,6 +53,9 @@ export const servicesApi = createApi({
     getFilterPrice: builder.query({
       query: ({ min, max }) => `/search?min=${min}&max=${max}`,
     }),
+    getSearchFilterPrice: builder.query({
+      query: ({ name, page, min, max }) => `/search?query=${name}&page=${page}&min=${min}&max=${max}`,
+    }),
     registerUser: builder.mutation({
       query: newUser => ({
         url: '/register',
@@ -87,6 +90,7 @@ export const {
   useGetProductQuery,
   useSearchByNameQuery,
   useGetFilterPriceQuery,
+  useGetSearchFilterPriceQuery,
   useRegisterUserMutation,
   useLoginUserMutation,
   useGetUserOnloadQuery,

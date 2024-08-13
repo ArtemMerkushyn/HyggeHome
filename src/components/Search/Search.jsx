@@ -62,16 +62,17 @@ export const Search = () => {
     }
 
     setInputValue(value);
-
+    
     setSearchValue(value);
 
     dispatch(setSearchInputValue(value));
-
+    
     if (pathName !== '/search') {
       navigate('search');
       return;
     }
   };
+  
 
   const searchName = () => {
     if (inputValue.trim() === '') {

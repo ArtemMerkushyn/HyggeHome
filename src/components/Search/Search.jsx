@@ -12,6 +12,7 @@ import {
   setIsActive,
   setIsLoading,
   setSearch,
+  setSearchInputValue,
 } from '../../redux/slices/searchSlice.js';
 import { selectIsActive } from '../../redux/selectors.js';
 
@@ -54,7 +55,22 @@ export const Search = () => {
   };
 
   const handleInputChange = e => {
-    setInputValue(e.target.value);
+    const value = e.target.value.trim();
+    if (value === '') {
+      setInputValue('');
+      return toast.error('The field cannot be empty.');
+    }
+
+    setInputValue(value);
+
+    setSearchValue(value);
+
+    dispatch(setSearchInputValue(value));
+
+    if (pathName !== '/search') {
+      navigate('search');
+      return;
+    }
   };
 
   const searchName = () => {
@@ -106,7 +122,7 @@ export const Search = () => {
           className={styles.input}
           placeholder="Search"
           minLength={1}
-          debounceTimeout={10000}
+          debounceTimeout={2000}
         />
         <button className={styles.searchBtn} onClick={searchName}>
           <Icons icon={'search'} />

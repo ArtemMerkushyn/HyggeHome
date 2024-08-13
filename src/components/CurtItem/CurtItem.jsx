@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Amount } from '../Amount/Amount';
 import styles from './CurtItem.module.css';
-import { removeFromCart } from '../../redux/slices/curtSlice';
+import { changeAmount, removeFromCart } from '../../redux/slices/curtSlice';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
@@ -13,8 +13,8 @@ export const CurtItem = ({ productData, index }) => {
 
   const handleAmountChange = newAmount => {
     setAmountCart(newAmount);
+    dispatch(changeAmount({ product: dataProduct, amount: newAmount }));
   };
-
   const handleRemoveProduct = () => {
     dispatch(removeFromCart(dataProduct));
     toast(`${dataProduct.name} has been removed from the cart`);
@@ -33,7 +33,6 @@ export const CurtItem = ({ productData, index }) => {
       <span className={styles.span}>
         <div className={styles.li}>
           {index === 0 && <p className={styles.product_info_text}>Price</p>}
-
           <div className={styles.price}>{dataProduct.price}</div>
         </div>
         <div className={styles.li}>
@@ -42,6 +41,7 @@ export const CurtItem = ({ productData, index }) => {
             <Amount
               onAmountChange={handleAmountChange}
               dataAmount={amountCart}
+              quantity={dataProduct.quantity}
             />
           </div>
         </div>

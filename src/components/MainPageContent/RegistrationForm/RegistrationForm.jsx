@@ -41,7 +41,7 @@ export const RegistrationForm = ({ toggleModal }) => {
         .then(res => {
           if (res.error) {
             toast.error(res.error.data.error);
-          } else if (!res.data) {
+          } else if (res.data.statusCode === 204) {
             toast.error('User is already exist');
           } else {
             toggleModal();

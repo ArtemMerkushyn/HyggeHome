@@ -64,6 +64,10 @@ export const servicesApi = createApi({
         credentials: 'include',
         mode: 'cors',
       }),
+      transformResponse: (response, meta) => {
+      const statusCode = meta.response.status;
+      return {response, statusCode};
+  }
     }),
     loginUser: builder.mutation({
       query: user => ({

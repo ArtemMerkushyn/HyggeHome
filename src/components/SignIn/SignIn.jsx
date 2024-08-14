@@ -14,8 +14,6 @@ import { selectCurtProducts, selectFavorites } from '../../redux/selectors';
 
 export const SignIn = ({ toggleModal, handleLoginClick }) => {
   const [registerUser] = useRegisterUserMutation();
-  const [firstCheckbox, setFirstCheckbox] = useState(false);
-  const [secondCheckbox, setSecondCheckbox] = useState(false);
   const [passwordVisability, setPasswordVisability] = useState(false);
   const [confirmPasswordVisability, setConfirmPasswordVisability] =
     useState(false);
@@ -23,41 +21,34 @@ export const SignIn = ({ toggleModal, handleLoginClick }) => {
   const cartItems = useSelector(selectCurtProducts);
 
   const onSubmit = values => {
-    if (firstCheckbox) {
-      const cart = cartItems.map(cart => {
-        return {
-          article: cart.dataProduct.article,
-          quantity: cart.amount,
-        };
-      });
-      const wish = favoriteItems.map(item => item.article);
-      registerUser({
-        email: values.email,
-        password: values.password,
-        fullName: values.fullName,
-        promo: secondCheckbox,
-        regType: 'email',
-        wishList: wish,
-        inCart: cart,
+    const cart = cartItems.map(cart => {
+      return {
+        article: cart.dataProduct.article,
+        quantity: cart.amount,
+      };
+    });
+    const wish = favoriteItems.map(item => item.article);
+    registerUser({
+      email: values.email,
+      password: values.password,
+      fullName: values.fullName,
+      regType: 'email',
+      wishList: wish,
+      inCart: cart,
+    })
+      .then(res => {
+        if (res.error) {
+          toast.error(res.error.data.error);
+        } else if (res.data.statusCode === 204) {
+          toast.error('User is already exist');
+        } else {
+          toggleModal();
+          toast.success('User registered successfully');
+        }
       })
-        .then(res => {
-          if (res.error) {
-            toast.error(res.error.data.error);
-          } else if (!res.data) {
-            toast.error('User is already exist');
-          } else {
-            toggleModal();
-            toast.success('User registered successfully');
-          }
-        })
-        .catch(error => {
-          toast.error(
-            'Failed to register user. Please try again later.' + error,
-          );
-        });
-    } else {
-      toast.error('Please accept the policy');
-    }
+      .catch(error => {
+        toast.error('Failed to register user. Please try again later.' + error);
+      });
   };
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =

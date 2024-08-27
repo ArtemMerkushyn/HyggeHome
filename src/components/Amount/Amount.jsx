@@ -10,6 +10,8 @@ export const Amount = ({ onAmountChange, dataAmount, quantity }) => {
     if (amount < quantity) {
       setAmount(newAmount);
       onAmountChange(newAmount);
+    } else {
+      toast.info(`There are ${quantity} in stock`);
     }
   };
 

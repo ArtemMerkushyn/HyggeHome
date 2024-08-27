@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './Amount.module.css';
+import { toast } from 'react-toastify';
 
 export const Amount = ({ onAmountChange, dataAmount, quantity }) => {
   const [amount, setAmount] = useState(dataAmount ? dataAmount : 1);
@@ -31,6 +32,7 @@ export const Amount = ({ onAmountChange, dataAmount, quantity }) => {
     if (amount > Number(quantity)) {
       setAmount(Number(quantity));
       onAmountChange(Number(quantity));
+      toast.info(`There are ${quantity} in stock`);
       return;
     }
     setAmount(amount);

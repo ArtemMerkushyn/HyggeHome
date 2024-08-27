@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import MyAccountNav from '../../../../components/MyAccontNav/MyAccountNav';
 import CardList from '../../../../components/CardList/CardList';
 import { NewCollection } from '../../../../components/MainPageContent/secondMainContent/NewCollection';
-import css from './MyWishlist.module.css'
+import css from './MyWishlist.module.css';
 import { selectFavorites } from '../../../../redux/selectors';
 
 const MyWishlist = () => {
@@ -10,9 +10,9 @@ const MyWishlist = () => {
 
   return (
     <div className={css.MyWishlist}>
-      <MyAccountNav/>
+      <MyAccountNav />
       <div className={css.wish}>
-        <h3 className={css.title}>My delivery information</h3>
+        <h3 className={css.title}>My wishlist</h3>
         <CardList data={favoritList} />
         <NewCollection
           sliderNeeded={false}
@@ -22,6 +22,6 @@ const MyWishlist = () => {
       </div>
     </div>
   );
-}
+};
 
-export default MyWishlist
+export default MyWishlist;

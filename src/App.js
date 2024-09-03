@@ -5,8 +5,33 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import { Header } from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import { useEffect } from 'react';
+import { useGetUserOnloadQuery } from './redux/services';
+import { setLoggedIn } from './redux/slices/userSlice';
+import { useDispatch } from 'react-redux';
 
 function App() {
+
+  const { data } = useGetUserOnloadQuery()
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    if (data) {
+      if (data.noUser) {
+        return
+      } else {
+        dispatch(setLoggedIn({
+        token: data.cookie.token,
+        userData: {
+          name: data.enrichedUser.fullName,
+          email: data.enrichedUser.email
+        }
+      }))}
+      
+    }
+  }, [])
+
+
   return (
     <div className="App">
       <div className="container">

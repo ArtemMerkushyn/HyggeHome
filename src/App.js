@@ -7,7 +7,7 @@ import { Header } from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import { useEffect } from 'react';
 import { useGetUserOnloadQuery } from './redux/services';
-import { setLoggedIn } from './redux/slices/userSlice';
+import { setLoggedIn, setLoggedOut } from './redux/slices/userSlice';
 import { useDispatch } from 'react-redux';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
   useEffect(() => {
     if (data) {
       if (data.noUser) {
-        return
+        dispatch(setLoggedOut())
       } else {
         dispatch(setLoggedIn({
         token: data.cookie.token,

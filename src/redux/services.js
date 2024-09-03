@@ -77,10 +77,19 @@ export const servicesApi = createApi({
         credentials: 'include',
         mode: 'cors',
       }),
+    }),views: builder.mutation({
+      query: product => ({
+        url: '/view',
+        method: "PUT",
+        body: product,
+        credentials: 'include',
+        mode: 'cors',
+      }),
     }),
      getUserOnload: builder.query({
-      query: '/user-onload',
+      query: () => '/user-onload',
     }),
+    
   }),
 });
 
@@ -98,4 +107,5 @@ export const {
   useRegisterUserMutation,
   useLoginUserMutation,
   useGetUserOnloadQuery,
+  useViewsMutation
 } = servicesApi;

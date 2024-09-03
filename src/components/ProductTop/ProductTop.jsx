@@ -55,7 +55,10 @@ export const ProductTop = ({ data }) => {
         <div className={styles.info__item}>
           <div className={styles.price_and_amount}>
             <p className={styles.price}>${data.price}</p>
-            <Amount onAmountChange={handleAmountChange} />
+            <Amount
+              onAmountChange={handleAmountChange}
+              quantity={data.quantity}
+            />
           </div>
           <button
             className={styles.btn}

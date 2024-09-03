@@ -10,7 +10,7 @@ import { NewCollection } from '../../components/MainPageContent/secondMainConten
 import AboutProduct from '../../components/ProductNavigation/AboutProduct/AboutProduct';
 import Reviews from '../../components/ProductNavigation/Reviews/Reviews';
 import Questions from '../../components/ProductNavigation/Questions/Questions';
-import { useGetProductQuery } from '../../redux/services';
+import { useGetProductQuery, useViewsMutation } from '../../redux/services';
 
 export const Product = () => {
   // const location = useLocation();
@@ -19,7 +19,18 @@ export const Product = () => {
   const location = useLocation();
   const pathParts = location.pathname.split('/');
   const productArticle = pathParts[pathParts.length - 1];
-  const { data: product, error, isLoading } = useGetProductQuery(productArticle);
+  const {
+    data: product,
+    error,
+    isLoading,
+  } = useGetProductQuery(productArticle);
+  const [viewsMutation] = useViewsMutation();
+
+  useEffect(() => {
+    if (product) {
+      viewsMutation({ article: productArticle });
+    }
+  }, [product, productArticle, viewsMutation]);
 
   const tabs = [
     { id: 'about', title: 'About the product', component: AboutProduct },

@@ -11,7 +11,7 @@ import { router } from './router';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <GoogleOAuthProvider clientId='385264558532-ki06cm6018e1lg683chsotp6lc7deqhg.apps.googleusercontent.com'>
+  <GoogleOAuthProvider clientId={process.env.REACT_APP_KEY}>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <RouterProvider router={router} />

@@ -8,7 +8,6 @@ import { selectUser } from '../../redux/selectors';
 const MyAccountNav = () => {
   const authorized = localStorage.getItem('token');
   const storedUser = useSelector(selectUser);
-  console.log(storedUser);
 
   const location = useLocation();
   const dispatch = useDispatch();

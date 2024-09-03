@@ -78,9 +78,32 @@ export const servicesApi = createApi({
         mode: 'cors',
       }),
     }),
-     getUserOnload: builder.query({
-      query: '/user-onload',
+    
+    views: builder.mutation({
+      query: product => ({
+        url: '/view',
+        method: "PUT",
+        body: product,
+        credentials: 'include',
+        mode: 'cors',
+      }),
     }),
+     getUserOnload: builder.query({
+      query: () => '/user-onload',
+     }),
+     
+     quantityInCart: builder.mutation({
+      query: product => ({
+        url: '/quantity-in-cart',
+        method: "POST",
+        body: product,
+        credentials: 'include',
+        mode: 'cors',
+      }),
+    }),
+    logout: builder.query({
+      query: () => '/logout',
+     }),
   }),
 });
 
@@ -98,4 +121,7 @@ export const {
   useRegisterUserMutation,
   useLoginUserMutation,
   useGetUserOnloadQuery,
+  useViewsMutation,
+  useQuantityInCartMutation,
+  useLogoutQuery
 } = servicesApi;

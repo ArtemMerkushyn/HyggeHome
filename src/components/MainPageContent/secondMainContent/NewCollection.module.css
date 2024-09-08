@@ -92,7 +92,6 @@
   margin-top: 30px;
   margin-bottom: 129px;
   display: flex;
-  flex-wrap: wrap;
   gap: 30px;
 }
 @media screen and (min-width: 768px) and (max-width: 1157px) {
@@ -128,7 +127,7 @@
     /* height: 392px; */
     margin: 60px 0;
   }
-  
+
   .new_collection_text {
     font-family: DM Mono;
     font-size: 16px;
@@ -155,7 +154,7 @@
   .wrapper {
     padding-bottom: 58px;
   }
-  
+
   .arrows {
     top: auto;
     bottom: 0;

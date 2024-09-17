@@ -13,11 +13,11 @@ const MyAccountNav = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!authorized) {
-      navigate('/');
-    }
-  }, [authorized, navigate]);
+  // useEffect(() => {
+  //   if (!authorized) {
+  //     navigate('/');
+  //   }
+  // }, [authorized, navigate]);
 
   return (
     <aside className={css.navBar}>

@@ -20,6 +20,7 @@ import MyFeedback from './pages/MyAccount/components/MyFeedback/MyFeedback';
 import MyDeliveryInfo from './pages/MyAccount/components/MyDeliveryInfo/MyDeliveryInfo';
 import MyCart from './pages/MyAccount/components/MyCart/MyCart';
 import { MyReviews } from './pages/MyAccount/components/MyReviews/MyReviews';
+import AddProduct from './pages/Admin/AddProduct/AddProduct';
 
 export const router = createBrowserRouter([
   {
@@ -110,6 +111,10 @@ export const router = createBrowserRouter([
         path: 'my-account/reviews',
         element: <MyReviews/>
       },
+      {
+        path: 'admin',
+        element: <AddProduct/>
+      }
     ],
   },
 ]);

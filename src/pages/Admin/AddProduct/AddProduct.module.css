@@ -1,0 +1,37 @@
+.addProductPageContainer {
+  display: flex;
+  flex-direction: row;
+}
+.container {
+  margin-top: 60px;
+  margin-left: 30px;
+  max-width: 633px;
+  width: 100%;
+}
+.addProductContainer {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #fcb654;
+  border-radius: 24px;
+  padding: 20px;
+  width: 100%;
+}
+.text {
+  font-family: DM Mono;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 52px;
+  letter-spacing: -0.06em;
+  text-align: left;
+  margin-bottom: 30px;
+}
+.addProductForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+.selectInputs {
+  display: flex;
+  gap: 20px;
+}

@@ -9,6 +9,29 @@ const MyAccountNav = () => {
   const authorized = localStorage.getItem('token');
   const storedUser = useSelector(selectUser);
 
+  const userRoutes = [
+    {
+      route: 'my-orders',
+      title: 'My orders',
+    },
+    {
+      route: 'my-cart',
+      title: 'My cart',
+    },
+    {
+      route: 'my-wishlist',
+      title: 'My wishlist',
+    },
+    {
+      route: 'reviews',
+      title: 'My reviews',
+    },
+    {
+      route: 'my-delivery-information',
+      title: 'My delivery information',
+    },
+  ];
+
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -27,56 +50,19 @@ const MyAccountNav = () => {
         <h2 className={css.headedText}>User</h2>
       )}
       <div className={css.linkContainer}>
-        <NavLink
-          to="/my-account/my-orders"
-          className={css.navLink}
-          style={{
-            color:
-              location.pathname === '/my-account/my-orders' ? '#FCB654' : '',
-          }}
-        >
-          My orders
-        </NavLink>
-        <NavLink
-          to="/cart"
-          className={css.navLink}
-          style={{
-            color: location.pathname === '/my-account/my-cart' ? '#FCB654' : '',
-          }}
-        >
-          My cart
-        </NavLink>
-        <NavLink
-          to="/my-account/my-wishlist"
-          className={css.navLink}
-          style={{
-            color:
-              location.pathname === '/my-account/my-wishlist' ? '#FCB654' : '',
-          }}
-        >
-          My wishlist
-        </NavLink>
-        <NavLink
-          to="/my-account/reviews"
-          className={css.navLink}
-          style={{
-            color: location.pathname === '/my-account/reviews' ? '#FCB654' : '',
-          }}
-        >
-          My reviews
-        </NavLink>
-        <NavLink
-          to="/my-account/my-delivery-information"
-          className={css.navLink}
-          style={{
-            color:
-              location.pathname === '/my-account/my-delivery-information'
-                ? '#FCB654'
-                : '',
-          }}
-        >
-          My delivery information
-        </NavLink>
+        {userRoutes.map(({ route, title }) => (
+          <NavLink
+            key={route}
+            to={`/my-account/${route}`}
+            className={css.navLink}
+            style={{
+              color:
+                location.pathname === `/my-account/${route}` ? '#FCB654' : '',
+            }}
+          >
+            {title}
+          </NavLink>
+        ))}
         <NavLink to="/">
           <button
             className={css.logOut_Button}

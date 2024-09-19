@@ -5,6 +5,7 @@ import { useFormik } from 'formik';
 import { addProductSchema } from '../../../schemas/addProductSchema';
 import AddProductInput from '../../../components/UI/AddProductInput/AddProductInput';
 import DropDown from '../../../components/UI/DropDown/DropDown';
+import FileInput from '../../../components/FileInput/FileInput';
 
 const AddProduct = () => {
   const colors = [
@@ -136,7 +137,7 @@ const AddProduct = () => {
               errorField={errors.fullDesc}
               touched={touched.fullDesc}
             />
-            <button type="submit">Submit</button>
+            <FileInput />
           </form>
         </div>
       </div>

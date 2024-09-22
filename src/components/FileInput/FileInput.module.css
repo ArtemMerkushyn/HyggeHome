@@ -32,5 +32,15 @@
   color: #252525;
   opacity: 0.6;
 }
-.fileInputItemContainer {
+.itemList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.itemListItem {
+  display: flex;
+  max-width: 633px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }

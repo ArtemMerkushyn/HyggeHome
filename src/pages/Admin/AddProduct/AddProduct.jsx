@@ -137,7 +137,7 @@ const AddProduct = () => {
               errorField={errors.fullDesc}
               touched={touched.fullDesc}
             />
-            <FileInput />
+            <FileInput max={1} />
           </form>
         </div>
       </div>

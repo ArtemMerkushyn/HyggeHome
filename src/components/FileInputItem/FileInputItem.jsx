@@ -2,14 +2,18 @@ import React from 'react';
 import styles from './FileInputItem.module.css';
 import Icons from '../Icons/Icons';
 
-const FileInputItem = ({ image }) => {
+const FileInputItem = ({ image, deleteFunction }) => {
   return (
     <div className={styles.fileInputItemContainer}>
       <Icons icon={'file'} />
       <div className={styles.fileInputItemInfoContainer}>
         <div className={styles.fileInputItemNameNDeleteConatiner}>
           <p className={styles.fileInputItemName}>{image.name}</p>
-          <button className={styles.fileInputItemClearButton} type="button">
+          <button
+            className={styles.fileInputItemClearButton}
+            type="button"
+            onClick={() => deleteFunction(image)}
+          >
             <Icons icon={'bin'} />
           </button>
         </div>

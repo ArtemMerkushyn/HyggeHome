@@ -138,6 +138,7 @@ const AddProduct = () => {
               touched={touched.fullDesc}
             />
             <FileInput max={1} />
+            <FileInput max={5} />
           </form>
         </div>
       </div>

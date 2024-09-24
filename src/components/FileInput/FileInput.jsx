@@ -8,37 +8,57 @@ const FileInput = ({ max }) => {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    console.log(images.length);
-    console.log(max);
+    console.log(images);
   }, [images]);
-  const handleFiles = ({ target: { files } }) => {
-    // files[0] && setFileName(files[0].name);
-    // if (files) {
-    //   setImage(URL.createObjectURL(files[0]));
-    // }
 
-    if (files) {
-      if (images.length >= Number(max)) {
-        toast.error('You`ve exceeded maximum amount of pictures');
+  const handleFiles = ({ target: { files } }) => {
+    const allowedTypes = [
+      'image/png',
+      'image/jpg',
+      'image/jpeg',
+      'image/svg+xml',
+    ];
+    if (files.length > 0) {
+      if (images.length + files.length > Number(max)) {
+        return toast.error('You`ve exceeded the maximum number of pictures');
       }
-    } else if (images.length <= max) {
-      if (!images.length) {
-        setImages([...files]);
-      } else {
-        setImages(prevImages => [...prevImages, ...files]);
+
+      const invalidFiles = Array.from(files).filter(
+        file => !allowedTypes.includes(file.type),
+      );
+      if (invalidFiles.length > 0) {
+        return toast.error(
+          `Unsupported file type: ${invalidFiles
+            .map(file => file.type)
+            .join(', ')}`,
+        );
       }
+
+      setImages(prevImages => [...prevImages, ...files]);
     }
   };
 
   const handleDrop = e => {
     e.preventDefault();
     const files = Array.from(e.dataTransfer.files);
-    if (files && files.length <= Number(max)) {
-      setImages(prevImages => [...prevImages, ...files]);
-      console.log(files);
-    } else {
-      toast.error('working');
+    const allowedTypes = ['image/png', 'image/jpg', 'image/svg+xml'];
+
+    if (files.length + images.length > Number(max)) {
+      return toast.error('You`ve exceeded the maximum amount of pictures');
     }
+
+    const invalidFiles = files.filter(
+      file => !allowedTypes.includes(file.type),
+    );
+    if (invalidFiles.length > 0) {
+      return toast.error(
+        `Unsupported file type: ${invalidFiles
+          .map(file => file.type)
+          .join(', ')}`,
+      );
+    }
+
+    setImages(prevImages => [...prevImages, ...files]);
   };
 
   const handleDropOver = e => {
@@ -62,9 +82,9 @@ const FileInput = ({ max }) => {
       >
         <input
           type="file"
-          accept="image/*"
+          accept="image/svg image/png image/jpg"
           hidden
-          id="fileInput"
+          id={`fileInput${max}`}
           multiple
           onChange={handleFiles}
         />
@@ -72,7 +92,7 @@ const FileInput = ({ max }) => {
         <p className={styles.fileInputUploadText}>
           <span
             className={styles.fileInputUploadSpan}
-            onClick={() => document.querySelector('#fileInput').click()}
+            onClick={() => document.querySelector(`#fileInput${max}`).click()}
           >
             Click here
           </span>{' '}

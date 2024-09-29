@@ -11,9 +11,6 @@
 .addProductContainer {
   display: flex;
   flex-direction: column;
-  border: 1px solid #fcb654;
-  border-radius: 24px;
-  padding: 20px;
   width: 100%;
 }
 .text {
@@ -30,8 +27,20 @@
   flex-direction: column;
   gap: 20px;
   width: 100%;
+  padding: 20px;
+  border: 1px solid #fcb654;
+  border-radius: 24px;
 }
 .selectInputs {
   display: flex;
   gap: 20px;
+}
+.addProductContainer form {
+  display: flex;
+  flex-direction: column;
+}
+.addProductContainer button {
+  margin-top: 30px;
+  align-self: flex-end;
+  justify-self: end;
 }

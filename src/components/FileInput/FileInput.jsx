@@ -1,16 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './FileInput.module.css';
 import Icons from '../Icons/Icons';
 import FileInputItem from '../FileInputItem/FileInputItem';
 import { toast } from 'react-toastify';
 
-const FileInput = ({ max }) => {
-  const [images, setImages] = useState([]);
-
-  useEffect(() => {
-    console.log(images);
-  }, [images]);
-
+const FileInput = ({ max, images, setImages }) => {
   const handleFiles = ({ target: { files } }) => {
     const allowedTypes = [
       'image/png',

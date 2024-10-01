@@ -17,19 +17,21 @@ function App() {
   
   useEffect(() => {
     if (data) {
-      if (data.noUser) {
-        dispatch(setLoggedOut())
-      } else {
+      if (data.enrichedUser) {
+        console.log("yey")
         dispatch(setLoggedIn({
         token: data.cookie.token,
         userData: {
           name: data.enrichedUser.fullName,
           email: data.enrichedUser.email
         }
-      }))}
+      }))
+      } else {
+        dispatch(setLoggedOut())
+        }
       
     }
-  }, [])
+  }, [data])
 
 
   return (

@@ -18,7 +18,6 @@ function App() {
   useEffect(() => {
     if (data) {
       if (data.enrichedUser) {
-        console.log("yey")
         dispatch(setLoggedIn({
         token: data.cookie.token,
         userData: {
@@ -31,7 +30,7 @@ function App() {
         }
       
     }
-  }, [data])
+  }, [data, dispatch])
 
 
   return (

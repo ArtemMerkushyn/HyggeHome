@@ -5,6 +5,7 @@ const initialState = {
   userData: {
     name: null,
     email: null,
+    isAdmin: null,
   }
 };
 
@@ -26,6 +27,7 @@ export const userSlice = createSlice({
       state.userData = {
          name: null,
          email: null,
+         isAdmin: null,
       }
     },
   }

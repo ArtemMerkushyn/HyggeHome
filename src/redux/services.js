@@ -103,7 +103,16 @@ export const servicesApi = createApi({
     }),
     logout: builder.query({
       query: () => '/logout',
-     }),
+    }),
+    orderStatus: builder.mutation({
+      query: status => ({
+        url: '/order-status',
+        method: "PUT",
+        body: status,
+        credentials: 'include',
+        mode: 'cors',
+      }),
+    }),
   }),
 });
 

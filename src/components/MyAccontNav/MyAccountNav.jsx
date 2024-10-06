@@ -32,15 +32,46 @@ const MyAccountNav = () => {
     },
   ];
 
+  const adminRoutes = [
+    {
+      route: 'add-product',
+      title: 'Add product',
+    },
+    {
+      route: 'all-orders',
+      title: 'List of all orders',
+    },
+    {
+      route: 'all-reviews',
+      title: 'List of all reviews and questions',
+    },
+    {
+      route: 'delete-card',
+      title: 'Deleting/deactivating a card',
+    },
+    {
+      route: 'stats',
+      title: 'Statistics of sales, orders',
+    },
+  ];
+
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!authorized) {
-      navigate('/');
-    }
-  }, [authorized, navigate]);
+  // Uncomment if authorization check is required
+  // useEffect(() => {
+  //   if (!authorized) {
+  //     navigate('/');
+  //   }
+  // }, [authorized, navigate]);
+
+  const isAdmin = !storedUser?.isAdmin;
+
+  const routesToRender = isAdmin ? adminRoutes : userRoutes;
+
+  const getBaseRoute = route =>
+    isAdmin ? `/${route}` : `/my-account/${route}`;
 
   return (
     <aside className={css.navBar}>
@@ -50,14 +81,13 @@ const MyAccountNav = () => {
         <h2 className={css.headedText}>User</h2>
       )}
       <div className={css.linkContainer}>
-        {userRoutes.map(({ route, title }) => (
+        {routesToRender.map(({ route, title }) => (
           <NavLink
             key={route}
-            to={`/my-account/${route}`}
+            to={getBaseRoute(route)}
             className={css.navLink}
             style={{
-              color:
-                location.pathname === `/my-account/${route}` ? '#FCB654' : '',
+              color: location.pathname === getBaseRoute(route) ? '#FCB654' : '',
             }}
           >
             {title}

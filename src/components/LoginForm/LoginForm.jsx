@@ -58,6 +58,7 @@ const LoginForm = ({ closeModal, handleRegisterClick }) => {
                 userData: {
                   name: res.data.fullName,
                   email: res.data.email,
+                  isAdmin: res.data.isAdmin,
                 },
                 token: 'bebra',
               }),

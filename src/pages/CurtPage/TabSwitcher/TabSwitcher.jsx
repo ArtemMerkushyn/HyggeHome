@@ -5,10 +5,13 @@ import { selectCurtProducts } from '../../../redux/selectors';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import validator from 'validator';
+import { usePostOrderMutation } from '../../../redux/services.js';
 
 export const TabSwitcher = ({ tabs, selectedId, setSelectedId }) => {
   const curtItems = useSelector(selectCurtProducts);
+  console.log(curtItems);
   const [handleNext, setHandleNext] = useState(false);
+  const [postOrder] = usePostOrderMutation();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -105,6 +108,39 @@ export const TabSwitcher = ({ tabs, selectedId, setSelectedId }) => {
   const lineWidth =
     (tabs.findIndex(t => t.id === selectedId) + 1) * (100 / tabs.length);
 
+  const handleOrderPost = async () => {
+    const orderProducts = curtItems.map(item => ({
+      article: item.dataProduct.article,
+      price: item.dataProduct.price,
+      quantity: item.amount,
+    }));
+
+    const totalOrderPrice = curtItems.reduce(
+      (total, item) => total + item.dataProduct.price * item.amount,
+      0,
+    );
+
+    const orderDeliveryInfo = `${formData.firstName} ${formData.lastName}, ${formData.address}, ${formData.city}, ${formData.postalCode}, ${formData.phoneNumber}, ${formData.email}, ${formData.optionDeliveryMethod}`;
+
+    try {
+      const response = await postOrder({
+        products: orderProducts,
+        totalPrice: totalOrderPrice,
+        deliveryInfo: orderDeliveryInfo,
+      }).unwrap();
+
+      if (response.statusCode !== 200) {
+        throw new Error('An error occurred while processing your order.');
+      }
+      toast('Order placed successfully!');
+    } catch (error) {
+      // Обробка помилки і показ повідомлення
+      toast.error(error.message || 'Failed to place order. Please try again.');
+    }
+  };
+
+  const orderDeliveryInfo = `${formData.firstName} ${formData.lastName}, ${formData.address}, ${formData.city}, ${formData.postalCode}, ${formData.phoneNumber}, ${formData.email}, ${formData.optionDeliveryMethod}`;
+  console.log(orderDeliveryInfo);
   return (
     <div>
       <div className={styles.scrollContainer}>
@@ -163,6 +199,7 @@ export const TabSwitcher = ({ tabs, selectedId, setSelectedId }) => {
                 setRules={setRules}
                 handleNext={handleNext}
                 setHandleNext={setHandleNext}
+                postOrder={handleOrderPost}
               />
             ),
         )}

@@ -59,14 +59,13 @@ const MyAccountNav = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Uncomment if authorization check is required
-  // useEffect(() => {
-  //   if (!authorized) {
-  //     navigate('/');
-  //   }
-  // }, [authorized, navigate]);
+  useEffect(() => {
+    if (!authorized) {
+      navigate('/');
+    }
+  }, [authorized, navigate]);
 
-  const isAdmin = !storedUser?.isAdmin;
+  const isAdmin = storedUser?.isAdmin;
 
   const routesToRender = isAdmin ? adminRoutes : userRoutes;
 

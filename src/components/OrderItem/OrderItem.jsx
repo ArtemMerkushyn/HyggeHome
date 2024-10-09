@@ -6,6 +6,8 @@ import FeedbackForm from '../FeedbackForm/FeedbackForm';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../redux/selectors';
 import { colors } from '@mui/material';
+import { useOrderStatusMutation } from '../../redux/services';
+import { toast } from 'react-toastify';
 
 const statuses = [
   'Pending',
@@ -26,7 +28,8 @@ const OrderItem = ({ data }) => {
   const [modal, setModal] = useState(false);
   const [optionsModal, setOptionsModal] = useState(false);
   const user = useSelector(selectUser);
-  const isAdmin = !user?.isAdmin;
+  const isAdmin = user?.isAdmin;
+  const [changeStatus] = useOrderStatusMutation();
 
   const toggleModal = () => {
     const body = document.body;
@@ -38,6 +41,23 @@ const OrderItem = ({ data }) => {
       body.style.overflow = 'auto';
       body.style.marginRight = '';
     }
+  };
+
+  const handleChangeStatus = status => {
+    changeStatus({ id: data.order_number, status: status }).then(res => {
+      console.log(res);
+      if (res.data.statusCode === 204) {
+        toast.error(`Status of the order is already ${status}`);
+      } else if (res.data.statusCode === 200) {
+        toast.success(`Status have been changed sucessfully`);
+        setOrderStatus(status);
+        setOptionsModal(prev => !prev);
+      } else if (res.error.statusCode === 404) {
+        toast.error(
+          `Error during changing status of order №${data.order_number}`,
+        );
+      }
+    });
   };
 
   return (
@@ -84,7 +104,7 @@ const OrderItem = ({ data }) => {
                   style={{
                     color: orderStatus === stat && '#fcb654',
                   }}
-                  onClick={() => setOrderStatus(stat)}
+                  onClick={() => handleChangeStatus(stat)}
                 >
                   {stat}
                 </p>

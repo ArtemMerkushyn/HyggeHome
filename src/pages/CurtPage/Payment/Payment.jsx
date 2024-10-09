@@ -12,6 +12,7 @@ export const Payment = ({
   setPaymentMethod,
   rules,
   setRules,
+  postOrder,
 }) => {
   const navigate = useNavigate();
 
@@ -31,7 +32,7 @@ export const Payment = ({
       );
     } else {
       navigate('/');
-      toast('You have successfully made your promise');
+      postOrder();
     }
   };
 

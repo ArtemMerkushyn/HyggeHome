@@ -22,7 +22,8 @@ function App() {
         token: data.cookie.token,
         userData: {
           name: data.enrichedUser.fullName,
-          email: data.enrichedUser.email
+          email: data.enrichedUser.email,
+          isAdmin: data.enrichedUser.isAdmin
         }
       }))
       } else {

@@ -101,8 +101,16 @@ export const servicesApi = createApi({
         mode: 'cors',
       }),
     }),
-    logout: builder.query({
-      query: () => '/logout',
+    logout: builder.mutation({
+      query: () => ({
+        url: '/logout',
+        method: 'GET',
+      }),
+      transformResponse: (response, meta) => {
+      const statusCode = meta.response.status;
+      return {response, statusCode};
+  }
+      
     }),
     orderStatus: builder.mutation({
       query: status => ({
@@ -112,6 +120,32 @@ export const servicesApi = createApi({
         credentials: 'include',
         mode: 'cors',
       }),
+      transformResponse: (response, meta) => {
+      const statusCode = meta.response.status;
+      return {response, statusCode};
+  }
+    }),
+    postOrder: builder.mutation({
+      query: order => ({
+        url: '/order',
+        method: "POST",
+        body: order,
+        credentials: 'include',
+        mode: 'cors',
+      }),
+    }),
+    postQuestion: builder.mutation({
+      query: question => ({
+        url: '/question',
+        method: "POST",
+        body: question,
+        credentials: 'include',
+        mode: 'cors',
+      }),
+      transformResponse: (response, meta) => {
+      const statusCode = meta.response.status;
+      return {response, statusCode};
+  }
     }),
   }),
 });
@@ -132,5 +166,8 @@ export const {
   useGetUserOnloadQuery,
   useViewsMutation,
   useQuantityInCartMutation,
-  useLogoutQuery
+  useLogoutMutation,
+  useOrderStatusMutation,
+  usePostOrderMutation,
+  usePostQuestionMutation
 } = servicesApi;

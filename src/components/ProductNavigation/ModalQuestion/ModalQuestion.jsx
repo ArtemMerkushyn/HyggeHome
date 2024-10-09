@@ -1,13 +1,17 @@
 import { useState } from 'react';
-import { MdOutlineClose } from "react-icons/md";
+import { MdOutlineClose } from 'react-icons/md';
 import { toast } from 'react-toastify';
 
 import styles from './ModalQuestion.module.css';
 import Checkbox from '../Сheckbox/Checkbox';
+import { useParams } from 'react-router-dom';
+import { usePostQuestionMutation } from '../../../redux/services';
 
 export default function ModalQuestion({ setShowModal, addNewQuestion }) {
   const [firstName, setFirstName] = useState('');
   const [question, setQuestion] = useState('');
+  const { product_article } = useParams();
+  const [postQuestion] = usePostQuestionMutation();
 
   const getCurrentDate = () => {
     const months = [
@@ -45,11 +49,24 @@ export default function ModalQuestion({ setShowModal, addNewQuestion }) {
       date: currentDate,
     };
 
-    addNewQuestion(newQuestion);
-
     setFirstName('');
     setQuestion('');
     setShowModal(false);
+
+    postQuestion({
+      article: product_article,
+      fullName: firstName,
+      message: question,
+    }).then(res => {
+      console.log(res);
+      if (res.data.statusCode === 200) {
+        toast.success(`${res.result}`);
+      } else if (res.error.status === 401) {
+        toast.error(`${res.error.data.error}`);
+      } else {
+        toast.error('Message has not been posted. Try again later');
+      }
+    });
   };
 
   return (
@@ -59,30 +76,30 @@ export default function ModalQuestion({ setShowModal, addNewQuestion }) {
           className={styles.closeButton}
           onClick={() => setShowModal(false)}
         >
-         <MdOutlineClose className={styles.icons}  />
+          <MdOutlineClose className={styles.icons} />
         </button>
         <h3 className={styles.title}>Write your question</h3>
         <label className={styles.label}>
-        Your first name*
+          Your first name*
           <input
             value={firstName}
             onChange={e => setFirstName(e.target.value)}
             name="firstName"
             required={true}
             className={styles.input}
-            placeholder='Your first name'
+            placeholder="Your first name"
           />
         </label>
         <label className={styles.label}>
-        Your email*
-          <input            
-            name="email"            
+          Your email*
+          <input
+            name="email"
             className={styles.input}
-            placeholder='Your email'
+            placeholder="Your email"
           />
         </label>
         <label className={styles.label}>
-        Your question*
+          Your question*
           <textarea
             value={question}
             onChange={e => setQuestion(e.target.value)}
@@ -94,9 +111,13 @@ export default function ModalQuestion({ setShowModal, addNewQuestion }) {
           />
         </label>
         <div>
-        <Checkbox label="Send an answer to your question by email" />          
+          <Checkbox label="Send an answer to your question by email" />
         </div>
-        <button type="button" onClick={handleAddQuestion} className={styles.button}>
+        <button
+          type="button"
+          onClick={handleAddQuestion}
+          className={styles.button}
+        >
           Add question
         </button>
       </div>

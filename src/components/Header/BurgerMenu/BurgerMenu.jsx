@@ -4,12 +4,17 @@ import { setLoggedOut } from '../../../redux/slices/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Search2 } from '../../Search2/Search2';
 import { selectUser } from '../../../redux/selectors';
+import { useLogoutMutation } from '../../../redux/services'; // Используем мутацию для logout
 
 export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
   const storedUser = useSelector(selectUser);
   const authorized = localStorage.getItem('token');
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  // Используем мутацию для выхода
+  const [logout, { isLoading, isSuccess, isError }] = useLogoutMutation();
+
   const active = ({ isActive }) => {
     return {
       borderBottom: isActive ? '2px solid #FCB654' : '',
@@ -21,10 +26,19 @@ export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
     SetBurgerMenu(false);
   };
 
-  const logOutHandler = () => {
-    dispatch(setLoggedOut());
-    SetBurgerMenu(false);
-    navigate('/');
+  const logOutHandler = async () => {
+    try {
+      // Вызываем функцию logout при клике на кнопку
+      await logout();
+      if (isSuccess) {
+        // Выход успешен, делаем нужные действия
+        dispatch(setLoggedOut());
+        SetBurgerMenu(false);
+        navigate('/');
+      }
+    } catch (error) {
+      console.error('Logout failed:', isError);
+    }
   };
 
   return (
@@ -45,7 +59,9 @@ export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
           )}
           <div className={styles.auth}>
             {authorized ? (
-              <button onClick={logOutHandler}>Log out</button>
+              <button onClick={logOutHandler} disabled={isLoading}>
+                {isLoading ? 'Logging out...' : 'Log out'}
+              </button>
             ) : (
               <button onClick={logInHandler}>Log in</button>
             )}

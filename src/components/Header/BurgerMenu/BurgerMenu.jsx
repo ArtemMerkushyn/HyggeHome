@@ -28,14 +28,10 @@ export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
 
   const logOutHandler = async () => {
     try {
-      // Вызываем функцию logout при клике на кнопку
-      await logout();
-      if (isSuccess) {
-        // Выход успешен, делаем нужные действия
+      await logout().then(() => {
         dispatch(setLoggedOut());
-        SetBurgerMenu(false);
         navigate('/');
-      }
+      });
     } catch (error) {
       console.error('Logout failed:', isError);
     }

@@ -147,6 +147,19 @@ export const servicesApi = createApi({
       return {response, statusCode};
   }
     }),
+    postFeedback: builder.mutation({
+      query: question => ({
+        url: '/feedback',
+        method: "POST",
+        body: question,
+        credentials: 'include',
+        mode: 'cors',
+      }),
+      transformResponse: (response, meta) => {
+      const statusCode = meta.response.status;
+      return {response, statusCode};
+  }
+    }),
   }),
 });
 
@@ -169,5 +182,6 @@ export const {
   useLogoutMutation,
   useOrderStatusMutation,
   usePostOrderMutation,
-  usePostQuestionMutation
+  usePostQuestionMutation,
+  usePostFeedbackMutation
 } = servicesApi;

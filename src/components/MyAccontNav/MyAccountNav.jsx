@@ -4,10 +4,12 @@ import css from './MyAccontNav.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLoggedOut } from '../../redux/slices/userSlice';
 import { selectUser } from '../../redux/selectors';
+import { useLogoutMutation } from '../../redux/services';
 
 const MyAccountNav = () => {
   const authorized = localStorage.getItem('token');
   const storedUser = useSelector(selectUser);
+  const [logout, { isLoading, isSuccess, isError }] = useLogoutMutation();
 
   const userRoutes = [
     {
@@ -15,7 +17,7 @@ const MyAccountNav = () => {
       title: 'My orders',
     },
     {
-      route: 'my-cart',
+      route: '/cart',
       title: 'My cart',
     },
     {
@@ -70,7 +72,22 @@ const MyAccountNav = () => {
   const routesToRender = isAdmin ? adminRoutes : userRoutes;
 
   const getBaseRoute = route =>
-    isAdmin ? `/${route}` : `/my-account/${route}`;
+    isAdmin
+      ? `/${route}`
+      : route === '/cart'
+      ? `${route}`
+      : `/my-account/${route}`;
+
+  const logOutHandler = async () => {
+    try {
+      await logout().then(() => {
+        dispatch(setLoggedOut());
+        navigate('/');
+      });
+    } catch (error) {
+      console.error('Logout failed:', isError);
+    }
+  };
 
   return (
     <aside className={css.navBar}>
@@ -93,10 +110,7 @@ const MyAccountNav = () => {
           </NavLink>
         ))}
         <NavLink to="/">
-          <button
-            className={css.logOut_Button}
-            onClick={() => dispatch(setLoggedOut())}
-          >
+          <button className={css.logOut_Button} onClick={logOutHandler}>
             Log Out
           </button>
         </NavLink>

@@ -72,7 +72,7 @@ const OrderItem = ({ data }) => {
               display: 'flex',
               gap: '4px',
               alignItems: 'center',
-              cursor: 'pointer',
+              cursor: isAdmin ? 'pointer' : '',
             }}
             onClick={() => setOptionsModal(prev => !prev)}
           >
@@ -87,12 +87,14 @@ const OrderItem = ({ data }) => {
             >
               {orderStatus}
             </p>
-            <button
-              className={css.show_more_button}
-              style={{ transform: optionsModal ? 'rotate(270deg)' : '' }}
-            >
-              <Icons icon="right_arrow" />
-            </button>
+            {isAdmin && (
+              <button
+                className={css.show_more_button}
+                style={{ transform: optionsModal ? 'rotate(270deg)' : '' }}
+              >
+                <Icons icon="right_arrow" />
+              </button>
+            )}
           </div>
 
           {isAdmin && optionsModal && (

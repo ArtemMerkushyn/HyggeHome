@@ -22,7 +22,6 @@ export const TabSwitcher = ({ tabs, selectedId, setSelectedId }) => {
     email: '',
     optionDeliveryMethod: '5',
   });
-
   const PaymentMethod = [
     { id: 1, method: 'Payment by card', commission: 'No commission' },
     { id: 2, method: 'Google pay', commission: 'No commission' },
@@ -116,7 +115,7 @@ export const TabSwitcher = ({ tabs, selectedId, setSelectedId }) => {
     }));
 
     const totalOrderPrice = curtItems.reduce(
-      (total, item) => total + item.dataProduct.price * item.amount,
+      (total, item) => total + item.dataProduct.price * (item.amount || 1),
       0,
     );
 
@@ -139,8 +138,6 @@ export const TabSwitcher = ({ tabs, selectedId, setSelectedId }) => {
     }
   };
 
-  const orderDeliveryInfo = `${formData.firstName} ${formData.lastName}, ${formData.address}, ${formData.city}, ${formData.postalCode}, ${formData.phoneNumber}, ${formData.email}, ${formData.optionDeliveryMethod}`;
-  console.log(orderDeliveryInfo);
   return (
     <div>
       <div className={styles.scrollContainer}>

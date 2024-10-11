@@ -46,6 +46,7 @@ export default function NewCollectionItem({ item }) {
 
     const productToCart = {
       dataProduct: item,
+      amount: 1,
     };
     dispatch(addToCurt(productToCart));
     toast.success(`${item.name} has been added to the cart`);

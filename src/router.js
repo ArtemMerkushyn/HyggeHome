@@ -20,6 +20,8 @@ import MyFeedback from './pages/MyAccount/components/MyFeedback/MyFeedback';
 import MyDeliveryInfo from './pages/MyAccount/components/MyDeliveryInfo/MyDeliveryInfo';
 import MyCart from './pages/MyAccount/components/MyCart/MyCart';
 import { MyReviews } from './pages/MyAccount/components/MyReviews/MyReviews';
+import AddProduct from './pages/Admin/AddProduct/AddProduct';
+import Orders from './pages/Admin/Orders/Orders';
 
 export const router = createBrowserRouter([
   {
@@ -110,6 +112,26 @@ export const router = createBrowserRouter([
         path: 'my-account/reviews',
         element: <MyReviews/>
       },
+      {
+        path: 'add-product',
+        element: <AddProduct/>
+      },
+    {
+      path: 'all-orders',
+      element: <Orders/>,
+    },
+    {
+      route: 'all-reviews',
+      title: 'List of all reviews and questions',
+    },
+    {
+      route: 'delete-card',
+      title: 'Deleting/deactivating a card',
+    },
+    {
+      route: 'stats',
+      title: 'Statistics of sales, orders',
+    },
     ],
   },
 ]);

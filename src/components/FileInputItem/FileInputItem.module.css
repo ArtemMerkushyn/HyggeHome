@@ -1,0 +1,60 @@
+.fileInputItemContainer {
+  max-width: 633px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  height: 110px;
+  border: 1px dashed #252525;
+  border-radius: 25px;
+  padding: 23px 30px;
+}
+.fileInputItemContainer svg {
+  width: 30px;
+  height: 30px;
+}
+.fileInputItemInfoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 533px;
+  width: 100%;
+}
+.fileInputItemNameNDeleteConatiner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.fileInputItemClearButton {
+  border: none;
+  background-color: transparent;
+}
+.fileInputItemClearButton svg {
+  width: 22px;
+  height: 22px;
+}
+.fileInputItemName {
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: left;
+  color: #252525;
+}
+.fileInputItemInfoContainer hr {
+  max-width: 525px;
+  width: 100%;
+  height: 3.5px;
+  border: none;
+  border-radius: 24px;
+  background-color: #fcb654;
+}
+.fileInputItemSize {
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  text-align: left;
+  color: #252525;
+}

@@ -34,34 +34,52 @@ const LoginForm = ({ closeModal, handleRegisterClick }) => {
       }).then(res => {
         if (res.error) {
           toast.error(res.error.data.error);
+        } else if (!res.data.isAdmin) {
+          if (res.data.wishList && res.data.inCart) {
+            res.data.wishList.forEach(item => {
+              const isFavorite = itemFavorites.some(
+                favorite => favorite.article === item.article,
+              );
+              if (!isFavorite) {
+                dispatch(addFavorite(item));
+              }
+            });
+            res.data.inCart.forEach(item => {
+              const isInCart = curtItems.some(
+                cart => cart.dataProduct.article === item.product.article,
+              );
+              if (!isInCart) {
+                dispatch(addToCurt({ dataProduct: item.product }));
+              }
+            });
+            closeModal();
+            dispatch(
+              setLoggedIn({
+                userData: {
+                  name: res.data.fullName,
+                  email: res.data.email,
+                  isAdmin: res.data.isAdmin,
+                },
+                token: 'bebra',
+              }),
+            );
+            navigate('/my-account/my-wishlist');
+          }
         } else {
-          res.data.wishList.forEach(item => {
-            const isFavorite = itemFavorites.some(
-              favorite => favorite.article === item.article,
+          if (res.data.isAdmin) {
+            closeModal();
+            dispatch(
+              setLoggedIn({
+                userData: {
+                  name: res.data.fullName,
+                  email: res.data.email,
+                  isAdmin: res.data.isAdmin,
+                },
+                token: 'admin',
+              }),
             );
-            if (!isFavorite) {
-              dispatch(addFavorite(item));
-            }
-          });
-          res.data.inCart.forEach(item => {
-            const isInCart = curtItems.some(
-              cart => cart.dataProduct.article === item.product.article,
-            );
-            if (!isInCart) {
-              dispatch(addToCurt({ dataProduct: item.product }));
-            }
-          });
-          closeModal();
-          dispatch(
-            setLoggedIn({
-              userData: {
-                name: res.data.fullName,
-                email: res.data.email,
-              },
-              token: 'bebra',
-            }),
-          );
-          navigate('/my-account/my-wishlist');
+            navigate('/add-product');
+          }
         }
       });
     } catch (error) {

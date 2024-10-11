@@ -4,10 +4,58 @@ import css from './MyAccontNav.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLoggedOut } from '../../redux/slices/userSlice';
 import { selectUser } from '../../redux/selectors';
+import { useLogoutMutation } from '../../redux/services';
 
 const MyAccountNav = () => {
   const authorized = localStorage.getItem('token');
   const storedUser = useSelector(selectUser);
+  const [logout, { isLoading, isSuccess, isError }] = useLogoutMutation();
+
+  const userRoutes = [
+    {
+      route: 'my-orders',
+      title: 'My orders',
+    },
+    {
+      route: '/cart',
+      title: 'My cart',
+    },
+    {
+      route: 'my-wishlist',
+      title: 'My wishlist',
+    },
+    {
+      route: 'reviews',
+      title: 'My reviews',
+    },
+    {
+      route: 'my-delivery-information',
+      title: 'My delivery information',
+    },
+  ];
+
+  const adminRoutes = [
+    {
+      route: 'add-product',
+      title: 'Add product',
+    },
+    {
+      route: 'all-orders',
+      title: 'List of all orders',
+    },
+    {
+      route: 'all-reviews',
+      title: 'List of all reviews and questions',
+    },
+    {
+      route: 'delete-card',
+      title: 'Deleting/deactivating a card',
+    },
+    {
+      route: 'stats',
+      title: 'Statistics of sales, orders',
+    },
+  ];
 
   const location = useLocation();
   const dispatch = useDispatch();
@@ -19,6 +67,28 @@ const MyAccountNav = () => {
     }
   }, [authorized, navigate]);
 
+  const isAdmin = storedUser?.isAdmin;
+
+  const routesToRender = isAdmin ? adminRoutes : userRoutes;
+
+  const getBaseRoute = route =>
+    isAdmin
+      ? `/${route}`
+      : route === '/cart'
+      ? `${route}`
+      : `/my-account/${route}`;
+
+  const logOutHandler = async () => {
+    try {
+      await logout().then(() => {
+        dispatch(setLoggedOut());
+        navigate('/');
+      });
+    } catch (error) {
+      console.error('Logout failed:', isError);
+    }
+  };
+
   return (
     <aside className={css.navBar}>
       {storedUser ? (
@@ -27,61 +97,20 @@ const MyAccountNav = () => {
         <h2 className={css.headedText}>User</h2>
       )}
       <div className={css.linkContainer}>
-        <NavLink
-          to="/my-account/my-orders"
-          className={css.navLink}
-          style={{
-            color:
-              location.pathname === '/my-account/my-orders' ? '#FCB654' : '',
-          }}
-        >
-          My orders
-        </NavLink>
-        <NavLink
-          to="/cart"
-          className={css.navLink}
-          style={{
-            color: location.pathname === '/my-account/my-cart' ? '#FCB654' : '',
-          }}
-        >
-          My cart
-        </NavLink>
-        <NavLink
-          to="/my-account/my-wishlist"
-          className={css.navLink}
-          style={{
-            color:
-              location.pathname === '/my-account/my-wishlist' ? '#FCB654' : '',
-          }}
-        >
-          My wishlist
-        </NavLink>
-        <NavLink
-          to="/my-account/reviews"
-          className={css.navLink}
-          style={{
-            color: location.pathname === '/my-account/reviews' ? '#FCB654' : '',
-          }}
-        >
-          My reviews
-        </NavLink>
-        <NavLink
-          to="/my-account/my-delivery-information"
-          className={css.navLink}
-          style={{
-            color:
-              location.pathname === '/my-account/my-delivery-information'
-                ? '#FCB654'
-                : '',
-          }}
-        >
-          My delivery information
-        </NavLink>
-        <NavLink to="/">
-          <button
-            className={css.logOut_Button}
-            onClick={() => dispatch(setLoggedOut())}
+        {routesToRender.map(({ route, title }) => (
+          <NavLink
+            key={route}
+            to={getBaseRoute(route)}
+            className={css.navLink}
+            style={{
+              color: location.pathname === getBaseRoute(route) ? '#FCB654' : '',
+            }}
           >
+            {title}
+          </NavLink>
+        ))}
+        <NavLink to="/">
+          <button className={css.logOut_Button} onClick={logOutHandler}>
             Log Out
           </button>
         </NavLink>

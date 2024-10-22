@@ -156,8 +156,21 @@ export const servicesApi = createApi({
         mode: 'cors',
       }),
       transformResponse: (response, meta) => {
-      const statusCode = meta.response.status;
-      return {response, statusCode};
+      const status = meta.response.status;
+      return {response, status};
+  }
+    }),
+    deleteFeedback: builder.mutation({
+      query: feedback => ({
+        url: '/feedback',
+        method: "DELETE",
+        body: feedback,
+        credentials: 'include',
+        mode: 'cors',
+      }),
+      transformResponse: (response, meta) => {
+      const status = meta.response.status;
+      return {response, status};
   }
     }),
   }),
@@ -183,5 +196,6 @@ export const {
   useOrderStatusMutation,
   usePostOrderMutation,
   usePostQuestionMutation,
-  usePostFeedbackMutation
+  usePostFeedbackMutation,
+  useDeleteFeedbackMutation
 } = servicesApi;

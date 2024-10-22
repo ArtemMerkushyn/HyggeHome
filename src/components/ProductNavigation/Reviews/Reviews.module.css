@@ -1,6 +1,7 @@
 .review {
   margin-top: 20px;
   display: flex;
+  width: 100%;
 }
 
 .review__left {
@@ -31,12 +32,19 @@
   opacity: 0.8;
   margin-top: 20px;
 }
-
+.review__right {
+  width: 80%;
+  min-width: 800px;
+}
 .review__right svg {
   width: 24px;
   height: 24px;
 }
-
+.reviewInfoContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
 .comment {
   color: #252525;
   font-family: 'Poppins';
@@ -57,7 +65,16 @@
   background: #fcb654;
   margin-top: 20px;
 }
-
+.review .buttonsContainer {
+  display: flex;
+  gap: 15px;
+  justify-self: flex-end;
+}
+.buttonOption svg {
+  width: 24px;
+  height: 24px;
+  stroke: #252525;
+}
 .button {
   display: inline-flex;
   padding: 10px 32px;
@@ -98,7 +115,7 @@
   }
 }
 
-@media screen and (max-width: 500px)  {
+@media screen and (max-width: 500px) {
   .review {
     display: block;
   }

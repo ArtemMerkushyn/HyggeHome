@@ -22,6 +22,7 @@ import MyCart from './pages/MyAccount/components/MyCart/MyCart';
 import { MyReviews } from './pages/MyAccount/components/MyReviews/MyReviews';
 import AddProduct from './pages/Admin/AddProduct/AddProduct';
 import Orders from './pages/Admin/Orders/Orders';
+import ReviewsNQuestions from './pages/Admin/ReviewsNQuestions/ReviewsNQuestions';
 
 export const router = createBrowserRouter([
   {
@@ -121,8 +122,8 @@ export const router = createBrowserRouter([
       element: <Orders/>,
     },
     {
-      route: 'all-reviews',
-      title: 'List of all reviews and questions',
+      path: 'all-reviews',
+      element: <ReviewsNQuestions/>,
     },
     {
       route: 'delete-card',
@@ -131,7 +132,8 @@ export const router = createBrowserRouter([
     {
       route: 'stats',
       title: 'Statistics of sales, orders',
-    },
+      },
+    
     ],
   },
 ]);

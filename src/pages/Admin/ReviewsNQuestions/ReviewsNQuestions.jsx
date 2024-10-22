@@ -6,7 +6,10 @@ const ReviewsNQuestions = () => {
   return (
     <div className={styles.wrapper}>
       <MyAccountNav />
-      <div className={styles.container}></div>
+      <div className={styles.container}>
+        <h3 className={styles.title}>List of all reviews and questions</h3>
+        Роута немає!!!!!!!!!!!
+      </div>
     </div>
   );
 };

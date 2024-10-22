@@ -271,21 +271,22 @@ const Icons = ({ icon }) => {
     ),
     check: (
       <svg
-        width="25px"
-        height="25px"
-        viewBox="-2.4 -2.4 28.80 28.80"
-        fill="none"
+        fill="#000000"
+        viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
-        transform="rotate(0)"
       >
-        <g id="SVGRepo_bgCarrier"></g>
-        <g id="SVGRepo_tracerCarrier"></g>
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></g>
         <g id="SVGRepo_iconCarrier">
           {' '}
-          <path
-            d="M17.0303 8.78039L8.99993 16.8107L5.4696 13.2804L6.53026 12.2197L8.99993 14.6894L15.9696 7.71973L17.0303 8.78039Z"
-            fill="#ffffff"
-          ></path>{' '}
+          <polygon
+            fill-rule="evenodd"
+            points="9.707 14.293 19 5 20.414 6.414 9.707 17.121 4 11.414 5.414 10"
+          ></polygon>{' '}
         </g>
       </svg>
     ),

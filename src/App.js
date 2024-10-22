@@ -15,8 +15,6 @@ function App() {
 
   const { data } = useGetUserOnloadQuery()
   const dispatch = useDispatch();
-  const user = useSelector(selectUser)
-  console.log(user)
   
   useEffect(() => {
     if (data) {

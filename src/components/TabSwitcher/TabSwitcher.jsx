@@ -22,11 +22,12 @@ export default function TabSwitcher({ data, tabs }) {
       </div>
       <div className={styles.hr}></div>
       <div className={styles.wrapperContent}>
-      {tabs.map(tab => (
-          selectedId === tab.id && (
-            <tab.component key={tab.id} data={tab.data || data} />
-          )
-        ))}
+        {tabs.map(
+          tab =>
+            selectedId === tab.id && (
+              <tab.component key={tab.id} data={tab.data || data} />
+            ),
+        )}
       </div>
     </>
   );
@@ -35,4 +36,4 @@ export default function TabSwitcher({ data, tabs }) {
 TabSwitcher.propTypes = {
   data: PropTypes.object,
   tabs: PropTypes.array,
-}
+};

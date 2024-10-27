@@ -6,9 +6,13 @@ import styles from './ModalQuestion.module.css';
 import Checkbox from '../Сheckbox/Checkbox';
 import { useParams } from 'react-router-dom';
 import { usePostQuestionMutation } from '../../../redux/services';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../../redux/selectors';
 
 export default function ModalQuestion({ setShowModal, addNewQuestion }) {
-  const [firstName, setFirstName] = useState('');
+  const storedUser = useSelector(selectUser);
+  const [firstName, setFirstName] = useState(storedUser.name);
+  const [email, setEmail] = useState(storedUser.email);
   const [question, setQuestion] = useState('');
   const { product_article } = useParams();
   const [postQuestion] = usePostQuestionMutation();
@@ -96,6 +100,8 @@ export default function ModalQuestion({ setShowModal, addNewQuestion }) {
             name="email"
             className={styles.input}
             placeholder="Your email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
           />
         </label>
         <label className={styles.label}>

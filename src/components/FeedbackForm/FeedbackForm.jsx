@@ -39,11 +39,13 @@ const FeedbackForm = ({ toggle }) => {
       stars: selectedStars,
     }).then(res => {
       console.log(res);
-      if (res.data.statusCode === 200) {
+      if (res.data.status === 200) {
         toast('Thanks for your feedback');
         toggle();
-      } else if (res.error.status === 401) {
+      } else if (res.data.status === 401) {
         toast.error(`${res.error.data.error}`);
+      } else if (res.data.status === 204) {
+        toast.error(`You've already left a review`);
       } else {
         toast.error('Review has not been posted. Try again later');
       }

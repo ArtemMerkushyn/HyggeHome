@@ -5,7 +5,6 @@ import { Modal } from '../MainPageContent/ModalWindow/Modal';
 import FeedbackForm from '../FeedbackForm/FeedbackForm';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../redux/selectors';
-import { colors } from '@mui/material';
 import { useOrderStatusMutation } from '../../redux/services';
 import { toast } from 'react-toastify';
 
@@ -20,6 +19,11 @@ const statuses = [
   'Shipped',
   'Delivered',
   'Awaiting Pickup',
+];
+
+const items = [
+  { id: 1, name: 'Anton' },
+  { id: 2, name: 'Fucking candle' },
 ];
 
 const OrderItem = ({ data }) => {
@@ -45,11 +49,10 @@ const OrderItem = ({ data }) => {
 
   const handleChangeStatus = status => {
     changeStatus({ id: data.order_number, status: status }).then(res => {
-      console.log(res);
       if (res.data.statusCode === 204) {
         toast.error(`Status of the order is already ${status}`);
       } else if (res.data.statusCode === 200) {
-        toast.success(`Status have been changed sucessfully`);
+        toast.success(`Status have been changed successfully`);
         setOrderStatus(status);
         setOptionsModal(prev => !prev);
       } else if (res.error.statusCode === 404) {
@@ -216,6 +219,11 @@ const OrderItem = ({ data }) => {
           </button>
           {modal && (
             <Modal funcClick={toggleModal}>
+              {items.map(item => (
+                <div key={item.id}>
+                  <p>{item.name}</p>
+                </div>
+              ))}
               <FeedbackForm toggle={toggleModal} />
             </Modal>
           )}

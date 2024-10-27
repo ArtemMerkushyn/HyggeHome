@@ -8,7 +8,8 @@ import Footer from './components/Footer/Footer';
 import { useEffect } from 'react';
 import { useGetUserOnloadQuery } from './redux/services';
 import { setLoggedIn, setLoggedOut } from './redux/slices/userSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from './redux/selectors';
 
 function App() {
 

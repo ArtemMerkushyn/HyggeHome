@@ -4,7 +4,30 @@ import { setLoggedOut } from '../../../redux/slices/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Search2 } from '../../Search2/Search2';
 import { selectUser } from '../../../redux/selectors';
-import { useLogoutMutation } from '../../../redux/services'; // Используем мутацию для logout
+import { useLogoutMutation } from '../../../redux/services';
+
+const adminRoutes = [
+  {
+    to: 'add-product',
+    title: 'Add product',
+  },
+  {
+    to: 'all-orders',
+    title: 'List of all orders',
+  },
+  {
+    to: 'all-reviews',
+    title: 'List of all reviews and questions',
+  },
+  {
+    to: 'delete-card',
+    title: 'Deleting/deactivating a card',
+  },
+  {
+    to: 'stats',
+    title: 'Statistics of sales, orders',
+  },
+];
 
 export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
   const storedUser = useSelector(selectUser);
@@ -12,7 +35,6 @@ export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Используем мутацию для выхода
   const [logout, { isLoading, isSuccess, isError }] = useLogoutMutation();
 
   const active = ({ isActive }) => {

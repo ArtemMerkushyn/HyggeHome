@@ -1,42 +1,18 @@
 import { useState, useEffect, useRef } from 'react';
 
-import styles from './Sort.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { addSortValue } from '../../redux/slices/filterSlice';
+import styles from './DropDownSort.module.css';
 
-export default function Sort() {
-  const sortValue = useSelector(state => state.filter.sortValue);
+export default function DropDownSort({ options, value, setValue }) {
   const [isOpen, setOpen] = useState(false);
-  const [value, setValue] = useState('');
   const dropdownRef = useRef(null);
-  const dispatch = useDispatch();
 
   const toggleDropdown = event => {
     event.stopPropagation();
     setOpen(!isOpen);
   };
 
-  useEffect(() => {
-    const sortValueMap = {
-      popular: 'Popular',
-      reviews: 'Reviews',
-      price: sortValue.dir === 'desc' ? 'Expensive' : 'Cheapest',
-    };
-
-    setValue(sortValueMap[sortValue.field]);
-  }, [sortValue]);
-
   const handleOptionClick = option => {
     setValue(option);
-
-    const sortOptions = {
-      Popular: { field: 'popular', dir: 'desc' },
-      Reviews: { field: 'reviews', dir: 'desc' },
-      Expensive: { field: 'price', dir: 'desc' },
-      Cheapest: { field: 'price', dir: 'asc' },
-    };
-
-    dispatch(addSortValue(sortOptions[option]));
     setOpen(false);
   };
 
@@ -90,18 +66,15 @@ export default function Sort() {
       </button>
       {isOpen && (
         <ul ref={dropdownRef} className={styles.dporList}>
-          {['Popular', 'Reviews', 'Expensive', 'Cheapest'].map(
-            option =>
-              value !== option && (
-                <li
-                  key={option}
-                  onClick={() => handleOptionClick(option)}
-                  className={styles.dropItem}
-                >
-                  {option}
-                </li>
-              ),
-          )}
+          {options.map(option => (
+            <li
+              key={option}
+              onClick={() => handleOptionClick(option)}
+              className={styles.dropItem}
+            >
+              {option}
+            </li>
+          ))}
         </ul>
       )}
     </div>

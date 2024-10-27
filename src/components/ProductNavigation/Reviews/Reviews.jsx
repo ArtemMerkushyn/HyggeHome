@@ -1,22 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Rating } from '../../Rating/Rating';
 import styles from './Reviews.module.css';
-import items from './db.json';
 import FeedbackForm from '../../FeedbackForm/FeedbackForm';
 import { Modal } from '../../MainPageContent/ModalWindow/Modal';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../../redux/selectors';
 import { toast } from 'react-toastify';
+import { useDeleteFeedbackMutation } from '../../../redux/services';
+import ReviewItem from '../../ReviewItem/ReviewItem';
 
-export default function Reviews() {
+export default function Reviews({ data }) {
   const [modal, setModal] = useState(false);
+  const [reviews, setReviews] = useState(data.feedbacks);
+  console.log(data.feedbacks);
   const storedUser = useSelector(selectUser);
+  const [deleteReview] = useDeleteFeedbackMutation();
+
   const toggleModal = () => {
-    if (
-      storedUser.email === null &&
-      storedUser.isAdmin === null &&
-      storedUser.name === null
-    ) {
+    if (!storedUser.email && !storedUser.isAdmin && !storedUser.name) {
       toast.error('Authorize to leave a feedback');
     } else {
       const body = document.body;
@@ -30,21 +31,21 @@ export default function Reviews() {
       }
     }
   };
+
+  useEffect(() => {
+    if (data.feedbacks) {
+      if (data.feedbacks.length > 0) {
+        const sortedReviews = data.feedbacks.filter(item => item.approved);
+        setReviews(sortedReviews);
+      }
+    }
+  }, [data.feedbacks]);
+
   return (
     <div>
-      {items.map((item, index) => (
-        <div key={index} className={styles.review}>
-          <div className={styles.review__left}>
-            <p className={styles.name}>{item.name}</p>
-            <p className={styles.date}>{item.date}</p>
-          </div>
-          <div className={styles.review__right}>
-            <Rating rating={item.rating} />
-            <p className={styles.comment}>{item.comment}</p>
-          </div>
-          <div className={styles.rectangle}></div>
-        </div>
-      ))}
+      {reviews &&
+        reviews.length > 0 &&
+        reviews.map((item, index) => <ReviewItem item={item} index={index} />)}
       <button className={styles.button} onClick={toggleModal}>
         Leave Review
       </button>

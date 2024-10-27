@@ -10,6 +10,8 @@ import LoginForm from '../LoginForm/LoginForm.jsx';
 import BurgerMenu from './BurgerMenu/BurgerMenu.jsx';
 import WIshListModal from '../WishListModal/WIshListModal.jsx';
 import { SignIn } from '../SignIn/SignIn.jsx';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/selectors.js';
 
 export const Header = () => {
   const logoStyles = {
@@ -22,6 +24,8 @@ export const Header = () => {
   const [register, setRegister] = useState(false);
   const location = useLocation();
   const authorized = localStorage.getItem('token');
+  const user = useSelector(selectUser);
+  const isAdmin = user ? user.isAdmin : false;
 
   const handleRegisterClick = () => {
     setRegister(!register);
@@ -96,7 +100,7 @@ export const Header = () => {
             {authorized ? (
               <NavLink
                 className={styles.link}
-                to={'/my-account/my-wishlist'}
+                to={isAdmin ? 'all-orders' : '/my-account/my-wishlist'}
                 style={{
                   borderBottom: location.pathname.startsWith('/my-account')
                     ? '2px solid #FCB654'

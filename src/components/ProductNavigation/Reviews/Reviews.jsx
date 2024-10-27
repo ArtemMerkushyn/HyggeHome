@@ -6,12 +6,13 @@ import { Modal } from '../../MainPageContent/ModalWindow/Modal';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../../redux/selectors';
 import { toast } from 'react-toastify';
-import Icons from '../../Icons/Icons';
 import { useDeleteFeedbackMutation } from '../../../redux/services';
+import ReviewItem from '../../ReviewItem/ReviewItem';
 
 export default function Reviews({ data }) {
   const [modal, setModal] = useState(false);
-  const [reviews, setReviews] = useState(data.feedbacks); // Стан для відгуків
+  const [reviews, setReviews] = useState(data.feedbacks);
+  console.log(data.feedbacks);
   const storedUser = useSelector(selectUser);
   const [deleteReview] = useDeleteFeedbackMutation();
 
@@ -32,61 +33,19 @@ export default function Reviews({ data }) {
   };
 
   useEffect(() => {
-    if (data.feedbacks.length > 0) {
-      const sortedReviews = storedUser.isAdmin
-        ? data.feedbacks.sort((a, b) => a.approved - b.approved)
-        : data.feedbacks.filter(item => item.approved);
-
-      setReviews(sortedReviews);
+    if (data.feedbacks) {
+      if (data.feedbacks.length > 0) {
+        const sortedReviews = data.feedbacks.filter(item => item.approved);
+        setReviews(sortedReviews);
+      }
     }
-  }, [data.feedbacks, storedUser.isAdmin]);
-
-  const formatDate = timestamp => {
-    const date = new Date(timestamp);
-    const options = { month: 'short', day: '2-digit', year: 'numeric' };
-    return date.toLocaleDateString('en-US', options);
-  };
-
-  const handleDeleteReview = async email => {
-    try {
-      await deleteReview({ article: data.article, email });
-      setReviews(prevReviews =>
-        prevReviews.filter(item => item.email !== email),
-      );
-      toast.success('Review deleted successfully');
-    } catch (error) {
-      toast.error('Failed to delete review');
-    }
-  };
+  }, [data.feedbacks]);
 
   return (
     <div>
-      {reviews.length > 0 &&
-        reviews.map((item, index) => (
-          <div key={index} className={styles.review}>
-            <div className={styles.review__left}>
-              <p className={styles.name}>{item.fullName}</p>
-              <p className={styles.date}>{formatDate(item.feedbackDate)}</p>
-            </div>
-            <div className={styles.review__right}>
-              <div className={styles.reviewInfoContainer}>
-                <Rating rating={item.stars} />
-                <div style={{ display: 'flex', gap: '15px' }}>
-                  <div className={styles.buttonOption}>
-                    <Icons icon={'check'} />
-                  </div>
-                  <div
-                    className={styles.buttonOption}
-                    onClick={() => handleDeleteReview(item.email)}
-                  >
-                    <Icons icon={'bin'} />
-                  </div>
-                </div>
-              </div>
-              <p className={styles.comment}>{item.message}</p>
-            </div>
-          </div>
-        ))}
+      {reviews &&
+        reviews.length > 0 &&
+        reviews.map((item, index) => <ReviewItem item={item} index={index} />)}
       <button className={styles.button} onClick={toggleModal}>
         Leave Review
       </button>

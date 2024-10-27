@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import ModalQuestion from '../ModalQuestion/ModalQuestion';
 import styles from './Questions.module.css';
-import items from './db.json';
+import QuestionItem from '../../QuestionItem/QuestionItem';
 
 export default function Questions({ data }) {
-  const [questions, setQuestions] = useState(items);
+  const [questions, setQuestions] = useState(data.questions);
   const [showModal, setShowModal] = useState(false);
 
   const addNewQuestion = newQuestion => {
@@ -30,30 +30,11 @@ export default function Questions({ data }) {
     };
   }, [showModal]);
 
-  const formatDate = timestamp => {
-    const date = new Date(timestamp);
-    const options = { month: 'short', day: '2-digit', year: 'numeric' };
-    return date.toLocaleDateString('en-US', options);
-  };
-
   return (
     <div>
       {data.questions.length > 0 &&
         data.questions.map((item, index) => (
-          <div className={styles.question} key={index}>
-            <div className={styles.question__wrapper} key={index}>
-              <div className={styles.question__left}>
-                <p className={styles.name}>{item.fullName}</p>
-                <p className={styles.date}>
-                  {formatDate(item.questionDate)}
-                </p>{' '}
-              </div>
-              <div>
-                <p className={styles.comment}>{item.message}</p>
-              </div>
-            </div>
-            <div className={styles.rectangle}></div>
-          </div>
+          <QuestionItem item={item} index={index} />
         ))}
       <button
         type="button"

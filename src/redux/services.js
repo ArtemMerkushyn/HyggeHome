@@ -133,6 +133,10 @@ export const servicesApi = createApi({
         credentials: 'include',
         mode: 'cors',
       }),
+      transformResponse: (response, meta) => {
+      const statusCode = meta.response.status;
+      return {response, statusCode};
+  }
     }),
     postQuestion: builder.mutation({
       query: question => ({

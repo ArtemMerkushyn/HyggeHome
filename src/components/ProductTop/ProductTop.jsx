@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { addToCurt } from '../../redux/slices/curtSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurtProducts } from '../../redux/selectors';
+import { Link } from 'react-router-dom';
 
 export const ProductTop = ({ data }) => {
   const [amount, setAmount] = useState(1);
@@ -67,6 +68,9 @@ export const ProductTop = ({ data }) => {
           >
             {isInCurt ? 'Added to cart' : 'Add to cart'}
           </button>
+          <Link to={`/change-product/${data.article}`} state={data}>
+            hey
+          </Link>
         </div>
       </div>
     </div>

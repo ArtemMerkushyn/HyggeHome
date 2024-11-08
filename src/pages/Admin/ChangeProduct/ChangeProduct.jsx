@@ -4,15 +4,14 @@ import MyAccountNav from '../../../components/MyAccontNav/MyAccountNav';
 import { useFormik } from 'formik';
 import { addProductSchema } from '../../../schemas/addProductSchema';
 import AddProductInput from '../../../components/UI/AddProductInput/AddProductInput';
-import DropDown from '../../../components/UI/DropDown/DropDown';
 import FileInput from '../../../components/FileInput/FileInput';
 import Button from '../../../components/UI/Button/Button';
 import { toast } from 'react-toastify';
 import { useLocation } from 'react-router-dom';
+import ChangeDropDown from '../../../components/UI/ChangeDropDown/ChangeDropDown';
 
 const ChangeProduct = () => {
   const { state } = useLocation();
-  console.log(state);
   const colors = [
     'Red',
     'Blue',
@@ -38,8 +37,15 @@ const ChangeProduct = () => {
   const [category, setCategory] = useState('');
   const [hoverImages, setHoverImages] = useState([]);
   const [galleryImages, setGalleryImages] = useState([]);
+  const [currentHoverImages, setCurrentHoverImages] = useState([state.picture]);
+  const [currentGalleryImages, setCurrentGalleryImages] = useState([
+    ...state.image,
+  ]);
   const onSubmit = values => {
-    if (hoverImages.length === 0 || galleryImages.length === 0) {
+    if (
+      [...currentHoverImages, ...hoverImages].length === 0 ||
+      [...currentGalleryImages, ...galleryImages].length === 0
+    ) {
       return toast.error('Please add images');
     }
 
@@ -55,8 +61,8 @@ const ChangeProduct = () => {
       ...values,
       color,
       category,
-      hoverImages,
-      galleryImages,
+      hoverImages: [...currentHoverImages, ...hoverImages],
+      galleryImages: [...currentGalleryImages, ...galleryImages],
     });
   };
 
@@ -72,10 +78,11 @@ const ChangeProduct = () => {
     onSubmit,
   });
   useEffect(() => {
-    setColor(`${state.color}`);
-    setCategory(state.category);
-    console.log(state.color);
-  }, []);
+    if (state) {
+      setColor(`${state.color}`);
+      setCategory(state.category);
+    }
+  }, [state]);
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     formik;
@@ -115,16 +122,18 @@ const ChangeProduct = () => {
                 touched={touched.shortDesc}
               />
               <div className={styles.selectInputs}>
-                <DropDown
+                <ChangeDropDown
                   data={colors}
+                  currentOption={state.color}
                   labelFor="Product color"
                   name="color"
                   placeholder="Select"
                   value={color}
                   setF={setColor}
                 />
-                <DropDown
+                <ChangeDropDown
                   data={categories}
+                  currentOption={state.category}
                   labelFor="Product category"
                   name="category"
                   placeholder="Select"
@@ -175,11 +184,15 @@ const ChangeProduct = () => {
                 max={1}
                 images={hoverImages}
                 setImages={setHoverImages}
+                setCurrentImages={setCurrentHoverImages}
+                currentItems={currentHoverImages}
               />
               <FileInput
                 max={5}
                 images={galleryImages}
                 setImages={setGalleryImages}
+                setCurrentImages={setCurrentGalleryImages}
+                currentItems={currentGalleryImages}
               />
             </div>
             <Button text="Add a product" type={'submit'} />

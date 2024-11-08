@@ -6,15 +6,24 @@ import Switcher from '../../../components/Switcher/Switcher';
 import { questionsArray, feedbackArray } from './db';
 import QuestionItem from '../../../components/QuestionItem/QuestionItem';
 import ReviewItem from '../../../components/ReviewItem/ReviewItem';
+import AdminQuestionItem from '../../../components/AdminQuestionItem/AdminQuestionItem';
 
-const tabs = [
+const rewievTabs = [
   { id: 1, title: 'New' },
   { id: 2, title: 'Accepted' },
   { id: 3, title: 'Declined' },
 ];
+const questionTabs = [
+  {
+    id: 1,
+    title: 'New',
+  },
+  { id: 2, title: 'Answered' },
+];
 
 const ReviewsNQuestions = () => {
   const [sortValue, setSortValue] = useState('Reviews');
+  const tabs = sortValue === 'Reviews' ? rewievTabs : questionTabs;
   const [selectedId, setSelectedId] = useState(tabs[0].id);
   const [data, setData] = useState([]);
 
@@ -43,16 +52,12 @@ const ReviewsNQuestions = () => {
         case 1:
           setData(
             questionsArray
-              .slice()
-              .filter(item => !item.approved)
+              .filter(item => !item.answers.length)
               .sort((a, b) => b.questionDate - a.questionDate),
           );
           break;
         case 2:
-          setData(questionsArray.filter(item => item.approved));
-          break;
-        case 3:
-          setData(questionsArray.filter(item => !item.approved));
+          setData(questionsArray.filter(item => item.answers.length));
           break;
         default:
           setData(questionsArray);
@@ -60,7 +65,6 @@ const ReviewsNQuestions = () => {
     }
   };
 
-  // Викликаємо handleFilterPick при зміні sortValue або selectedId
   useEffect(() => {
     handleFilterPick();
   }, [sortValue, selectedId]);
@@ -84,15 +88,15 @@ const ReviewsNQuestions = () => {
             setSelectedId={setSelectedId}
           />
         </div>
-        <div className={styles.list}>
+        <ul className={styles.list}>
           {data.map((item, index) =>
             sortValue === 'Questions' ? (
-              <QuestionItem item={item} index={index} />
+              <AdminQuestionItem item={item} index={index} />
             ) : (
               <ReviewItem item={item} index={index} />
             ),
           )}
-        </div>
+        </ul>
       </div>
     </div>
   );

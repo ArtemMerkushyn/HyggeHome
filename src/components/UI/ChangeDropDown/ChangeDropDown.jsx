@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import css from './DropDown.module.css';
+import css from './ChangeDropDown.module.css';
 
-const DropDown = props => {
-  const { labelFor, data, setF, ...inputProps } = props;
+const ChangeDropDown = props => {
+  const { labelFor, data, setF, currentOption, ...inputProps } = props;
   const [active, setActive] = useState(false);
-  const [selectedOption, setSelectedOption] = useState();
+  const [selectedOption, setSelectedOption] = useState(currentOption);
   const dropdownRef = useRef(null);
 
   const handleOptionClick = option => {
@@ -64,4 +64,4 @@ const DropDown = props => {
   );
 };
 
-export default DropDown;
+export default ChangeDropDown;

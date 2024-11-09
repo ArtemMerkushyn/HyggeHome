@@ -1,47 +1,26 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import styles from './BurgerMenu.module.css';
 import { setLoggedOut } from '../../../redux/slices/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Search2 } from '../../Search2/Search2';
 import { selectUser } from '../../../redux/selectors';
 import { useLogoutMutation } from '../../../redux/services';
-
-const adminRoutes = [
-  {
-    to: 'add-product',
-    title: 'Add product',
-  },
-  {
-    to: 'all-orders',
-    title: 'List of all orders',
-  },
-  {
-    to: 'all-reviews',
-    title: 'List of all reviews and questions',
-  },
-  {
-    to: 'delete-card',
-    title: 'Deleting/deactivating a card',
-  },
-  {
-    to: 'stats',
-    title: 'Statistics of sales, orders',
-  },
-];
+import { generalRoutes, userRoutes, adminRoutes } from './routes';
 
 export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
   const storedUser = useSelector(selectUser);
+  const isAdmin = storedUser?.isAdmin;
   const authorized = localStorage.getItem('token');
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const [logout, { isLoading, isSuccess, isError }] = useLogoutMutation();
+  const [logout, { isLoading, isError }] = useLogoutMutation();
 
-  const active = ({ isActive }) => {
-    return {
-      borderBottom: isActive ? '2px solid #FCB654' : '',
-    };
-  };
+  const activeStyle = ({ isActive }) => ({
+    borderBottom: isActive ? '2px solid #FCB654' : '',
+  });
 
   const logInHandler = () => {
     toggleModal();
@@ -50,14 +29,27 @@ export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
 
   const logOutHandler = async () => {
     try {
-      await logout().then(() => {
-        dispatch(setLoggedOut());
-        navigate('/');
-      });
+      await logout().unwrap();
+      dispatch(setLoggedOut());
+      navigate('/');
     } catch (error) {
       console.error('Logout failed:', isError);
     }
   };
+
+  const protectedRoutes = [...adminRoutes, ...userRoutes].map(
+    route => route.to,
+  );
+
+  useEffect(() => {
+    const currentPath = location.pathname;
+
+    const isProtectedRoute = protectedRoutes.includes(currentPath);
+
+    if (!authorized && isProtectedRoute) {
+      navigate('/');
+    }
+  }, [authorized, location.pathname, navigate, protectedRoutes]);
 
   return (
     <div
@@ -71,7 +63,7 @@ export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
         ></button>
         <div className={styles.username}>
           {authorized ? (
-            <span>{!storedUser ? 'User' : storedUser.name}</span>
+            <span>{storedUser?.name || 'User'}</span>
           ) : (
             <span>Houseguest</span>
           )}
@@ -88,66 +80,31 @@ export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
         <Search2 />
         <nav className={styles.nav__items}>
           <div className={styles.nav__top}>
-            {[
-              { to: '/cart', text: 'My cart' },
-              { to: '/my-account/my-wishlist', text: 'My wish list' },
-              authorized
-                ? { to: '/my-account/my-orders', text: 'My orders' }
-                : null,
-              authorized
-                ? { to: '/my-account/reviews', text: 'My reviews' }
-                : null,
-              authorized
-                ? {
-                    to: '/my-account/my-delivery-information',
-                    text: 'My delivery information',
-                  }
-                : null,
-            ].map(
-              item =>
-                item && (
-                  <NavLink
-                    key={item.to}
-                    className={
-                      item.text === 'Home'
-                        ? `${styles.nav__item} border`
-                        : styles.nav__item
-                    }
-                    to={item.to}
-                    style={active}
-                    onClick={() => SetBurgerMenu(false)}
-                  >
-                    {item.text}
-                  </NavLink>
-                ),
-            )}
+            {(isAdmin ? adminRoutes : userRoutes).map(item => (
+              <NavLink
+                key={item.to}
+                className={styles.nav__item}
+                to={item.to}
+                style={activeStyle}
+                onClick={() => SetBurgerMenu(false)}
+              >
+                {item.text}
+              </NavLink>
+            ))}
           </div>
-          {[
-            { to: '/', text: 'Home' },
-            { to: '/candles', text: 'Candles' },
-            { to: '/lighting-decor', text: 'Lighting Decor' },
-            { to: '/gift-sets', text: 'Gift Sets' },
-            { to: '/get-warm', text: 'Get Warm' },
-            { to: '/table-games', text: 'Table Games' },
-            { to: '/books-&-journals', text: 'Books & Journals' },
-          ].map(
-            item =>
-              item && (
-                <NavLink
-                  key={item.to}
-                  className={
-                    item.text === 'Home'
-                      ? `${styles.nav__item} border`
-                      : styles.nav__item
-                  }
-                  to={item.to}
-                  style={active}
-                  onClick={() => SetBurgerMenu(false)}
-                >
-                  {item.text}
-                </NavLink>
-              ),
-          )}
+          {generalRoutes.map(item => (
+            <NavLink
+              key={item.to}
+              className={`${styles.nav__item} ${
+                item.text === 'Home' ? 'border' : ''
+              }`}
+              to={item.to}
+              style={activeStyle}
+              onClick={() => SetBurgerMenu(false)}
+            >
+              {item.text}
+            </NavLink>
+          ))}
         </nav>
       </div>
     </div>

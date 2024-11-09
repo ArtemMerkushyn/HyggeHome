@@ -63,9 +63,11 @@ export default function ModalQuestion({ setShowModal, addNewQuestion }) {
       message: question,
     }).then(res => {
       console.log(res);
-      if (res.data.statusCode === 200) {
+      if (res?.data?.statusCode === 200) {
         toast.success(`${res.result}`);
-      } else if (res.error.status === 401) {
+      } else if (res?.data?.statusCode === 204) {
+        toast.error(`You already questioned something`);
+      } else if (res?.error?.statusCode === 401) {
         toast.error(`${res.error.data.error}`);
       } else {
         toast.error('Message has not been posted. Try again later');

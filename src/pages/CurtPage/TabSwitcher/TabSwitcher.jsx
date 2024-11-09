@@ -9,7 +9,6 @@ import { usePostOrderMutation } from '../../../redux/services.js';
 
 export const TabSwitcher = ({ tabs, selectedId, setSelectedId }) => {
   const curtItems = useSelector(selectCurtProducts);
-  console.log(curtItems);
   const [handleNext, setHandleNext] = useState(false);
   const [postOrder] = usePostOrderMutation();
   const [formData, setFormData] = useState({
@@ -111,7 +110,7 @@ export const TabSwitcher = ({ tabs, selectedId, setSelectedId }) => {
     const orderProducts = curtItems.map(item => ({
       article: item.dataProduct.article,
       price: item.dataProduct.price,
-      quantity: item.amount,
+      quantity: item.amount ? item.amount : 1,
     }));
 
     const totalOrderPrice = curtItems.reduce(
@@ -127,14 +126,14 @@ export const TabSwitcher = ({ tabs, selectedId, setSelectedId }) => {
         totalPrice: totalOrderPrice,
         deliveryInfo: orderDeliveryInfo,
       }).unwrap();
-
       if (response.statusCode !== 200) {
         throw new Error('An error occurred while processing your order.');
       }
       toast('Order placed successfully!');
     } catch (error) {
-      // Обробка помилки і показ повідомлення
-      toast.error(error.message || 'Failed to place order. Please try again.');
+      console.error(
+        error.message || 'Failed to place order. Please try again.',
+      );
     }
   };
 

@@ -1,0 +1,182 @@
+.wrapper {
+  border: 1px solid #fcb654;
+  border-radius: 24px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.review {
+  display: flex;
+  width: 100%;
+}
+
+.review__left {
+  width: 20%;
+  min-width: 200px;
+  padding-right: 20px;
+}
+
+.name {
+  color: #252525;
+  font-family: 'DM Mono';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -1.44px;
+}
+
+.date {
+  color: #252525;
+  font-family: 'DM Mono';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-top: 20px;
+}
+.review__right {
+  width: 80%;
+  min-width: 800px;
+}
+.review__right svg {
+  width: 24px;
+  height: 24px;
+}
+.reviewInfoContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+.comment {
+  color: #252525;
+  font-family: 'Poppins';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: 20px;
+  opacity: 0.8;
+}
+
+.rectangle {
+  /* width: 1303px; */
+  height: 1px;
+  flex-shrink: 0;
+  border-radius: 24px;
+  opacity: 0.3;
+  background: #fcb654;
+  margin-top: 20px;
+}
+.review .buttonsContainer {
+  display: flex;
+  gap: 15px;
+  justify-self: flex-end;
+}
+.buttonOption svg {
+  width: 24px;
+  height: 24px;
+  stroke: #252525;
+}
+.button {
+  display: inline-flex;
+  padding: 10px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 24px;
+  background: #fcb654;
+  border: none;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 40px;
+}
+.line {
+  width: 100%;
+  margin: 20px 0;
+  height: 0px;
+  border: 0.5px solid #fcb654;
+}
+.buttonsWrapper {
+  display: flex;
+  gap: 20px;
+  align-self: flex-end;
+}
+
+.acceptButton {
+  width: 131px;
+  height: 47px;
+  padding: 10px 32px;
+  border-radius: 24px;
+  font-family: 'Poppins';
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  text-align: center;
+  color: white;
+  background-color: #fcb654;
+  border: none;
+}
+.declineButton {
+  width: 131px;
+  height: 47px;
+  padding: 10px 32px;
+  border-radius: 24px;
+  border: 1px solid #fcb654;
+  font-family: 'Poppins';
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  text-align: center;
+  background-color: transparent;
+}
+@media screen and (max-width: 768px) {
+  .review__left {
+    min-width: 150px;
+  }
+
+  .name {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .date {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  .comment {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .review {
+    display: block;
+  }
+
+  .review__left {
+    padding-right: 0;
+  }
+
+  .date {
+    margin-bottom: 10px;
+  }
+
+  .comment {
+    margin-top: 10px;
+  }
+
+  .rectangle {
+    margin-top: 10px;
+  }
+}

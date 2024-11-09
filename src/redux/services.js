@@ -133,6 +133,10 @@ export const servicesApi = createApi({
         credentials: 'include',
         mode: 'cors',
       }),
+      transformResponse: (response, meta) => {
+      const statusCode = meta.response.status;
+      return {response, statusCode};
+  }
     }),
     postQuestion: builder.mutation({
       query: question => ({
@@ -173,6 +177,25 @@ export const servicesApi = createApi({
       return {response, status};
   }
     }),
+    postAnswer: builder.mutation({
+      query: answer => ({
+        url: '/answer ',
+        method: "POST",
+        body: answer ,
+        credentials: 'include',
+        mode: 'cors',
+      }),
+      transformResponse: (response, meta) => {
+        const status = meta.response.status;
+        return { response, status };
+      }
+    }),
+    getQuestions: builder.query({
+      query: ({ email, page }) => `/questions?email=${email}&page=${page}`,
+    }),
+    getFeedbacks: builder.query({
+      query: ({ email, page }) => `/feedbacks?email=${email}&page=${page}`,
+    }),
   }),
 });
 
@@ -197,5 +220,8 @@ export const {
   usePostOrderMutation,
   usePostQuestionMutation,
   usePostFeedbackMutation,
-  useDeleteFeedbackMutation
+  useDeleteFeedbackMutation,
+  usePostAnswerMutation,
+  useGetQuestionsQuery,
+  useGetFeedbacksQuery,
 } = servicesApi;

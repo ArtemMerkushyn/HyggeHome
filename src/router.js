@@ -23,6 +23,7 @@ import { MyReviews } from './pages/MyAccount/components/MyReviews/MyReviews';
 import AddProduct from './pages/Admin/AddProduct/AddProduct';
 import Orders from './pages/Admin/Orders/Orders';
 import ReviewsNQuestions from './pages/Admin/ReviewsNQuestions/ReviewsNQuestions';
+import ChangeProduct from './pages/Admin/ChangeProduct/ChangeProduct';
 
 export const router = createBrowserRouter([
   {
@@ -133,6 +134,10 @@ export const router = createBrowserRouter([
       route: 'stats',
       title: 'Statistics of sales, orders',
       },
+    {
+      path: 'change-product/:article',
+      element: <ChangeProduct/>,
+    },
     
     ],
   },

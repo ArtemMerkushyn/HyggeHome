@@ -12,7 +12,6 @@ import ReviewItem from '../../ReviewItem/ReviewItem';
 export default function Reviews({ data }) {
   const [modal, setModal] = useState(false);
   const [reviews, setReviews] = useState(data.feedbacks);
-  console.log(data.feedbacks);
   const storedUser = useSelector(selectUser);
   const [deleteReview] = useDeleteFeedbackMutation();
 

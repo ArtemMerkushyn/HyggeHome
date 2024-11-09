@@ -27,7 +27,7 @@ export const userSlice = createSlice({
       state.userData = {
          name: null,
          email: null,
-         isAdmin: null,
+         isAdmin: false,
       }
     },
   }

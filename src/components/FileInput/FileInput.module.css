@@ -32,6 +32,40 @@
   color: #252525;
   opacity: 0.6;
 }
+.currentItemsList {
+  display: flex;
+  gap: 20px;
+}
+.currentItem {
+  width: 60px;
+  height: 60px;
+
+  border-radius: 20px;
+  border: 1px solid #fcb654;
+  position: relative;
+}
+.currentItemImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.deleteItemButton {
+  background-color: #fcb654;
+  position: absolute;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  top: -35px;
+  right: -5px;
+}
+.deleteItemButton svg {
+  width: 16px;
+  height: 16px;
+  fill: white;
+  margin-top: 2px;
+}
 .itemList {
   display: flex;
   flex-direction: column;

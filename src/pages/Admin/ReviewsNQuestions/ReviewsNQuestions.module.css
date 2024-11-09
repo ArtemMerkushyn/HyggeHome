@@ -24,6 +24,13 @@
   position: absolute;
   right: 20px;
 }
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 33px;
+  margin-bottom: 33px;
+}
 @media (max-width: 835px) {
   .title {
     margin-bottom: 20px;

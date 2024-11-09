@@ -7,40 +7,51 @@ import AddProductInput from '../../../components/UI/AddProductInput/AddProductIn
 import FileInput from '../../../components/FileInput/FileInput';
 import Button from '../../../components/UI/Button/Button';
 import { toast } from 'react-toastify';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import ChangeDropDown from '../../../components/UI/ChangeDropDown/ChangeDropDown';
+import { useGetProductQuery } from '../../../redux/services';
+
+const colors = [
+  'Red',
+  'Blue',
+  'Green',
+  'Yellow',
+  'Orange',
+  'Purple',
+  'Pink',
+  'Black',
+  'White',
+  'Gray',
+];
+const categories = [
+  'Candles',
+  'Lighting Decor',
+  'Gift Sets',
+  'Get Warm',
+  'Table Games',
+  'Books & Journals',
+];
 
 const ChangeProduct = () => {
-  const { state } = useLocation();
-  const colors = [
-    'Red',
-    'Blue',
-    'Green',
-    'Yellow',
-    'Orange',
-    'Purple',
-    'Pink',
-    'Black',
-    'White',
-    'Gray',
-  ];
-  const categories = [
-    'Candles',
-    'Lighting Decor',
-    'Gift Sets',
-    'Get Warm',
-    'Table Games',
-    'Books & Journals',
-  ];
+  const { article } = useParams();
+  const { data: product, error, isLoading } = useGetProductQuery(article);
 
   const [color, setColor] = useState('');
   const [category, setCategory] = useState('');
   const [hoverImages, setHoverImages] = useState([]);
   const [galleryImages, setGalleryImages] = useState([]);
-  const [currentHoverImages, setCurrentHoverImages] = useState([state.picture]);
-  const [currentGalleryImages, setCurrentGalleryImages] = useState([
-    ...state.image,
-  ]);
+  const [currentHoverImages, setCurrentHoverImages] = useState([]);
+  const [currentGalleryImages, setCurrentGalleryImages] = useState([]);
+
+  useEffect(() => {
+    if (product) {
+      setColor(`${product.color}`);
+      setCategory(product.category);
+      setCurrentHoverImages([product.picture]);
+      setCurrentGalleryImages([...product.image]);
+    }
+  }, [product]);
+
   const onSubmit = values => {
     if (
       [...currentHoverImages, ...hoverImages].length === 0 ||
@@ -64,35 +75,36 @@ const ChangeProduct = () => {
       hoverImages: [...currentHoverImages, ...hoverImages],
       galleryImages: [...currentGalleryImages, ...galleryImages],
     });
+
+    // Здесь добавьте код для отправки данных на сервер
   };
 
   const formik = useFormik({
     initialValues: {
-      name: state ? state.name : '',
-      shortDesc: state ? state.description : '',
-      inStock: state ? state.quantity : '',
-      price: state ? state.price : '',
-      fullDesc: state ? state.aboutProduct : '',
+      name: product ? product.name : '',
+      shortDesc: product ? product.description : '',
+      inStock: product ? product.quantity : '',
+      price: product ? product.price : '',
+      fullDesc: product ? product.aboutProduct : '',
     },
     validationSchema: addProductSchema,
     onSubmit,
+    enableReinitialize: true, // Добавлено
   });
-  useEffect(() => {
-    if (state) {
-      setColor(`${state.color}`);
-      setCategory(state.category);
-    }
-  }, [state]);
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     formik;
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error!!!</div>;
 
   return (
     <div className={styles.addProductPageContainer}>
       <MyAccountNav />
       <div className={styles.container}>
         <h1 className={styles.text}>
-          Change product: <span style={{ color: '#fcb654' }}>{state.name}</span>
+          Change product:{' '}
+          <span style={{ color: '#fcb654' }}>{product.name}</span>
         </h1>
         <div className={styles.addProductContainer}>
           <form onSubmit={handleSubmit}>
@@ -124,7 +136,7 @@ const ChangeProduct = () => {
               <div className={styles.selectInputs}>
                 <ChangeDropDown
                   data={colors}
-                  currentOption={state.color}
+                  currentOption={product.color}
                   labelFor="Product color"
                   name="color"
                   placeholder="Select"
@@ -133,7 +145,7 @@ const ChangeProduct = () => {
                 />
                 <ChangeDropDown
                   data={categories}
-                  currentOption={state.category}
+                  currentOption={product.category}
                   labelFor="Product category"
                   name="category"
                   placeholder="Select"
@@ -195,7 +207,7 @@ const ChangeProduct = () => {
                 currentItems={currentGalleryImages}
               />
             </div>
-            <Button text="Add a product" type={'submit'} />
+            <Button text="Update product" type="submit" />
           </form>
         </div>
       </div>

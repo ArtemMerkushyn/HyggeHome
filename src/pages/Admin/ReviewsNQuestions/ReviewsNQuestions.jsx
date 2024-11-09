@@ -3,71 +3,117 @@ import styles from './ReviewsNQuestions.module.css';
 import MyAccountNav from '../../../components/MyAccontNav/MyAccountNav';
 import DropDownSort from '../../../components/DropDownSort/DropDownSort';
 import Switcher from '../../../components/Switcher/Switcher';
-import { questionsArray, feedbackArray } from './db';
-import QuestionItem from '../../../components/QuestionItem/QuestionItem';
 import ReviewItem from '../../../components/ReviewItem/ReviewItem';
 import AdminQuestionItem from '../../../components/AdminQuestionItem/AdminQuestionItem';
+import {
+  useGetFeedbacksQuery,
+  useGetQuestionsQuery,
+} from '../../../redux/services';
+import Pagination from '../../../components/Pagination/Pagination';
+import AdminReviewItem from '../../../components/AdminReviewItem/AdminReviewItem';
 
-const rewievTabs = [
+const reviewTabs = [
   { id: 1, title: 'New' },
   { id: 2, title: 'Accepted' },
   { id: 3, title: 'Declined' },
 ];
 const questionTabs = [
-  {
-    id: 1,
-    title: 'New',
-  },
+  { id: 1, title: 'New' },
   { id: 2, title: 'Answered' },
 ];
 
 const ReviewsNQuestions = () => {
   const [sortValue, setSortValue] = useState('Reviews');
-  const tabs = sortValue === 'Reviews' ? rewievTabs : questionTabs;
+  const tabs = sortValue === 'Reviews' ? reviewTabs : questionTabs;
   const [selectedId, setSelectedId] = useState(tabs[0].id);
-  const [data, setData] = useState([]);
+  const [items, setItems] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const [email, setEmail] = useState('');
+
+  const {
+    data: questionsData,
+    error: questionsError,
+    isLoading: questionsLoading,
+  } = useGetQuestionsQuery({ page, email });
+  const {
+    data: feedbackData,
+    error: feedbackError,
+    isLoading: feedbackLoading,
+  } = useGetFeedbacksQuery({ page, email });
 
   const handleFilterPick = () => {
-    if (sortValue === 'Reviews') {
+    if (sortValue === 'Reviews' && feedbackData) {
       switch (selectedId) {
         case 1:
-          setData(
-            feedbackArray
+          setItems(
+            feedbackData.results
               .slice()
               .filter(item => !item.approved)
-              .sort((a, b) => b.feedbackDate - a.feedbackDate),
+              .sort(
+                (a, b) => new Date(b.feedbackDate) - new Date(a.feedbackDate),
+              ),
           );
           break;
         case 2:
-          setData(feedbackArray.filter(item => item.approved));
+          setItems(feedbackData.results.filter(item => item.approved));
           break;
         case 3:
-          setData(feedbackArray.filter(item => !item.approved));
+          setItems(feedbackData.results.filter(item => !item.approved));
           break;
         default:
-          setData(feedbackArray);
+          setItems(feedbackData.results);
       }
-    } else if (sortValue === 'Questions') {
+    } else if (sortValue === 'Questions' && questionsData) {
       switch (selectedId) {
         case 1:
-          setData(
-            questionsArray
+          setItems(
+            questionsData.results
               .filter(item => !item.answers.length)
-              .sort((a, b) => b.questionDate - a.questionDate),
+              .sort(
+                (a, b) => new Date(b.questionDate) - new Date(a.questionDate),
+              ),
           );
           break;
         case 2:
-          setData(questionsArray.filter(item => item.answers.length));
+          setItems(questionsData.results.filter(item => item.answers.length));
           break;
         default:
-          setData(questionsArray);
+          setItems(questionsData.results);
       }
     }
   };
 
   useEffect(() => {
-    handleFilterPick();
-  }, [sortValue, selectedId]);
+    if (
+      (sortValue === 'Reviews' &&
+        !feedbackLoading &&
+        !feedbackError &&
+        feedbackData) ||
+      (sortValue === 'Questions' &&
+        !questionsLoading &&
+        !questionsError &&
+        questionsData)
+    ) {
+      if (sortValue === 'Reviews' && feedbackData) {
+        setTotalPages(feedbackData.totalPages);
+      } else if (sortValue === 'Questions' && questionsData) {
+        setTotalPages(questionsData.totalPages);
+      }
+      handleFilterPick();
+      if (sortValue === 'Questions' && selectedId === 3) {
+        setSelectedId(1);
+      }
+    }
+  }, [sortValue, selectedId, feedbackData, questionsData, page]);
+
+  if (feedbackLoading || questionsLoading) {
+    return <div>Загрузка...</div>;
+  }
+
+  if (feedbackError || questionsError) {
+    return <div>Ошибка загрузки данных</div>;
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -89,14 +135,20 @@ const ReviewsNQuestions = () => {
           />
         </div>
         <ul className={styles.list}>
-          {data.map((item, index) =>
+          {items.map((item, index) =>
             sortValue === 'Questions' ? (
-              <AdminQuestionItem item={item} index={index} />
+              <AdminQuestionItem key={item.id} item={item} index={index} />
             ) : (
-              <ReviewItem item={item} index={index} />
+              <AdminReviewItem
+                key={item.id}
+                item={item}
+                index={index}
+                status={selectedId}
+              />
             ),
           )}
         </ul>
+        <Pagination totalPages={totalPages} newPage={setPage} />
       </div>
     </div>
   );

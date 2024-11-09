@@ -15,7 +15,6 @@ export const SliderNoArrow = ({ data }) => {
   const itemsFavorites = useSelector(selectFavorites);
   const user = useSelector(selectUser);
   const isAdmin = user?.isAdmin;
-  console.log(isAdmin);
   const isLiked = itemsFavorites.some(
     ({ article }) => article === data.article,
   );

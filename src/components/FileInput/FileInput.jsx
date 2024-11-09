@@ -76,7 +76,6 @@ const FileInput = ({
     if (Array.isArray(currentItems)) {
       const newData = currentItems.filter(image => image !== item);
       setCurrentImages(newData);
-      console.log(currentItems);
     } else {
       setCurrentImages(null);
     }

@@ -9,7 +9,6 @@ import { usePostOrderMutation } from '../../../redux/services.js';
 
 export const TabSwitcher = ({ tabs, selectedId, setSelectedId }) => {
   const curtItems = useSelector(selectCurtProducts);
-  console.log(curtItems);
   const [handleNext, setHandleNext] = useState(false);
   const [postOrder] = usePostOrderMutation();
   const [formData, setFormData] = useState({

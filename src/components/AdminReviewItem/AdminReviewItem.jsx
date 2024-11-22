@@ -1,12 +1,41 @@
 import React from 'react';
 import styles from './AdminReviewItem.module.css';
 import { Rating } from '../Rating/Rating';
+import { useUpdateFeedbackStatusMutation } from '../../redux/services';
 
-const AdminReviewItem = ({ item, index, status }) => {
+const AdminReviewItem = ({ item, index, status, reviews, setReviews }) => {
+  console.log(item);
+  const [approve] = useUpdateFeedbackStatusMutation();
   const formatDate = timestamp => {
     const date = new Date(timestamp);
     const options = { month: 'short', day: '2-digit', year: 'numeric' };
     return date.toLocaleDateString('en-US', options);
+  };
+
+  const handleApprove = item => {
+    approve({
+      article: item.article,
+      email: item.email,
+      approved: true,
+    }).then(res => {
+      const updatedList = reviews.filter(
+        review => review.feedbackDate !== item.feedbackDate,
+      );
+      setReviews(updatedList);
+    });
+  };
+
+  const handleDecline = item => {
+    approve({
+      article: item.article,
+      email: item.email,
+      approved: false,
+    }).then(res => {
+      const updatedList = reviews.filter(
+        review => review.feedbackDate !== item.feedbackDate,
+      );
+      setReviews(updatedList);
+    });
   };
 
   const renderButtons = status => {
@@ -14,14 +43,38 @@ const AdminReviewItem = ({ item, index, status }) => {
       case 1:
         return (
           <>
-            <button className={styles.declineButton}>Decline</button>
-            <button className={styles.acceptButton}>Accept</button>
+            <button
+              className={styles.declineButton}
+              onClick={() => handleDecline(item)}
+            >
+              Decline
+            </button>
+            <button
+              className={styles.acceptButton}
+              onClick={() => handleApprove(item)}
+            >
+              Accept
+            </button>
           </>
         );
       case 2:
-        return <button className={styles.declineButton}>Decline</button>;
+        return (
+          <button
+            className={styles.declineButton}
+            onClick={() => handleDecline(item)}
+          >
+            Decline
+          </button>
+        );
       case 3:
-        return <button className={styles.acceptButton}>Accept</button>;
+        return (
+          <button
+            className={styles.acceptButton}
+            onClick={() => handleApprove(item)}
+          >
+            Accept
+          </button>
+        );
       default:
         return null;
     }

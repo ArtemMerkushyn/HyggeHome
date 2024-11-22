@@ -144,6 +144,8 @@ const ReviewsNQuestions = () => {
                 item={item}
                 index={index}
                 status={selectedId}
+                reviews={items}
+                setReviews={setItems}
               />
             ),
           )}

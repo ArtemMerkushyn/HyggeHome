@@ -214,6 +214,15 @@ export const servicesApi = createApi({
         mode: 'cors',
       }),
     }),
+    updateFeedbackStatus: builder.mutation({
+      query: feedback => ({
+        url: '/feedback-status',
+        method: "PUT",
+        body: feedback,
+        credentials: 'include',
+        mode: 'cors',
+      }),
+    }),
   }),
 });
 
@@ -244,4 +253,5 @@ export const {
   useGetFeedbacksQuery,
   usePostProductMutation,
   useUpdateProductMutation,
+  useUpdateFeedbackStatusMutation
 } = servicesApi;

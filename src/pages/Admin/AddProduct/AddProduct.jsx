@@ -48,13 +48,14 @@ const AddProduct = () => {
       return toast.error('Please select color');
     }
 
-    console.log({
+    const product = {
       ...values,
       color,
       category,
       hoverImages,
       galleryImages,
-    });
+    };
+    console.log(product);
   };
 
   const formik = useFormik({
@@ -165,11 +166,13 @@ const AddProduct = () => {
                 max={1}
                 images={hoverImages}
                 setImages={setHoverImages}
+                currentItems={[]}
               />
               <FileInput
                 max={5}
                 images={galleryImages}
                 setImages={setGalleryImages}
+                currentItems={[]}
               />
             </div>
             <Button text="Add a product" type={'submit'} />

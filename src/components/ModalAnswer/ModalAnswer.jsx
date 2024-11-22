@@ -34,11 +34,25 @@ export default function ModalAnswer({ setShowModal, data, existingAnswer }) {
     } else {
       postAnswer(newAnswer).then(res => {
         console.log(res);
-        if (res?.data?.status === 200) {
-          toast.success(`${res.data.result}`);
+        if (
+          res?.data?.status === 200 ||
+          res?.error?.statusCode === 200 ||
+          res?.error?.originalStatus === 200
+        ) {
+          toast.success(`${res.error.data}`);
           setShowModal(false);
-        } else if (res?.error?.status === 401) {
+        } else if (
+          res?.error?.status === 401 ||
+          res?.data?.status === 401 ||
+          res?.error?.originalStatus === 401
+        ) {
           toast.error(`${res.error.data.error}`);
+        } else if (
+          res?.error?.status === 204 ||
+          res?.data?.status === 204 ||
+          res?.error?.originalStatus === 204
+        ) {
+          toast.error(`You've already post an answer`);
         } else {
           toast.error('Answer has not been posted. Try again later');
         }

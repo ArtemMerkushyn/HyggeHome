@@ -196,6 +196,33 @@ export const servicesApi = createApi({
     getFeedbacks: builder.query({
       query: ({ email, page }) => `/feedbacks?email=${email}&page=${page}`,
     }),
+    postProduct: builder.mutation({
+      query: product => ({
+        url: '/product',
+        method: "POST",
+        body: product,
+        credentials: 'include',
+        mode: 'cors',
+      }),
+    }),
+    updateProduct: builder.mutation({
+      query: product => ({
+        url: '/product',
+        method: "PUT",
+        body: product,
+        credentials: 'include',
+        mode: 'cors',
+      }),
+    }),
+    updateFeedbackStatus: builder.mutation({
+      query: feedback => ({
+        url: '/feedback-status',
+        method: "PUT",
+        body: feedback,
+        credentials: 'include',
+        mode: 'cors',
+      }),
+    }),
   }),
 });
 
@@ -224,4 +251,7 @@ export const {
   usePostAnswerMutation,
   useGetQuestionsQuery,
   useGetFeedbacksQuery,
+  usePostProductMutation,
+  useUpdateProductMutation,
+  useUpdateFeedbackStatusMutation
 } = servicesApi;

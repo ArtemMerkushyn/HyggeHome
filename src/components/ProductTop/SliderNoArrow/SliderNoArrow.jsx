@@ -47,17 +47,18 @@ export const SliderNoArrow = ({ data }) => {
   return (
     <div className={styles.slider}>
       <div className={styles.dots}>
-        {data.image.map((img, index) => {
-          return (
-            <div
-              key={index}
-              className={styles.dot}
-              onClick={() => handleDotClick(index)}
-            >
-              <img src={img} alt={index + 1} />
-            </div>
-          );
-        })}
+        {data.image.length &&
+          data.image.map((img, index) => {
+            return (
+              <div
+                key={index}
+                className={styles.dot}
+                onClick={() => handleDotClick(index)}
+              >
+                <img src={img} alt={index + 1} />
+              </div>
+            );
+          })}
       </div>
       <div className={styles.img}>
         {!isAdmin ? (
@@ -86,18 +87,19 @@ export const SliderNoArrow = ({ data }) => {
           </button>
         )}
 
-        {data.image.map((img, index) => {
-          return (
-            <img
-              key={index}
-              src={img}
-              alt={index + 1}
-              style={{
-                opacity: index === selectedImageIndex ? 1 : 0,
-              }}
-            />
-          );
-        })}
+        {data.image.length &&
+          data.image.map((img, index) => {
+            return (
+              <img
+                key={index}
+                src={img}
+                alt={index + 1}
+                style={{
+                  opacity: index === selectedImageIndex ? 1 : 0,
+                }}
+              />
+            );
+          })}
       </div>
     </div>
   );

@@ -6,7 +6,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Search2 } from '../../Search2/Search2';
 import { selectUser } from '../../../redux/selectors';
 import { useLogoutMutation } from '../../../redux/services';
-import { generalRoutes, userRoutes, adminRoutes } from './routes';
+import {
+  categoryRoutes,
+  userRoutes,
+  adminRoutes,
+  generalRoutes,
+} from './routes';
 
 export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
   const storedUser = useSelector(selectUser);
@@ -37,9 +42,9 @@ export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
     }
   };
 
-  const protectedRoutes = [...adminRoutes, ...userRoutes].map(
-    route => route.to,
-  );
+  const protectedRoutes = [...adminRoutes, ...userRoutes]
+    .map(route => route.to)
+    .filter(route => route !== '/cart');
 
   useEffect(() => {
     const currentPath = location.pathname;
@@ -80,7 +85,12 @@ export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
         <Search2 />
         <nav className={styles.nav__items}>
           <div className={styles.nav__top}>
-            {(isAdmin ? adminRoutes : userRoutes).map(item => (
+            {(isAdmin
+              ? adminRoutes
+              : authorized
+              ? userRoutes
+              : generalRoutes
+            ).map(item => (
               <NavLink
                 key={item.to}
                 className={styles.nav__item}
@@ -92,7 +102,7 @@ export default function BurgerMenu({ burgerMenu, SetBurgerMenu, toggleModal }) {
               </NavLink>
             ))}
           </div>
-          {generalRoutes.map(item => (
+          {categoryRoutes.map(item => (
             <NavLink
               key={item.to}
               className={`${styles.nav__item} ${

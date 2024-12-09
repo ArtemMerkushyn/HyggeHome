@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './FileInput.module.css';
 import Icons from '../Icons/Icons';
 import FileInputItem from '../FileInputItem/FileInputItem';
@@ -11,13 +11,19 @@ const FileInput = ({
   currentItems,
   setCurrentImages,
 }) => {
-  const handleFiles = ({ target: { files } }) => {
-    const allowedTypes = [
-      'image/png',
-      'image/jpg',
-      'image/jpeg',
-      'image/svg+xml',
-    ];
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+  }
+  useEffect(() => {
+    console.log(images);
+  }, [images]);
+  const handleFiles = async ({ target: { files } }) => {
+    const allowedTypes = ['image/png', 'image/jpg', 'image/jpeg'];
     if (files.length > 0) {
       if (currentItems.length > Number(max)) {
         return toast.error('There are already maximum amount of pictures');
@@ -36,14 +42,23 @@ const FileInput = ({
             .join(', ')}`,
         );
       }
-
-      setImages(prevImages => [...prevImages, ...files]);
+      for (let file of files) {
+        if (file.type.startsWith('image/')) {
+          const base64 = await fileToBase64(file);
+          const combined = {
+            base64: base64,
+            name: file.name,
+            size: file.size,
+          };
+          setImages(prevImages => [...prevImages, combined]);
+        }
+      }
     }
   };
-  const handleDrop = e => {
+  const handleDrop = async e => {
     e.preventDefault();
     const files = Array.from(e.dataTransfer.files);
-    const allowedTypes = ['image/png', 'image/jpg', 'image/svg+xml'];
+    const allowedTypes = ['image/png', 'image/jpg', 'image/jpeg'];
 
     if (files.length + images.length > Number(max)) {
       return toast.error("You've exceeded the maximum number of pictures");
@@ -60,7 +75,17 @@ const FileInput = ({
       );
     }
 
-    setImages(prevImages => [...prevImages, ...files]);
+    for (let file of files) {
+      if (file.type.startsWith('image/')) {
+        const base64 = await fileToBase64(file);
+        const combined = {
+          base64: base64,
+          name: file.name,
+          size: file.size,
+        };
+        setImages(prevImages => [...prevImages, combined]);
+      }
+    }
   };
 
   const handleDropOver = e => {

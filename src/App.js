@@ -17,6 +17,7 @@ function App() {
   const dispatch = useDispatch();
   
   useEffect(() => {
+    localStorage.removeItem('token');
     if (data) {
       if (data.enrichedUser) {
         dispatch(setLoggedIn({

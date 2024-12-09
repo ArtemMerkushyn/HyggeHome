@@ -10,6 +10,7 @@ export default function ModalAnswer({ setShowModal, data, existingAnswer }) {
   const { article } = data;
   const storedUser = useSelector(selectUser);
   const [firstName, setFirstName] = useState(storedUser.name);
+  console.log(firstName);
 
   const [answer, setAnswer] = useState(
     existingAnswer ? existingAnswer.message : '',

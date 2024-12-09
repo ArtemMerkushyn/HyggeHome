@@ -214,9 +214,12 @@ const OrderItem = ({ data }) => {
               <p className={css.payment_details_data}>{data.total_amount}</p>
             </div>
           </div>
-          <button className={css.feedback_button} onClick={toggleModal}>
-            Leave a feedback
-          </button>
+          {!isAdmin && (
+            <button className={css.feedback_button} onClick={toggleModal}>
+              Leave a feedback
+            </button>
+          )}
+
           {modal && (
             <Modal funcClick={toggleModal}>
               {items.map(item => (

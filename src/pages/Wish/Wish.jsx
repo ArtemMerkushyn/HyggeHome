@@ -16,7 +16,7 @@ export const Wish = () => {
           <span>Your wish list</span>
         </div>
         <div className={styles.nav__item}>
-          <Link to={'/curt'}>Your cart</Link>
+          <Link to={'/cart'}>Your cart</Link>
         </div>
       </div>
 

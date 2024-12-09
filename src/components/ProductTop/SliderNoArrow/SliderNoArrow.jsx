@@ -9,6 +9,7 @@ import {
 import { selectFavorites, selectUser } from '../../../redux/selectors';
 import Icons from '../../Icons/Icons';
 import { Link } from 'react-router-dom';
+import { useUpdateWishListMutation } from '../../../redux/services';
 
 export const SliderNoArrow = ({ data }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -18,6 +19,7 @@ export const SliderNoArrow = ({ data }) => {
   const isLiked = itemsFavorites.some(
     ({ article }) => article === data.article,
   );
+  const [updateWish] = useUpdateWishListMutation();
   const dispatch = useDispatch();
 
   const handleDotClick = index => {
@@ -25,44 +27,38 @@ export const SliderNoArrow = ({ data }) => {
   };
 
   const handleToggleFavorite = () => {
-    if (isLiked) {
-      dispatch(removeFavorite(data));
-      toast.info(`${data.name} has been removed from the wishlist`, {
-        theme: 'colored',
-      });
-    } else {
-      dispatch(addFavorite(data));
-      toast.success(`${data.name} has been added to the wishlist`, {
-        theme: 'colored',
-      });
-    }
+    updateWish({
+      article: data.article,
+    }).then(() => {
+      if (isLiked) {
+        dispatch(removeFavorite(data));
+        toast.info(`${data.name} has been removed from the wishlist`, {
+          theme: 'colored',
+        });
+      } else {
+        dispatch(addFavorite(data));
+        toast.success(`${data.name} has been added to the wishlist`, {
+          theme: 'colored',
+        });
+      }
+    });
   };
 
   return (
     <div className={styles.slider}>
       <div className={styles.dots}>
-        {data.image.map((img, index) => {
-          return (
-            <div
-              key={index}
-              className={styles.dot}
-              onClick={() => handleDotClick(index)}
-            >
-              <img src={img} alt={index + 1} />
-            </div>
-          );
-        })}
-        {data.image.map((img, index) => {
-          return (
-            <div
-              key={index}
-              className={styles.dot}
-              onClick={() => handleDotClick(index)}
-            >
-              <img src={img} alt={index + 1} />
-            </div>
-          );
-        })}
+        {data.image.length &&
+          data.image.map((img, index) => {
+            return (
+              <div
+                key={index}
+                className={styles.dot}
+                onClick={() => handleDotClick(index)}
+              >
+                <img src={img} alt={index + 1} />
+              </div>
+            );
+          })}
       </div>
       <div className={styles.img}>
         {!isAdmin ? (
@@ -91,18 +87,19 @@ export const SliderNoArrow = ({ data }) => {
           </button>
         )}
 
-        {data.image.map((img, index) => {
-          return (
-            <img
-              key={index}
-              src={img}
-              alt={index + 1}
-              style={{
-                opacity: index === selectedImageIndex ? 1 : 0,
-              }}
-            />
-          );
-        })}
+        {data.image.length &&
+          data.image.map((img, index) => {
+            return (
+              <img
+                key={index}
+                src={img}
+                alt={index + 1}
+                style={{
+                  opacity: index === selectedImageIndex ? 1 : 0,
+                }}
+              />
+            );
+          })}
       </div>
     </div>
   );

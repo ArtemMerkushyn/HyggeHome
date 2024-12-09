@@ -9,7 +9,10 @@ import Button from '../../../components/UI/Button/Button';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import ChangeDropDown from '../../../components/UI/ChangeDropDown/ChangeDropDown';
-import { useGetProductQuery } from '../../../redux/services';
+import {
+  useGetProductQuery,
+  useUpdateProductMutation,
+} from '../../../redux/services';
 
 const colors = [
   'Red',
@@ -35,7 +38,7 @@ const categories = [
 const ChangeProduct = () => {
   const { article } = useParams();
   const { data: product, error, isLoading } = useGetProductQuery(article);
-
+  const [updateProduct] = useUpdateProductMutation();
   const [color, setColor] = useState('');
   const [category, setCategory] = useState('');
   const [hoverImages, setHoverImages] = useState([]);
@@ -68,15 +71,23 @@ const ChangeProduct = () => {
       return toast.error('Please select color');
     }
 
-    console.log({
-      ...values,
-      color,
-      category,
-      hoverImages: [...currentHoverImages, ...hoverImages],
-      galleryImages: [...currentGalleryImages, ...galleryImages],
-    });
+    const imagesForHover = hoverImages.map(image => image.base64);
+    const imagesForGallery = galleryImages.map(image => image.base64);
 
-    // Здесь добавьте код для отправки данных на сервер
+    const changedProduct = {
+      article: product.article,
+      name: values.name,
+      category: category,
+      description: values.shortDesc,
+      aboutProduct: values.fullDesc,
+      color: color,
+      quantity: values.inStock,
+      price: values.price,
+      image: [...currentGalleryImages, ...imagesForGallery],
+      picture: imagesForHover.length ? imagesForHover : currentHoverImages,
+    };
+    console.log(changedProduct);
+    updateProduct(changedProduct).then(res => console.log(res));
   };
 
   const formik = useFormik({
@@ -89,7 +100,7 @@ const ChangeProduct = () => {
     },
     validationSchema: addProductSchema,
     onSubmit,
-    enableReinitialize: true, // Добавлено
+    enableReinitialize: true,
   });
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =

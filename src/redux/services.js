@@ -223,6 +223,18 @@ export const servicesApi = createApi({
         mode: 'cors',
       }),
     }),
+    getOrders: builder.query({
+      query: ({ min, max }) => `/orders?minDate=${min}&maxDate=${max}&page=5`,
+    }),
+    updateWishList: builder.mutation({
+        query: article => ({
+          url: '/to-wish-list',
+          method: "PUT",
+          body: article,
+          credentials: 'include',
+          mode: 'cors',
+        }),
+      }),
   }),
 });
 
@@ -253,5 +265,7 @@ export const {
   useGetFeedbacksQuery,
   usePostProductMutation,
   useUpdateProductMutation,
-  useUpdateFeedbackStatusMutation
+  useUpdateFeedbackStatusMutation,
+  useGetOrdersQuery,
+  useUpdateWishListMutation
 } = servicesApi;

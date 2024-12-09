@@ -141,7 +141,12 @@
     height: 40px;
   }
 }
-
+@media screen and (max-width: 630px) {
+  .heartwrapper,
+  .link svg {
+    display: none;
+  }
+}
 @media (max-width: 425px) {
   .wrapper__action {
     gap: 5px;

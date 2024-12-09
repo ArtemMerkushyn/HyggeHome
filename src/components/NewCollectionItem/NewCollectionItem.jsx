@@ -6,11 +6,12 @@ import { addFavorite, removeFavorite } from '../../redux/slices/favoriteSlice';
 import { toast } from 'react-toastify';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { addToCurt } from '../../redux/slices/curtSlice';
+import { useUpdateWishListMutation } from '../../redux/services';
 
 export default function NewCollectionItem({ item }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const [updateWish] = useUpdateWishListMutation();
   const location = useLocation();
   const pathName = location.pathname;
 
@@ -25,17 +26,21 @@ export default function NewCollectionItem({ item }) {
   );
 
   const handleToggleFavorite = () => {
-    if (isChecked) {
-      dispatch(removeFavorite(item));
-      toast.info(`${item.name} has been removed from the wishlist`, {
-        theme: 'colored',
-      });
-    } else {
-      dispatch(addFavorite(item));
-      toast.success(`${item.name} has been added to the wishlist`, {
-        theme: 'colored',
-      });
-    }
+    updateWish({
+      article: item.article,
+    }).then(res => {
+      if (isChecked) {
+        dispatch(removeFavorite(item));
+        toast.info(`${item.name} has been removed from the wishlist`, {
+          theme: 'colored',
+        });
+      } else {
+        dispatch(addFavorite(item));
+        toast.success(`${item.name} has been added to the wishlist`, {
+          theme: 'colored',
+        });
+      }
+    });
   };
 
   const handleAddToCart = () => {
@@ -140,15 +145,6 @@ export default function NewCollectionItem({ item }) {
           onError={handleError}
         />
       </li>
-      {pathName === '/wish' && (
-        <button
-          type="button"
-          onClick={handleAddToCart}
-          className={styles.button}
-        >
-          Add to cart
-        </button>
-      )}
     </div>
   );
 }

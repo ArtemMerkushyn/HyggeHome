@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { addToCurt } from '../../redux/slices/curtSlice';
 import Icons from '../Icons/Icons';
+import { useUpdateWishListMutation } from '../../redux/services';
 
 const WishListModalItem = ({ item, toggleAction }) => {
   const dispatch = useDispatch();
@@ -22,23 +23,33 @@ const WishListModalItem = ({ item, toggleAction }) => {
     curt => curt.dataProduct.article === item.article,
   );
 
+  const [updateWish] = useUpdateWishListMutation();
+
   const handleToggleFavorite = () => {
-    if (isChecked) {
+    updateWish({
+      article: item.article,
+    }).then(res => {
+      if (isChecked) {
+        dispatch(removeFavorite(item));
+        toast.info(`${item.name} has been removed from the wishlist`, {
+          theme: 'colored',
+        });
+      } else {
+        dispatch(addFavorite(item));
+        toast.success(`${item.name} has been added to the wishlist`, {
+          theme: 'colored',
+        });
+      }
+    });
+  };
+  const handleRemoveFavorite = () => {
+    updateWish({
+      article: item.article,
+    }).then(() => {
       dispatch(removeFavorite(item));
       toast.info(`${item.name} has been removed from the wishlist`, {
         theme: 'colored',
       });
-    } else {
-      dispatch(addFavorite(item));
-      toast.success(`${item.name} has been added to the wishlist`, {
-        theme: 'colored',
-      });
-    }
-  };
-  const handleRemoveFavorite = () => {
-    dispatch(removeFavorite(item));
-    toast.info(`${item.name} has been removed from the wishlist`, {
-      theme: 'colored',
     });
   };
 

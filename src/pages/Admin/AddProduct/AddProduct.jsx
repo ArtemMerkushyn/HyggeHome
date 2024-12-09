@@ -8,6 +8,7 @@ import DropDown from '../../../components/UI/DropDown/DropDown';
 import FileInput from '../../../components/FileInput/FileInput';
 import Button from '../../../components/UI/Button/Button';
 import { toast } from 'react-toastify';
+import { usePostProductMutation } from '../../../redux/services';
 
 const AddProduct = () => {
   const colors = [
@@ -21,6 +22,7 @@ const AddProduct = () => {
     'Black',
     'White',
     'Gray',
+    'No color',
   ];
   const categories = [
     'Candles',
@@ -35,6 +37,7 @@ const AddProduct = () => {
   const [category, setCategory] = useState('');
   const [hoverImages, setHoverImages] = useState([]);
   const [galleryImages, setGalleryImages] = useState([]);
+  const [postProduct] = usePostProductMutation();
   const onSubmit = values => {
     if (hoverImages.length === 0 || galleryImages.length === 0) {
       return toast.error('Please add images');
@@ -48,14 +51,24 @@ const AddProduct = () => {
       return toast.error('Please select color');
     }
 
+    const imagesForHover = hoverImages.map(image => image.base64);
+    const imagesForGallery = galleryImages.map(image => image.base64);
+
     const product = {
-      ...values,
-      color,
-      category,
-      hoverImages,
-      galleryImages,
+      name: values.name,
+      category: category,
+      description: values.shortDesc,
+      aboutProduct: values.fullDesc,
+      color: color,
+      quantity: values.inStock,
+      price: values.price,
+      image: imagesForGallery,
+      picture: imagesForHover,
     };
+
+    //
     console.log(product);
+    postProduct(product).then(res => console.log(res));
   };
 
   const formik = useFormik({

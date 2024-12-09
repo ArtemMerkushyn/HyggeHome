@@ -17,7 +17,7 @@ export const userRoutes = [
   },
 ];
 
- export const generalRoutes = [
+ export const categoryRoutes = [
   { to: '/', text: 'Home' },
   { to: '/candles', text: 'Candles' },
   { to: '/lighting-decor', text: 'Lighting Decor' },
@@ -25,4 +25,11 @@ export const userRoutes = [
   { to: '/get-warm', text: 'Get Warm' },
   { to: '/table-games', text: 'Table Games' },
   { to: '/books-&-journals', text: 'Books & Journals' },
-];
+ ];
+
+export const generalRoutes = [
+  { to: '/cart', text: 'My cart' },
+  { to: '/wish', text: 'My wishlist' },
+ ]
+
+ 
